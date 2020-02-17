@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Competition.vue renders content 1`] = `
+<div
+  class="competition"
+>
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h1>
+        competition.competition: 
+      </h1>
+    </b-col-stub>
+     
+    <!---->
+  </b-row-stub>
+   
+  <competition-stub />
+   
+  <results-stub
+    competition="[object Object]"
+  />
+</div>
+`;

@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AthleteInformation.vue renders athlete information 1`] = `
+<div>
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h1>
+        Master Archer
+      </h1>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h2
+        class="bg-sal-orange"
+      >
+        athlete.info
+      </h2>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <!---->
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      cols="6"
+      md="3"
+      tag="div"
+    >
+      <dl>
+        <dt>
+          first_name
+        </dt>
+         
+        <dd>
+          Master
+        </dd>
+      </dl>
+    </b-col-stub>
+     
+    <b-col-stub
+      cols="6"
+      md="3"
+      tag="div"
+    >
+      <dl>
+        <dt>
+          last_name
+        </dt>
+         
+        <dd>
+          Archer
+        </dd>
+      </dl>
+    </b-col-stub>
+     
+    <b-col-stub
+      cols="6"
+      md="3"
+      tag="div"
+    >
+      <dl>
+        <dt>
+          athlete.sport_id
+        </dt>
+         
+        <dd>
+          3456789
+        </dd>
+      </dl>
+    </b-col-stub>
+     
+    <b-col-stub
+      cols="6"
+      md="3"
+      tag="div"
+    >
+      <dl>
+        <dt>
+          athlete.club
+        </dt>
+         
+        <dd>
+          
+          Local Club
+        
+        </dd>
+      </dl>
+    </b-col-stub>
+  </b-row-stub>
+</div>
+`;

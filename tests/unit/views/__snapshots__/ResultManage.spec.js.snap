@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultManage.vue renders content 1`] = `
+<div
+  class="event"
+>
+  <resultform-stub />
+</div>
+`;

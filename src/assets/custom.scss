@@ -1,0 +1,68 @@
+.navbar {
+    background-color: #17233B;
+}
+
+body {
+    min-height: 75rem;
+    padding-top: 6rem;
+}
+.logo-img {
+    max-width: 100%;
+    max-height: 4rem;
+    height: auto;
+    padding: 0.5rem 1rem;
+}
+.bg-sal-orange {
+    background-color: #EF7D00;
+}
+.bg-sal-blue {
+    background-color: #005CA9;
+}
+.bg-sal-light-blue {
+    background-color: #83D0F5;
+    border: 1px solid #17233B;
+}
+
+//noinspection CssUnusedSymbol
+.bg-sal-bright-blue {
+    background-color: #1C9BD8;
+}
+
+//noinspection CssUnusedSymbol
+.bg-sal-dark-blue {
+    background-color: #17233B;
+}
+
+//noinspection CssUnusedSymbol
+.btn-secondary {
+    background-color: #17233B;
+    color: #EF7D00;
+    border: 1px solid #EF7D00;
+}
+.btn-orange {
+    border: 1px solid #EF7D00;
+}
+.space-right {
+    margin-right: 0.5rem;
+}
+.space-down {
+    margin-bottom: 1rem;
+}
+.space-top {
+    margin-top: 0.5rem;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.6);
+}
+a {
+    color: #0056B3;
+}
+.page-link {
+    color: #0056B3;
+}
+.page-item.active .page-link {
+    background-color: #0056B3;
+}
+.btn-outline-info {
+    color: #128091
+}

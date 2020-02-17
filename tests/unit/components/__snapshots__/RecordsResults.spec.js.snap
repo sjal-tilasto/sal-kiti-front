@@ -1,0 +1,551 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecordsResults.vue renders result list 1`] = `
+<div>
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <h3
+        class="bg-sal-orange"
+      >
+        record.record
+      </h3>
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <!---->
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <div
+        style="display: none;"
+      >
+        <span
+          class="spinner-border"
+          role="status"
+        >
+          <span
+            class="sr-only"
+          >
+            Loading...
+          </span>
+        </span>
+      </div>
+       
+      <div>
+        <h4
+          class="bg-sal-orange"
+        >
+          
+          Paintball
+        
+        </h4>
+         
+        <table
+          aria-busy="false"
+          aria-colcount="7"
+          class="table b-table table-hover table-sm"
+          id="__BVID__7"
+          role="table"
+        >
+          <!---->
+          <!---->
+          <thead
+            class=""
+            role="rowgroup"
+          >
+            <!---->
+            <tr
+              class=""
+              role="row"
+            >
+              <th
+                aria-colindex="1"
+                aria-sort="ascending"
+                class=""
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                result.category
+                <span
+                  class="sr-only"
+                >
+                   (Click to sort Descending)
+                </span>
+              </th>
+              <th
+                aria-colindex="2"
+                aria-sort="none"
+                class=""
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                result.result
+                <span
+                  class="sr-only"
+                >
+                   (Click to sort Ascending)
+                </span>
+              </th>
+              <th
+                aria-colindex="3"
+                aria-sort="none"
+                class=""
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                record.status
+                <span
+                  class="sr-only"
+                >
+                   (Click to sort Ascending)
+                </span>
+              </th>
+              <th
+                aria-colindex="4"
+                class=""
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                athlete.athlete
+                <span
+                  class="sr-only"
+                >
+                   (Click to clear sorting)
+                </span>
+              </th>
+              <th
+                aria-colindex="5"
+                class="d-none d-md-table-cell"
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                athlete.club
+                <span
+                  class="sr-only"
+                >
+                   (Click to clear sorting)
+                </span>
+              </th>
+              <th
+                aria-colindex="6"
+                class="d-none d-lg-table-cell"
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                competition.competition
+                <span
+                  class="sr-only"
+                >
+                   (Click to clear sorting)
+                </span>
+              </th>
+              <th
+                aria-colindex="7"
+                aria-sort="none"
+                class="d-none d-lg-table-cell"
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                date
+                <span
+                  class="sr-only"
+                >
+                   (Click to sort Ascending)
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            role="rowgroup"
+          >
+            <!---->
+            <tr
+              class=""
+              role="row"
+            >
+              <td
+                aria-colindex="1"
+                class=""
+                role="cell"
+              >
+                <div>
+                  
+              SC
+            
+                </div>
+              </td>
+              <td
+                aria-colindex="2"
+                class=""
+                role="cell"
+              >
+                <div>
+                  
+              623,9
+            
+                </div>
+              </td>
+              <td
+                aria-colindex="3"
+                class=""
+                role="cell"
+              >
+                <div>
+                  
+              record.approved
+              
+                  <!---->
+                </div>
+              </td>
+              <td
+                aria-colindex="4"
+                class=""
+                role="cell"
+              >
+                <div>
+                  
+              team: Archer
+              
+                  <ul />
+                </div>
+              </td>
+              <td
+                aria-colindex="5"
+                class="d-none d-md-table-cell"
+                role="cell"
+              >
+                LC
+              </td>
+              <td
+                aria-colindex="6"
+                class="d-none d-lg-table-cell"
+                role="cell"
+              >
+                <a>
+                  
+              Agnetanpolku
+            
+                </a>
+              </td>
+              <td
+                aria-colindex="7"
+                class="d-none d-lg-table-cell"
+                role="cell"
+              >
+                
+            2019-01-01
+          
+              </td>
+            </tr>
+            <!---->
+            <!---->
+          </tbody>
+          <!---->
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RecordsResults.vue renders result list with management options 1`] = `
+<div>
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <h3
+        class="bg-sal-orange"
+      >
+        record.record
+      </h3>
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <!---->
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <div
+        style="display: none;"
+      >
+        <span
+          class="spinner-border"
+          role="status"
+        >
+          <span
+            class="sr-only"
+          >
+            Loading...
+          </span>
+        </span>
+      </div>
+       
+      <div>
+        <h4
+          class="bg-sal-orange"
+        >
+          
+          Paintball
+        
+        </h4>
+         
+        <table
+          aria-busy="false"
+          aria-colcount="7"
+          class="table b-table table-hover table-sm"
+          id="__BVID__24"
+          role="table"
+        >
+          <!---->
+          <!---->
+          <thead
+            class=""
+            role="rowgroup"
+          >
+            <!---->
+            <tr
+              class=""
+              role="row"
+            >
+              <th
+                aria-colindex="1"
+                aria-sort="ascending"
+                class=""
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                result.category
+                <span
+                  class="sr-only"
+                >
+                   (Click to sort Descending)
+                </span>
+              </th>
+              <th
+                aria-colindex="2"
+                aria-sort="none"
+                class=""
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                result.result
+                <span
+                  class="sr-only"
+                >
+                   (Click to sort Ascending)
+                </span>
+              </th>
+              <th
+                aria-colindex="3"
+                aria-sort="none"
+                class=""
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                record.status
+                <span
+                  class="sr-only"
+                >
+                   (Click to sort Ascending)
+                </span>
+              </th>
+              <th
+                aria-colindex="4"
+                class=""
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                athlete.athlete
+                <span
+                  class="sr-only"
+                >
+                   (Click to clear sorting)
+                </span>
+              </th>
+              <th
+                aria-colindex="5"
+                class="d-none d-md-table-cell"
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                athlete.club
+                <span
+                  class="sr-only"
+                >
+                   (Click to clear sorting)
+                </span>
+              </th>
+              <th
+                aria-colindex="6"
+                class="d-none d-lg-table-cell"
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                competition.competition
+                <span
+                  class="sr-only"
+                >
+                   (Click to clear sorting)
+                </span>
+              </th>
+              <th
+                aria-colindex="7"
+                aria-sort="none"
+                class="d-none d-lg-table-cell"
+                role="columnheader"
+                scope="col"
+                tabindex="0"
+              >
+                date
+                <span
+                  class="sr-only"
+                >
+                   (Click to sort Ascending)
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            role="rowgroup"
+          >
+            <!---->
+            <tr
+              class=""
+              role="row"
+            >
+              <td
+                aria-colindex="1"
+                class=""
+                role="cell"
+              >
+                <div>
+                  
+              SC
+            
+                </div>
+              </td>
+              <td
+                aria-colindex="2"
+                class=""
+                role="cell"
+              >
+                <div>
+                  
+              623,9
+            
+                </div>
+              </td>
+              <td
+                aria-colindex="3"
+                class=""
+                role="cell"
+              >
+                <div>
+                  
+              record.approved
+              
+                  <button
+                    class="btn btn-outline-danger btn-sm"
+                    name="approverecord-1"
+                    type="button"
+                  >
+                    
+                record.cancel_approval
+              
+                  </button>
+                </div>
+              </td>
+              <td
+                aria-colindex="4"
+                class=""
+                role="cell"
+              >
+                <div>
+                  
+              team: Archer
+              
+                  <ul />
+                </div>
+              </td>
+              <td
+                aria-colindex="5"
+                class="d-none d-md-table-cell"
+                role="cell"
+              >
+                LC
+              </td>
+              <td
+                aria-colindex="6"
+                class="d-none d-lg-table-cell"
+                role="cell"
+              >
+                <a>
+                  
+              Agnetanpolku
+            
+                </a>
+              </td>
+              <td
+                aria-colindex="7"
+                class="d-none d-lg-table-cell"
+                role="cell"
+              >
+                
+            2019-01-01
+          
+              </td>
+            </tr>
+            <!---->
+            <!---->
+          </tbody>
+          <!---->
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;

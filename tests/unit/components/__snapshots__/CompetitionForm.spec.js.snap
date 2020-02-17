@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompetitionForm.vue renders competition form 1`] = `
+<div>
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h2
+        class="bg-sal-orange"
+      >
+        competition.add
+      </h2>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <!---->
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <b-form-stub>
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-name"
+          label="name"
+          labelfor="input-name"
+        >
+          <b-form-input-stub
+            debounce="0"
+            id="input-name"
+            required="true"
+            type="text"
+            value=""
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-description"
+          label="description"
+          labelfor="input-description"
+        >
+          <b-form-textarea-stub
+            debounce="0"
+            id="input-description"
+            maxrows="6"
+            rows="3"
+            value=""
+            wrap="soft"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-location"
+          label="location"
+          labelfor="input-location"
+        >
+          <b-form-input-stub
+            debounce="0"
+            id="input-location"
+            required="true"
+            type="text"
+            value=""
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-date-start"
+          label="date_start"
+          labelfor="input-date-start"
+        >
+          <b-form-input-stub
+            debounce="0"
+            id="input-date-start"
+            required="true"
+            type="date"
+            value=""
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-date-end"
+          label="date_end"
+          labelfor="input-date-end"
+        >
+          <b-form-input-stub
+            debounce="0"
+            id="date-end"
+            required="true"
+            type="date"
+            value=""
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-organization"
+          label="organizer"
+          labelfor="input-organization"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-organization"
+            labelfield="label"
+            options="[object Object],[object Object]"
+            optionsfield="options"
+            required="true"
+            selectsize="0"
+            textfield="name"
+            valuefield="id"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-sports"
+          label="statistics.choose_sport"
+          labelfor="input-sports"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-sports"
+            labelfield="label"
+            options="[object Object]"
+            optionsfield="options"
+            selectsize="0"
+            textfield="name"
+            valuefield="id"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-competition-types"
+          label="competition.type"
+          labelfor="input-competition-types"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-competition-types"
+            labelfield="label"
+            options=""
+            optionsfield="options"
+            required="true"
+            selectsize="0"
+            textfield="name"
+            valuefield="id"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-competition-levels"
+          label="competition.level"
+          labelfor="input-competition-levels"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-competition-levels"
+            labelfield="label"
+            options="[object Object]"
+            optionsfield="options"
+            required="true"
+            selectsize="0"
+            textfield="name"
+            valuefield="id"
+          />
+        </b-form-group-stub>
+         
+        <b-button-stub
+          class="btn-orange space-right"
+          event="click"
+          routertag="a"
+          tag="button"
+          target="_self"
+          type="submit"
+          variant="light"
+        >
+          <section>
+            create
+          </section>
+        </b-button-stub>
+         
+        <br />
+      </b-form-stub>
+    </b-col-stub>
+  </b-row-stub>
+</div>
+`;

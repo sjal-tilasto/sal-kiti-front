@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AthleteSearch.vue renders content 1`] = `
+<div
+  class="search"
+>
+  <athletesearch-stub />
+</div>
+`;

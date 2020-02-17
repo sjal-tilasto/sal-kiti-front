@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoOrganization.vue renders content 1`] = `
+<div
+  class="home"
+>
+  <infoorganization-stub />
+</div>
+`;

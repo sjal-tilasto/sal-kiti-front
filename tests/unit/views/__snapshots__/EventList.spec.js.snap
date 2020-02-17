@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventList.vue renders content 1`] = `
+<div
+  class="home"
+>
+  <eventlist-stub />
+</div>
+`;

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Statistics.vue renders content 1`] = `
+<div>
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h1>
+        statistics.statistics
+      </h1>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h2
+        class="bg-sal-orange"
+      >
+        statistics.search
+      </h2>
+       
+      <statisticsform-stub />
+    </b-col-stub>
+  </b-row-stub>
+</div>
+`;

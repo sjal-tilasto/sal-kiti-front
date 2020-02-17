@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatisticsPohjolanMalja.vue renders content 1`] = `
+<div>
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h1>
+        statistics.statistics
+      </h1>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <statisticspohjolanmalja-stub />
+</div>
+`;

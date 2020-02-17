@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App.vue renders content 1`] = `
+<div>
+  <nav>
+    <thenavbar-stub />
+  </nav>
+   
+  <main>
+    <b-container-stub
+      tag="div"
+    >
+      <router-view-stub
+        name="default"
+      />
+    </b-container-stub>
+  </main>
+</div>
+`;

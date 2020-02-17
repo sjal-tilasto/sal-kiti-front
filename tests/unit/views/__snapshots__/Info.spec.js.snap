@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Info.vue renders content 1`] = `
+<div
+  class="home"
+>
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h1>
+        info.info
+      </h1>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <div>
+    <h2
+      class="bg-sal-orange"
+    >
+      
+      info.sport
+    
+    </h2>
+     
+    <p>
+      info.sport_description
+    </p>
+     
+    <b-button-stub
+      class="btn-orange space-right space-down"
+      event="click"
+      routertag="a"
+      tag="button"
+      target="_self"
+      to="[object Object]"
+      type="button"
+      variant="light"
+    >
+      
+      info.to_sport
+    
+    </b-button-stub>
+  </div>
+  <div>
+    <h2
+      class="bg-sal-orange"
+    >
+      
+      info.organization
+    
+    </h2>
+     
+    <p>
+      info.organization_description
+    </p>
+     
+    <b-button-stub
+      class="btn-orange space-right space-down"
+      event="click"
+      routertag="a"
+      tag="button"
+      target="_self"
+      to="[object Object]"
+      type="button"
+      variant="light"
+    >
+      
+      info.to_organization
+    
+    </b-button-stub>
+  </div>
+   
+  <!---->
+</div>
+`;

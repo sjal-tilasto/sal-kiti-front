@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatisticsPohjolanMalja.vue renders result list 1`] = `
+<div>
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <h3
+        class="bg-sal-orange"
+      >
+        
+        statistics.sal.pohjolan_malja
+      
+      </h3>
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <!---->
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <button
+        aria-pressed="true"
+        autocomplete="off"
+        class="btn btn-orange space-right space-down btn-light active"
+        type="button"
+      >
+        
+        2020
+      
+      </button>
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <table
+        aria-busy="false"
+        aria-colcount="3"
+        class="table b-table table-sm"
+        id="__BVID__5"
+        role="table"
+      >
+        <!---->
+        <!---->
+        <thead
+          class=""
+          role="rowgroup"
+        >
+          <!---->
+          <tr
+            class=""
+            role="row"
+          >
+            <th
+              aria-colindex="1"
+              class=""
+              role="columnheader"
+              scope="col"
+            >
+              athlete.club
+            </th>
+            <th
+              aria-colindex="2"
+              class=""
+              role="columnheader"
+              scope="col"
+            >
+              abbreviation
+            </th>
+            <th
+              aria-colindex="3"
+              class=""
+              role="columnheader"
+              scope="col"
+            >
+              result.result
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          role="rowgroup"
+        >
+          <!---->
+          <tr
+            class=""
+            role="row"
+          >
+            <td
+              aria-colindex="1"
+              class=""
+              role="cell"
+            >
+              Local Club
+            </td>
+            <td
+              aria-colindex="2"
+              class=""
+              role="cell"
+            >
+              LC
+            </td>
+            <td
+              aria-colindex="3"
+              class=""
+              role="cell"
+            >
+              
+          8
+        
+            </td>
+          </tr>
+          <tr
+            class=""
+            role="row"
+          >
+            <td
+              aria-colindex="1"
+              class=""
+              role="cell"
+            >
+              Village Club
+            </td>
+            <td
+              aria-colindex="2"
+              class=""
+              role="cell"
+            >
+              VC
+            </td>
+            <td
+              aria-colindex="3"
+              class=""
+              role="cell"
+            >
+              
+          2
+        
+            </td>
+          </tr>
+          <!---->
+          <!---->
+        </tbody>
+        <!---->
+      </table>
+       
+      <div
+        style="display: none;"
+      >
+        <span
+          class="spinner-border"
+          role="status"
+        >
+          <span
+            class="sr-only"
+          >
+            Loading...
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

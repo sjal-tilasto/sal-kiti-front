@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompetitionSearch.vue renders competition search form 1`] = `
+<div>
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h1>
+        competition.competition
+      </h1>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h2
+        class="bg-sal-orange"
+      >
+        search.competition
+      </h2>
+       
+      <b-button-stub
+        class="btn-orange space-right space-down"
+        event="click"
+        routertag="a"
+        tag="button"
+        target="_self"
+        type="button"
+        variant="light"
+      >
+        
+        Paintball
+      
+      </b-button-stub>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-form-stub>
+    <b-row-stub
+      tag="div"
+    >
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-group-stub
+          description="statistics.choose_multiple"
+          feedbackarialive="assertive"
+          id="input-group-competition-level"
+          label="competition.level"
+          labelfor="input-competition-level"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-competition-level"
+            labelfield="label"
+            multiple="true"
+            options="[object Object]"
+            optionsfield="options"
+            selectsize="0"
+            textfield="name"
+            value=""
+            valuefield="id"
+          />
+        </b-form-group-stub>
+      </b-col-stub>
+       
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-date-start"
+          label="date_start"
+          labelfor="input-date-start"
+        >
+          <b-form-input-stub
+            debounce="0"
+            id="input-date-start"
+            type="date"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-date-end"
+          label="date_end"
+          labelfor="input-date-end"
+        >
+          <b-form-input-stub
+            debounce="0"
+            id="input-date-end"
+            type="date"
+          />
+           
+          <b-button-stub
+            class="btn-orange space-right space-top"
+            event="click"
+            routertag="a"
+            size="sm"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            
+            statistics.current_year
+          
+          </b-button-stub>
+        </b-form-group-stub>
+      </b-col-stub>
+       
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-group-stub
+          description="statistics.choose_multiple"
+          feedbackarialive="assertive"
+          id="input-group-competition-type"
+          label="competition.type"
+          labelfor="input-competition-type"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-competition-type"
+            labelfield="label"
+            multiple="true"
+            options="[object Object]"
+            optionsfield="options"
+            selectsize="0"
+            textfield="name"
+            value=""
+            valuefield="id"
+          />
+        </b-form-group-stub>
+      </b-col-stub>
+    </b-row-stub>
+     
+    <b-row-stub
+      tag="div"
+    >
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-button-stub
+          class="btn-orange space-right space-down"
+          event="click"
+          routertag="a"
+          tag="button"
+          target="_self"
+          type="submit"
+          variant="light"
+        >
+          
+          search.search
+        </b-button-stub>
+         
+        <b-button-stub
+          class="space-down"
+          event="click"
+          routertag="a"
+          tag="button"
+          target="_self"
+          type="reset"
+          variant="danger"
+        >
+          reset
+        </b-button-stub>
+      </b-col-stub>
+    </b-row-stub>
+  </b-form-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <!---->
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h3
+        class="bg-sal-orange"
+      >
+        result.result
+      </h3>
+       
+      <!---->
+       
+      <!---->
+       
+      <b-table-stub
+        apiurl=""
+        currentpage="1"
+        emptyfilteredtext="There are no records matching your request"
+        emptytext="There are no records to show"
+        fields="[object Object],[object Object],[object Object],[object Object],[object Object]"
+        filterdebounce="0"
+        hover="true"
+        items=""
+        labelsortasc="Click to sort Ascending"
+        labelsortclear="Click to clear sorting"
+        labelsortdesc="Click to sort Descending"
+        perpage="0"
+        selectedvariant="active"
+        selectmode="multi"
+        sortby=""
+        sortcompareoptions="[object Object]"
+        sortdirection="asc"
+        value=""
+      />
+       
+      <div
+        style="display: none;"
+      >
+        <b-spinner-stub
+          label="Loading..."
+          role="status"
+          tag="span"
+          type="border"
+        />
+      </div>
+    </b-col-stub>
+  </b-row-stub>
+</div>
+`;

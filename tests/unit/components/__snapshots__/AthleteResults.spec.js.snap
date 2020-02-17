@@ -1,0 +1,641 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AthleteResults.vue renders result list 1`] = `
+<div>
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <!---->
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col-xl-6 col-12"
+    >
+      <div>
+        <h3>
+          result.personal_best
+        </h3>
+         
+        <div
+          class="table-responsive-sm"
+        >
+          <table
+            aria-busy="false"
+            aria-colcount="4"
+            class="table b-table table-hover table-sm"
+            id="__BVID__24"
+            role="table"
+          >
+            <!---->
+            <!---->
+            <thead
+              class=""
+              role="rowgroup"
+            >
+              <!---->
+              <tr
+                class=""
+                role="row"
+              >
+                <th
+                  aria-colindex="1"
+                  aria-sort="ascending"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  competition.type
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Descending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="2"
+                  aria-sort="none"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  competition.category
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="3"
+                  aria-sort="none"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  result.result
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="4"
+                  aria-sort="none"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  date
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              role="rowgroup"
+            >
+              <!---->
+              <tr
+                class=""
+                role="row"
+                tabindex="0"
+              >
+                <td
+                  aria-colindex="1"
+                  class=""
+                  role="cell"
+                >
+                  50m Competition
+                </td>
+                <td
+                  aria-colindex="2"
+                  class=""
+                  role="cell"
+                >
+                  M
+                </td>
+                <td
+                  aria-colindex="3"
+                  class=""
+                  role="cell"
+                >
+                  <div>
+                    
+        DNF
+        (222)
+      
+                  </div>
+                </td>
+                <td
+                  aria-colindex="4"
+                  class=""
+                  role="cell"
+                >
+                  2019-01-23
+                </td>
+              </tr>
+              <tr
+                class=""
+                role="row"
+                tabindex="0"
+              >
+                <td
+                  aria-colindex="1"
+                  class=""
+                  role="cell"
+                >
+                  50m Competition
+                </td>
+                <td
+                  aria-colindex="2"
+                  class=""
+                  role="cell"
+                >
+                  N
+                </td>
+                <td
+                  aria-colindex="3"
+                  class=""
+                  role="cell"
+                >
+                  <div>
+                    
+        206,4
+      
+                  </div>
+                </td>
+                <td
+                  aria-colindex="4"
+                  class=""
+                  role="cell"
+                >
+                  2019-01-23
+                </td>
+              </tr>
+              <!---->
+              <!---->
+            </tbody>
+            <!---->
+          </table>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      class="col-xl-6 col-12"
+    >
+      <!---->
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <div>
+        <h3>
+          result.result
+        </h3>
+         
+        <div
+          class="table-responsive-sm"
+        >
+          <table
+            aria-busy="false"
+            aria-colcount="9"
+            class="table b-table table-hover table-sm"
+            id="__BVID__6"
+            role="table"
+          >
+            <!---->
+            <!---->
+            <thead
+              class=""
+              role="rowgroup"
+            >
+              <!---->
+              <tr
+                class=""
+                role="row"
+              >
+                <th
+                  aria-colindex="1"
+                  aria-sort="descending"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  date
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="2"
+                  aria-sort="none"
+                  class="d-none d-lg-table-cell"
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  competition.competition
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="3"
+                  aria-sort="none"
+                  class="d-none d-md-table-cell"
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  competition.type
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="4"
+                  aria-sort="none"
+                  class="d-md-none"
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  competition.type
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="5"
+                  aria-sort="none"
+                  class="d-none d-md-table-cell"
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  competition.level
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="6"
+                  aria-sort="none"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  competition.category
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="7"
+                  aria-sort="none"
+                  class="d-none d-sm-table-cell"
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  #
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="8"
+                  aria-sort="none"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  result.result
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="9"
+                  class="d-none d-md-table-cell"
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  result.info
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to clear sorting)
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              role="rowgroup"
+            >
+              <!---->
+              <tr
+                class=""
+                role="row"
+                tabindex="0"
+              >
+                <td
+                  aria-colindex="1"
+                  class=""
+                  role="cell"
+                >
+                  2019-01-23
+                </td>
+                <td
+                  aria-colindex="2"
+                  class="d-none d-lg-table-cell"
+                  role="cell"
+                >
+                  Demo Comp
+                </td>
+                <td
+                  aria-colindex="3"
+                  class="d-none d-md-table-cell"
+                  role="cell"
+                >
+                  50m Competition
+                </td>
+                <td
+                  aria-colindex="4"
+                  class="d-md-none"
+                  role="cell"
+                >
+                  50MC
+                </td>
+                <td
+                  aria-colindex="5"
+                  class="d-none d-md-table-cell"
+                  role="cell"
+                >
+                  NC
+                </td>
+                <td
+                  aria-colindex="6"
+                  class=""
+                  role="cell"
+                >
+                  M
+                </td>
+                <td
+                  aria-colindex="7"
+                  class="d-none d-sm-table-cell"
+                  role="cell"
+                >
+                  3
+                </td>
+                <td
+                  aria-colindex="8"
+                  class=""
+                  role="cell"
+                >
+                  <div>
+                    
+        DNF
+        (222)
+      
+                  </div>
+                </td>
+                <td
+                  aria-colindex="9"
+                  class="d-none d-md-table-cell"
+                  role="cell"
+                >
+                  
+      
+      
+      
+                  <div>
+                    (result.unconfirmed)
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class=""
+                role="row"
+                tabindex="0"
+              >
+                <td
+                  aria-colindex="1"
+                  class=""
+                  role="cell"
+                >
+                  2019-01-23
+                </td>
+                <td
+                  aria-colindex="2"
+                  class="d-none d-lg-table-cell"
+                  role="cell"
+                >
+                  Demo Comp
+                </td>
+                <td
+                  aria-colindex="3"
+                  class="d-none d-md-table-cell"
+                  role="cell"
+                >
+                  50m Competition
+                </td>
+                <td
+                  aria-colindex="4"
+                  class="d-md-none"
+                  role="cell"
+                >
+                  50MC
+                </td>
+                <td
+                  aria-colindex="5"
+                  class="d-none d-md-table-cell"
+                  role="cell"
+                >
+                  NC
+                </td>
+                <td
+                  aria-colindex="6"
+                  class=""
+                  role="cell"
+                >
+                  N
+                </td>
+                <td
+                  aria-colindex="7"
+                  class="d-none d-sm-table-cell"
+                  role="cell"
+                >
+                  2
+                </td>
+                <td
+                  aria-colindex="8"
+                  class=""
+                  role="cell"
+                >
+                  <div>
+                    
+        206,4
+      
+                  </div>
+                </td>
+                <td
+                  aria-colindex="9"
+                  class="d-none d-md-table-cell"
+                  role="cell"
+                >
+                  
+      
+      
+      
+                  <div>
+                    (result.unconfirmed)
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class=""
+                role="row"
+                tabindex="0"
+              >
+                <td
+                  aria-colindex="1"
+                  class=""
+                  role="cell"
+                >
+                  2019-01-23
+                </td>
+                <td
+                  aria-colindex="2"
+                  class="d-none d-lg-table-cell"
+                  role="cell"
+                >
+                  Demo Comp
+                </td>
+                <td
+                  aria-colindex="3"
+                  class="d-none d-md-table-cell"
+                  role="cell"
+                >
+                  50m Competition
+                </td>
+                <td
+                  aria-colindex="4"
+                  class="d-md-none"
+                  role="cell"
+                >
+                  50MC
+                </td>
+                <td
+                  aria-colindex="5"
+                  class="d-none d-md-table-cell"
+                  role="cell"
+                >
+                  NC
+                </td>
+                <td
+                  aria-colindex="6"
+                  class=""
+                  role="cell"
+                >
+                  N
+                </td>
+                <td
+                  aria-colindex="7"
+                  class="d-none d-sm-table-cell"
+                  role="cell"
+                >
+                  1
+                </td>
+                <td
+                  aria-colindex="8"
+                  class=""
+                  role="cell"
+                >
+                  <div>
+                    
+        200,6
+      
+                  </div>
+                </td>
+                <td
+                  aria-colindex="9"
+                  class="d-none d-md-table-cell"
+                  role="cell"
+                >
+                  
+      
+      
+      
+                  <div>
+                    (result.unconfirmed)
+                  </div>
+                </td>
+              </tr>
+              <!---->
+              <!---->
+            </tbody>
+            <!---->
+          </table>
+        </div>
+      </div>
+       
+      <div
+        style="display: none;"
+      >
+        <span
+          class="spinner-border"
+          role="status"
+        >
+          <span
+            class="sr-only"
+          >
+            Loading...
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
