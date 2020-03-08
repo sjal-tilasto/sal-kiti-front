@@ -315,7 +315,7 @@ export default {
      * @returns {Promise<void>}
      */
     async getOrganizations() {
-      HTTP.get("organizations/")
+      HTTP.get("organizations/?historical=false")
         .then(response => {
           this.organizations = response.data.results || [];
         })
