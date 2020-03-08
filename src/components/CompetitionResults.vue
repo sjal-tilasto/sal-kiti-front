@@ -62,7 +62,12 @@
             </h5>
             <b-table
               :items="limitResults(category, block['col'])"
-              :fields="resultFields[index + 1]"
+              :fields="
+                filterResultFields(
+                  index + 1,
+                  limitResults(category, block['col'])
+                )
+              "
               sort-by="position"
               sort-null-last
               responsive="sm"
@@ -419,6 +424,34 @@ export default {
         });
     },
     /**
+     * Filter results field for a table. Show only partial fields with results in them.
+     *
+     * @param {array} fields in competition type
+     * @param {array} results for a category
+     * @returns {array} fields
+     */
+    filterResultFields(index, results) {
+      let fields = this.resultFields[index];
+      let keys = new Set();
+      results.forEach(result => {
+        result["partial"].forEach(partial => {
+          keys.add(partial.type.abbreviation + "-" + partial.order.toString());
+        });
+      });
+      fields = fields.filter(field => {
+        if (field.key === "pos") {
+          for (let k of keys) {
+            if (k.startsWith("kneel") || k.startsWith("ksum")) {
+              return true;
+            }
+          }
+          return false;
+        }
+        return !field.key.includes("-") || keys.has(field.key);
+      });
+      return fields;
+    },
+    /**
      * Fetch layout information for a competition
      *
      * Set default layout if not found
@@ -529,11 +562,9 @@ export default {
           } else {
             first = false;
           }
-          let pos = r.position;
-          if (pos === null) {
-            pos = "x";
+          if (r.position) {
+            content += r.position + ") ";
           }
-          content += pos + ") ";
           if (r.team) {
             content += r.last_name;
           } else {

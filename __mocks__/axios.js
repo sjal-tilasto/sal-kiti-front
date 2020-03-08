@@ -401,31 +401,10 @@ const resultlist = {
           order: 1,
           time: null,
           type: {
-            abbreviation: "kneel",
-            name: "Kneeling"
-          },
-          value: "55.00"
-        },
-        {
-          decimals: 0,
-          order: 1,
-          time: null,
-          type: {
             abbreviation: "ksum",
             name: "Kneeling sum"
           },
           value: "301.00"
-        },
-        {
-          decimals: 0,
-          id: 403,
-          order: 1,
-          time: null,
-          type: {
-            abbreviation: "prone",
-            name: "Prone"
-          },
-          value: "81.00"
         },
         {
           decimals: 0,
