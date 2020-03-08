@@ -217,6 +217,7 @@ import partialValue from "../utils/PartialValueFilter";
 import roundValue from "../utils/RoundValueFilter";
 import getCookie from "../utils/GetCookie";
 import splitFilter from "../utils/SplitFilter";
+import sortByPosition from "../utils/SortByPosition";
 import errorParser from "../utils/ErrorParser";
 import CompetitionResultsDetail from "@/components/CompetitionResultsDetail.vue";
 
@@ -519,15 +520,20 @@ export default {
           " " +
           category +
           ": ";
+        let results = sortByPosition(this.results[category]);
         let first = true;
-        for (const result in this.results[category]) {
-          const r = this.results[category][result];
+        for (const result in results) {
+          const r = results[result];
           if (!first) {
             content += ", ";
           } else {
             first = false;
           }
-          content += r.position + ") ";
+          let pos = r.position;
+          if (pos === null) {
+            pos = "x";
+          }
+          content += pos + ") ";
           if (r.team) {
             content += r.last_name;
           } else {
@@ -587,13 +593,19 @@ export default {
         .finally(() => (this.loading = false));
     },
     /**
-     * Get x first results from a list
+     * Get x first results from a list. 0 means no limits.
+     * If limits, filter out rDNS, DNF and DSQ result codes.
      *
      * @param {array} results
      * @param {number} limit
      * @returns {array} sliced results list
      */
     limitResults(results, limit) {
+      if (limit > 0) {
+        results = results.filter(
+          result => !["DNS", "DNF", "DSQ"].includes(result.result_code)
+        );
+      }
       if (limit > 0) {
         return results.slice(0, limit);
       }
