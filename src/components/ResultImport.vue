@@ -192,7 +192,7 @@ export default {
         info: "",
         organization: null,
         position: null,
-        result: {},
+        result: null,
         team: 0
       };
     },
