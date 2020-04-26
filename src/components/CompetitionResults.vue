@@ -62,7 +62,12 @@
             </h5>
             <b-table
               :items="limitResults(category, block['col'])"
-              :fields="resultFields[index + 1]"
+              :fields="
+                filterResultFields(
+                  index + 1,
+                  limitResults(category, block['col'])
+                )
+              "
               sort-by="position"
               sort-null-last
               responsive="sm"
@@ -217,6 +222,7 @@ import partialValue from "../utils/PartialValueFilter";
 import roundValue from "../utils/RoundValueFilter";
 import getCookie from "../utils/GetCookie";
 import splitFilter from "../utils/SplitFilter";
+import sortByPosition from "../utils/SortByPosition";
 import errorParser from "../utils/ErrorParser";
 import CompetitionResultsDetail from "@/components/CompetitionResultsDetail.vue";
 
@@ -418,6 +424,34 @@ export default {
         });
     },
     /**
+     * Filter results field for a table. Show only partial fields with results in them.
+     *
+     * @param {array} fields in competition type
+     * @param {array} results for a category
+     * @returns {array} fields
+     */
+    filterResultFields(index, results) {
+      let fields = this.resultFields[index];
+      let keys = new Set();
+      results.forEach(result => {
+        result["partial"].forEach(partial => {
+          keys.add(partial.type.abbreviation + "-" + partial.order.toString());
+        });
+      });
+      fields = fields.filter(field => {
+        if (field.key === "pos") {
+          for (let k of keys) {
+            if (k.startsWith("kneel") || k.startsWith("ksum")) {
+              return true;
+            }
+          }
+          return false;
+        }
+        return !field.key.includes("-") || keys.has(field.key);
+      });
+      return fields;
+    },
+    /**
      * Fetch layout information for a competition
      *
      * Set default layout if not found
@@ -519,15 +553,18 @@ export default {
           " " +
           category +
           ": ";
+        let results = sortByPosition(this.results[category]);
         let first = true;
-        for (const result in this.results[category]) {
-          const r = this.results[category][result];
+        for (const result in results) {
+          const r = results[result];
           if (!first) {
             content += ", ";
           } else {
             first = false;
           }
-          content += r.position + ") ";
+          if (r.position) {
+            content += r.position + ") ";
+          }
           if (r.team) {
             content += r.last_name;
           } else {
@@ -587,13 +624,19 @@ export default {
         .finally(() => (this.loading = false));
     },
     /**
-     * Get x first results from a list
+     * Get x first results from a list. 0 means no limits.
+     * If limits, filter out rDNS, DNF and DSQ result codes.
      *
      * @param {array} results
      * @param {number} limit
      * @returns {array} sliced results list
      */
     limitResults(results, limit) {
+      if (limit > 0) {
+        results = results.filter(
+          result => !["DNS", "DNF", "DSQ"].includes(result.result_code)
+        );
+      }
       if (limit > 0) {
         return results.slice(0, limit);
       }

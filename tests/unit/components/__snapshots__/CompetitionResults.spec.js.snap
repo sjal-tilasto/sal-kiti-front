@@ -746,7 +746,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
           >
             <table
               aria-busy="false"
-              aria-colcount="9"
+              aria-colcount="8"
               class="table b-table table-hover table-sm"
               id="__BVID__39"
               role="table"
@@ -825,21 +825,6 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                   <th
                     aria-colindex="5"
                     aria-sort="none"
-                    class="d-none d-lg-table-cell"
-                    role="columnheader"
-                    scope="col"
-                    tabindex="0"
-                  >
-                    S1
-                    <span
-                      class="sr-only"
-                    >
-                       (Click to sort Ascending)
-                    </span>
-                  </th>
-                  <th
-                    aria-colindex="6"
-                    aria-sort="none"
                     class="d-none d-md-table-cell"
                     role="columnheader"
                     scope="col"
@@ -853,7 +838,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     </span>
                   </th>
                   <th
-                    aria-colindex="7"
+                    aria-colindex="6"
                     aria-sort="none"
                     class=""
                     role="columnheader"
@@ -868,7 +853,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     </span>
                   </th>
                   <th
-                    aria-colindex="8"
+                    aria-colindex="7"
                     aria-sort="none"
                     class="d-none d-sm-table-cell"
                     role="columnheader"
@@ -883,7 +868,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     </span>
                   </th>
                   <th
-                    aria-colindex="9"
+                    aria-colindex="8"
                     aria-sort="none"
                     class=""
                     role="columnheader"
@@ -953,22 +938,6 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                   </td>
                   <td
                     aria-colindex="5"
-                    class="d-none d-lg-table-cell"
-                    role="cell"
-                  >
-                    <div>
-                      
-                55
-              
-                    </div>
-                    <div>
-                      
-                81
-              
-                    </div>
-                  </td>
-                  <td
-                    aria-colindex="6"
                     class="d-none d-md-table-cell"
                     role="cell"
                   >
@@ -984,7 +953,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     </div>
                   </td>
                   <td
-                    aria-colindex="7"
+                    aria-colindex="6"
                     class=""
                     role="cell"
                   >
@@ -996,7 +965,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     </div>
                   </td>
                   <td
-                    aria-colindex="8"
+                    aria-colindex="7"
                     class="d-none d-sm-table-cell"
                     role="cell"
                   >
@@ -1011,7 +980,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     </div>
                   </td>
                   <td
-                    aria-colindex="9"
+                    aria-colindex="8"
                     class=""
                     role="cell"
                   >
