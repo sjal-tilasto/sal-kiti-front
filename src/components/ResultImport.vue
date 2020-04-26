@@ -608,6 +608,58 @@ export default {
       }
     },
     /**
+     * Parse partial results information
+     *
+     * @param {number} i - current result number
+     * @param {array} keys - result object keys
+     */
+    parsePartialResults(i, keys) {
+      let result = this.results[i];
+      let partialResults = [];
+      for (let key = 0; key < keys.length; key++) {
+        for (let r = 0; r < this.resultTypes.length; r++) {
+          if (keys[key].startsWith(this.resultTypes[r].abbreviation + "-")) {
+            let partialResult = {};
+            partialResult.order = parseInt(
+              keys[key].substring(this.resultTypes[r].abbreviation.length + 1)
+            );
+            partialResult.type = this.resultTypes[r].id;
+            if (typeof result[keys[key]] == "string") {
+              partialResult.value = parseFloat(
+                result[keys[key]].replace(",", ".")
+              );
+            } else {
+              partialResult.value = parseFloat(result[keys[key]]);
+            }
+            if (String(result[keys[key]]).includes(".")) {
+              partialResult.decimals =
+                String(result[keys[key]]).split(".")[1].length || 0;
+            } else {
+              partialResult.decimals = 0;
+            }
+            if (
+              this.resultTypes[r].max_result &&
+              partialResult.value > this.resultTypes[r].max_result
+            ) {
+              this.results[i].error.push(
+                this.$t("import.error.result_partial_max")
+              );
+            }
+            if (
+              this.resultTypes[r].min_result &&
+              partialResult.value > this.resultTypes[r].min_result
+            ) {
+              this.results[i].error.push(
+                this.$t("import.error.result_partial_min")
+              );
+            }
+            partialResults.push(partialResult);
+          }
+        }
+      }
+      this.result.partial = partialResults;
+    },
+    /**
      * Parse position from result object
      *
      * @param {number} i - current result number
@@ -722,11 +774,9 @@ export default {
           this.parsePosition(i, keys);
           this.parseOrganization(i, keys, athlete);
           this.parseInfo(i, keys);
+          this.parsePartialResults(i, keys);
           if (this.results[i].error.length === 0) {
             await this.postResult(i);
-            if (this.results[i].error.length === 0) {
-              await this.postPartialResults(i, keys);
-            }
           }
         }
         if (this.results[i].error.length === 0) {
@@ -781,97 +831,6 @@ export default {
         }
       }
       return memberIDs;
-    },
-    /**
-     * Post or update result's partial result information (API post/put)
-     *
-     * @param {number} i - current result number
-     * @param {array} keys - result object keys
-     */
-    async postPartialResults(i, keys) {
-      let result = this.results[i];
-      let partialResult = {
-        result: result.response.id
-      };
-      for (let key = 0; key < keys.length; key++) {
-        for (let r = 0; r < this.resultTypes.length; r++) {
-          let partialError = false;
-          if (keys[key].startsWith(this.resultTypes[r].abbreviation + "-")) {
-            partialResult.order = parseInt(
-              keys[key].substring(this.resultTypes[r].abbreviation.length + 1)
-            );
-            partialResult.type = this.resultTypes[r].id;
-            if (typeof result[keys[key]] == "string") {
-              partialResult.value = parseFloat(
-                result[keys[key]].replace(",", ".")
-              );
-            } else {
-              partialResult.value = parseFloat(result[keys[key]]);
-            }
-            if (String(result[keys[key]]).includes(".")) {
-              partialResult.decimals =
-                String(result[keys[key]]).split(".")[1].length || 0;
-            } else {
-              partialResult.decimals = 0;
-            }
-            if (
-              this.resultTypes[r].max_result &&
-              partialResult.value > this.resultTypes[r].max_result
-            ) {
-              partialError = true;
-              this.results[i].error.push(
-                this.$t("import.error.result_partial_max")
-              );
-            }
-            if (
-              this.resultTypes[r].min_result &&
-              partialResult.value > this.resultTypes[r].min_result
-            ) {
-              partialError = true;
-              this.results[i].error.push(
-                this.$t("import.error.result_partial_min")
-              );
-            }
-            let duplicate = [];
-            if (result.response.partial) {
-              duplicate = result.response.partial.filter(
-                res =>
-                  res.type === partialResult.type &&
-                  res.order === partialResult.order
-              );
-            }
-            if (duplicate.length > 1) {
-              partialError = true;
-              this.results[i].error.push(
-                this.$t("import.error.result_partial_duplicate")
-              );
-            }
-            if (duplicate.length === 1 && partialError === false) {
-              await HTTP.put(
-                "partialresults/" + duplicate[0].id + "/",
-                partialResult,
-                this.config
-              )
-                .then(() => {})
-                .catch(error => {
-                  this.results[i].error.push(
-                    ...errorParser.partialResult.bind(this)(error)
-                  );
-                  this.$refs.table.refresh();
-                });
-            } else if (partialError === false) {
-              await HTTP.post("partialresults/", partialResult, this.config)
-                .then(() => {})
-                .catch(error => {
-                  this.results[i].error.push(
-                    ...errorParser.partialResult.bind(this)(error)
-                  );
-                  this.$refs.table.refresh();
-                });
-            }
-          }
-        }
-      }
     },
     /**
      * Post or update a single result (API post/put)

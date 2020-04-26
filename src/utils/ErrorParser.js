@@ -70,6 +70,12 @@ export default {
           for (const e of entry[1]) {
             errors.push(e);
           }
+        } else if (entry[0] === "partial") {
+          entry[1].forEach(part => {
+            if ("value" in part) {
+              errors.push(this.$t("import.error.partial") + ", " + part["value"]);
+            }
+          });
         } else {
           if (error.response.status === 403) {
             errors.push(this.$t("import.error.permission_result"));
