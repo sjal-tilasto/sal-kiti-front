@@ -44,7 +44,36 @@
     "edit": "Muokkaa tapahtumaa",
     "info": "Tapahtuman tiedot",
     "error": "Virhe haettaessa tapahtuman tietoja",
-    "limit": "Rajaa"
+    "limit": "Rajaa",
+    "description_help": "Julkinen kuvaus tapahtumalle.",
+    "optional_dates": "Vaihtoehtoiset päivät",
+    "optional_dates_help": "Vaihtoehtoiset päivät tapahtumalle. Näkyvät vain järjestäjille ja liiton henkilökunnalle.",
+    "categories": "Sarjat",
+    "categories_help": "Anna kilpailusarjat elleivät kaikki viralliset sarjat ole hyväksyttyjä.",
+    "web_page": "Nettisivujen osoite",
+    "web_page_help": "Julkisten nettisivujen osoite tapahtumalle.",
+    "invitation": "Kutsun osoite",
+    "invitation_help": "Julkisen kilpailukutsun osoite.",
+    "safety_plan": "Turvallisuussuunnitelma",
+    "safety_plan_help": "Onko tapahtumalle tehty turvallisuussuunnitelma?",
+    "notes": "Muut huomiot",
+    "notes_help": "Näkyy vain järjestäjille ja liiton henkilökunnalle.",
+    "toc_agreement": "Ehtojen hyväksyminen",
+    "toc_agreement_help": "Järjestäjä lupaa noudattaa liiton kilpailusääntöjä.",
+    "toc_agreement_url": "https://www.ampumaurheiluliitto.fi/liitto/kilpailutoiminta/saannot/"
+  },
+  "contact": {
+    "contact": "Yhteystieto | Yhteystiedot",
+    "add": "Lisää yhteystieto",
+    "type": "Yhteystiedon tyyppi",
+    "generic_contact": "Yleinen",
+    "competition_manager": "Kilpailunjohtaja",
+    "head_judge": "Päätuomari",
+    "technical_manager": "Tekniikkavastaava",
+    "first_name": "Etunimi",
+    "last_name": "Sukunimi",
+    "email": "Sähköpostiosoite",
+    "phone": "Puhelinnumero"
   },
   "competition": {
     "competition": "Kilpailu | Kilpailut",
@@ -279,5 +308,6 @@
   "gender": "Sukupuoli",
   "personal": "Yksilö",
   "date_of_birth": "Syntymäaika",
-  "organization": "Seura"
+  "organization": "Seura",
+  "link": "linkki"
 }

@@ -45,7 +45,36 @@
     "edit": "Edit event",
     "info": "Event Information",
     "error": "Could not load event information",
-    "limit": "Limit"
+    "limit": "Limit",
+    "description_help": "Public description for the event.",
+    "optional_dates": "Optional dates.",
+    "optional_dates_help": "Optional dates for the event. Only available for the organizers and SAL staff.",
+    "categories": "Categories",
+    "categories_help": "Specify categories unless all official categories are allowed.",
+    "web_page": "Web page URL",
+    "web_page_help": "Public web page for the event.",
+    "invitation": "Invitation URL",
+    "invitation_help": "Public invitation for the event.",
+    "safety_plan": "Safety plan",
+    "safety_plan_help": "Is there a safety plan for the event?",
+    "notes": "Other notes",
+    "notes_help": "Other notes. Only available for the organizers and SAL staff.",
+    "toc_agreement": "TOC agreement",
+    "toc_agreement_help": "Organizer agrees to follow competition rules.",
+    "toc_agreement_url": "https://www.ampumaurheiluliitto.fi/liitto/kilpailutoiminta/saannot/"
+  },
+  "contact": {
+    "contact": "Contact | Contacts",
+    "add": "Add a new contact",
+    "type": "Contact type",
+    "generic_contact": "Generic contact",
+    "competition_manager": "Competition manager",
+    "head_judge": "Head judge",
+    "technical_manager": "Technical manager",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "email": "Email address",
+    "phone": "Phone number"
   },
   "competition": {
     "competition": "Competition | Competitions",
@@ -279,5 +308,6 @@
   "gender": "Gender",
   "personal": "Personal",
   "date_of_birth": "Date of birth",
-  "organization": "Organization"
+  "organization": "Organization",
+  "link": "link"
 }

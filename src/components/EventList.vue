@@ -134,10 +134,8 @@ export default {
       this.$set(this.errors, "main", null);
       this.loading = true;
       let searchUrl = "events/?limit=" + this.limit;
-      if (!this.createPermission) {
-        let today = new Date().toJSON().slice(0, 10);
-        searchUrl = searchUrl + "&until=" + today;
-      }
+      let today = new Date().toJSON().slice(0, 10);
+      searchUrl = searchUrl + "&until=" + today;
       if (this.currentPage) {
         if (
           !this.events.count ||

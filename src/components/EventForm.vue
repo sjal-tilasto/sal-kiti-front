@@ -19,6 +19,21 @@
       <b-col>
         <b-form @submit="onSubmit">
           <b-form-group
+            id="input-group-organization"
+            :label="$t('organizer')"
+            label-for="input-organization"
+          >
+            <b-form-select
+              id="input-organization"
+              v-model="form.organization"
+              :options="organizations"
+              textField="name"
+              valueField="id"
+              required
+            >
+            </b-form-select>
+          </b-form-group>
+          <b-form-group
             id="input-group-name"
             :label="$t('name')"
             label-for="input-name"
@@ -41,6 +56,7 @@
               max-rows="6"
             ></b-form-textarea>
           </b-form-group>
+          <p>{{ $t("event.description_help") }}</p>
           <b-form-group
             id="input-group-location"
             :label="$t('location')"
@@ -77,30 +93,109 @@
             ></b-form-input>
           </b-form-group>
           <b-form-group
-            id="input-group-organization"
-            :label="$t('organizer')"
+            id="input-group-optional_dates"
+            :label="$t('event.optional_dates')"
             label-for="input-organization"
           >
-            <b-form-select
-              id="input-organization"
-              v-model="form.organization"
-              :options="organizations"
-              textField="name"
-              valueField="id"
-              required
+            <b-form-textarea
+              id="input-optional_dates"
+              v-model="form.optional_dates"
+              rows="3"
+              max-rows="6"
             >
-            </b-form-select>
+            </b-form-textarea>
           </b-form-group>
-          <b-button
-            type="submit"
-            variant="light"
-            class="btn-orange space-right"
+          <p>{{ $t("event.optional_dates_help") }}</p>
+          <b-form-group
+            id="input-group-categories"
+            :label="$t('event.categories')"
+            label-for="input-categories"
           >
-            <section v-if="edit">{{ $t("update") }}</section>
-            <section v-else>{{ $t("create") }}</section>
-          </b-button>
+            <b-form-textarea
+              id="input-categories"
+              v-model="form.categories"
+              rows="3"
+              max-rows="6"
+            >
+            </b-form-textarea>
+          </b-form-group>
+          <p>{{ $t("event.categories_help") }}</p>
+          <b-form-group
+            id="input-group-web_page"
+            :label="$t('event.web_page')"
+            label-for="input-web_page"
+          >
+            <b-form-input id="input-web_page" v-model="form.web_page">
+            </b-form-input>
+          </b-form-group>
+          <p>{{ $t("event.web_page_help") }}</p>
+          <b-form-group
+            id="input-group-invitation"
+            :label="$t('event.invitation')"
+            label-for="input-invitation"
+          >
+            <b-form-input id="input-invitation" v-model="form.invitation">
+            </b-form-input>
+          </b-form-group>
+          <p>{{ $t("event.invitation_help") }}</p>
+          <b-form-group
+            id="input-group-safety_plan"
+            :label="$t('event.safety_plan')"
+            label-for="input-safety_plan"
+          >
+            <b-form-checkbox id="input-safety_plan" v-model="form.safety_plan">
+            </b-form-checkbox>
+          </b-form-group>
+          <p>{{ $t("event.safety_plan_help") }}</p>
+          <b-form-group
+            id="input-group-notes"
+            :label="$t('event.notes')"
+            label-for="input-notes"
+          >
+            <b-form-textarea
+              id="input-notes"
+              v-model="form.notes"
+              rows="3"
+              max-rows="6"
+            >
+            </b-form-textarea>
+          </b-form-group>
+          <p>{{ $t("event.notes_help") }}</p>
+          <b-form-group
+            id="input-group-toc_agreement"
+            :label="$t('event.toc_agreement')"
+            label-for="input-toc_agreement"
+          >
+            <b-form-checkbox
+              id="input-toc_agreement"
+              v-model="form.toc_agreement"
+            >
+            </b-form-checkbox>
+          </b-form-group>
+          <p>
+            {{ $t("event.toc_agreement_help") }}
+            <b-link :href="$t('event.toc_agreement_url')" target="_blank"
+              >({{ $t("link") }})</b-link
+            >
+          </p>
+
+          <div>
+            <b-button
+              type="submit"
+              variant="light"
+              class="btn-orange space-right"
+            >
+              <section v-if="edit">{{ $t("update") }}</section>
+              <section v-else>{{ $t("create") }}</section>
+            </b-button>
+          </div>
           <br />
         </b-form>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <EventFormContacts v-if="eventId" :eventId="eventId" />
       </b-col>
     </b-row>
   </div>
@@ -113,9 +208,13 @@
 import { HTTP } from "../api/BaseApi.js";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
+import EventFormContacts from "@/components/EventFormContacts.vue";
 
 export default {
   name: "EventForm",
+  components: {
+    EventFormContacts
+  },
   data() {
     return {
       config: {
@@ -125,14 +224,21 @@ export default {
       },
       edit: false,
       errors: {},
-      event: {},
+      eventId: null,
       form: {
         date_end: null,
         date_start: null,
         location: null,
         name: null,
         description: "",
-        organization: null
+        organization: null,
+        optional_dates: "",
+        categories: "",
+        notes: "",
+        web_page: "",
+        invitation: "",
+        safety_plan: false,
+        toc_agreement: false
       },
       organizations: []
     };
@@ -142,6 +248,7 @@ export default {
     if (this.$route.params.event_id) {
       this.edit = true;
       this.getEvent(this.$route.params.event_id);
+      this.eventId = this.$route.params.event_id.toString();
     }
   },
   methods: {
@@ -152,7 +259,6 @@ export default {
      * @returns {Promise<void>}
      */
     async getEvent(id) {
-      this.event = {};
       HTTP.get("events/" + id + "/")
         .then(response => {
           this.form = response.data || {};
