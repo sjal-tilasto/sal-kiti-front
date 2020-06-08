@@ -48,6 +48,19 @@
               {{ data.item.date_start }} - {{ data.item.date_end }}
             </div>
           </template>
+          <template v-slot:cell(name)="data">
+            {{ data.item.name }}
+            <div>
+              <ul>
+                <li
+                  v-for="competition in limitToPublic(data.item.competitions)"
+                  v-bind:key="competition.id"
+                >
+                  {{ competition.type }}
+                </li>
+              </ul>
+            </div>
+          </template>
         </b-table>
         <div v-show="loading">
           <b-spinner label="Loading..."></b-spinner>
@@ -155,6 +168,17 @@ export default {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));
+    },
+    /**
+     * Limit array by public parameter
+     *
+     * @param {array} array - array of objects
+     */
+    limitToPublic(array) {
+      if (Array.isArray(array)) {
+        return array.filter(item => item.public);
+      }
+      return [];
     },
     /**
      * Routes to event information when row is clicked

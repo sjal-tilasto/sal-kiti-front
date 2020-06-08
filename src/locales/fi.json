@@ -76,6 +76,7 @@
     "include_preliminary": "Näytä alustavat ennätykset",
     "include_historical": "Näytä historialliset ennätykset",
     "choose_level": "Valitse tyyppi",
+    "level": "Tyyppi",
     "approve": "Vahvista",
     "cancel_approval": "Peru vahvistus",
     "search": "Ennätysten haku",

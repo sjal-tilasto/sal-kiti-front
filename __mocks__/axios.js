@@ -63,6 +63,18 @@ const events = {
         abbreviation: "LC",
         name: "Local Club"
       },
+      competitions: [
+        {
+          id: 1,
+          type: "10m Competition",
+          public: true
+        },
+        {
+          id: 2,
+          type: "50m Competition",
+          public: false
+        }
+      ],
       public: false,
       locked: false
     },

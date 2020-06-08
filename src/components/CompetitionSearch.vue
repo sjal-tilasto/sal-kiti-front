@@ -145,6 +145,21 @@
               {{ data.item.date_start }} - {{ data.item.date_end }}
             </div>
           </template>
+          <template v-slot:cell(type_info.name)="data">
+            {{ data.item.type_info.name }}
+            <div v-if="data.item.event_info">
+              <router-link
+                tag="a"
+                :to="{
+                  name: 'event',
+                  params: {
+                    event_id: data.item.event_info.id
+                  }
+                }"
+                >{{ data.item.event_info.name }}</router-link
+              >
+            </div>
+          </template>
         </b-table>
         <div v-show="loading">
           <b-spinner label="Loading..."></b-spinner>

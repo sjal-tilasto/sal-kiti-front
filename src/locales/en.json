@@ -77,6 +77,7 @@
     "include_preliminary": "Include preliminary records",
     "include_historical": "Include historical records",
     "choose_level": "Choose level",
+    "level": "Level",
     "approve": "Approve",
     "cancel_approval": "Cancel approval",
     "search": "Record search",

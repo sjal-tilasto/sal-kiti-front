@@ -111,7 +111,18 @@ exports[`EventList.vue renders event list 1`] = `
               class=""
               role="cell"
             >
-              Demo Champion
+              
+          Demo Champion
+          
+              <div>
+                <ul>
+                  <li>
+                    
+                10m Competition
+              
+                  </li>
+                </ul>
+              </div>
             </td>
             <td
               aria-colindex="3"
@@ -149,7 +160,12 @@ exports[`EventList.vue renders event list 1`] = `
               class=""
               role="cell"
             >
-              Demo Competition
+              
+          Demo Competition
+          
+              <div>
+                <ul />
+              </div>
             </td>
             <td
               aria-colindex="3"
