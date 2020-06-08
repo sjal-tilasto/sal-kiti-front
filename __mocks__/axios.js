@@ -762,12 +762,20 @@ const organizations = {
     {
       id: 1,
       name: "Local Club",
-      abbreviation: "LC"
+      abbreviation: "LC",
+      external: false
     },
     {
       id: 2,
       name: "Village Athletes",
-      abbreviation: "Village"
+      abbreviation: "Village",
+      external: false
+    },
+    {
+      id: 3,
+      name: "External Athletes",
+      abbreviation: "EXT",
+      external: true
     }
   ]
 };
@@ -914,13 +922,15 @@ const mock = jest.fn(
             if (param[0] in data.results[0] && param[1].search(",") === -1) {
               if (temp_data) {
                 temp_data.results = temp_data.results.filter(
-                  obj => obj[param[0]] == param[1]
+                  obj => obj[param[0]].toString() === param[1].toString()
                 );
               } else {
                 temp_data = { results: [] };
-                temp_data.results = data.results.filter(
-                  obj => obj[param[0]] == param[1]
-                );
+                if ("results" in data) {
+                  temp_data.results = data.results.filter(
+                    obj => obj[param[0]].toString() === param[1].toString()
+                  );
+                }
               }
             }
           });

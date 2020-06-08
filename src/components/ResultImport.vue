@@ -33,7 +33,7 @@
             :description="$t('import.type')"
           >
             <b-form-radio v-model="form.fileType" name="filetype" value="excel"
-              >Excel</b-form-radio
+              >Excel / CSV</b-form-radio
             >
             <b-form-radio v-model="form.fileType" name="filetype" value="sius"
               >SIUS CSV</b-form-radio
@@ -351,12 +351,13 @@ export default {
         let file = this.form.file;
         let resultData = [];
         if (
-          file &&
-          file.type &&
-          this.form.fileType === "excel" &&
-          (file.type === "application/vnd.oasis.opendocument.spreadsheet" ||
-            file.type ===
-              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+          (file &&
+            file.type &&
+            this.form.fileType === "excel" &&
+            (file.type === "application/vnd.oasis.opendocument.spreadsheet" ||
+              file.type ===
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) ||
+          file.type === "text/csv"
         ) {
           resultData = await this.parseExcel(file);
           this.results = resultData;
@@ -385,32 +386,31 @@ export default {
      * Parse athlete from a result, based on sport_id or names and organization
      * - create a new athlete if athlete is not found and organization is external
      *
-     * @param {object} result
+     * @param {string} sport_id
+     * @param {string} first_name
+     * @param {string} last_name
+     * @param {string} organization
      * @returns {Promise<null>}
      */
-    async parseAthlete(result) {
-      let query = null;
+    async parseAthlete(sport_id, first_name, last_name, organization) {
+      let query = "";
       let athlete = null;
-      let organization = [];
-      if ("sport_id" in result) {
-        query = "?sport_id=" + result.sport_id;
+      let organizationObject = [];
+      if (sport_id) {
+        query = "?sport_id=" + sport_id;
       } else {
-        if (
-          "first_name" in result &&
-          "last_name" in result &&
-          "organization" in result
-        ) {
-          organization = this.organizations.filter(
-            org => org.abbreviation === result.organization
+        if (first_name && last_name && organization) {
+          organizationObject = this.organizations.filter(
+            org => org.abbreviation === organization
           );
-          if (organization.length === 1) {
+          if (organizationObject.length === 1) {
             query =
               "?first_name=" +
-              result.first_name +
+              first_name +
               "&last_name=" +
-              result.last_name +
+              last_name +
               "&organization=" +
-              organization[0].id;
+              organizationObject[0].id;
           }
         }
       }
@@ -420,15 +420,15 @@ export default {
       /* Create a new athlete if organization is external and athlete is not found (API post) */
       if (
         athlete == null &&
-        organization.length === 1 &&
-        organization[0].external
+        organizationObject.length === 1 &&
+        organizationObject[0].external
       ) {
         await HTTP.post(
           "athletes/",
           {
-            first_name: result.first_name,
-            last_name: result.last_name,
-            organization: organization[0].id,
+            first_name: first_name,
+            last_name: last_name,
+            organization: organizationObject[0].id,
             gender: "U"
           },
           this.config
@@ -445,6 +445,107 @@ export default {
           });
       }
       return athlete;
+    },
+    /**
+     * Parse athlete from a result, based on sport_id or names and organization
+     * - create a new athlete if athlete is not found and organization is external
+     *
+     * @param {number} i - current result number
+     * @param {array} keys - result object keys
+     * @returns {Promise<null>}
+     */
+    async parseAthletes(i, keys) {
+      let result = this.results[i];
+      let sport_id = "";
+      let first_name = "";
+      let last_name = "";
+      let organization = "";
+      let athlete_organization = "";
+      if ("organization" in result) {
+        organization = result.organization;
+      }
+      if (!this.result.team) {
+        if ("sport_id" in result) {
+          sport_id = result.sport_id;
+        }
+        if ("first_name" in result) {
+          first_name = result.first_name;
+        }
+        if ("last_name" in result) {
+          last_name = result.last_name;
+        }
+        let athlete = await this.parseAthlete(
+          sport_id,
+          first_name,
+          last_name,
+          organization
+        );
+        if (athlete) {
+          this.result.athlete = athlete.id;
+          this.updateMissingAthleteInfo(i, athlete);
+          return athlete;
+        } else {
+          this.results[i].error.push(this.$t("import.error.athlete"));
+        }
+      } else {
+        let members = [];
+        let memberIDs = [];
+        if (
+          keys.includes("team_members") &&
+          this.results[i].team_members.length > 0
+        ) {
+          members = this.results[i].team_members.split(",");
+          if (members.length < 2) {
+            this.results[i].error.push(this.$t("import.error.team_min_size"));
+            return null;
+          }
+          for (let c = 0; c < members.length; c++) {
+            const athlete = await this.getAthlete("?sport_id=" + members[c]);
+            if (athlete) {
+              memberIDs.push(athlete.id);
+            } else {
+              this.results[i].error.push(
+                this.$t("import.error.team_member") + ": " + members[c]
+              );
+            }
+          }
+        } else {
+          const abcArray = ["a", "b", "c"];
+          for (let index = 0; index < abcArray.length; index++) {
+            sport_id = "";
+            first_name = "";
+            last_name = "";
+            athlete_organization = "";
+            if ("sport_id_".concat(abcArray[index]) in result) {
+              sport_id = result["sport_id_".concat(abcArray[index])];
+            }
+            if ("first_name_".concat(abcArray[index]) in result) {
+              first_name = result["first_name_".concat(abcArray[index])];
+            }
+            if ("last_name_".concat(abcArray[index]) in result) {
+              last_name = result["last_name_".concat(abcArray[index])];
+            }
+            if ("organization_".concat(abcArray[index]) in result) {
+              athlete_organization =
+                result["organization_".concat(abcArray[index])];
+            }
+            if (!athlete_organization) {
+              athlete_organization = organization;
+            }
+            let athlete = await this.parseAthlete(
+              sport_id,
+              first_name,
+              last_name,
+              athlete_organization
+            );
+            if (athlete) {
+              memberIDs.push(athlete.id);
+            }
+          }
+        }
+        this.result.team_members = memberIDs;
+      }
+      return null;
     },
     /**
      * Parse category for a result
@@ -567,10 +668,7 @@ export default {
         }
         if (organization.length === 1) {
           this.result.organization = organization[0].id;
-          if (
-            !this.result.team &&
-            this.result.organization !== athlete.organization
-          ) {
+          if (athlete && this.result.organization !== athlete.organization) {
             let organizationCheck = false;
             if (athlete.additional_organizations) {
               for (
@@ -638,6 +736,7 @@ export default {
               partialResult.decimals = 0;
             }
             if (
+              !this.result.team &&
               this.resultTypes[r].max_result &&
               partialResult.value > this.resultTypes[r].max_result
             ) {
@@ -733,9 +832,9 @@ export default {
      * Parse result information from results array
      */
     async parseResults() {
+      let athlete = null;
       let keys = [];
       for (let i = 0; i < this.results.length; i++) {
-        let athlete = null;
         Object.keys(this.results[i]).map(
           k =>
             (this.results[i][k] =
@@ -750,8 +849,7 @@ export default {
         keys = Object.keys(this.results[i]);
         this.parseTeam(i, keys);
         this.parseCategory(i, keys);
-        if (this.result.category && this.result.team) {
-          this.result.team_members = await this.parseTeamMembers(i, keys);
+        if (this.result.team) {
           if (
             "team_name" in this.results[i] &&
             this.results[i].team_name.length > 0
@@ -760,14 +858,9 @@ export default {
           } else {
             this.result.last_name = "";
           }
-        } else if (this.result.category) {
-          athlete = await this.parseAthlete(this.results[i]);
-          if (athlete) {
-            this.result.athlete = athlete.id;
-            this.updateMissingAthleteInfo(i, athlete);
-          } else {
-            this.results[i].error.push(this.$t("import.error.athlete"));
-          }
+        }
+        if (this.result.category) {
+          athlete = await this.parseAthletes(i, keys);
         }
         if (this.results[i].error.length === 0) {
           this.parseResult(i, keys);
@@ -787,7 +880,7 @@ export default {
         this.$refs.table.refresh();
       }
       this.debugResults = this.results;
-      this.getResults(this.$route.params.competition_id);
+      await this.getResults(this.$route.params.competition_id);
       this.finished = true;
     },
     /**
@@ -796,41 +889,17 @@ export default {
      * @param {number} i - current result number
      * @param {array} keys - result object keys
      */
-    async parseTeam(i, keys) {
-      this.result.team = !!(
-        keys.includes("team_members") && this.results[i].team_members.length > 0
-      );
-    },
-    /**
-     * Parse team member information
-     *
-     * @param {number} i - current result number
-     * @param {array} keys - result object keys
-     */
-    async parseTeamMembers(i, keys) {
-      let members = [];
-      let memberIDs = [];
+    parseTeam(i, keys) {
+      let team = false;
       if (
-        keys.includes("team_members") &&
-        this.results[i].team_members.length > 0
+        (keys.includes("team_members") &&
+          this.results[i].team_members.length > 0) ||
+        keys.includes("sport_id_a") ||
+        keys.includes("first_name_a")
       ) {
-        members = this.results[i].team_members.split(",");
+        team = true;
       }
-      if (members.length < 2) {
-        this.results[i].error.push(this.$t("import.error.team_min_size"));
-        return null;
-      }
-      for (let c = 0; c < members.length; c++) {
-        const athlete = await this.getAthlete("?sport_id=" + members[c]);
-        if (athlete) {
-          memberIDs.push(athlete.id);
-        } else {
-          this.results[i].error.push(
-            this.$t("import.error.team_member") + ": " + members[c]
-          );
-        }
-      }
-      return memberIDs;
+      this.result.team = team;
     },
     /**
      * Post or update a single result (API post/put)
