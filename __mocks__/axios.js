@@ -205,7 +205,7 @@ const resultlist = {
       result: "200.6",
       decimals: 1,
       position: 1,
-      pre_position: 2,
+      position_pre: 2,
       partial: [
         {
           decimals: 1,
@@ -304,7 +304,7 @@ const resultlist = {
       result: "206.4",
       decimals: 1,
       position: 2,
-      pre_position: 1,
+      position_pre: 1,
       partial: [
         {
           decimals: 1,
@@ -405,7 +405,7 @@ const resultlist = {
       result_code: "DNF",
       decimals: 0,
       position: 3,
-      pre_position: 3,
+      position_pre: 3,
       approved: false,
       partial: [
         {

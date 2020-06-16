@@ -48,7 +48,7 @@
         </div>
         <div v-for="category in results" :key="category.id">
           <h4 class="bg-sal-orange">
-            {{ category[0].category | splitFilter("(") }}
+            {{ category[0].ordercat | splitFilter("(") }}
           </h4>
           <div v-for="(block, index) in resultBlocks" :key="index">
             <h5 v-if="category[0].max_rounds >= 1">
@@ -68,7 +68,7 @@
                   limitResults(category, block['col'])
                 )
               "
-              sort-by="position"
+              :sort-by="sortKey(block['label'])"
               sort-null-last
               responsive="sm"
               @row-clicked="linkTo"
@@ -94,6 +94,9 @@
                   }}
                 </div>
               </template>
+              <template v-slot:cell(showcat)="data"
+                >({{ data.item.showcat }})</template
+              >
               <template v-slot:cell(athlete)="data">
                 <div v-if="data.item.athlete">
                   {{ data.item.athlete.first_name }}
@@ -253,7 +256,8 @@ export default {
       loading: true,
       maxBlock: 2,
       results: [],
-      selectMode: "single"
+      selectMode: "single",
+      showCategory: false
     };
   },
   computed: {
@@ -449,6 +453,9 @@ export default {
         }
         return !field.key.includes("-") || keys.has(field.key);
       });
+      if (this.showCategory && results.filter(r => "showcat" in r).length > 0) {
+        fields.splice(1, 0, { key: "showcat", label: "" });
+      }
       return fields;
     },
     /**
@@ -616,7 +623,22 @@ export default {
           id
       )
         .then(response => {
-          this.results = groupArrayByKey(response.data, "category", "fin");
+          let results = response.data;
+          results.forEach(item => {
+            if (
+              "elimination_category" in item &&
+              item["elimination_category"]
+            ) {
+              item["ordercat"] = item["elimination_category"];
+              if (item["elimination_category"] !== item["category"]) {
+                item["showcat"] = item["category"];
+                this.showCategory = true;
+              }
+            } else {
+              item["ordercat"] = item["category"];
+            }
+          });
+          this.results = groupArrayByKey(results, "ordercat", "fin");
         })
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
@@ -667,6 +689,19 @@ export default {
           params: { athlete_id: item.athlete.id }
         });
         window.open(routeData.href, "_blank");
+      }
+    },
+    /**
+     * Returns sort key for results block
+     *
+     * @param {string} block
+     * @returns {string} sort key
+     */
+    sortKey(block) {
+      if (block === "preliminary" && this.resultBlocks.length > 1) {
+        return "position_pre";
+      } else {
+        return "position";
       }
     },
     /**

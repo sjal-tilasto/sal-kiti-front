@@ -314,7 +314,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                 >
                   <th
                     aria-colindex="1"
-                    aria-sort="ascending"
+                    aria-sort="none"
                     class=""
                     role="columnheader"
                     scope="col"
@@ -324,7 +324,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     <span
                       class="sr-only"
                     >
-                       (Click to sort Descending)
+                       (Click to sort Ascending)
                     </span>
                   </th>
                   <th
@@ -463,134 +463,6 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     class=""
                     role="cell"
                   >
-                    1
-                  </td>
-                  <td
-                    aria-colindex="2"
-                    class=""
-                    role="cell"
-                  >
-                    <div>
-                      
-                Sara
-                Huff
-              
-                    </div>
-                  </td>
-                  <td
-                    aria-colindex="3"
-                    class=""
-                    role="cell"
-                  >
-                    Club
-                  </td>
-                  <td
-                    aria-colindex="4"
-                    class="d-none d-md-table-cell"
-                    role="cell"
-                  >
-                    <div>
-                      result.kneeling
-                    </div>
-                     
-                    <div>
-                      result.prone
-                    </div>
-                     
-                    <div>
-                      result.standing
-                    </div>
-                  </td>
-                  <td
-                    aria-colindex="5"
-                    class="d-none d-lg-table-cell"
-                    role="cell"
-                  >
-                    <div>
-                      
-                99
-              
-                    </div>
-                    <div>
-                      
-                91
-              
-                    </div>
-                  </td>
-                  <td
-                    aria-colindex="6"
-                    class="d-none d-md-table-cell"
-                    role="cell"
-                  >
-                    <div>
-                      
-                381
-              
-                    </div>
-                    <div>
-                      
-                369
-              
-                    </div>
-                  </td>
-                  <td
-                    aria-colindex="7"
-                    class=""
-                    role="cell"
-                  >
-                    <div>
-                      
-                200,6
-              
-                    </div>
-                  </td>
-                  <td
-                    aria-colindex="8"
-                    class="d-none d-sm-table-cell"
-                    role="cell"
-                  >
-                    
-              
-              
-              
-                    <div>
-                      
-                (result.unconfirmed)
-              
-                    </div>
-                  </td>
-                  <td
-                    aria-colindex="9"
-                    class=""
-                    role="cell"
-                  >
-                    <button
-                      class="btn btn-outline-info btn-sm"
-                      type="button"
-                    >
-                      
-                result.details 
-                    </button>
-                     
-              
-                    <!---->
-                     
-              
-                    <!---->
-                     
-                    <!---->
-                  </td>
-                </tr>
-                <tr
-                  class=""
-                  role="row"
-                  tabindex="0"
-                >
-                  <td
-                    aria-colindex="1"
-                    class=""
-                    role="cell"
-                  >
                     2
                   </td>
                   <td
@@ -709,6 +581,134 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     <!---->
                   </td>
                 </tr>
+                <tr
+                  class=""
+                  role="row"
+                  tabindex="0"
+                >
+                  <td
+                    aria-colindex="1"
+                    class=""
+                    role="cell"
+                  >
+                    1
+                  </td>
+                  <td
+                    aria-colindex="2"
+                    class=""
+                    role="cell"
+                  >
+                    <div>
+                      
+                Sara
+                Huff
+              
+                    </div>
+                  </td>
+                  <td
+                    aria-colindex="3"
+                    class=""
+                    role="cell"
+                  >
+                    Club
+                  </td>
+                  <td
+                    aria-colindex="4"
+                    class="d-none d-md-table-cell"
+                    role="cell"
+                  >
+                    <div>
+                      result.kneeling
+                    </div>
+                     
+                    <div>
+                      result.prone
+                    </div>
+                     
+                    <div>
+                      result.standing
+                    </div>
+                  </td>
+                  <td
+                    aria-colindex="5"
+                    class="d-none d-lg-table-cell"
+                    role="cell"
+                  >
+                    <div>
+                      
+                99
+              
+                    </div>
+                    <div>
+                      
+                91
+              
+                    </div>
+                  </td>
+                  <td
+                    aria-colindex="6"
+                    class="d-none d-md-table-cell"
+                    role="cell"
+                  >
+                    <div>
+                      
+                381
+              
+                    </div>
+                    <div>
+                      
+                369
+              
+                    </div>
+                  </td>
+                  <td
+                    aria-colindex="7"
+                    class=""
+                    role="cell"
+                  >
+                    <div>
+                      
+                200,6
+              
+                    </div>
+                  </td>
+                  <td
+                    aria-colindex="8"
+                    class="d-none d-sm-table-cell"
+                    role="cell"
+                  >
+                    
+              
+              
+              
+                    <div>
+                      
+                (result.unconfirmed)
+              
+                    </div>
+                  </td>
+                  <td
+                    aria-colindex="9"
+                    class=""
+                    role="cell"
+                  >
+                    <button
+                      class="btn btn-outline-info btn-sm"
+                      type="button"
+                    >
+                      
+                result.details 
+                    </button>
+                     
+              
+                    <!---->
+                     
+              
+                    <!---->
+                     
+                    <!---->
+                  </td>
+                </tr>
                 <!---->
                 <!---->
               </tbody>
@@ -764,7 +764,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                 >
                   <th
                     aria-colindex="1"
-                    aria-sort="ascending"
+                    aria-sort="none"
                     class=""
                     role="columnheader"
                     scope="col"
@@ -774,7 +774,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     <span
                       class="sr-only"
                     >
-                       (Click to sort Descending)
+                       (Click to sort Ascending)
                     </span>
                   </th>
                   <th
