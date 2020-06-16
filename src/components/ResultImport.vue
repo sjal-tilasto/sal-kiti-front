@@ -155,7 +155,34 @@ export default {
       organizations: [],
       reader: null,
       resultTypes: [],
-      result: {}
+      result: {},
+      staticFields: [
+        "category",
+        "info",
+        "elimination_category",
+        "sport_id",
+        "first_name",
+        "last_name",
+        "organization",
+        "team_members",
+        "team_name",
+        "position",
+        "position_pre",
+        "result",
+        "result_code",
+        "sport_id_a",
+        "first_name_a",
+        "last_name_a",
+        "organization_a",
+        "sport_id_b",
+        "first_name_b",
+        "last_name_b",
+        "organization_b",
+        "sport_id_c",
+        "first_name_c",
+        "last_name_c",
+        "organization_c"
+      ]
     };
   },
   computed: {
@@ -613,6 +640,44 @@ export default {
       });
     },
     /**
+     * Modify Excel headers to technical versions
+     *
+     * @param worksheet
+     * @returns headers
+     */
+    parseExcelGetHeaders(worksheet) {
+      let range = XLSX.utils.decode_range(worksheet["!ref"]);
+      let formattedNames = [];
+      for (let C = range.s.c; C <= range.e.c; ++C) {
+        let addr = XLSX.utils.encode_cell({ r: range.s.r, c: C });
+        let cell = worksheet[addr];
+        if (!cell) continue;
+        formattedNames.push(cell.v.replace(/\s/g, "_").toLowerCase());
+      }
+      let headers = [];
+      let resultTypes = [];
+      this.resultTypes.forEach(resultType => {
+        resultTypes.push(resultType.abbreviation);
+      });
+      formattedNames.forEach(name => {
+        if (this.staticFields.includes(name)) {
+          headers.push(name);
+        } else if (name === "final_category") {
+          headers.push("elimination_category");
+        } else if (name.includes("-")) {
+          headers.push(name);
+        } else if (
+          resultTypes.includes(name) &&
+          !formattedNames.includes(name.concat("-1"))
+        ) {
+          headers.push(name.concat("-1"));
+        } else {
+          headers.push(name);
+        }
+      });
+      return headers;
+    },
+    /**
      * Read xls file
      *
      * @param file
@@ -621,13 +686,15 @@ export default {
     parseExcel(file) {
       return new Promise((resolve, reject) => {
         let reader = new FileReader();
-
         reader.onload = e => {
           let data = new Uint8Array(e.target.result);
           let workbook = XLSX.read(data, { type: "array" });
           let firstSheetName = workbook.SheetNames[0];
           let worksheet = workbook.Sheets[firstSheetName];
-          resolve(XLSX.utils.sheet_to_json(worksheet));
+          let headers = this.parseExcelGetHeaders(worksheet);
+          resolve(
+            XLSX.utils.sheet_to_json(worksheet, { header: headers, range: 1 })
+          );
         };
         reader.onerror = reject;
         reader.readAsArrayBuffer(file);
