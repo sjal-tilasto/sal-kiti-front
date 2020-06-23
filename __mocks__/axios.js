@@ -63,6 +63,18 @@ const events = {
         abbreviation: "LC",
         name: "Local Club"
       },
+      competitions: [
+        {
+          id: 1,
+          type: "10m Competition",
+          public: true
+        },
+        {
+          id: 2,
+          type: "50m Competition",
+          public: false
+        }
+      ],
       public: false,
       locked: false
     },
@@ -193,7 +205,7 @@ const resultlist = {
       result: "200.6",
       decimals: 1,
       position: 1,
-      pre_position: 2,
+      position_pre: 2,
       partial: [
         {
           decimals: 1,
@@ -292,7 +304,7 @@ const resultlist = {
       result: "206.4",
       decimals: 1,
       position: 2,
-      pre_position: 1,
+      position_pre: 1,
       partial: [
         {
           decimals: 1,
@@ -393,7 +405,7 @@ const resultlist = {
       result_code: "DNF",
       decimals: 0,
       position: 3,
-      pre_position: 3,
+      position_pre: 3,
       approved: false,
       partial: [
         {
@@ -750,12 +762,20 @@ const organizations = {
     {
       id: 1,
       name: "Local Club",
-      abbreviation: "LC"
+      abbreviation: "LC",
+      external: false
     },
     {
       id: 2,
       name: "Village Athletes",
-      abbreviation: "Village"
+      abbreviation: "Village",
+      external: false
+    },
+    {
+      id: 3,
+      name: "External Athletes",
+      abbreviation: "EXT",
+      external: true
     }
   ]
 };
@@ -902,13 +922,15 @@ const mock = jest.fn(
             if (param[0] in data.results[0] && param[1].search(",") === -1) {
               if (temp_data) {
                 temp_data.results = temp_data.results.filter(
-                  obj => obj[param[0]] == param[1]
+                  obj => obj[param[0]].toString() === param[1].toString()
                 );
               } else {
                 temp_data = { results: [] };
-                temp_data.results = data.results.filter(
-                  obj => obj[param[0]] == param[1]
-                );
+                if ("results" in data) {
+                  temp_data.results = data.results.filter(
+                    obj => obj[param[0]].toString() === param[1].toString()
+                  );
+                }
               }
             }
           });

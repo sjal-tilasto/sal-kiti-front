@@ -73,7 +73,9 @@ export default {
         } else if (entry[0] === "partial") {
           entry[1].forEach(part => {
             if ("value" in part) {
-              errors.push(this.$t("import.error.partial") + ", " + part["value"]);
+              errors.push(
+                this.$t("import.error.partial") + ", " + part["value"]
+              );
             }
           });
         } else {

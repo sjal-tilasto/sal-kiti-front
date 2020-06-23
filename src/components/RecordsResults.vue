@@ -183,7 +183,7 @@ export default {
      * @returns {array} fields list
      */
     resultFields: function() {
-      return [
+      const fields = [
         { key: "category", label: this.$t("result.category"), sortable: true },
         { key: "result", label: this.$tc("result.result", 1), sortable: true },
         { key: "approved", label: this.$t("record.status"), sortable: true },
@@ -208,6 +208,19 @@ export default {
           sortable: true
         }
       ];
+      if (this.searchParameters.includes("level")) {
+        return fields;
+      } else {
+        return [
+          {
+            key: "level",
+            label: this.$t("record.level"),
+            thClass: "d-none d-lg-table-cell",
+            tdClass: "d-none d-lg-table-cell",
+            sortable: true
+          }
+        ].concat(fields);
+      }
     }
   },
   watch: {
