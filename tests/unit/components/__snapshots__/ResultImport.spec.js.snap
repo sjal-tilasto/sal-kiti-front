@@ -104,13 +104,13 @@ exports[`ResultImport.vue parses results 1`] = `
                 id="__BVID__16"
                 name="filetype"
                 type="radio"
-                value="sius"
+                value="ianseo"
               />
               <label
                 class="custom-control-label"
                 for="__BVID__16"
               >
-                SIUS CSV
+                Ianseo ASC
               </label>
             </div>
             <!---->
@@ -1553,7 +1553,7 @@ exports[`ResultImport.vue renders result import form 1`] = `
             name="filetype"
             value="excel"
           >
-            SIUS CSV
+            Ianseo ASC
           </b-form-radio-stub>
         </b-form-group-stub>
          

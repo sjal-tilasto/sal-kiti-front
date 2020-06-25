@@ -1,6 +1,6 @@
 {
   "nav": {
-    "title": "Kiti",
+    "title": "Tilasto",
     "event": "Event | Events",
     "competition": "Competition | Competitions",
     "statistic": "Statistic | Statistics",
@@ -15,9 +15,9 @@
     "info": "Info | Info"
   },
   "front": {
-    "header": "Competition and statistics service Kiti",
-    "text": "First part of the competition and statistics service will be released at the beginning of year 2020. All results during 2020 will be published through this service.",
-    "description": "You will find Finnish shooting sport results and statistics from these pages, since the beginning of year 2020. Records from the earlier years will also be included. Below there are short descriptions for the different parts of this page, which you will also find from the navigation bar.",
+    "header": "SJAL Statistics Service",
+    "text": "Finnish Archery Association's statistics service.",
+    "description": "You will find Finnish Archery Association's results and statistics from these pages. Below there are short descriptions for the different parts of this page, which you will also find from the navigation bar.",
     "to_events": "Go to events",
     "to_competitions": "Go to competition search",
     "to_statistics": "Go to statistics",
@@ -48,7 +48,7 @@
     "limit": "Limit",
     "description_help": "Public description for the event.",
     "optional_dates": "Optional dates.",
-    "optional_dates_help": "Optional dates for the event. Only available for the organizers and SAL staff.",
+    "optional_dates_help": "Optional dates for the event. Only available for the organizers and SJAL staff.",
     "categories": "Categories",
     "categories_help": "Specify categories unless all official categories are allowed.",
     "web_page": "Web page URL",
@@ -61,7 +61,7 @@
     "notes_help": "Other notes. Only available for the organizers and SAL staff.",
     "toc_agreement": "TOC agreement",
     "toc_agreement_help": "Organizer agrees to follow competition rules.",
-    "toc_agreement_url": "https://www.ampumaurheiluliitto.fi/liitto/kilpailutoiminta/saannot/"
+    "toc_agreement_url": "https://www.sjal.fi/sjal/materiaalipankki/saannot/"
   },
   "contact": {
     "contact": "Contact | Contacts",
@@ -197,7 +197,7 @@
     }
   },
   "title": {
-    "prefix": "SAL Kiti",
+    "prefix": "SJAL Tilastot",
     "front_page": "Front page",
     "athlete": "Athlete information",
     "competition": "Competition information",
@@ -282,6 +282,15 @@
     "yes": "Yes",
     "no": "No",
     "cancel": "Cancel"
+  },
+  "sjal": {
+    "ranking": "Ranking",
+    "full_ranking": "Full ranking",
+    "compound": "Compound",
+    "recurve": "Recurve",
+    "barebow": "Barebow",
+    "longbow": "Longbow",
+    "ranking_competitions": "Competitions"
   },
   "date": "Date",
   "name": "Name",

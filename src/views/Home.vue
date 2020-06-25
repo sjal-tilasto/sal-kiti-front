@@ -6,97 +6,121 @@
         <p>{{ $t("front.description") }}</p>
       </b-col>
     </b-row>
-    <div v-for="item in cardList" v-bind:key="item.title">
-      <h2 class="bg-sal-orange">
-        {{ item.title }}
-      </h2>
-      <p>{{ item.text }}</p>
-      <b-button
-        variant="light"
-        class="btn-orange space-right space-down"
-        :to="{ name: item.link }"
-      >
-        {{ item.button }}
-      </b-button>
-    </div>
-    <div v-if="$store.state.user.is_authenticated">
-      <div v-for="item in cardListAuthenticated" v-bind:key="item.title">
-        <h2 class="bg-sal-orange">
-          {{ item.title }}
-        </h2>
-        <p>{{ item.text }}</p>
-        <b-button
-          variant="light"
-          class="btn-orange space-right space-down"
-          :to="{ name: item.link }"
-        >
-          {{ item.button }}
-        </b-button>
-      </div>
-    </div>
+    <b-row>
+      <b-col col md="12" lg="8">
+        <h2 class="bg-sal-orange">{{ $tc("event.event", 2) }}</h2>
+        <EventList :limit="8" :limited="true" />
+      </b-col>
+      <b-col>
+        <b-row>
+          <b-col>
+            <h2 class="bg-sal-orange">
+              {{ $t("sjal.recurve") }} {{ $t("sjal.ranking") }}
+            </h2>
+            <StatisticsRanking
+              division="recurve"
+              :dateStart="dateStart"
+              :dateEnd="dateEnd"
+              :limit="5"
+              :limited="true"
+            />
+            <b-link
+              :to="{
+                name: 'statistics-ranking',
+                query: { division: 'recurve', year: year }
+              }"
+              >{{ $t("sjal.full_ranking") }}</b-link
+            >
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <h2 class="bg-sal-orange">
+              {{ $t("sjal.compound") }} {{ $t("sjal.ranking") }}
+            </h2>
+            <StatisticsRanking
+              division="compound"
+              :dateStart="dateStart"
+              :dateEnd="dateEnd"
+              :limit="5"
+              :limited="true"
+            />
+            <b-link
+              :to="{
+                name: 'statistics-ranking',
+                query: { division: 'compound', year: year }
+              }"
+              >{{ $t("sjal.full_ranking") }}</b-link
+            >
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <h2 class="bg-sal-orange">
+              {{ $t("sjal.barebow") }} {{ $t("sjal.ranking") }}
+            </h2>
+            <StatisticsRanking
+              division="barebow"
+              :dateStart="dateStart"
+              :dateEnd="dateEnd"
+              :limit="5"
+              :limited="true"
+            />
+            <b-link
+              :to="{
+                name: 'statistics-ranking',
+                query: { division: 'barebow', year: year }
+              }"
+              >{{ $t("sjal.full_ranking") }}</b-link
+            >
+          </b-col>
+        </b-row>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
 <script>
+import EventList from "@/components/EventList.vue";
+import StatisticsRanking from "@/components/StatisticsRanking.vue";
+
 /**
  * Front page view
  */
 export default {
   name: "HomeView",
+  components: {
+    EventList,
+    StatisticsRanking
+  },
   computed: {
-    /**
-     * Sets card information for the front page
-     *
-     * @returns {array} card information
-     */
-    cardList: function() {
-      return [
-        {
-          title: this.$tc("nav.event", 2),
-          text: this.$t("front.events_description"),
-          button: this.$t("front.to_events"),
-          link: "events"
-        },
-        {
-          title: this.$tc("nav.competition", 2),
-          text: this.$t("front.competitions_description"),
-          button: this.$t("front.to_competitions"),
-          link: "competition-search"
-        },
-        {
-          title: this.$tc("nav.statistic", 2),
-          text: this.$t("front.statistics_description"),
-          button: this.$t("front.to_statistics"),
-          link: "statistics"
-        },
-        {
-          title: this.$tc("nav.record", 2),
-          text: this.$t("front.records_description"),
-          button: this.$t("front.to_records"),
-          link: "records"
-        },
-        {
-          title: this.$tc("nav.athlete", 2),
-          text: this.$t("front.athletes_description"),
-          button: this.$t("front.to_athletes"),
-          link: "athlete-search"
-        }
-      ];
+    year: function() {
+      let date = new Date();
+      if (date.getMonth() < 10) {
+        return date.getFullYear() - 1;
+      } else {
+        return date.getFullYear();
+      }
     },
-    /**
-     * Sets card information for the authenticated users
-     *
-     * @returns {array} card information
-     */
-    cardListAuthenticated: function() {
-      return [
-        {
-          title: this.$tc("nav.info", 2),
-          text: this.$t("front.info_description"),
-          button: this.$t("front.to_info"),
-          link: "info"
-        }
-      ];
+    dateStart: function() {
+      let date = new Date();
+      let year = 0;
+      if (date.getMonth() < 10) {
+        year = date.getFullYear() - 1;
+      } else {
+        year = date.getFullYear();
+      }
+      return year.toString() + "-10-01";
+    },
+    dateEnd: function() {
+      let date = new Date();
+      let year = 0;
+      if (date.getMonth() < 10) {
+        year = date.getFullYear();
+      } else {
+        year = date.getFullYear() + 1;
+      }
+      return year.toString() + "-09-01";
     }
   },
   created() {

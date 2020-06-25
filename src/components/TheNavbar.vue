@@ -1,8 +1,8 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" fixed="top">
+    <b-navbar toggleable="lg" type="light" fixed="top">
       <b-navbar-brand to="/">
-        <img class="logo-img" src="../assets/logo.png" alt="SAL" />
+        <img class="logo-img" src="../assets/sjal_logo.png" alt="SAL" />
         {{ $tc("nav.title") }}
       </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

@@ -48,6 +48,7 @@
             id="input-group-description"
             :label="$t('description')"
             label-for="input-description"
+            :description="$t('event.description_help')"
           >
             <b-form-textarea
               id="input-description"
@@ -56,7 +57,6 @@
               max-rows="6"
             ></b-form-textarea>
           </b-form-group>
-          <p>{{ $t("event.description_help") }}</p>
           <b-form-group
             id="input-group-location"
             :label="$t('location')"
@@ -96,6 +96,7 @@
             id="input-group-optional_dates"
             :label="$t('event.optional_dates')"
             label-for="input-organization"
+            :description="$t('event.optional_dates_help')"
           >
             <b-form-textarea
               id="input-optional_dates"
@@ -105,11 +106,11 @@
             >
             </b-form-textarea>
           </b-form-group>
-          <p>{{ $t("event.optional_dates_help") }}</p>
           <b-form-group
             id="input-group-categories"
             :label="$t('event.categories')"
             label-for="input-categories"
+            :description="$t('event.categories_help')"
           >
             <b-form-textarea
               id="input-categories"
@@ -119,38 +120,38 @@
             >
             </b-form-textarea>
           </b-form-group>
-          <p>{{ $t("event.categories_help") }}</p>
           <b-form-group
             id="input-group-web_page"
             :label="$t('event.web_page')"
             label-for="input-web_page"
+            :description="$t('event.web_page_help')"
           >
             <b-form-input id="input-web_page" v-model="form.web_page">
             </b-form-input>
           </b-form-group>
-          <p>{{ $t("event.web_page_help") }}</p>
           <b-form-group
             id="input-group-invitation"
             :label="$t('event.invitation')"
             label-for="input-invitation"
+            :description="$t('event.invitation_help')"
           >
             <b-form-input id="input-invitation" v-model="form.invitation">
             </b-form-input>
           </b-form-group>
-          <p>{{ $t("event.invitation_help") }}</p>
           <b-form-group
             id="input-group-safety_plan"
             :label="$t('event.safety_plan')"
             label-for="input-safety_plan"
+            :description="$t('event.safety_plan_help')"
           >
             <b-form-checkbox id="input-safety_plan" v-model="form.safety_plan">
             </b-form-checkbox>
           </b-form-group>
-          <p>{{ $t("event.safety_plan_help") }}</p>
           <b-form-group
             id="input-group-notes"
             :label="$t('event.notes')"
             label-for="input-notes"
+            :description="$t('event.notes_help')"
           >
             <b-form-textarea
               id="input-notes"
@@ -160,11 +161,11 @@
             >
             </b-form-textarea>
           </b-form-group>
-          <p>{{ $t("event.notes_help") }}</p>
           <b-form-group
             id="input-group-toc_agreement"
             :label="$t('event.toc_agreement')"
             label-for="input-toc_agreement"
+            :description="$t('event.toc_agreement_help')"
           >
             <b-form-checkbox
               id="input-toc_agreement"
@@ -173,7 +174,6 @@
             </b-form-checkbox>
           </b-form-group>
           <p>
-            {{ $t("event.toc_agreement_help") }}
             <b-link :href="$t('event.toc_agreement_url')" target="_blank"
               >({{ $t("link") }})</b-link
             >

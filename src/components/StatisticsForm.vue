@@ -20,15 +20,13 @@
         >
           {{ sport.name }}
         </b-button>
-      </b-col>
-    </b-row>
-    <b-row v-if="$store.state.user.is_staff">
-      <b-col>
-        <router-link :to="{ name: 'statistics-malja' }">
-          <b-button variant="light" class="btn-orange space-right space-down">
-            {{ $t("statistics.sal.pohjolan_malja") }}
-          </b-button>
-        </router-link>
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          :to="{ name: 'statistics-ranking' }"
+        >
+          {{ $t("sjal.ranking") }}
+        </b-button>
       </b-col>
     </b-row>
     <b-form @submit="onSubmit" @reset="onReset" v-if="sport">
@@ -352,6 +350,9 @@ export default {
       HTTP.get("sports/")
         .then(response => {
           this.sports = response.data.results;
+          if (this.sports.length === 1) {
+            this.selectSport(this.sports[0].id, false);
+          }
         })
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));

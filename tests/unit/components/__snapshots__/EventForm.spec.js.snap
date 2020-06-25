@@ -35,6 +35,26 @@ exports[`EventForm.vue renders event form with even information 1`] = `
       <b-form-stub>
         <b-form-group-stub
           feedbackarialive="assertive"
+          id="input-group-organization"
+          label="organizer"
+          labelfor="input-organization"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-organization"
+            labelfield="label"
+            options="[object Object]"
+            optionsfield="options"
+            required="true"
+            selectsize="0"
+            textfield="name"
+            valuefield="id"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
           id="input-group-name"
           label="name"
           labelfor="input-name"
@@ -48,6 +68,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         </b-form-group-stub>
          
         <b-form-group-stub
+          description="event.description_help"
           feedbackarialive="assertive"
           id="input-group-description"
           label="description"
@@ -106,41 +127,149 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         </b-form-group-stub>
          
         <b-form-group-stub
+          description="event.optional_dates_help"
           feedbackarialive="assertive"
-          id="input-group-organization"
-          label="organizer"
+          id="input-group-optional_dates"
+          label="event.optional_dates"
           labelfor="input-organization"
         >
-          <b-form-select-stub
-            disabledfield="disabled"
-            htmlfield="html"
-            id="input-organization"
-            labelfield="label"
-            options="[object Object]"
-            optionsfield="options"
-            required="true"
-            selectsize="0"
-            textfield="name"
-            valuefield="id"
+          <b-form-textarea-stub
+            debounce="0"
+            id="input-optional_dates"
+            maxrows="6"
+            rows="3"
+            value=""
+            wrap="soft"
           />
         </b-form-group-stub>
          
-        <b-button-stub
-          class="btn-orange space-right"
-          event="click"
-          routertag="a"
-          tag="button"
-          target="_self"
-          type="submit"
-          variant="light"
+        <b-form-group-stub
+          description="event.categories_help"
+          feedbackarialive="assertive"
+          id="input-group-categories"
+          label="event.categories"
+          labelfor="input-categories"
         >
-          <section>
-            create
-          </section>
-        </b-button-stub>
+          <b-form-textarea-stub
+            debounce="0"
+            id="input-categories"
+            maxrows="6"
+            rows="3"
+            value=""
+            wrap="soft"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          description="event.web_page_help"
+          feedbackarialive="assertive"
+          id="input-group-web_page"
+          label="event.web_page"
+          labelfor="input-web_page"
+        >
+          <b-form-input-stub
+            debounce="0"
+            id="input-web_page"
+            type="text"
+            value=""
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          description="event.invitation_help"
+          feedbackarialive="assertive"
+          id="input-group-invitation"
+          label="event.invitation"
+          labelfor="input-invitation"
+        >
+          <b-form-input-stub
+            debounce="0"
+            id="input-invitation"
+            type="text"
+            value=""
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          description="event.safety_plan_help"
+          feedbackarialive="assertive"
+          id="input-group-safety_plan"
+          label="event.safety_plan"
+          labelfor="input-safety_plan"
+        >
+          <b-form-checkbox-stub
+            id="input-safety_plan"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          description="event.notes_help"
+          feedbackarialive="assertive"
+          id="input-group-notes"
+          label="event.notes"
+          labelfor="input-notes"
+        >
+          <b-form-textarea-stub
+            debounce="0"
+            id="input-notes"
+            maxrows="6"
+            rows="3"
+            value=""
+            wrap="soft"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          description="event.toc_agreement_help"
+          feedbackarialive="assertive"
+          id="input-group-toc_agreement"
+          label="event.toc_agreement"
+          labelfor="input-toc_agreement"
+        >
+          <b-form-checkbox-stub
+            id="input-toc_agreement"
+          />
+        </b-form-group-stub>
+         
+        <p>
+          <b-link-stub
+            event="click"
+            href="event.toc_agreement_url"
+            routertag="a"
+            target="_blank"
+          >
+            (link)
+          </b-link-stub>
+        </p>
+         
+        <div>
+          <b-button-stub
+            class="btn-orange space-right"
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="submit"
+            variant="light"
+          >
+            <section>
+              create
+            </section>
+          </b-button-stub>
+        </div>
          
         <br />
       </b-form-stub>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <!---->
     </b-col-stub>
   </b-row-stub>
 </div>

@@ -144,6 +144,7 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
             optionsfield="options"
             selectsize="0"
             textfield="name"
+            value="1"
             valuefield="id"
           />
         </b-form-group-stub>
@@ -159,7 +160,7 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
             htmlfield="html"
             id="input-competition-types"
             labelfield="label"
-            options=""
+            options="[object Object]"
             optionsfield="options"
             required="true"
             selectsize="0"

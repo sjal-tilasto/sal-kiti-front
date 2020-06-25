@@ -309,6 +309,9 @@ export default {
       HTTP.get("sports/")
         .then(response => {
           this.sports = response.data.results;
+          if (this.sports.length === 1) {
+            this.selectSport(this.sports[0].id);
+          }
         })
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));

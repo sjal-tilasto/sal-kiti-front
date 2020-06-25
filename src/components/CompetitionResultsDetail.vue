@@ -84,20 +84,25 @@
           v-else-if="block['label'] === 'preliminary'"
           :id="result.id.toString() + '-block-' + index.toString()"
         >
-          {{ $t("result.preliminary") }}
+          {{ $tc("result.partial", 2) }}
         </th>
         <th scope="col" v-else>{{ block["label"] }}</th>
         <td></td>
       </tr>
-      <tr v-for="field in resultRowsExtra[index + 1]" v-bind:key="field.id">
-        <th scope="col">{{ field.label }}</th>
-        <td class="text-right" v-if="field.name === 'result'">
-          {{ result.result | roundValue(result.decimals) }}
-        </td>
-        <td class="text-right" v-else>
-          {{ result.partial | partialValue(field.name) }}
-        </td>
-      </tr>
+      <template v-for="field in resultRowsExtra[index + 1]">
+        <tr
+          v-if="hideEmptyFields(field.name, result.partial)"
+          v-bind:key="field.id"
+        >
+          <th scope="col">{{ field.label }}</th>
+          <td class="text-right" v-if="field.name === 'result'">
+            {{ result.result | roundValue(result.decimals) }}
+          </td>
+          <td class="text-right" v-else>
+            {{ result.partial | partialValue(field.name) }}
+          </td>
+        </tr>
+      </template>
     </table>
   </b-modal>
 </template>
@@ -155,6 +160,25 @@ export default {
       } else {
         return result.first_name + " " + result.last_name;
       }
+    },
+    /**
+     * Check if field is empty
+     *
+     * @param {object} field
+     * @param {object} result
+     * @returns {boolean} true if field should be displayed
+     */
+    hideEmptyFields(field, result) {
+      if (field.name === "result") {
+        return true;
+      }
+      let type = field.split("-")[0];
+      let order = parseInt(field.split("-")[1]);
+      return (
+        result.filter(
+          v => v.type && v.type.abbreviation === type && v.order === order
+        ).length === 1
+      );
     }
   }
 };

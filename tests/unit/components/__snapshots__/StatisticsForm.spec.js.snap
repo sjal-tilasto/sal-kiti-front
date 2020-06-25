@@ -31,10 +31,23 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
         Paintball
       
       </b-button-stub>
+       
+      <b-button-stub
+        class="btn-orange space-right space-down"
+        event="click"
+        routertag="a"
+        tag="button"
+        target="_self"
+        to="[object Object]"
+        type="button"
+        variant="light"
+      >
+        
+        sjal.ranking
+      
+      </b-button-stub>
     </b-col-stub>
   </b-row-stub>
-   
-  <!---->
    
   <b-form-stub>
     <b-row-stub

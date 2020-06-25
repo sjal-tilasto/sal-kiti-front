@@ -20,147 +20,129 @@ exports[`Home.vue renders content 1`] = `
     </b-col-stub>
   </b-row-stub>
    
-  <div>
-    <h2
-      class="bg-sal-orange"
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      col="true"
+      lg="8"
+      md="12"
+      tag="div"
     >
-      
-      nav.event
-    
-    </h2>
+      <h2
+        class="bg-sal-orange"
+      >
+        event.event
+      </h2>
+       
+      <eventlist-stub
+        limit="8"
+        limited="true"
+      />
+    </b-col-stub>
      
-    <p>
-      front.events_description
-    </p>
-     
-    <b-button-stub
-      class="btn-orange space-right space-down"
-      event="click"
-      routertag="a"
-      tag="button"
-      target="_self"
-      to="[object Object]"
-      type="button"
-      variant="light"
+    <b-col-stub
+      tag="div"
     >
-      
-      front.to_events
-    
-    </b-button-stub>
-  </div>
-  <div>
-    <h2
-      class="bg-sal-orange"
-    >
-      
-      nav.competition
-    
-    </h2>
-     
-    <p>
-      front.competitions_description
-    </p>
-     
-    <b-button-stub
-      class="btn-orange space-right space-down"
-      event="click"
-      routertag="a"
-      tag="button"
-      target="_self"
-      to="[object Object]"
-      type="button"
-      variant="light"
-    >
-      
-      front.to_competitions
-    
-    </b-button-stub>
-  </div>
-  <div>
-    <h2
-      class="bg-sal-orange"
-    >
-      
-      nav.statistic
-    
-    </h2>
-     
-    <p>
-      front.statistics_description
-    </p>
-     
-    <b-button-stub
-      class="btn-orange space-right space-down"
-      event="click"
-      routertag="a"
-      tag="button"
-      target="_self"
-      to="[object Object]"
-      type="button"
-      variant="light"
-    >
-      
-      front.to_statistics
-    
-    </b-button-stub>
-  </div>
-  <div>
-    <h2
-      class="bg-sal-orange"
-    >
-      
-      nav.record
-    
-    </h2>
-     
-    <p>
-      front.records_description
-    </p>
-     
-    <b-button-stub
-      class="btn-orange space-right space-down"
-      event="click"
-      routertag="a"
-      tag="button"
-      target="_self"
-      to="[object Object]"
-      type="button"
-      variant="light"
-    >
-      
-      front.to_records
-    
-    </b-button-stub>
-  </div>
-  <div>
-    <h2
-      class="bg-sal-orange"
-    >
-      
-      nav.athlete
-    
-    </h2>
-     
-    <p>
-      front.athletes_description
-    </p>
-     
-    <b-button-stub
-      class="btn-orange space-right space-down"
-      event="click"
-      routertag="a"
-      tag="button"
-      target="_self"
-      to="[object Object]"
-      type="button"
-      variant="light"
-    >
-      
-      front.to_athletes
-    
-    </b-button-stub>
-  </div>
-   
-  <!---->
+      <b-row-stub
+        tag="div"
+      >
+        <b-col-stub
+          tag="div"
+        >
+          <h2
+            class="bg-sal-orange"
+          >
+            
+            sjal.recurve sjal.ranking
+          
+          </h2>
+           
+          <statisticsranking-stub
+            dateend="2020-09-01"
+            datestart="2019-10-01"
+            division="recurve"
+            limit="5"
+            limited="true"
+          />
+           
+          <b-link-stub
+            event="click"
+            routertag="a"
+            target="_self"
+            to="[object Object]"
+          >
+            sjal.full_ranking
+          </b-link-stub>
+        </b-col-stub>
+      </b-row-stub>
+       
+      <b-row-stub
+        tag="div"
+      >
+        <b-col-stub
+          tag="div"
+        >
+          <h2
+            class="bg-sal-orange"
+          >
+            
+            sjal.compound sjal.ranking
+          
+          </h2>
+           
+          <statisticsranking-stub
+            dateend="2020-09-01"
+            datestart="2019-10-01"
+            division="compound"
+            limit="5"
+            limited="true"
+          />
+           
+          <b-link-stub
+            event="click"
+            routertag="a"
+            target="_self"
+            to="[object Object]"
+          >
+            sjal.full_ranking
+          </b-link-stub>
+        </b-col-stub>
+      </b-row-stub>
+       
+      <b-row-stub
+        tag="div"
+      >
+        <b-col-stub
+          tag="div"
+        >
+          <h2
+            class="bg-sal-orange"
+          >
+            
+            sjal.barebow sjal.ranking
+          
+          </h2>
+           
+          <statisticsranking-stub
+            dateend="2020-09-01"
+            datestart="2019-10-01"
+            division="barebow"
+            limit="5"
+            limited="true"
+          />
+           
+          <b-link-stub
+            event="click"
+            routertag="a"
+            target="_self"
+            to="[object Object]"
+          >
+            sjal.full_ranking
+          </b-link-stub>
+        </b-col-stub>
+      </b-row-stub>
+    </b-col-stub>
+  </b-row-stub>
 </div>
 `;

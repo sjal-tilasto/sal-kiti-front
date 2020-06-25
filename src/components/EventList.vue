@@ -1,9 +1,6 @@
 <template>
   <div>
     <b-row>
-      <b-col>
-        <h1>{{ $tc("event.event", 2) }}</h1>
-      </b-col>
       <b-col v-if="$store.state.editMode && createPermission">
         <b-button
           :to="{ name: 'event-create' }"
@@ -30,7 +27,7 @@
           :total-rows="events.count"
           :per-page="events.limit"
           align="right"
-          v-if="events.count > events.limit"
+          v-if="events.count > events.limit && !limited"
         >
         </b-pagination>
         <b-table
@@ -81,12 +78,21 @@ import errorParser from "../utils/ErrorParser";
 
 export default {
   name: "EventList",
+  props: {
+    limit: {
+      type: Number,
+      default: 25
+    },
+    limited: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       currentPage: 1,
       errors: {},
       events: [],
-      limit: 25,
       loading: true,
       selectMode: "single"
     };
@@ -110,17 +116,20 @@ export default {
      * @returns {array} fields list
      */
     listFields: function() {
-      return [
+      let fields = [
         { key: "date", label: this.$t("date") },
         { key: "name", label: this.$t("name") },
-        { key: "organization_info.abbreviation", label: this.$t("organizer") },
-        {
+        { key: "organization_info.abbreviation", label: this.$t("organizer") }
+      ];
+      if (!this.limited) {
+        fields.push({
           key: "location",
           label: this.$t("location"),
           thClass: "d-none d-md-table-cell",
           tdClass: "d-none d-md-table-cell"
-        }
-      ];
+        });
+      }
+      return fields;
     }
   },
   watch: {

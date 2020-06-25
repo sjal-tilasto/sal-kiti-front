@@ -170,6 +170,9 @@ export default {
           this.sports.forEach(obj => {
             obj.state = false;
           });
+          if (this.sports.length === 1) {
+            this.selectSport(this.sports[0].id);
+          }
         })
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));

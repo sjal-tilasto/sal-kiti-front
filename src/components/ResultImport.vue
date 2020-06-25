@@ -35,8 +35,8 @@
             <b-form-radio v-model="form.fileType" name="filetype" value="excel"
               >Excel / CSV</b-form-radio
             >
-            <b-form-radio v-model="form.fileType" name="filetype" value="sius"
-              >SIUS CSV</b-form-radio
+            <b-form-radio v-model="form.fileType" name="filetype" value="ianseo"
+              >Ianseo ASC</b-form-radio
             >
           </b-form-group>
           <b-form-group
@@ -127,6 +127,7 @@ import XLSX from "xlsx";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
 import Papa from "papaparse";
+import parseIanseoData from "../utils/ParseIanseoData";
 import parseSiusData from "../utils/ParseSiusData";
 
 export default {
@@ -398,6 +399,17 @@ export default {
           resultData = await this.parseCSV(file);
           if (resultData && resultData.data && resultData.data.length > 1) {
             this.results = parseSiusData(resultData.data);
+            this.parseResults();
+          }
+        } else if (
+          file &&
+          file.type &&
+          this.form.fileType === "ianseo" &&
+          file.type === "text/plain"
+        ) {
+          resultData = await this.parseCSV(file);
+          if (resultData && resultData.data && resultData.data.length > 1) {
+            this.results = parseIanseoData(resultData.data);
             this.parseResults();
           }
         } else {
@@ -728,6 +740,13 @@ export default {
         let organization = this.organizations.filter(
           org => org.abbreviation === this.results[i].organization
         );
+        if (organization.length === 0) {
+          organization = this.organizations.filter(
+            org =>
+              org.abbreviation.toLowerCase() ===
+              this.results[i].organization.toLowerCase()
+          );
+        }
         if (organization.length === 0) {
           organization = this.organizations.filter(
             org => org.name === this.results[i].organization

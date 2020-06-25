@@ -128,6 +128,14 @@ export default [
       )
   },
   {
+    path: "/statistics/ranking/",
+    name: "statistics-ranking",
+    component: () =>
+      import(
+        /* webpackChunkName: "statistics-ranking" */ "./views/StatisticsRanking.vue"
+      )
+  },
+  {
     path: "/login",
     beforeEnter(to, from) {
       location.href =
