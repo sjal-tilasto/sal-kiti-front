@@ -18,11 +18,15 @@ export default function(value, type, order = null) {
   const result = value.filter(
     v => v.type && v.type.abbreviation === type && v.order === order
   )[0];
-  if (result)
+  if (result) {
+    if (result.code) {
+      return result.code;
+    }
     return numberFormatter(
       Number(result.value).toFixed(result.decimals),
       "",
       ","
     );
+  }
   return "";
 }

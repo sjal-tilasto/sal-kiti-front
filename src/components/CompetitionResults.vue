@@ -94,9 +94,14 @@
                   }}
                 </div>
               </template>
-              <template v-slot:cell(showcat)="data"
-                >({{ data.item.showcat }})</template
-              >
+              <template v-slot:cell(showcat)="data">
+                <div v-if="data.item.showcat">
+                  {{ data.item.showcat }}
+                </div>
+                <div v-else>
+                  {{ data.item.category }}
+                </div>
+              </template>
               <template v-slot:cell(athlete)="data">
                 <div v-if="data.item.athlete">
                   {{ data.item.athlete.first_name }}
@@ -454,7 +459,10 @@ export default {
         return !field.key.includes("-") || keys.has(field.key);
       });
       if (this.showCategory && results.filter(r => "showcat" in r).length > 0) {
-        fields.splice(1, 0, { key: "showcat", label: "" });
+        fields.splice(1, 0, {
+          key: "showcat",
+          label: this.$tc("result.category", 1)
+        });
       }
       return fields;
     },
