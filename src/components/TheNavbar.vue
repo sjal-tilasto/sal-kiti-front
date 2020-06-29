@@ -16,7 +16,7 @@
           <b-nav-item to="/statistics">{{
             $tc("nav.statistic", 2)
           }}</b-nav-item>
-          <b-nav-item to="/records">{{ $tc("nav.record", 2) }}</b-nav-item>
+          <b-nav-item to="/divari">{{ $t("sjal.divari.divari") }}</b-nav-item>
           <b-nav-item to="/athlete/search">{{
             $tc("nav.athlete", 2)
           }}</b-nav-item>

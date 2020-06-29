@@ -10,28 +10,28 @@
     <b-row>
       <b-col>
         <b-button
-          v-for="d in divisions"
-          v-bind:key="d.key"
-          variant="light"
-          class="btn-orange space-right space-down"
-          v-on:click="setDivision(d.key)"
-          :pressed="d.key === division"
-        >
-          {{ d.label }}
-        </b-button>
-      </b-col>
-    </b-row>
-    <b-row v-if="division">
-      <b-col>
-        <b-button
           v-for="y in year_range"
           v-bind:key="y"
           variant="light"
           class="btn-orange space-right space-down"
-          v-on:click="setYear(y)"
+          v-on:click="selectYear(y)"
           :pressed="y === year"
         >
           {{ y }} - {{ y + 1 }}
+        </b-button>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <b-button
+          v-for="d in divisions"
+          v-bind:key="d.key"
+          variant="light"
+          class="btn-orange space-right space-down"
+          v-on:click="selectDivision(d.key)"
+          :pressed="d.key === division"
+        >
+          {{ d.label }}
         </b-button>
       </b-col>
     </b-row>
@@ -147,7 +147,7 @@ export default {
     }
   },
   methods: {
-    setDivision(division) {
+    selectDivision(division) {
       this.division = division;
       if (this.year) {
         this.$router.push({
@@ -156,7 +156,7 @@ export default {
         });
       }
     },
-    setYear(year) {
+    selectYear(year) {
       this.year = year;
       this.dateStart = this.year.toString() + "-10-01";
       this.dateEnd = (this.year + 1).toString() + "-09-01";

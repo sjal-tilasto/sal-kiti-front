@@ -27,6 +27,13 @@
         >
           {{ $t("sjal.ranking") }}
         </b-button>
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          :to="{ name: 'divari' }"
+        >
+          {{ $t("sjal.divari.divari") }}
+        </b-button>
       </b-col>
     </b-row>
     <b-form @submit="onSubmit" @reset="onReset" v-if="sport">

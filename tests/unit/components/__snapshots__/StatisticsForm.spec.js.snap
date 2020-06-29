@@ -46,6 +46,21 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
         sjal.ranking
       
       </b-button-stub>
+       
+      <b-button-stub
+        class="btn-orange space-right space-down"
+        event="click"
+        routertag="a"
+        tag="button"
+        target="_self"
+        to="[object Object]"
+        type="button"
+        variant="light"
+      >
+        
+        sjal.divari.divari
+      
+      </b-button-stub>
     </b-col-stub>
   </b-row-stub>
    
