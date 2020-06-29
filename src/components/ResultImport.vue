@@ -808,12 +808,16 @@ export default {
               keys[key].substring(this.resultTypes[r].abbreviation.length + 1)
             );
             partialResult.type = this.resultTypes[r].id;
+            let partialValue = null;
             if (typeof result[keys[key]] == "string") {
-              partialResult.value = parseFloat(
-                result[keys[key]].replace(",", ".")
-              );
+              partialValue = result[keys[key]].replace(",", ".");
             } else {
-              partialResult.value = parseFloat(result[keys[key]]);
+              partialValue = result[keys[key]];
+            }
+            if (isNaN(partialValue)) {
+              partialResult.code = partialValue;
+            } else {
+              partialResult.value = parseFloat(partialValue);
             }
             if (String(result[keys[key]]).includes(".")) {
               partialResult.decimals =
