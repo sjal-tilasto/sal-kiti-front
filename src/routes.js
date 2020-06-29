@@ -136,6 +136,32 @@ export default [
       )
   },
   {
+    path: "/divari/",
+    name: "divari",
+    component: () =>
+      import(/* webpackChunkName: "divari" */ "./views/Divari.vue")
+  },
+  {
+    path: "/divari/competition/add/",
+    name: "divari-competition-add",
+    component: () =>
+      import(
+        /* webpackChunkName: "divari" */ "./views/DivariCompetitionManage.vue"
+      )
+  },
+  {
+    path: "/divari/competition/:competition_id",
+    name: "divari-competition",
+    component: () =>
+      import(/* webpackChunkName: "divari" */ "./views/DivariCompetition.vue")
+  },
+  {
+    path: "/divari/import/:competition_id",
+    name: "divari-import",
+    component: () =>
+      import(/* webpackChunkName: "divari" */ "./views/DivariImport.vue")
+  },
+  {
     path: "/login",
     beforeEnter(to, from) {
       location.href =

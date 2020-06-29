@@ -290,7 +290,16 @@
     "recurve": "Tähtäinjousi",
     "barebow": "Vaistojousi",
     "longbow": "Pitkäjousi",
-    "ranking_competitions": "Kilpailuita"
+    "ranking_competitions": "Kilpailuita",
+    "divari": {
+      "divari": "Divari",
+      "team": "Joukkue",
+      "division": "Divisioona",
+      "bow_type": "Jousityyppi",
+      "target_type": "Taulun koko",
+      "competition_add": "Lisää kilpailu",
+      "competition_exists": "Tässä kuussa on jo kilpailu."
+    }
   },
   "date": "Päivämäärä",
   "name": "Nimi",

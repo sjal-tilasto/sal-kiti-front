@@ -290,7 +290,16 @@
     "recurve": "Recurve",
     "barebow": "Barebow",
     "longbow": "Longbow",
-    "ranking_competitions": "Competitions"
+    "ranking_competitions": "Competitions",
+    "divari": {
+      "divari": "Divari",
+      "team": "Team",
+      "division": "Divsion",
+      "bow_type": "Bow type",
+      "target_type": "Target size",
+      "competition_add": "Add a competition",
+      "competition_exists": "This month already has a competition."
+    }
   },
   "date": "Date",
   "name": "Name",
