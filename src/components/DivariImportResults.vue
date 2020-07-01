@@ -128,7 +128,8 @@ export default {
       },
       results: [],
       reader: null,
-      result: {}
+      result: {},
+      seasons: []
     };
   },
   computed: {
@@ -152,8 +153,26 @@ export default {
   mounted() {
     this.getCompetition(this.$route.params.competition_id);
     this.getResults(this.$route.params.competition_id);
+    this.getSeasons();
   },
   methods: {
+    /**
+     * Calculate season results
+     *
+     * @returns {Promise<void>}
+     */
+    calculateSeasonResults(season_id) {
+      let data = {
+        season: season_id
+      };
+      HTTP.post("divari/calculate", data, this.config)
+        .then(response => {
+          return response.data.results;
+        })
+        .catch(error => {
+          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+        });
+    },
     /**
      * Clean variables between results
      */
@@ -220,6 +239,20 @@ export default {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));
+    },
+    /**
+     * Fetch seasons from API
+     *
+     * @returns {Promise<void>}
+     */
+    async getSeasons() {
+      HTTP.get("divari/seasons/?ordering=-date_start")
+        .then(response => {
+          this.seasons = response.data.results;
+        })
+        .catch(error => {
+          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+        });
     },
     /**
      * Check submitted file type and trigger correct parser
@@ -372,6 +405,14 @@ export default {
       }
       this.debugResults = this.results;
       await this.getResults(this.$route.params.competition_id);
+      let competitionDate = Date.parse(this.competition.date);
+      this.seasons.forEach(season => {
+        let seasonStart = Date.parse(season.date_start);
+        let seasonEnd = Date.parse(season.date_end);
+        if (competitionDate >= seasonStart && competitionDate <= seasonEnd) {
+          this.calculateSeasonResults(season.id);
+        }
+      });
       this.finished = true;
     },
     /**
