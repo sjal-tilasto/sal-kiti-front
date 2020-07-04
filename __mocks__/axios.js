@@ -89,6 +89,9 @@ const events = {
         abbreviation: "Village",
         name: "Village Athletes"
       },
+      web_page: "https://test.example.org/",
+      invitation: "https://test.example.org/invitationpage",
+      categories: "International categories only",
       public: true,
       locked: true
     }

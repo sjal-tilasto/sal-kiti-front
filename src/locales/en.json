@@ -41,27 +41,31 @@
   },
   "event": {
     "event": "Event | Events",
-    "add": "Add event",
+    "add": "Apply event",
     "edit": "Edit event",
     "info": "Event Information",
     "error": "Could not load event information",
     "limit": "Limit",
     "description_help": "Public description for the event.",
-    "optional_dates": "Optional dates.",
+    "optional_dates": "Optional dates",
     "optional_dates_help": "Optional dates for the event. Only available for the organizers and SJAL staff.",
     "categories": "Categories",
     "categories_help": "Specify categories unless all official categories are allowed.",
-    "web_page": "Web page URL",
-    "web_page_help": "Public web page for the event.",
-    "invitation": "Invitation URL",
-    "invitation_help": "Public invitation for the event.",
+    "web_page": "Web page",
+    "web_page_help": "Public web page URL for the event.",
+    "invitation": "Invitation",
+    "invitation_help": "Public invitation URL for the event.",
     "safety_plan": "Safety plan",
     "safety_plan_help": "Is there a safety plan for the event?",
     "notes": "Other notes",
     "notes_help": "Other notes. Only available for the organizers and SAL staff.",
     "toc_agreement": "TOC agreement",
     "toc_agreement_help": "Organizer agrees to follow competition rules.",
-    "toc_agreement_url": "https://www.sjal.fi/sjal/materiaalipankki/saannot/"
+    "toc_agreement_url": "https://www.sjal.fi/sjal/materiaalipankki/saannot/",
+    "past": "Past",
+    "future": "Future",
+    "applied": "Applied",
+    "approved": "Approved"
   },
   "contact": {
     "contact": "Contact | Contacts",
@@ -95,7 +99,8 @@
     "hide": "Hide",
     "hidden": "Hidden",
     "public": "Public",
-    "trial": "Trial competition"
+    "trial": "Trial competition",
+    "include_future": "Include future competitions"
   },
   "record": {
     "record": "Record | Records",
@@ -147,7 +152,8 @@
     "search": "Search",
     "error": "Could not load search results",
     "count": "Count",
-    "placeholder": "Name or sport ID",
+    "placeholder_athlete": "Name or sport ID",
+    "placeholder_competition": "Name or organizer",
     "athlete": "Search Athlete",
     "max_results": "Number of results",
     "competition": "Search Competitions"
@@ -328,5 +334,7 @@
   "personal": "Personal",
   "date_of_birth": "Date of birth",
   "organization": "Organization",
-  "link": "link"
+  "link": "link",
+  "keyword": "Keyword | Keywords",
+  "required": "Required"
 }

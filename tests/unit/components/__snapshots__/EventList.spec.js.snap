@@ -24,6 +24,38 @@ exports[`EventList.vue renders event list 1`] = `
     <div
       class="col"
     >
+      <button
+        aria-pressed="true"
+        autocomplete="off"
+        class="btn btn-orange space-right space-down btn-light active"
+        type="button"
+      >
+        
+        event.past
+      
+      </button>
+       
+      <button
+        aria-pressed="false"
+        autocomplete="off"
+        class="btn btn-orange space-right space-down btn-light"
+        type="button"
+      >
+        
+        event.future
+      
+      </button>
+       
+      <!---->
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
       <!---->
        
       <table
@@ -83,7 +115,7 @@ exports[`EventList.vue renders event list 1`] = `
         >
           <!---->
           <tr
-            class=""
+            class="table-warning"
             role="row"
             tabindex="0"
           >
@@ -132,7 +164,7 @@ exports[`EventList.vue renders event list 1`] = `
             </td>
           </tr>
           <tr
-            class=""
+            class="table-warning"
             role="row"
             tabindex="0"
           >

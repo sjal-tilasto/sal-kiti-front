@@ -1,6 +1,6 @@
 {
   "nav": {
-    "title": "Tilastot",
+    "title": "Tilasto",
     "event": "Tapahtuma | Tapahtumat",
     "competition": "Kilpailu | Kilpailut",
     "statistic": "Tilasto | Tilastot",
@@ -40,7 +40,7 @@
   },
   "event": {
     "event": "Tapahtuma | Tapahtumat",
-    "add": "Lisää tapahtuma",
+    "add": "Hae tapahtumaa",
     "edit": "Muokkaa tapahtumaa",
     "info": "Tapahtuman tiedot",
     "error": "Virhe haettaessa tapahtuman tietoja",
@@ -50,9 +50,9 @@
     "optional_dates_help": "Vaihtoehtoiset päivät tapahtumalle. Näkyvät vain järjestäjille ja liiton henkilökunnalle.",
     "categories": "Sarjat",
     "categories_help": "Anna kilpailusarjat elleivät kaikki viralliset sarjat ole hyväksyttyjä.",
-    "web_page": "Nettisivujen osoite",
+    "web_page": "Nettisivut",
     "web_page_help": "Julkisten nettisivujen osoite tapahtumalle.",
-    "invitation": "Kutsun osoite",
+    "invitation": "Kilpailukutsu",
     "invitation_help": "Julkisen kilpailukutsun osoite.",
     "safety_plan": "Turvallisuussuunnitelma",
     "safety_plan_help": "Onko tapahtumalle tehty turvallisuussuunnitelma?",
@@ -60,7 +60,11 @@
     "notes_help": "Näkyy vain järjestäjille ja liiton henkilökunnalle.",
     "toc_agreement": "Ehtojen hyväksyminen",
     "toc_agreement_help": "Järjestäjä lupaa noudattaa liiton kilpailusääntöjä.",
-    "toc_agreement_url": "https://www.sjal.fi/sjal/materiaalipankki/saannot/"
+    "toc_agreement_url": "https://www.sjal.fi/sjal/materiaalipankki/saannot/",
+    "past": "Menneet",
+    "future": "Tulevat",
+    "applied": "Haetut",
+    "approved": "Hyväksytty"
   },
   "contact": {
     "contact": "Yhteystieto | Yhteystiedot",
@@ -94,7 +98,8 @@
     "hide": "Piilota",
     "hidden": "Piilotettu",
     "public": "Julkinen",
-    "trial": "Näyttökilpailu"
+    "trial": "Näyttökilpailu",
+    "include_future": "Sisällytä tulevat kilpailut"
   },
   "record": {
     "record": "Ennätys | Ennätykset",
@@ -146,7 +151,8 @@
     "search": "Haku",
     "error": "Virhe haettaessa urheilijoita",
     "count": "Määrä",
-    "placeholder": "Nimi tai sportti-ID",
+    "placeholder_athlete": "Nimi tai sportti-ID",
+    "placeholder_competition": "Nimi tai järjestäjä",
     "athlete": "Hae urheilijaa",
     "max_results": "Tulosten määrä",
     "competition": "Hae kilpailuita"
@@ -328,5 +334,7 @@
   "personal": "Yksilö",
   "date_of_birth": "Syntymäaika",
   "organization": "Seura",
-  "link": "linkki"
+  "link": "linkki",
+  "keyword": "Hakusana | Hakusanat",
+  "required": "Vaadittu"
 }

@@ -20,6 +20,38 @@
         </b-alert>
       </b-col>
     </b-row>
+    <b-row v-if="!limited">
+      <b-col>
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          v-on:click="selectListed('future')"
+          :pressed="!listFuture"
+          :key="'past' + listFuture"
+        >
+          {{ $tc("event.past", 2) }}
+        </b-button>
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          v-on:click="selectListed('future')"
+          :pressed="listFuture"
+          :key="'future' + listFuture"
+        >
+          {{ $tc("event.future", 2) }}
+        </b-button>
+        <b-button
+          v-if="$store.state.user.is_authenticated"
+          variant="light"
+          class="btn-orange space-right space-down"
+          v-on:click="selectListed('applied')"
+          :pressed="includeApplied"
+          :key="'applied' + includeApplied"
+        >
+          {{ $tc("event.applied", 2) }}
+        </b-button>
+      </b-col>
+    </b-row>
     <b-row>
       <b-col>
         <b-pagination
@@ -58,6 +90,14 @@
               </ul>
             </div>
           </template>
+          <template v-slot:cell(approved)="data">
+            <div v-if="data.item.approved">
+              {{ $t("yes") }}
+            </div>
+            <div v-else>
+              {{ $t("no") }}
+            </div>
+          </template>
         </b-table>
         <div v-show="loading">
           <b-spinner label="Loading..."></b-spinner>
@@ -86,6 +126,14 @@ export default {
     limited: {
       type: Boolean,
       default: false
+    },
+    applied: {
+      type: Boolean,
+      default: false
+    },
+    future: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -93,6 +141,8 @@ export default {
       currentPage: 1,
       errors: {},
       events: [],
+      includeApplied: this.applied,
+      listFuture: this.future,
       loading: true,
       selectMode: "single"
     };
@@ -129,6 +179,14 @@ export default {
           tdClass: "d-none d-md-table-cell"
         });
       }
+      if (this.includeApplied) {
+        fields.push({
+          key: "approved",
+          label: this.$t("event.approved"),
+          thClass: "d-none d-md-table-cell",
+          tdClass: "d-none d-md-table-cell"
+        });
+      }
       return fields;
     }
   },
@@ -157,7 +215,14 @@ export default {
       this.loading = true;
       let searchUrl = "events/?limit=" + this.limit;
       let today = new Date().toJSON().slice(0, 10);
-      searchUrl = searchUrl + "&until=" + today;
+      if (this.listFuture) {
+        searchUrl = searchUrl + "&start=" + today;
+      } else {
+        searchUrl = searchUrl + "&until=" + today;
+      }
+      if (!this.includeApplied) {
+        searchUrl = searchUrl + "&approved=true";
+      }
       if (this.currentPage) {
         if (
           !this.events.count ||
@@ -170,6 +235,11 @@ export default {
       HTTP.get(searchUrl)
         .then(response => {
           this.events = response.data || [];
+          this.events.results.forEach(event => {
+            if (!event.approved) {
+              event._rowVariant = "warning";
+            }
+          });
         })
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
@@ -206,6 +276,23 @@ export default {
         params: { event_id: item.id }
       });
       window.open(routeData.href, "_blank");
+    },
+    /**
+     * Opens event information in new window when row is clicked
+     *
+     * @param {object} item - event object
+     */
+    selectListed(item) {
+      if (item === "future") {
+        this.listFuture = !this.listFuture;
+      }
+      if (item === "applied") {
+        this.includeApplied = !this.includeApplied;
+        if (this.includeApplied) {
+          this.listFuture = true;
+        }
+      }
+      this.getEvents();
     }
   }
 };
