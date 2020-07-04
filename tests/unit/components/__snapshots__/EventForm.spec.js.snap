@@ -228,6 +228,8 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-checkbox-stub
             id="input-toc_agreement"
+            name="toc-checkbox"
+            required="true"
           />
         </b-form-group-stub>
          

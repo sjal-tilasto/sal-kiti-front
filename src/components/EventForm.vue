@@ -170,6 +170,8 @@
             <b-form-checkbox
               id="input-toc_agreement"
               v-model="form.toc_agreement"
+              name="toc-checkbox"
+              required
             >
             </b-form-checkbox>
           </b-form-group>

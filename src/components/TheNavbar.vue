@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" type="light" fixed="top">
       <b-navbar-brand to="/">
         <img class="logo-img" src="../assets/sjal_logo.png" alt="SAL" />
-        {{ $tc("nav.title") }}
+        {{ $t("nav.title") }}
       </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
