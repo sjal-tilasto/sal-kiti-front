@@ -655,7 +655,7 @@ export default {
      * Modify Excel headers to technical versions
      *
      * @param worksheet
-     * @returns headers
+     * @returns array headers
      */
     parseExcelGetHeaders(worksheet) {
       let range = XLSX.utils.decode_range(worksheet["!ref"]);
@@ -664,7 +664,17 @@ export default {
         let addr = XLSX.utils.encode_cell({ r: range.s.r, c: C });
         let cell = worksheet[addr];
         if (!cell) continue;
-        formattedNames.push(cell.v.replace(/\s/g, "_").toLowerCase());
+        let header = cell.v;
+        if (typeof header !== "string") {
+          header = header.toString();
+        }
+        formattedNames.push(
+          header
+            .split("|")[0]
+            .trim()
+            .replace(/\s/g, "_")
+            .toLowerCase()
+        );
       }
       let headers = [];
       let resultTypes = [];
