@@ -39,6 +39,28 @@
           <dd>{{ event.description }}</dd>
         </dl>
       </b-col>
+      <b-col cols="12" v-if="event.categories">
+        <dl>
+          <dt>{{ $t("event.categories") }}</dt>
+          <dd>{{ event.categories }}</dd>
+        </dl>
+      </b-col>
+      <b-col cols="12" md="6" v-if="event.web_page">
+        <dl>
+          <dt>{{ $t("event.web_page") }}</dt>
+          <dd>
+            <a :href="event.web_page">{{ event.web_page }}</a>
+          </dd>
+        </dl>
+      </b-col>
+      <b-col cols="12" md="6" v-if="event.invitation">
+        <dl>
+          <dt>{{ $t("event.invitation") }}</dt>
+          <dd>
+            <a :href="event.invitation">{{ event.invitation }}</a>
+          </dd>
+        </dl>
+      </b-col>
       <b-col cols="6" md="3">
         <dl>
           <dt>{{ $t("date") }}</dt>
@@ -85,6 +107,33 @@
               v-if="$store.state.editMode"
             >
               {{ $t("competition.lock") }}
+            </b-button>
+          </dd>
+        </dl>
+      </b-col>
+      <b-col cols="6" md="3" v-if="$store.state.user.is_staff">
+        <dl>
+          <dt>{{ $t("event.approved") }}</dt>
+          <dd v-if="event.approved">
+            {{ $t("yes") }}
+            <b-button
+              size="sm"
+              variant="outline-success"
+              v-on:click="toggleApprovedStatus()"
+              v-if="$store.state.editMode"
+            >
+              {{ $t("change") }}
+            </b-button>
+          </dd>
+          <dd v-if="!event.approved">
+            {{ $t("no") }}
+            <b-button
+              size="sm"
+              variant="outline-danger"
+              v-on:click="toggleApprovedStatus()"
+              v-if="$store.state.editMode"
+            >
+              {{ $t("change") }}
             </b-button>
           </dd>
         </dl>
@@ -180,6 +229,25 @@ export default {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));
+    },
+    /**
+     * Set event approved status for event and competitions (API patch)
+     *
+     * @returns {Promise<void>}
+     */
+    toggleApprovedStatus: async function() {
+      this.$set(this.errors, "main", null);
+      await HTTP.patch(
+        "events/" + this.event.id + "/",
+        { approved: !this.event.approved },
+        this.config
+      )
+        .then(response => {
+          this.event.approved = response.data.approved;
+        })
+        .catch(error => {
+          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+        });
     },
     /**
      * Set event lock status (API patch)

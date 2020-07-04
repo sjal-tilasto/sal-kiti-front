@@ -58,6 +58,12 @@ exports[`EventInformation.vue renders event information 1`] = `
       </dl>
     </b-col-stub>
      
+    <!---->
+     
+    <!---->
+     
+    <!---->
+     
     <b-col-stub
       cols="6"
       md="3"
@@ -107,6 +113,8 @@ exports[`EventInformation.vue renders event information 1`] = `
         </dd>
       </dl>
     </b-col-stub>
+     
+    <!---->
      
     <!---->
      
@@ -173,6 +181,12 @@ exports[`EventInformation.vue show management options for organization user 1`] 
       </dl>
     </b-col-stub>
      
+    <!---->
+     
+    <!---->
+     
+    <!---->
+     
     <b-col-stub
       cols="6"
       md="3"
@@ -222,6 +236,8 @@ exports[`EventInformation.vue show management options for organization user 1`] 
         </dd>
       </dl>
     </b-col-stub>
+     
+    <!---->
      
     <!---->
      
@@ -319,6 +335,12 @@ exports[`EventInformation.vue show management options for staff 1`] = `
       </dl>
     </b-col-stub>
      
+    <!---->
+     
+    <!---->
+     
+    <!---->
+     
     <b-col-stub
       cols="6"
       md="3"
@@ -396,6 +418,39 @@ exports[`EventInformation.vue show management options for staff 1`] = `
           >
             
             competition.lock
+          
+          </b-button-stub>
+        </dd>
+      </dl>
+    </b-col-stub>
+     
+    <b-col-stub
+      cols="6"
+      md="3"
+      tag="div"
+    >
+      <dl>
+        <dt>
+          event.approved
+        </dt>
+         
+        <!---->
+         
+        <dd>
+          
+          no
+          
+          <b-button-stub
+            event="click"
+            routertag="a"
+            size="sm"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="outline-danger"
+          >
+            
+            change
           
           </b-button-stub>
         </dd>
