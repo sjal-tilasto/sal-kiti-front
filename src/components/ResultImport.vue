@@ -409,7 +409,7 @@ export default {
         ) {
           resultData = await this.parseCSV(file);
           if (resultData && resultData.data && resultData.data.length > 1) {
-            this.results = parseIanseoData(resultData.data);
+            this.results = parseIanseoData(resultData.data, this.resultTypes);
             this.parseResults();
           }
         } else {
@@ -682,6 +682,9 @@ export default {
         resultTypes.push(resultType.abbreviation);
       });
       formattedNames.forEach(name => {
+        if (name.startsWith("elim-")) {
+          name = name.replace("elim-", "fin-");
+        }
         if (this.staticFields.includes(name)) {
           headers.push(name);
         } else if (name === "final_category") {
