@@ -19,6 +19,12 @@ export default {
     TheNavbar
   },
   mounted() {
+    if (localStorage.locale) {
+      this.$i18n.locale = localStorage.locale;
+    }
+    if (localStorage.editMode && localStorage.editMode === "on") {
+      this.$store.commit("toggleEditMode");
+    }
     this.$store.dispatch("userInfo");
   },
   created() {

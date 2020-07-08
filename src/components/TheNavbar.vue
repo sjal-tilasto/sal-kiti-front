@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" type="dark" fixed="top">
       <b-navbar-brand to="/">
         <img class="logo-img" src="../assets/logo.png" alt="SAL" />
-        {{ $tc("nav.title") }}
+        {{ $t("nav.title") }}
       </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -88,6 +88,11 @@ export default {
      */
     toggleEditMode() {
       this.$store.commit("toggleEditMode");
+      if (this.$store.state.editMode) {
+        localStorage.editMode = "on";
+      } else {
+        localStorage.editMode = "off";
+      }
     },
     /**
      * Set language
@@ -96,6 +101,7 @@ export default {
      */
     selectLang(lang) {
       this.$i18n.locale = lang;
+      localStorage.locale = lang;
     }
   }
 };
