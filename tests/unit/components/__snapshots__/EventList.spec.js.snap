@@ -5,14 +5,6 @@ exports[`EventList.vue renders event list 1`] = `
   <div
     class="row"
   >
-    <div
-      class="col"
-    >
-      <h1>
-        event.event
-      </h1>
-    </div>
-     
     <!---->
   </div>
    
@@ -23,6 +15,36 @@ exports[`EventList.vue renders event list 1`] = `
       class="col"
     >
       <!---->
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col"
+    >
+      <button
+        aria-pressed="true"
+        autocomplete="off"
+        class="btn btn-orange space-right space-down btn-light active"
+        type="button"
+      >
+        
+        event.past
+      
+      </button>
+       
+      <button
+        aria-pressed="false"
+        autocomplete="off"
+        class="btn btn-orange space-right space-down btn-light"
+        type="button"
+      >
+        
+        event.future
+      
+      </button>
     </div>
   </div>
    

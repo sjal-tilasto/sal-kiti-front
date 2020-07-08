@@ -35,6 +35,26 @@ exports[`EventForm.vue renders event form with even information 1`] = `
       <b-form-stub>
         <b-form-group-stub
           feedbackarialive="assertive"
+          id="input-group-organization"
+          label="organizer"
+          labelfor="input-organization"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-organization"
+            labelfield="label"
+            options="[object Object]"
+            optionsfield="options"
+            required="true"
+            selectsize="0"
+            textfield="name"
+            valuefield="id"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
           id="input-group-name"
           label="name"
           labelfor="input-name"
@@ -48,6 +68,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         </b-form-group-stub>
          
         <b-form-group-stub
+          description="event.description_help"
           feedbackarialive="assertive"
           id="input-group-description"
           label="description"
@@ -106,38 +127,50 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         </b-form-group-stub>
          
         <b-form-group-stub
+          description="event.web_page_help"
           feedbackarialive="assertive"
-          id="input-group-organization"
-          label="organizer"
-          labelfor="input-organization"
+          id="input-group-web_page"
+          label="event.web_page"
+          labelfor="input-web_page"
         >
-          <b-form-select-stub
-            disabledfield="disabled"
-            htmlfield="html"
-            id="input-organization"
-            labelfield="label"
-            options="[object Object]"
-            optionsfield="options"
-            required="true"
-            selectsize="0"
-            textfield="name"
-            valuefield="id"
+          <b-form-input-stub
+            debounce="0"
+            id="input-web_page"
+            type="text"
+            value=""
           />
         </b-form-group-stub>
          
-        <b-button-stub
-          class="btn-orange space-right"
-          event="click"
-          routertag="a"
-          tag="button"
-          target="_self"
-          type="submit"
-          variant="light"
+        <b-form-group-stub
+          description="event.invitation_help"
+          feedbackarialive="assertive"
+          id="input-group-invitation"
+          label="event.invitation"
+          labelfor="input-invitation"
         >
-          <section>
-            create
-          </section>
-        </b-button-stub>
+          <b-form-input-stub
+            debounce="0"
+            id="input-invitation"
+            type="text"
+            value=""
+          />
+        </b-form-group-stub>
+         
+        <div>
+          <b-button-stub
+            class="btn-orange space-right"
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="submit"
+            variant="light"
+          >
+            <section>
+              create
+            </section>
+          </b-button-stub>
+        </div>
          
         <br />
       </b-form-stub>

@@ -9,7 +9,7 @@
     "logout": "Log out",
     "change_language": "Change language",
     "edit_on": "Activate edit mode",
-    "edit_off": "Deactivate dit mode",
+    "edit_off": "Deactivate edit mode",
     "record": "Record | Records",
     "athlete": "Athlete | Athletes",
     "info": "Info | Info"
@@ -45,7 +45,13 @@
     "edit": "Edit event",
     "info": "Event Information",
     "error": "Could not load event information",
-    "limit": "Limit"
+    "limit": "Limit",
+    "web_page": "Web page",
+    "web_page_help": "Public web page URL for the event.",
+    "invitation": "Invitation",
+    "invitation_help": "Public invitation URL for the event.",
+    "past": "Past",
+    "future": "Future"
   },
   "competition": {
     "competition": "Competition | Competitions",
@@ -66,7 +72,8 @@
     "hide": "Hide",
     "hidden": "Hidden",
     "public": "Public",
-    "trial": "Trial competition"
+    "trial": "Trial competition",
+    "include_future": "Include future competitions"
   },
   "record": {
     "record": "Record | Records",
@@ -118,7 +125,8 @@
     "search": "Search",
     "error": "Could not load search results",
     "count": "Count",
-    "placeholder": "Name or sport ID",
+    "placeholder_athlete": "Name or sport ID",
+    "placeholder_competition": "Name or organizer",
     "athlete": "Search Athlete",
     "max_results": "Number of results",
     "competition": "Search Competitions"
@@ -280,5 +288,8 @@
   "gender": "Gender",
   "personal": "Personal",
   "date_of_birth": "Date of birth",
-  "organization": "Organization"
+  "organization": "Organization",
+  "link": "link",
+  "keyword": "Keyword | Keywords",
+  "required": "Required"
 }

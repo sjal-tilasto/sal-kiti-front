@@ -21,8 +21,8 @@
           <b-form-input
             type="text"
             class="search-field space-right"
-            :aria-label="$t('search.placeholder')"
-            :placeholder="$t('search.placeholder')"
+            :aria-label="$t('search.placeholder_athlete')"
+            :placeholder="$t('search.placeholder_athlete')"
             v-model.lazy="form.search"
           />
           <b-form-select

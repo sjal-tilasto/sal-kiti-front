@@ -16,7 +16,8 @@ const formData = {
   competitionLevel: [2],
   competitionType: [1, 2],
   date_start: "2019-06-08",
-  date_end: "2019-07-13"
+  date_end: "2019-07-13",
+  future: true
 };
 
 const $route = {

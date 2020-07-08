@@ -4,6 +4,20 @@ exports[`EventList.vue renders content 1`] = `
 <div
   class="home"
 >
-  <eventlist-stub />
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      tag="div"
+    >
+      <h1>
+        event.event
+      </h1>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <eventlist-stub
+    limit="25"
+  />
 </div>
 `;

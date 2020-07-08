@@ -1,9 +1,6 @@
 <template>
   <div>
     <b-row>
-      <b-col>
-        <h1>{{ $tc("event.event", 2) }}</h1>
-      </b-col>
       <b-col v-if="$store.state.editMode && createPermission">
         <b-button
           :to="{ name: 'event-create' }"
@@ -23,6 +20,28 @@
         </b-alert>
       </b-col>
     </b-row>
+    <b-row v-if="!limited">
+      <b-col>
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          v-on:click="selectListed('future')"
+          :pressed="!listFuture"
+          :key="'past' + listFuture"
+        >
+          {{ $tc("event.past", 2) }}
+        </b-button>
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          v-on:click="selectListed('future')"
+          :pressed="listFuture"
+          :key="'future' + listFuture"
+        >
+          {{ $tc("event.future", 2) }}
+        </b-button>
+      </b-col>
+    </b-row>
     <b-row>
       <b-col>
         <b-pagination
@@ -30,7 +49,7 @@
           :total-rows="events.count"
           :per-page="events.limit"
           align="right"
-          v-if="events.count > events.limit"
+          v-if="events.count > events.limit && !limited"
         >
         </b-pagination>
         <b-table
@@ -61,6 +80,14 @@
               </ul>
             </div>
           </template>
+          <template v-slot:cell(approved)="data">
+            <div v-if="data.item.approved">
+              {{ $t("yes") }}
+            </div>
+            <div v-else>
+              {{ $t("no") }}
+            </div>
+          </template>
         </b-table>
         <div v-show="loading">
           <b-spinner label="Loading..."></b-spinner>
@@ -81,12 +108,31 @@ import errorParser from "../utils/ErrorParser";
 
 export default {
   name: "EventList",
+  props: {
+    limit: {
+      type: Number,
+      default: 25
+    },
+    limited: {
+      type: Boolean,
+      default: false
+    },
+    applied: {
+      type: Boolean,
+      default: false
+    },
+    future: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       currentPage: 1,
       errors: {},
       events: [],
-      limit: 25,
+      includeApplied: this.applied,
+      listFuture: this.future,
       loading: true,
       selectMode: "single"
     };
@@ -110,17 +156,28 @@ export default {
      * @returns {array} fields list
      */
     listFields: function() {
-      return [
+      let fields = [
         { key: "date", label: this.$t("date") },
         { key: "name", label: this.$t("name") },
-        { key: "organization_info.abbreviation", label: this.$t("organizer") },
-        {
+        { key: "organization_info.abbreviation", label: this.$t("organizer") }
+      ];
+      if (!this.limited) {
+        fields.push({
           key: "location",
           label: this.$t("location"),
           thClass: "d-none d-md-table-cell",
           tdClass: "d-none d-md-table-cell"
-        }
-      ];
+        });
+      }
+      if (this.includeApplied) {
+        fields.push({
+          key: "approved",
+          label: this.$t("event.approved"),
+          thClass: "d-none d-md-table-cell",
+          tdClass: "d-none d-md-table-cell"
+        });
+      }
+      return fields;
     }
   },
   watch: {
@@ -147,8 +204,10 @@ export default {
       this.$set(this.errors, "main", null);
       this.loading = true;
       let searchUrl = "events/?limit=" + this.limit;
-      if (!this.createPermission) {
-        let today = new Date().toJSON().slice(0, 10);
+      let today = new Date().toJSON().slice(0, 10);
+      if (this.listFuture) {
+        searchUrl = searchUrl + "&start=" + today;
+      } else {
         searchUrl = searchUrl + "&until=" + today;
       }
       if (this.currentPage) {
@@ -199,6 +258,23 @@ export default {
         params: { event_id: item.id }
       });
       window.open(routeData.href, "_blank");
+    },
+    /**
+     * Opens event information in new window when row is clicked
+     *
+     * @param {object} item - event object
+     */
+    selectListed(item) {
+      if (item === "future") {
+        this.listFuture = !this.listFuture;
+      }
+      if (item === "applied") {
+        this.includeApplied = !this.includeApplied;
+        if (this.includeApplied) {
+          this.listFuture = true;
+        }
+      }
+      this.getEvents();
     }
   }
 };

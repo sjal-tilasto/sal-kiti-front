@@ -39,6 +39,22 @@
           <dd>{{ event.description }}</dd>
         </dl>
       </b-col>
+      <b-col cols="12" md="6" v-if="event.web_page">
+        <dl>
+          <dt>{{ $t("event.web_page") }}</dt>
+          <dd>
+            <a :href="event.web_page">{{ event.web_page }}</a>
+          </dd>
+        </dl>
+      </b-col>
+      <b-col cols="12" md="6" v-if="event.invitation">
+        <dl>
+          <dt>{{ $t("event.invitation") }}</dt>
+          <dd>
+            <a :href="event.invitation">{{ event.invitation }}</a>
+          </dd>
+        </dl>
+      </b-col>
       <b-col cols="6" md="3">
         <dl>
           <dt>{{ $t("date") }}</dt>

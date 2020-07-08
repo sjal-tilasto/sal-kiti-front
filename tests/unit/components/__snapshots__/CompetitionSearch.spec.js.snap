@@ -151,6 +151,44 @@ exports[`CompetitionSearch.vue renders competition search form 1`] = `
           />
         </b-form-group-stub>
       </b-col-stub>
+       
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-search"
+          label="keyword"
+          labelfor="input-search"
+        >
+          <b-form-input-stub
+            aria-label="search.placeholder_competition"
+            debounce="0"
+            id="input-search"
+            placeholder="search.placeholder_competition"
+            type="text"
+          />
+        </b-form-group-stub>
+      </b-col-stub>
+       
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-checkbox-stub
+          id="checkbox-approved"
+          name="checkbox-approved"
+        >
+          
+          competition.include_future
+        
+        </b-form-checkbox-stub>
+      </b-col-stub>
     </b-row-stub>
      
     <b-row-stub
@@ -221,7 +259,7 @@ exports[`CompetitionSearch.vue renders competition search form 1`] = `
         currentpage="1"
         emptyfilteredtext="There are no records matching your request"
         emptytext="There are no records to show"
-        fields="[object Object],[object Object],[object Object],[object Object],[object Object]"
+        fields="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
         filterdebounce="0"
         hover="true"
         items=""

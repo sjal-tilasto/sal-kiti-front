@@ -1,5 +1,10 @@
 <template>
   <div class="home">
+    <b-row>
+      <b-col>
+        <h1>{{ $tc("event.event", 2) }}</h1>
+      </b-col>
+    </b-row>
     <EventList />
   </div>
 </template>

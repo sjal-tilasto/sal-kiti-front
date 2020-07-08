@@ -19,6 +19,21 @@
       <b-col>
         <b-form @submit="onSubmit">
           <b-form-group
+            id="input-group-organization"
+            :label="$t('organizer')"
+            label-for="input-organization"
+          >
+            <b-form-select
+              id="input-organization"
+              v-model="form.organization"
+              :options="organizations"
+              textField="name"
+              valueField="id"
+              required
+            >
+            </b-form-select>
+          </b-form-group>
+          <b-form-group
             id="input-group-name"
             :label="$t('name')"
             label-for="input-name"
@@ -33,6 +48,7 @@
             id="input-group-description"
             :label="$t('description')"
             label-for="input-description"
+            :description="$t('event.description_help')"
           >
             <b-form-textarea
               id="input-description"
@@ -77,28 +93,33 @@
             ></b-form-input>
           </b-form-group>
           <b-form-group
-            id="input-group-organization"
-            :label="$t('organizer')"
-            label-for="input-organization"
+            id="input-group-web_page"
+            :label="$t('event.web_page')"
+            label-for="input-web_page"
+            :description="$t('event.web_page_help')"
           >
-            <b-form-select
-              id="input-organization"
-              v-model="form.organization"
-              :options="organizations"
-              textField="name"
-              valueField="id"
-              required
-            >
-            </b-form-select>
+            <b-form-input id="input-web_page" v-model="form.web_page">
+            </b-form-input>
           </b-form-group>
-          <b-button
-            type="submit"
-            variant="light"
-            class="btn-orange space-right"
+          <b-form-group
+            id="input-group-invitation"
+            :label="$t('event.invitation')"
+            label-for="input-invitation"
+            :description="$t('event.invitation_help')"
           >
-            <section v-if="edit">{{ $t("update") }}</section>
-            <section v-else>{{ $t("create") }}</section>
-          </b-button>
+            <b-form-input id="input-invitation" v-model="form.invitation">
+            </b-form-input>
+          </b-form-group>
+          <div>
+            <b-button
+              type="submit"
+              variant="light"
+              class="btn-orange space-right"
+            >
+              <section v-if="edit">{{ $t("update") }}</section>
+              <section v-else>{{ $t("create") }}</section>
+            </b-button>
+          </div>
           <br />
         </b-form>
       </b-col>
@@ -125,14 +146,17 @@ export default {
       },
       edit: false,
       errors: {},
-      event: {},
+      eventId: null,
       form: {
         date_end: null,
         date_start: null,
         location: null,
         name: null,
         description: "",
-        organization: null
+        organization: null,
+        web_page: "",
+        invitation: "",
+        toc_agreement: true
       },
       organizations: []
     };
@@ -142,6 +166,7 @@ export default {
     if (this.$route.params.event_id) {
       this.edit = true;
       this.getEvent(this.$route.params.event_id);
+      this.eventId = this.$route.params.event_id.toString();
     }
   },
   methods: {
@@ -152,7 +177,6 @@ export default {
      * @returns {Promise<void>}
      */
     async getEvent(id) {
-      this.event = {};
       HTTP.get("events/" + id + "/")
         .then(response => {
           this.form = response.data || {};

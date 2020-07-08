@@ -44,7 +44,13 @@
     "edit": "Muokkaa tapahtumaa",
     "info": "Tapahtuman tiedot",
     "error": "Virhe haettaessa tapahtuman tietoja",
-    "limit": "Rajaa"
+    "limit": "Rajaa",
+    "web_page": "Nettisivut",
+    "web_page_help": "Julkisten nettisivujen osoite tapahtumalle.",
+    "invitation": "Kilpailukutsu",
+    "invitation_help": "Julkisen kilpailukutsun osoite.",
+    "past": "Menneet",
+    "future": "Tulevat"
   },
   "competition": {
     "competition": "Kilpailu | Kilpailut",
@@ -65,7 +71,8 @@
     "hide": "Piilota",
     "hidden": "Piilotettu",
     "public": "Julkinen",
-    "trial": "Näyttökilpailu"
+    "trial": "Näyttökilpailu",
+    "include_future": "Sisällytä tulevat kilpailut"
   },
   "record": {
     "record": "Ennätys | Ennätykset",
@@ -117,7 +124,8 @@
     "search": "Haku",
     "error": "Virhe haettaessa urheilijoita",
     "count": "Määrä",
-    "placeholder": "Nimi tai sportti-ID",
+    "placeholder_athlete": "Nimi tai sportti-ID",
+    "placeholder_competition": "Nimi tai järjestäjä",
     "athlete": "Hae urheilijaa",
     "max_results": "Tulosten määrä",
     "competition": "Hae kilpailuita"
@@ -280,5 +288,8 @@
   "gender": "Sukupuoli",
   "personal": "Yksilö",
   "date_of_birth": "Syntymäaika",
-  "organization": "Seura"
+  "organization": "Seura",
+  "link": "linkki",
+  "keyword": "Hakusana | Hakusanat",
+  "required": "Vaadittu"
 }

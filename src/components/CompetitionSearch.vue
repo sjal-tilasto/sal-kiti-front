@@ -89,6 +89,29 @@
             </b-form-select>
           </b-form-group>
         </b-col>
+        <b-col cols="12" md="6" xl="4">
+          <b-form-group
+            id="input-group-search"
+            :label="$tc('keyword', 2)"
+            label-for="input-search"
+          >
+            <b-form-input
+              id="input-search"
+              v-model="form.search"
+              :aria-label="$t('search.placeholder_competition')"
+              :placeholder="$t('search.placeholder_competition')"
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+        <b-col cols="12" md="6" xl="4">
+          <b-form-checkbox
+            id="checkbox-approved"
+            v-model="form.future"
+            name="checkbox-approved"
+          >
+            {{ $t("competition.include_future") }}
+          </b-form-checkbox>
+        </b-col>
       </b-row>
       <b-row>
         <b-col cols="12" md="6" xl="4">
@@ -192,7 +215,9 @@ export default {
         competitionLevel: [],
         competitionType: [],
         date_end: null,
-        date_start: null
+        date_start: null,
+        search: null,
+        future: false
       },
       limit: 25,
       loading: false,
@@ -235,6 +260,12 @@ export default {
           label: this.$t("competition.level"),
           thClass: "d-md-none",
           tdClass: "d-md-none"
+        },
+        {
+          key: "organization_info.name",
+          label: this.$t("organizer"),
+          thClass: "d-none d-md-table-cell",
+          tdClass: "d-none d-md-table-cell"
         }
       ];
     }
@@ -274,6 +305,7 @@ export default {
       this.form.competitionType = [];
       this.form.date_end = null;
       this.form.date_start = null;
+      this.form.search = null;
     },
     /**
      * Fetch competition levels from API
@@ -407,6 +439,16 @@ export default {
         parameters += "&end=" + this.form.date_end;
         query.end = this.form.date_end;
       }
+      if (this.form.search != null) {
+        parameters += "&search=" + this.form.search;
+        query.search = this.form.search;
+      }
+      if (this.form.future) {
+        query.future = 1;
+      } else {
+        let today = new Date().toJSON().slice(0, 10);
+        parameters += "&until=" + today;
+      }
       this.searchParams = parameters;
       this.$router.push({ name: "competition-search", query: query }, () => {});
     },
@@ -442,6 +484,12 @@ export default {
           this.$route.query.end.substring(5, 7) +
           "-" +
           this.$route.query.end.substring(8, 10);
+      }
+      if (this.$route.query.search) {
+        this.form.search = this.$route.query.search;
+      }
+      if (this.$route.query.future) {
+        this.form.future = true;
       }
       if (this.$route.query.load) {
         this.onSubmit();

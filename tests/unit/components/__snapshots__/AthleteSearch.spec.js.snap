@@ -40,10 +40,10 @@ exports[`AthleteSearch.vue renders search form 1`] = `
         inline="true"
       >
         <b-form-input-stub
-          aria-label="search.placeholder"
+          aria-label="search.placeholder_athlete"
           class="search-field space-right"
           debounce="0"
-          placeholder="search.placeholder"
+          placeholder="search.placeholder_athlete"
           type="text"
           value=""
         />

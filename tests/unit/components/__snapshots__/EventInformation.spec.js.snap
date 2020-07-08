@@ -58,6 +58,10 @@ exports[`EventInformation.vue renders event information 1`] = `
       </dl>
     </b-col-stub>
      
+    <!---->
+     
+    <!---->
+     
     <b-col-stub
       cols="6"
       md="3"
@@ -172,6 +176,10 @@ exports[`EventInformation.vue show management options for organization user 1`] 
         </dd>
       </dl>
     </b-col-stub>
+     
+    <!---->
+     
+    <!---->
      
     <b-col-stub
       cols="6"
@@ -318,6 +326,10 @@ exports[`EventInformation.vue show management options for staff 1`] = `
         </dd>
       </dl>
     </b-col-stub>
+     
+    <!---->
+     
+    <!---->
      
     <b-col-stub
       cols="6"
