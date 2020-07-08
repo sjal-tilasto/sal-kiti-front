@@ -158,6 +158,7 @@ export default {
       result: {},
       staticFields: [
         "category",
+        "wtype",
         "info",
         "elimination_category",
         "sport_id",
@@ -583,9 +584,18 @@ export default {
      */
     parseCategory(i, keys) {
       if (keys.includes("category")) {
-        let category = this.categories.filter(
-          cat => cat.abbreviation === this.results[i].category
-        );
+        let category = [];
+        if (keys.includes("wtype")) {
+          category = this.categories.filter(
+            cat =>
+              cat.abbreviation ===
+              this.results[i].category + " (" + this.results[i].wtype + ")"
+          );
+        } else {
+          category = this.categories.filter(
+            cat => cat.abbreviation === this.results[i].category
+          );
+        }
         if (category.length === 1) {
           if (
             (this.result.team && !category[0].team) ||
