@@ -88,6 +88,11 @@ export default {
      */
     toggleEditMode() {
       this.$store.commit("toggleEditMode");
+      if (this.$store.state.editMode) {
+        localStorage.editMode = "on";
+      } else {
+        localStorage.editMode = "off";
+      }
     },
     /**
      * Set language
@@ -96,6 +101,7 @@ export default {
      */
     selectLang(lang) {
       this.$i18n.locale = lang;
+      localStorage.locale = lang;
     }
   }
 };
