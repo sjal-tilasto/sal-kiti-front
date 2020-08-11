@@ -155,7 +155,7 @@ const results = {
             abbreviation: "fin",
             name: "Final"
           },
-          value: "49.20"
+          value: "49.200"
         }
       ]
     },
@@ -167,7 +167,7 @@ const results = {
       competition: 1,
       organization: "ABC",
       category: "N",
-      result: "206.4",
+      result: "206.400",
       decimals: 1,
       position: 2,
       approved: false
@@ -186,7 +186,7 @@ const resultlist = {
       athlete: {
         id: 83,
         first_name: "Sara",
-        last_name: "Huff",
+        last_name: "Huffy",
         sport_id: 6340457,
         organization: 2
       },
@@ -208,9 +208,10 @@ const resultlist = {
       },
       first_name: "Sara",
       last_name: "Huff",
+      info: "Test result",
       organization: "Club",
       category: "N",
-      result: "200.6",
+      result: "200.600",
       decimals: 1,
       position: 1,
       position_pre: 2,
@@ -223,7 +224,7 @@ const resultlist = {
             abbreviation: "fin",
             name: "Final"
           },
-          value: "49.20"
+          value: "49.200"
         },
         {
           decimals: 1,
@@ -233,7 +234,7 @@ const resultlist = {
             abbreviation: "fsum",
             name: "Final sum"
           },
-          value: "442.20"
+          value: "442.200"
         },
         {
           decimals: 0,
@@ -243,7 +244,7 @@ const resultlist = {
             abbreviation: "kneel",
             name: "Kneeling"
           },
-          value: "99.00"
+          value: "99.000"
         },
         {
           decimals: 0,
@@ -253,7 +254,7 @@ const resultlist = {
             abbreviation: "ksum",
             name: "Kneeling sum"
           },
-          value: "381.00"
+          value: "381.000"
         },
         {
           decimals: 0,
@@ -264,7 +265,7 @@ const resultlist = {
             abbreviation: "prone",
             name: "Prone"
           },
-          value: "91.00"
+          value: "91.000"
         },
         {
           decimals: 0,
@@ -275,7 +276,16 @@ const resultlist = {
             abbreviation: "psum",
             name: "Prone sum"
           },
-          value: "369.00"
+          value: "369.000"
+        }
+      ],
+      record: [
+        {
+          id: 1,
+          level: "SE",
+          approved: false,
+          category: "N",
+          date_end: null
         }
       ],
       approved: false

@@ -678,8 +678,8 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     role="cell"
                   >
                     
-              
-              
+              Test result
+              (SE N)
               
                     <div>
                       
