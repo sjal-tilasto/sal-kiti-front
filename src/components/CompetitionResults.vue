@@ -99,8 +99,8 @@
               >
               <template v-slot:cell(athlete)="data">
                 <div v-if="data.item.athlete">
-                  {{ data.item.athlete.first_name }}
-                  {{ data.item.athlete.last_name }}
+                  {{ data.item.first_name }}
+                  {{ data.item.last_name }}
                 </div>
                 <div v-else>
                   {{ $t("team") }}: {{ data.item.last_name }}
