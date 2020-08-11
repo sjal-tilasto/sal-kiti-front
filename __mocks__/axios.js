@@ -136,6 +136,8 @@ const results = {
     {
       id: 1,
       athlete: 1,
+      first_name: "Master",
+      last_name: "Archery",
       competition: 1,
       organization: "Club",
       category: "N",
@@ -143,6 +145,7 @@ const results = {
       decimals: 1,
       position: 1,
       approved: false,
+      info: "Testing",
       partial: [
         {
           decimals: 1,
@@ -159,6 +162,8 @@ const results = {
     {
       id: 2,
       athlete: 2,
+      first_name: "Apprentice",
+      last_name: "Athlete",
       competition: 1,
       organization: "ABC",
       category: "N",
