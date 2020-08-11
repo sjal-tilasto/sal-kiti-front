@@ -181,8 +181,8 @@ exports[`CompetitionSearch.vue renders competition search form 1`] = `
         xl="4"
       >
         <b-form-checkbox-stub
-          id="checkbox-approved"
-          name="checkbox-approved"
+          id="checkbox-future"
+          name="checkbox-future"
         >
           
           competition.include_future
