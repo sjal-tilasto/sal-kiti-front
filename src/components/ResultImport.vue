@@ -592,6 +592,9 @@ export default {
      */
     parseCategory(i, keys) {
       if (keys.includes("category")) {
+        if (typeof this.results[i].category === "number") {
+          this.results[i].category = this.results[i].category.toString();
+        }
         let category = [];
         if (keys.includes("wtype")) {
           category = this.categories.filter(
