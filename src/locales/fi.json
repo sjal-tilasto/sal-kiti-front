@@ -211,6 +211,7 @@
     "type": "Tulostiedoston tyyppi",
     "default_category": "Oletus-sarja. Vaadittu jos tulostiedostossa ei ole Category-kenttää.",
     "debug_excel": "Lataa vianmääritystiedosto",
+    "dry_run": "Testaa tuontia löytääksesi virheet, mutta älä tallenna tuloksia.",
     "error": {
       "label": "Virhe",
       "result": "\"result\" puuttuu",

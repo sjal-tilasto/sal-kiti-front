@@ -54,6 +54,13 @@
             >
             </b-form-select>
           </b-form-group>
+          <b-form-checkbox
+            id="checkbox-dry-run"
+            v-model="form.dryRun"
+            name="checkbox-dry-run"
+          >
+            {{ $t("import.dry_run") }}
+          </b-form-checkbox>
           <b-button
             type="submit"
             variant="light"
@@ -148,7 +155,8 @@ export default {
       form: {
         file: null,
         fileType: "excel",
-        category: null
+        category: null,
+        dryRun: null
       },
       headers: [],
       results: [],
@@ -923,6 +931,9 @@ export default {
         this.results[i].warning = [];
         this.results[i].status = this.$t("import.status.pending");
         this.cleanVariables();
+        if (this.form.dryRun) {
+          this.result.dry_run = true;
+        }
         keys = Object.keys(this.results[i]);
         this.parseTeam(i, keys);
         this.parseCategory(i, keys);

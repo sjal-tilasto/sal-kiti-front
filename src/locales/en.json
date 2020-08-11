@@ -212,6 +212,7 @@
     "type": "Result file type",
     "default_category": "Default category. Required if the result file does not include Category-field.",
     "debug_excel": "Download debug file",
+    "dry_run": "Test import to find errors but do not save results.",
     "error": {
       "label": "Error",
       "result": "Missing \"result\"",

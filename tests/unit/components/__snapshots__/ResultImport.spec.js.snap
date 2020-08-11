@@ -38,19 +38,19 @@ exports[`ResultImport.vue parses results 1`] = `
           >
             <div
               class="custom-file b-form-file is-invalid"
-              id="__BVID__13__BV_file_outer_"
+              id="__BVID__14__BV_file_outer_"
             >
               <input
                 aria-required="true"
                 class="custom-file-input is-invalid"
-                id="__BVID__13"
+                id="__BVID__14"
                 required="required"
                 type="file"
               />
               <label
                 class="custom-file-label"
                 data-browse="Browse"
-                for="__BVID__13"
+                for="__BVID__14"
               >
                 import.file.select
               </label>
@@ -82,14 +82,14 @@ exports[`ResultImport.vue parses results 1`] = `
               <input
                 autocomplete="off"
                 class="custom-control-input"
-                id="__BVID__15"
+                id="__BVID__16"
                 name="filetype"
                 type="radio"
                 value="excel"
               />
               <label
                 class="custom-control-label"
-                for="__BVID__15"
+                for="__BVID__16"
               >
                 Excel / CSV
               </label>
@@ -101,14 +101,14 @@ exports[`ResultImport.vue parses results 1`] = `
               <input
                 autocomplete="off"
                 class="custom-control-input"
-                id="__BVID__16"
+                id="__BVID__17"
                 name="filetype"
                 type="radio"
                 value="sius"
               />
               <label
                 class="custom-control-label"
-                for="__BVID__16"
+                for="__BVID__17"
               >
                 SIUS CSV
               </label>
@@ -126,6 +126,27 @@ exports[`ResultImport.vue parses results 1`] = `
         </div>
          
         <!---->
+         
+        <div
+          class="custom-control custom-checkbox"
+        >
+          <input
+            autocomplete="off"
+            class="custom-control-input"
+            id="checkbox-dry-run"
+            name="checkbox-dry-run"
+            type="checkbox"
+            value="true"
+          />
+          <label
+            class="custom-control-label"
+            for="checkbox-dry-run"
+          >
+            
+          import.dry_run
+        
+          </label>
+        </div>
          
         <button
           class="btn btn-orange space-right btn-light"
@@ -151,7 +172,7 @@ exports[`ResultImport.vue parses results 1`] = `
         aria-busy="false"
         aria-colcount="8"
         class="table b-table table-sm"
-        id="__BVID__17"
+        id="__BVID__19"
         role="table"
       >
         <!---->
@@ -1558,6 +1579,15 @@ exports[`ResultImport.vue renders result import form 1`] = `
         </b-form-group-stub>
          
         <!---->
+         
+        <b-form-checkbox-stub
+          id="checkbox-dry-run"
+          name="checkbox-dry-run"
+        >
+          
+          import.dry_run
+        
+        </b-form-checkbox-stub>
          
         <b-button-stub
           class="btn-orange space-right"
