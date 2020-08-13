@@ -834,7 +834,7 @@ export default {
             }
             if (
               this.resultTypes[r].min_result &&
-              partialResult.value > this.resultTypes[r].min_result
+              partialResult.value < this.resultTypes[r].min_result
             ) {
               this.results[i].error.push(
                 this.$t("import.error.result_partial_min")
