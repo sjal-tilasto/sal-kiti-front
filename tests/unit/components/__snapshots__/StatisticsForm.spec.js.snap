@@ -309,7 +309,7 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
             optionsfield="options"
             selectsize="0"
             textfield="text"
-            value="1"
+            value="---"
             valuefield="value"
           >
             <option

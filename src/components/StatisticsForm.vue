@@ -267,7 +267,7 @@ export default {
         competitionType: [],
         date_end: null,
         date_start: null,
-        group_results: 1,
+        group_results: "---",
         max_results: 25,
         organization: [],
         trial: false,
