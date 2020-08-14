@@ -48,7 +48,7 @@ describe("EventForm.vue", () => {
       }
     });
     wrapper.setData({
-      form: formData
+      event: formData
     });
     await wrapper.vm.postEvent();
     expect($router.push).toHaveBeenCalledWith({
@@ -68,7 +68,7 @@ describe("EventForm.vue", () => {
         $router
       }
     });
-    wrapper.vm.$data.form.name = "Village Champs";
+    wrapper.vm.$data.event.name = "Village Champs";
     await wrapper.vm.putEvent(1);
     expect($router.push).toHaveBeenCalledWith({
       name: "event",

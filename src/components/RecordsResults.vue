@@ -16,7 +16,7 @@
     </b-row>
     <b-row>
       <b-col>
-        <div v-show="loading">
+        <div v-show="loadingRecords">
           <b-spinner label="Loading..."></b-spinner>
         </div>
         <div v-for="type in results" :key="type.id">
@@ -171,7 +171,7 @@ export default {
       },
       currentPage: 1,
       errors: {},
-      loading: false,
+      loadingRecords: false,
       results: [],
       selectMode: "single"
     };
@@ -283,9 +283,9 @@ export default {
      * @returns {Promise<void>}
      */
     async getRecords() {
+      this.loadingRecords = true;
       this.$set(this.errors, "main", null);
       let url = "recordlist/" + this.searchParameters;
-      this.loading = true;
       this.results = [];
       HTTP.get(url)
         .then(response => {
@@ -294,7 +294,7 @@ export default {
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
-        .finally(() => (this.loading = false));
+        .finally(() => (this.loadingRecords = false));
     },
     /**
      * Set approval status for the result (API patch)

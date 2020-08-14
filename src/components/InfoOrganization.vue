@@ -19,6 +19,11 @@
         <h2 class="bg-sal-orange">{{ $t("info.organization") }}</h2>
       </b-col>
     </b-row>
+    <b-row v-if="loadingOrganizations">
+      <b-col>
+        <b-spinner label="Loading..."></b-spinner>
+      </b-col>
+    </b-row>
     <b-row>
       <b-col v-if="organizationsInternal.length > 0">
         <h2 class="bg-sal-orange">
@@ -51,25 +56,32 @@
 /**
  * Displays organization information
  */
-import { HTTP } from "../api/BaseApi.js";
-import errorParser from "../utils/ErrorParser";
 import areaFilter from "../utils/AreaFilter";
+import apiGet from "@/mixins/ApiGet";
 
 export default {
   name: "InfoSport",
+  mixins: [apiGet],
   filters: {
     areaFilter
   },
   data() {
     return {
       areas: [],
+      loadingOrganizations: true,
       organizations: [],
-      organizationsExternal: [],
-      organizationsInternal: [],
       errors: {}
     };
   },
   computed: {
+    /**
+     * Filter external organizations
+     *
+     * @returns {array} organization list
+     */
+    organizationsExternal: function() {
+      return this.organizations.filter(org => org.external === true);
+    },
     /**
      * Sets fields list for the organization list
      *
@@ -81,6 +93,19 @@ export default {
         { key: "name", label: this.$t("name"), sortable: true }
       ];
     },
+    /**
+     * Filter internal organizations
+     *
+     * @returns {array} organization list
+     */
+    organizationsInternal: function() {
+      return this.organizations.filter(org => org.external === false);
+    },
+    /**
+     * Sets fields list for the organization list
+     *
+     * @returns {array} fields list
+     */
     organizationInternalFields: function() {
       return [
         { key: "abbreviation", label: this.$t("abbreviation"), sortable: true },
@@ -94,42 +119,6 @@ export default {
     this.getOrganizations();
     document.title =
       this.$t("title.organizations") + " | " + this.$t("title.prefix");
-  },
-  methods: {
-    /**
-     * Fetch areas from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getAreas() {
-      HTTP.get("areas/")
-        .then(response => {
-          this.areas = response.data.results || [];
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch organizations from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getOrganizations() {
-      HTTP.get("organizations/?historical=false")
-        .then(response => {
-          this.organizations = response.data.results || [];
-          this.organizationsExternal = this.organizations.filter(
-            org => org.external === true
-          );
-          this.organizationsInternal = this.organizations.filter(
-            org => org.external === false
-          );
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    }
   }
 };
 </script>

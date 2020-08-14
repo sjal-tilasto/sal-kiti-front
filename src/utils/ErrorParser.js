@@ -1,7 +1,7 @@
 /**
  * API call error parser
  */
-const valid_error_codes = [400, 403];
+const valid_error_codes = [400, 403, 404, 500];
 
 export default {
   /**
@@ -12,14 +12,18 @@ export default {
    */
   generic: function(error) {
     let errors = [];
-    if (error.response && valid_error_codes.includes(error.response.status)) {
+    if (error.response) {
       if (error.response.status === 403) {
         errors.push(this.$t("import.error.permission"));
-      } else {
+      } else if (error.response.status === 404) {
+        errors.push(this.$t("import.error.notfound"));
+      } else if (error.response.status === 500) {
+        errors.push(this.$t("import.error.server"));
+      } else if (error.response.status === 400) {
         errors.push(this.$t("import.error.invalid"));
+      } else {
+        errors.push(this.$t("import.error.unknown"));
       }
-    } else if (error.response) {
-      errors.push(this.$t("import.error.unknown"));
     } else {
       errors.push(this.$t("import.error.connection"));
     }

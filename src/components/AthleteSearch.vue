@@ -69,7 +69,7 @@
           hover
         >
         </b-table>
-        <div v-show="loading">
+        <div v-show="loadingAthletes">
           <b-spinner label="Loading..."></b-spinner>
         </div>
       </b-col>
@@ -96,7 +96,7 @@ export default {
         search: "",
         limit: 10
       },
-      loading: false,
+      loadingAthletes: false,
       results: [],
       searchParams: ""
     };
@@ -149,7 +149,7 @@ export default {
      */
     async getAthletes(searchParams) {
       this.$set(this.errors, "main", null);
-      this.loading = true;
+      this.loadingAthletes = true;
       if (this.currentPage) {
         if (
           !this.results.count ||
@@ -165,7 +165,7 @@ export default {
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
-        .finally(() => (this.loading = false));
+        .finally(() => (this.loadingAthletes = false));
     },
     /**
      * Routes to athlete information when row is clicked

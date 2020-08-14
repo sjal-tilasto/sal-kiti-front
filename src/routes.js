@@ -102,6 +102,12 @@ export default [
     component: () => import(/* webpackChunkName: "info" */ "./views/Info.vue")
   },
   {
+    path: "/info/competitiontype/:competition_type_id/",
+    name: "info-competitiontype",
+    component: () =>
+      import(/* webpackChunkName: "info" */ "./views/InfoCompetitionType.vue")
+  },
+  {
     path: "/info/organization/",
     name: "info-organization",
     component: () =>

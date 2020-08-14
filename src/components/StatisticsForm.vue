@@ -9,7 +9,12 @@
         </b-alert>
       </b-col>
     </b-row>
-    <b-row>
+    <b-row v-if="loadingSports">
+      <b-col>
+        <b-spinner label="Loading..."></b-spinner>
+      </b-col>
+    </b-row>
+    <b-row v-else>
       <b-col>
         <b-button
           v-for="sport in sports"
@@ -192,7 +197,19 @@
               v-model="form.group_results"
             >
               <option
-                v-for="i in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']"
+                v-for="i in [
+                  '---',
+                  '1',
+                  '2',
+                  '3',
+                  '4',
+                  '5',
+                  '6',
+                  '7',
+                  '8',
+                  '9',
+                  '10'
+                ]"
                 :key="i"
                 :value="i"
               >
@@ -234,11 +251,11 @@
  * Display statistic search form
  */
 import StatisticsResults from "@/components/StatisticsResults.vue";
-import { HTTP } from "../api/BaseApi.js";
-import errorParser from "../utils/ErrorParser";
+import apiGet from "../mixins/ApiGet";
 
 export default {
   name: "StatisticsForm",
+  mixins: [apiGet],
   components: {
     StatisticsResults
   },
@@ -255,18 +272,31 @@ export default {
         competitionType: [],
         date_end: null,
         date_start: null,
-        group_results: 1,
+        group_results: "---",
         max_results: 25,
         organization: [],
         trial: false,
         external: false
       },
+      loadingSports: false,
       organizations: [],
       searchParameters: null,
       showExtraFields: false,
       sport: null,
       sports: []
     };
+  },
+  watch: {
+    /**
+     * Select sport if only one is available
+     */
+    sports: {
+      handler: function() {
+        if (this.sports.length === 1) {
+          this.selectSport(this.sports[0].id, false);
+        }
+      }
+    }
   },
   mounted() {
     if (this.$route.query) {
@@ -289,81 +319,8 @@ export default {
       this.form.trial = false;
       this.form.external = false;
       this.form.max_results = 25;
-      this.form.group_results = 1;
+      this.form.group_results = "---";
       this.$router.push({ path: "statistics" });
-    },
-    /**
-     * Fetch categories for a sport from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getCategories() {
-      HTTP.get("categories/?sport=" + this.sport)
-        .then(response => {
-          this.categories = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch competition levels from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getCompetitionlevels() {
-      HTTP.get("competitionlevels/")
-        .then(response => {
-          this.competitionLevels = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch competition types for a sport from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getCompetitiontypes() {
-      HTTP.get("competitiontypes/?sport=" + this.sport)
-        .then(response => {
-          this.competitionTypes = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch organizations from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getOrganizations() {
-      HTTP.get("organizations/?external=false")
-        .then(response => {
-          this.organizations = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch sports from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getSports() {
-      HTTP.get("sports/")
-        .then(response => {
-          this.sports = response.data.results;
-          if (this.sports.length === 1) {
-            this.selectSport(this.sports[0].id, false);
-          }
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
     },
     /**
      * Trigger form reset when pressing reset button
@@ -414,7 +371,7 @@ export default {
       if (this.form.max_results != null) {
         parameters += "&limit=" + this.form.max_results;
       }
-      if (this.form.group_results > 1) {
+      if (this.form.group_results !== "---") {
         parameters += "&group_results=" + this.form.group_results;
         query.group_results = this.form.group_results;
       }
@@ -502,15 +459,15 @@ export default {
      * Select sport and trigger API calls
      *
      * @param {number} id
-     * @param {reset} reset - option to reset form, defaults to true
+     * @param {boolean} reset - option to reset form, defaults to true
      */
     selectSport(id, reset = true) {
       this.$set(this.errors, "main", null);
       this.sport = id;
-      this.getCategories();
-      this.getCompetitionlevels();
-      this.getCompetitiontypes();
-      this.getOrganizations();
+      this.getCategories(this.sport);
+      this.getCompetitionLevels();
+      this.getCompetitionTypes(this.sport);
+      this.getOrganizations(false, false);
       if (reset) {
         this.formReset();
       }

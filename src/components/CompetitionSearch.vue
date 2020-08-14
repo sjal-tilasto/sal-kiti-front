@@ -112,6 +112,7 @@
             {{ $t("competition.include_future") }}
           </b-form-checkbox>
         </b-col>
+      </b-row>
       <b-row>
         <b-col cols="12" md="6" xl="4">
           <b-button
@@ -183,7 +184,7 @@
             </div>
           </template>
         </b-table>
-        <div v-show="loading">
+        <div v-show="loadingCompetitions">
           <b-spinner label="Loading..."></b-spinner>
         </div>
       </b-col>
@@ -197,9 +198,11 @@
  */
 import { HTTP } from "../api/BaseApi.js";
 import errorParser from "../utils/ErrorParser";
+import apiGet from "../mixins/ApiGet";
 
 export default {
   name: "CompetitionSearch",
+  mixins: [apiGet],
   props: {
     createPermission: Boolean
   },
@@ -219,7 +222,7 @@ export default {
         future: false
       },
       limit: 25,
-      loading: false,
+      loadingCompetitions: false,
       parameters: "",
       searchParams: "",
       selectMode: "single",
@@ -286,6 +289,16 @@ export default {
         this.currentPage = 1;
         this.getCompetitions(this.searchParams);
       }
+    },
+    /**
+     * Select sport if only one is available
+     */
+    sports: {
+      handler: function() {
+        if (this.sports.length === 1) {
+          this.selectSport(this.sports[0].id, false);
+        }
+      }
     }
   },
   mounted() {
@@ -293,7 +306,7 @@ export default {
       this.parseQueryParams();
     }
     this.getSports();
-    this.getCompetitionlevels();
+    this.getCompetitionLevels();
   },
   methods: {
     /**
@@ -307,42 +320,13 @@ export default {
       this.form.search = null;
     },
     /**
-     * Fetch competition levels from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getCompetitionlevels() {
-      HTTP.get("competitionlevels/")
-        .then(response => {
-          this.competitionLevels = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch competition types for a single sport from API
-     *
-     * @param {number} id
-     * @returns {Promise<void>}
-     */
-    async getCompetitiontypes(id) {
-      HTTP.get("competitiontypes/?sport=" + id)
-        .then(response => {
-          this.competitionTypes = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
      * Fetch competitions from API, based on search parameters
      *
      * @returns {Promise<void>}
      */
     async getCompetitions(searchParams) {
       this.$set(this.errors, "main", null);
-      this.loading = true;
+      this.loadingCompetitions = true;
       if (this.currentPage) {
         if (
           !this.competitions.count ||
@@ -358,24 +342,7 @@ export default {
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
-        .finally(() => (this.loading = false));
-    },
-    /**
-     * Fetch sports from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getSports() {
-      HTTP.get("sports/")
-        .then(response => {
-          this.sports = response.data.results;
-          if (this.sports.length === 1) {
-            this.selectSport(this.sports[0].id, false);
-          }
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
+        .finally(() => (this.loadingCompetitions = false));
     },
     /**
      * Routes to competition information when row is clicked
@@ -506,7 +473,7 @@ export default {
     selectSport(id, reset = true) {
       this.$set(this.errors, "main", null);
       this.sport = id;
-      this.getCompetitiontypes(id);
+      this.getCompetitionTypes(id);
       if (reset) {
         this.formReset();
       }

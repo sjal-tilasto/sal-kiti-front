@@ -51,7 +51,7 @@
             </div>
           </template>
         </b-table>
-        <div v-show="loading">
+        <div v-show="loadingCompetitions">
           <b-spinner label="Loading..."></b-spinner>
         </div>
       </b-col>
@@ -79,7 +79,7 @@ export default {
       currentPage: 1,
       errors: {},
       limit: 100,
-      loading: true,
+      loadingCompetitions: true,
       selectMode: "single"
     };
   },
@@ -141,7 +141,7 @@ export default {
      */
     async getCompetitions(id) {
       this.$set(this.errors, "main", null);
-      this.loading = true;
+      this.loadingCompetitions = true;
       this.competitions = [];
       let searchUrl = "competitions/?event=" + id + "&limit=" + this.limit;
       if (this.currentPage) {
@@ -160,7 +160,7 @@ export default {
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
-        .finally(() => (this.loading = false));
+        .finally(() => (this.loadingCompetitions = false));
     },
     /**
      * Routes to competition information when row is clicked

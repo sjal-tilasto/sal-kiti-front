@@ -55,7 +55,7 @@ describe("CompetitionList.vue", () => {
     });
     await flushPromises();
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(wrapper.text()).toContain("import.error.unknown");
+    expect(wrapper.text()).toContain("import.error.server");
   });
 
   it("triggers event router on click", async () => {

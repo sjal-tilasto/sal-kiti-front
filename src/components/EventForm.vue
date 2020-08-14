@@ -15,6 +15,11 @@
         </b-alert>
       </b-col>
     </b-row>
+    <b-row v-if="loadingEvent">
+      <b-col>
+        <b-spinner label="Loading..."></b-spinner>
+      </b-col>
+    </b-row>
     <b-row>
       <b-col>
         <b-form @submit="onSubmit">
@@ -25,7 +30,7 @@
           >
             <b-form-select
               id="input-organization"
-              v-model="form.organization"
+              v-model="event.organization"
               :options="organizations"
               textField="name"
               valueField="id"
@@ -40,7 +45,7 @@
           >
             <b-form-input
               id="input-name"
-              v-model="form.name"
+              v-model="event.name"
               required
             ></b-form-input>
           </b-form-group>
@@ -52,7 +57,7 @@
           >
             <b-form-textarea
               id="input-description"
-              v-model="form.description"
+              v-model="event.description"
               rows="3"
               max-rows="6"
             ></b-form-textarea>
@@ -64,7 +69,7 @@
           >
             <b-form-input
               id="input-location"
-              v-model="form.location"
+              v-model="event.location"
               required
             ></b-form-input>
           </b-form-group>
@@ -75,7 +80,7 @@
           >
             <b-form-input
               id="input-date-start"
-              v-model="form.date_start"
+              v-model="event.date_start"
               type="date"
               required
             ></b-form-input>
@@ -87,7 +92,7 @@
           >
             <b-form-input
               id="input-date-end"
-              v-model="form.date_end"
+              v-model="event.date_end"
               type="date"
               required
             ></b-form-input>
@@ -100,7 +105,7 @@
           >
             <b-form-textarea
               id="input-optional_dates"
-              v-model="form.optional_dates"
+              v-model="event.optional_dates"
               rows="3"
               max-rows="6"
             >
@@ -114,7 +119,7 @@
           >
             <b-form-textarea
               id="input-categories"
-              v-model="form.categories"
+              v-model="event.categories"
               rows="3"
               max-rows="6"
             >
@@ -126,7 +131,7 @@
             label-for="input-web_page"
             :description="$t('event.web_page_help')"
           >
-            <b-form-input id="input-web_page" v-model="form.web_page">
+            <b-form-input id="input-web_page" v-model="event.web_page">
             </b-form-input>
           </b-form-group>
           <b-form-group
@@ -135,7 +140,7 @@
             label-for="input-invitation"
             :description="$t('event.invitation_help')"
           >
-            <b-form-input id="input-invitation" v-model="form.invitation">
+            <b-form-input id="input-invitation" v-model="event.invitation">
             </b-form-input>
           </b-form-group>
           <b-form-group
@@ -144,7 +149,7 @@
             label-for="input-safety_plan"
             :description="$t('event.safety_plan_help')"
           >
-            <b-form-checkbox id="input-safety_plan" v-model="form.safety_plan">
+            <b-form-checkbox id="input-safety_plan" v-model="event.safety_plan">
             </b-form-checkbox>
           </b-form-group>
           <b-form-group
@@ -155,7 +160,7 @@
           >
             <b-form-textarea
               id="input-notes"
-              v-model="form.notes"
+              v-model="event.notes"
               rows="3"
               max-rows="6"
             >
@@ -169,7 +174,7 @@
           >
             <b-form-checkbox
               id="input-toc_agreement"
-              v-model="form.toc_agreement"
+              v-model="event.toc_agreement"
               name="toc-checkbox"
               required
             >
@@ -210,10 +215,12 @@
 import { HTTP } from "../api/BaseApi.js";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
+import apiGet from "../mixins/ApiGet";
 import EventFormContacts from "@/components/EventFormContacts.vue";
 
 export default {
   name: "EventForm",
+  mixins: [apiGet],
   components: {
     EventFormContacts
   },
@@ -227,7 +234,7 @@ export default {
       edit: false,
       errors: {},
       eventId: null,
-      form: {
+      event: {
         date_end: null,
         date_start: null,
         location: null,
@@ -242,11 +249,13 @@ export default {
         safety_plan: false,
         toc_agreement: false
       },
+      loadingEvent: false,
+      loadingOrganizations: false,
       organizations: []
     };
   },
   mounted() {
-    this.getOrganizations();
+    this.getOrganizations(true, false, true);
     if (this.$route.params.event_id) {
       this.edit = true;
       this.getEvent(this.$route.params.event_id);
@@ -254,34 +263,6 @@ export default {
     }
   },
   methods: {
-    /**
-     * Fetch event information from API
-     *
-     * @param {number} id
-     * @returns {Promise<void>}
-     */
-    async getEvent(id) {
-      HTTP.get("events/" + id + "/")
-        .then(response => {
-          this.form = response.data || {};
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch organizations from API
-     * @returns {Promise<void>}
-     */
-    async getOrganizations() {
-      HTTP.get("organizations/?limit=own")
-        .then(response => {
-          this.organizations = response.data;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
     /**
      * Create or edit event
      *
@@ -302,7 +283,7 @@ export default {
      */
     async postEvent() {
       this.$set(this.errors, "main", null);
-      HTTP.post("events/", this.form, this.config)
+      HTTP.post("events/", this.event, this.config)
         .then(response => {
           this.$router.push({
             name: "event",
@@ -321,7 +302,7 @@ export default {
      */
     async putEvent(id) {
       this.$set(this.errors, "main", null);
-      HTTP.put("events/" + id + "/", this.form, this.config)
+      HTTP.put("events/" + id + "/", this.event, this.config)
         .then(response => {
           this.$router.push({
             name: "event",

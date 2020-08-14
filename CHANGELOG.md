@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 - 2020-08-14
+Required backend version: 0.4+
+
+- Refactored API shared API calls to use mixin
+- Added missing translations
+- Added competition type information page
+- Improved error messages for different failures
+
 ## 0.2.0 - 2020-08-11
 Required backend version: 0.3+
 

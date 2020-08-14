@@ -213,7 +213,7 @@
             <b-form-select
               id="input-type"
               v-model="partial.type"
-              :options="resultTypes"
+              :options="competitionResultTypes"
               textField="name"
               valueField="id"
               required
@@ -325,7 +325,7 @@
             <b-form-select
               id="input-type"
               v-model="addPartialResult.type"
-              :options="resultTypes"
+              :options="competitionResultTypes"
               textField="name"
               valueField="id"
               required
@@ -411,9 +411,11 @@
 import { HTTP } from "../api/BaseApi.js";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
+import apiGet from "../mixins/ApiGet";
 
 export default {
   name: "ResultForm",
+  mixins: [apiGet],
   data() {
     return {
       addPartialResult: {
@@ -432,7 +434,7 @@ export default {
       form: {},
       organizations: [],
       loading: false,
-      resultTypes: []
+      competitionResultTypes: []
     };
   },
   mounted() {
@@ -507,20 +509,6 @@ export default {
         });
     },
     /**
-     * Fetch categories from API for a sport
-     *
-     * @param {number} sport id
-     */
-    async getCategories(sport) {
-      HTTP.get("categories/?sport=" + sport)
-        .then(response => {
-          this.categories = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
      * Fetch competition information from API
      * - trigger competition type based API calls
      *
@@ -531,7 +519,7 @@ export default {
       HTTP.get("competitions/" + id + "/")
         .then(response => {
           this.competition = response.data || {};
-          this.getResultTypes(response.data.type);
+          this.getCompetitionResultTypes(response.data.type);
           this.getCompetitionType(response.data.type);
         })
         .catch(error => {
@@ -548,20 +536,6 @@ export default {
       HTTP.get("competitiontypes/" + id + "/")
         .then(response => {
           this.getCategories(response.data.sport);
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch organizations from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getOrganizations() {
-      HTTP.get("organizations/")
-        .then(response => {
-          this.organizations = response.data.results;
         })
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
@@ -585,21 +559,6 @@ export default {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));
-    },
-    /**
-     * Fetch result types from API
-     *
-     * @param {number} competition_type id
-     * @returns {Promise<void>}
-     */
-    async getResultTypes(competition_type) {
-      HTTP.get("competitionresulttypes/?competition_type=" + competition_type)
-        .then(response => {
-          this.resultTypes = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
     },
     /**
      * Edit or add result on submit

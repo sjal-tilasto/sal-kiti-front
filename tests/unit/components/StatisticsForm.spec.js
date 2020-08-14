@@ -22,7 +22,7 @@ const formData = {
   date_end: "2019-07-13",
   max_results: 25,
   external: false,
-  group_results: 1,
+  group_results: "---",
   trial: false
 };
 
@@ -103,7 +103,7 @@ describe("StatisticsForm.vue", () => {
       max_results: 25,
       date_start: null,
       external: false,
-      group_results: 1,
+      group_results: "---",
       trial: false
     });
   });

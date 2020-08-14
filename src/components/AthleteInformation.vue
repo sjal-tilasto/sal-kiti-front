@@ -19,7 +19,7 @@
         </b-alert>
       </b-col>
     </b-row>
-    <b-row v-if="loading">
+    <b-row v-if="loadingAthlete">
       <b-col>
         <b-spinner label="Loading..."></b-spinner>
       </b-col>
@@ -59,41 +59,20 @@
 /**
  * Displays basic information for a single athlete
  */
-import { HTTP } from "../api/BaseApi.js";
-import errorParser from "../utils/ErrorParser";
+import apiGet from "../mixins/ApiGet";
 
 export default {
   name: "athlete",
+  mixins: [apiGet],
   data() {
     return {
       athlete: {},
       errors: {},
-      loading: true
+      loadingAthlete: true
     };
   },
   mounted() {
     this.getAthlete(this.$route.params.athlete_id);
-  },
-  methods: {
-    /**
-     * Fetch athlete information from API
-     *
-     * @param {number} id
-     * @returns {Promise<void>}
-     */
-    async getAthlete(id) {
-      this.$set(this.errors, "main", null);
-      this.athlete = {};
-      this.loading = true;
-      HTTP.get("athletes/" + id + "/")
-        .then(response => {
-          this.athlete = response.data || {};
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        })
-        .finally(() => (this.loading = false));
-    }
   }
 };
 </script>

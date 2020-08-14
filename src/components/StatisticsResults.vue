@@ -95,7 +95,7 @@
             </div>
           </template>
         </b-table>
-        <div v-show="loading">
+        <div v-show="loadingResults">
           <b-spinner label="Loading..."></b-spinner>
         </div>
       </b-col>
@@ -120,7 +120,7 @@ export default {
     return {
       currentPage: 1,
       errors: {},
-      loading: false,
+      loadingResults: false,
       results: []
     };
   },
@@ -216,7 +216,7 @@ export default {
           this.currentPage = 1;
         }
       }
-      this.loading = true;
+      this.loadingResults = true;
       this.results = [];
       this.$set(this.errors, "main", null);
       HTTP.get(
@@ -228,7 +228,7 @@ export default {
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
-        .finally(() => (this.loading = false));
+        .finally(() => (this.loadingResults = false));
     }
   }
 };

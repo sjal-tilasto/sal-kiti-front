@@ -158,9 +158,11 @@
 import { HTTP } from "../api/BaseApi.js";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
+import apiGet from "../mixins/ApiGet";
 
 export default {
   name: "CompetitionForm",
+  mixins: [apiGet],
   data() {
     return {
       competition: {},
@@ -190,8 +192,20 @@ export default {
       sport: null
     };
   },
+  watch: {
+    /**
+     * Select sport if only one is available
+     */
+    sports: {
+      handler: function() {
+        if (this.sports.length === 1) {
+          this.selectSport(this.sports[0].id);
+        }
+      }
+    }
+  },
   mounted() {
-    this.getOrganizations();
+    this.getOrganizations(true, false, true);
     this.getSports();
     this.getCompetitionLevels();
     this.getEvent(this.$route.params.event_id);
@@ -225,35 +239,6 @@ export default {
         });
     },
     /**
-     * Fetch competition levels from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getCompetitionLevels() {
-      HTTP.get("competitionlevels/")
-        .then(response => {
-          this.competitionLevels = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch competition types for a sport from API
-     *
-     * @param {number} sport_id
-     * @returns {Promise<void>}
-     */
-    async getCompetitiontypes(sport_id) {
-      HTTP.get("competitiontypes/?sport=" + sport_id)
-        .then(response => {
-          this.competitionTypes = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
      * Fetch event information from API and set form values based on it
      *
      * @param {number} id
@@ -281,36 +266,6 @@ export default {
           }
           if (!this.form.organization) {
             this.form.organization = response.data.organization;
-          }
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch organizations from API
-     * @returns {Promise<void>}
-     */
-    async getOrganizations() {
-      HTTP.get("organizations/")
-        .then(response => {
-          this.organizations = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch sports from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getSports() {
-      HTTP.get("sports/")
-        .then(response => {
-          this.sports = response.data.results;
-          if (this.sports.length === 1) {
-            this.selectSport(this.sports[0].id);
           }
         })
         .catch(error => {
@@ -380,7 +335,7 @@ export default {
         this.sport = sport;
       }
       if (this.sport) {
-        this.getCompetitiontypes(this.sport);
+        this.getCompetitionTypes(this.sport);
       }
     }
   }
