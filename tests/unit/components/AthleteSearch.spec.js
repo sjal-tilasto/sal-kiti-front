@@ -93,6 +93,6 @@ describe("AthleteSearch.vue", () => {
       }
     });
     await flushPromises();
-    expect(wrapper.text()).toContain("import.error.unknown");
+    expect(wrapper.text()).toContain("import.error.notfound");
   });
 });

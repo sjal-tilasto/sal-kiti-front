@@ -145,7 +145,8 @@
     "to_organization": "Got to organizations information",
     "athlete_import": "Athlete import",
     "athlete_import_description": "Import or update athletes with Excel-sheet",
-    "to_athlete_import": "Import athletes"
+    "to_athlete_import": "Import athletes",
+    "layout": "Layout"
   },
   "sport": {
     "sport": "Sport | Sports",
@@ -236,9 +237,11 @@
       "invalid": "Invalid value",
       "partial": "Incorrect partial",
       "athlete": "Could not identify athlete",
-      "unknown": "Unknown error",
-      "permission": "No permission to alter or create a record",
-      "connection": "No connection to the server",
+      "unknown": "Unrecognized error, please reload the page and try again. Contact the service if the problem persists.",
+      "permission": "No permission to alter or create a record.",
+      "notfound": "Tried to access object that does not exist or you do not have permission to view it.",
+      "server": "Serverside error, please reload the page and try again. Contact hte service if the problem persists.",
+      "connection": "No connection to the server, please check your internet connection and try reloading the page. Contact the service if the problem persists over 15 minutes.",
       "team_min_size": "Team must have at least two members",
       "team_member": "Team member could not be identified",
       "unknown_file_type": "Unknown file type",

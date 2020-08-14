@@ -144,7 +144,8 @@
     "management": "Hallintatyökaluja",
     "athlete_import": "Urheilijoiden tuonti",
     "athlete_import_description": "Tuo tai päivitä urheilijatietoja Excel-lomakkeella",
-    "to_athlete_import": "Tuo urheilijoita"
+    "to_athlete_import": "Tuo urheilijoita",
+    "layout": "Asettelu"
   },
   "sport": {
     "sport": "Laji | Lajit",
@@ -235,10 +236,12 @@
       "invalid": "Virheellinen arvo",
       "partial": "Virheellinen osatulos",
       "athlete": "Urheilijaa ei voitu tunnistaa",
-      "unknown": "Tuntematon virhe",
-      "permission_result": "Ei oikeutta muokata tai lisätä tulosta",
+      "unknown": "Tunnistamaton virhe, yritä ladata sivu uudelleen. Ole yhteydessä ylläpitoon, jos ongelma jatkuu.",
+      "notfound": "Yritit ladata aineistoa jota ei ole olemassa tai sinulla ei ole oikeutta siihen.",
+      "server": "Palvelimella tapahtui virhe, yritä ladata sivu uudelleen ja ole yhteydessä palveluun, jos ongelma toistuu.",
       "permission": "Ei oikeutta haettuun resurssiin tai toimintoon",
-      "connection": "Ei saada yhteyttä palvelimelle",
+      "connection": "Palvelimeen ei saada yhteyttä. Tarkista verkkoyhteytesi toiminta ja kokeile ladata sivu uudelleen. Ole yhteydessä palveluun jos ongelma jatkuu yli 15 minuuttia.",
+      "permission_result": "Ei oikeutta muokata tai lisätä tulosta",
       "team_min_size": "Joukkueessa täytyy olla vähintään kaksi jäsentä",
       "team_member": "Joukkueen jäsentä ei voitu tunnistaa",
       "unknown_file_type": "Tunnistamaton tiedostotyyppi",
