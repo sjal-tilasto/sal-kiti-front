@@ -10,6 +10,7 @@ const competitions = {
         sport: 1
       },
       type: 1,
+      layout: 1,
       level_info: {
         name: "European Championships",
         abbreviation: "EC"
@@ -34,6 +35,7 @@ const competitions = {
         sport: 1
       },
       type: 1,
+      layout: 1,
       level_info: {
         name: "National Championships",
         abbreviation: "NC"

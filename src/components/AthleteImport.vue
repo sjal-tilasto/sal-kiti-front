@@ -85,9 +85,11 @@ import { HTTP } from "../api/BaseApi.js";
 import XLSX from "xlsx";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
+import apiGet from "../mixins/ApiGet";
 
 export default {
   name: "AthleteImport",
+  mixins: [apiGet],
   data() {
     return {
       config: {
@@ -160,20 +162,6 @@ export default {
         XLSX.utils.book_append_sheet(workbook, worksheet, "debug");
         XLSX.writeFile(workbook, "debug.xlsx");
       }
-    },
-    /**
-     * Fetch organizations from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getOrganizations() {
-      HTTP.get("organizations/")
-        .then(response => {
-          this.organizations = response.data.results || [];
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
     },
     /**
      * Check submitted file type and trigger parser

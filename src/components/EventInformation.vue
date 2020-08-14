@@ -27,7 +27,7 @@
         </b-alert>
       </b-col>
     </b-row>
-    <b-row v-if="loading">
+    <b-row v-if="loadingEvent">
       <b-col>
         <b-spinner label="Loading..."></b-spinner>
       </b-col>
@@ -145,9 +145,11 @@
 import { HTTP } from "../api/BaseApi.js";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
+import apiGet from "../mixins/ApiGet";
 
 export default {
   name: "Event",
+  mixins: [apiGet],
   data() {
     return {
       config: {
@@ -157,7 +159,7 @@ export default {
       },
       errors: {},
       event: {},
-      loading: true
+      loadingEvent: true
     };
   },
   computed: {
@@ -179,24 +181,6 @@ export default {
     this.getEvent(this.$route.params.event_id);
   },
   methods: {
-    /**
-     * Fetch event information from API
-     *
-     * @param {number} id
-     * @returns {Promise<void>}
-     */
-    async getEvent(id) {
-      this.event = {};
-      this.loading = true;
-      HTTP.get("events/" + id + "/")
-        .then(response => {
-          this.event = response.data || {};
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        })
-        .finally(() => (this.loading = false));
-    },
     /**
      * Set event lock status (API patch)
      *

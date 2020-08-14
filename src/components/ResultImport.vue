@@ -135,9 +135,11 @@ import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
 import Papa from "papaparse";
 import parseSiusData from "../utils/ParseSiusData";
+import apiGet from "../mixins/ApiGet";
 
 export default {
   name: "ResultImport",
+  mixins: [apiGet],
   data() {
     return {
       categories: [],
@@ -162,7 +164,7 @@ export default {
       results: [],
       organizations: [],
       reader: null,
-      resultTypes: [],
+      competitionResultTypes: [],
       result: {},
       staticFields: [
         "category",
@@ -252,68 +254,6 @@ export default {
       return athlete;
     },
     /**
-     * Fetch categories from API for a sport
-     *
-     * @param {number} sport id
-     * @returns {Promise<void>}
-     */
-    async getCategories(sport) {
-      HTTP.get("categories/?sport=" + sport)
-        .then(response => {
-          this.categories = response.data.results || [];
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch competition information from API
-     *
-     * @param {number} id
-     * @returns {Promise<void>}
-     */
-    async getCompetition(id) {
-      this.competition = {};
-      await HTTP.get("competitions/" + id + "/")
-        .then(response => {
-          this.competition = response.data || {};
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch competition result types from API
-     *
-     * @param {number} competitionType
-     * @returns {Promise<void>}
-     */
-    async getCompetitionResultTypes(competitionType) {
-      HTTP.get("competitionresulttypes/?competition_type=" + competitionType)
-        .then(response => {
-          this.resultTypes = response.data.results || [];
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch competition type information from API
-     *
-     * @param {number} id
-     * @returns {Promise<void>}
-     */
-    async getCompetitionType(id) {
-      this.competitionType = {};
-      await HTTP.get("competitiontypes/" + id + "/")
-        .then(response => {
-          this.competitionType = response.data || {};
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
      * Fetch required information for the import
      *
      * @returns {Promise<void>}
@@ -323,7 +263,7 @@ export default {
       await this.getCategories(this.competition.type_info.sport);
       await this.getCompetitionType(this.competition.type);
       await this.getCompetitionResultTypes(this.competitionType.id);
-      await this.getOrganizations();
+      await this.getOrganizations(true, false, false);
       await this.getResults(this.$route.params.competition_id);
     },
     /**
@@ -344,20 +284,6 @@ export default {
         XLSX.utils.book_append_sheet(workbook, worksheet, "debug");
         XLSX.writeFile(workbook, "debug.xlsx");
       }
-    },
-    /**
-     * Fetch organizations from API
-     *
-     * @returns {Promise<void>}
-     */
-    async getOrganizations() {
-      HTTP.get("organizations/?historical=false")
-        .then(response => {
-          this.organizations = response.data.results || [];
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
     },
     /**
      * Fetch results for a competition from API
@@ -676,9 +602,9 @@ export default {
         formattedNames.push(cell.v.replace(/\s/g, "_").toLowerCase());
       }
       let headers = [];
-      let resultTypes = [];
-      this.resultTypes.forEach(resultType => {
-        resultTypes.push(resultType.abbreviation);
+      let competitionResultTypes = [];
+      this.competitionResultTypes.forEach(resultType => {
+        competitionResultTypes.push(resultType.abbreviation);
       });
       formattedNames.forEach(name => {
         if (this.staticFields.includes(name)) {
@@ -688,7 +614,7 @@ export default {
         } else if (name.includes("-")) {
           headers.push(name);
         } else if (
-          resultTypes.includes(name) &&
+          competitionResultTypes.includes(name) &&
           !formattedNames.includes(name.concat("-1"))
         ) {
           headers.push(name.concat("-1"));
@@ -803,13 +729,19 @@ export default {
       let result = this.results[i];
       let partialResults = [];
       for (let key = 0; key < keys.length; key++) {
-        for (let r = 0; r < this.resultTypes.length; r++) {
-          if (keys[key].startsWith(this.resultTypes[r].abbreviation + "-")) {
+        for (let r = 0; r < this.competitionResultTypes.length; r++) {
+          if (
+            keys[key].startsWith(
+              this.competitionResultTypes[r].abbreviation + "-"
+            )
+          ) {
             let partialResult = {};
             partialResult.order = parseInt(
-              keys[key].substring(this.resultTypes[r].abbreviation.length + 1)
+              keys[key].substring(
+                this.competitionResultTypes[r].abbreviation.length + 1
+              )
             );
-            partialResult.type = this.resultTypes[r].id;
+            partialResult.type = this.competitionResultTypes[r].id;
             if (typeof result[keys[key]] == "string") {
               partialResult.value = parseFloat(
                 result[keys[key]].replace(",", ".")
@@ -825,16 +757,16 @@ export default {
             }
             if (
               !this.result.team &&
-              this.resultTypes[r].max_result &&
-              partialResult.value > this.resultTypes[r].max_result
+              this.competitionResultTypes[r].max_result &&
+              partialResult.value > this.competitionResultTypes[r].max_result
             ) {
               this.results[i].error.push(
                 this.$t("import.error.result_partial_max")
               );
             }
             if (
-              this.resultTypes[r].min_result &&
-              partialResult.value < this.resultTypes[r].min_result
+              this.competitionResultTypes[r].min_result &&
+              partialResult.value < this.competitionResultTypes[r].min_result
             ) {
               this.results[i].error.push(
                 this.$t("import.error.result_partial_min")

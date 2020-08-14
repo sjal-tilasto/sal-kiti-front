@@ -14,7 +14,7 @@
         </b-alert>
       </b-col>
     </b-row>
-    <b-row v-if="loading">
+    <b-row v-if="loadingCompetition">
       <b-col>
         <b-spinner label="Loading..."></b-spinner>
       </b-col>
@@ -213,7 +213,7 @@ export default {
         }
       },
       errors: {},
-      loading: false
+      loadingCompetition: false
     };
   },
   computed: {
@@ -247,7 +247,7 @@ export default {
     async getCompetition(id) {
       this.$set(this.errors, "main", null);
       this.competition = {};
-      this.loading = true;
+      this.loadingCompetition = true;
       HTTP.get("competitions/" + id + "/")
         .then(response => {
           this.competition = response.data || {};
@@ -256,7 +256,7 @@ export default {
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
-        .finally(() => (this.loading = false));
+        .finally(() => (this.loadingCompetition = false));
     },
     /**
      * Set competition lock status (API patch)

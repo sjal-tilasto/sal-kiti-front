@@ -313,6 +313,13 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
             valuefield="value"
           >
             <option
+              value="---"
+            >
+              
+              ---
+            
+            </option>
+            <option
               value="1"
             >
               

@@ -89,7 +89,7 @@
             </div>
           </template>
         </b-table>
-        <div v-show="loading">
+        <div v-show="loadingEvents">
           <b-spinner label="Loading..."></b-spinner>
         </div>
       </b-col>
@@ -133,7 +133,7 @@ export default {
       events: [],
       includeApplied: this.applied,
       listFuture: this.future,
-      loading: true,
+      loadingEvents: true,
       selectMode: "single"
     };
   },
@@ -202,7 +202,7 @@ export default {
      */
     async getEvents() {
       this.$set(this.errors, "main", null);
-      this.loading = true;
+      this.loadingEvents = true;
       let searchUrl = "events/?limit=" + this.limit;
       let today = new Date().toJSON().slice(0, 10);
       if (this.listFuture) {
@@ -226,7 +226,7 @@ export default {
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
-        .finally(() => (this.loading = false));
+        .finally(() => (this.loadingEvents = false));
     },
     /**
      * Limit array by public parameter

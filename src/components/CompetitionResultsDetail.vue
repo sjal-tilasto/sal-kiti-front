@@ -64,9 +64,7 @@
         <td class="text-right">
           {{ result.info }}
           {{ result.record | parseRecords(true) }}
-          <div v-if="!result.approved">
-             ({{ $t("result.unconfirmed") }})
-          </div>
+          <div v-if="!result.approved">({{ $t("result.unconfirmed") }})</div>
         </td>
       </tr>
     </table>

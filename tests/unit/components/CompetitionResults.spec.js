@@ -29,7 +29,8 @@ describe("CompetitionResults.vue", () => {
       },
       propsData: {
         competition: {
-          type: 1
+          type: 1,
+          layout: 1
         },
         editPermission: false
       },
@@ -47,7 +48,8 @@ describe("CompetitionResults.vue", () => {
       localVue,
       propsData: {
         competition: {
-          type: 1
+          type: 1,
+          layout: 1
         },
         editPermission: false
       },

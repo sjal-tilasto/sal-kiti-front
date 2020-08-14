@@ -20,7 +20,7 @@
     <b-row v-if="results">
       <b-col>
         <AthleteResultsList :results="results" />
-        <div v-show="loading">
+        <div v-show="loadingResults">
           <b-spinner label="Loading..."></b-spinner>
         </div>
       </b-col>
@@ -52,7 +52,7 @@ export default {
   data() {
     return {
       errors: {},
-      loading: true,
+      loadingResults: true,
       results: [],
       selectMode: "single"
     };
@@ -70,7 +70,7 @@ export default {
     async getResults(id) {
       this.$set(this.errors, "main", null);
       this.results = [];
-      this.loading = true;
+      this.loadingResults = true;
       await HTTP.get(
         "resultlist/?athlete&ordering=competition__start_date&athlete=" + id
       )
@@ -80,7 +80,7 @@ export default {
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
-        .finally(() => (this.loading = false));
+        .finally(() => (this.loadingResults = false));
     }
   }
 };
