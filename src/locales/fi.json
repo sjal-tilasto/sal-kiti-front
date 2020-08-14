@@ -45,6 +45,7 @@
     "info": "Tapahtuman tiedot",
     "error": "Virhe haettaessa tapahtuman tietoja",
     "limit": "Rajaa",
+    "description_help": "Julkinen kuvaus tapahtumalle.",
     "web_page": "Nettisivut",
     "web_page_help": "Julkisten nettisivujen osoite tapahtumalle.",
     "invitation": "Kilpailukutsu",

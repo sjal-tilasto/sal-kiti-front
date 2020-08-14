@@ -46,6 +46,7 @@
     "info": "Event Information",
     "error": "Could not load event information",
     "limit": "Limit",
+    "description_help": "Public description for the event.",
     "web_page": "Web page",
     "web_page_help": "Public web page URL for the event.",
     "invitation": "Invitation",
