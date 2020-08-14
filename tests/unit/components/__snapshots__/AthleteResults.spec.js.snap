@@ -199,7 +199,187 @@ exports[`AthleteResults.vue renders result list 1`] = `
     <div
       class="col-xl-6 col-12"
     >
-      <!---->
+      <div>
+        <h3>
+          record.record
+        </h3>
+         
+        <div
+          class="table-responsive-sm"
+        >
+          <table
+            aria-busy="false"
+            aria-colcount="6"
+            class="table b-table table-hover table-sm"
+            id="__BVID__34"
+            role="table"
+          >
+            <!---->
+            <!---->
+            <thead
+              class=""
+              role="rowgroup"
+            >
+              <!---->
+              <tr
+                class=""
+                role="row"
+              >
+                <th
+                  aria-colindex="1"
+                  aria-sort="none"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  record.record
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="2"
+                  aria-sort="none"
+                  class="d-none d-md-table-cell"
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  competition.type
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="3"
+                  aria-sort="ascending"
+                  class="d-md-none"
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  competition.type
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Descending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="4"
+                  aria-sort="none"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  competition.category
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="5"
+                  aria-sort="none"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  result.result
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+                <th
+                  aria-colindex="6"
+                  aria-sort="none"
+                  class=""
+                  role="columnheader"
+                  scope="col"
+                  tabindex="0"
+                >
+                  date
+                  <span
+                    class="sr-only"
+                  >
+                     (Click to sort Ascending)
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              role="rowgroup"
+            >
+              <!---->
+              <tr
+                class=""
+                role="row"
+                tabindex="0"
+              >
+                <td
+                  aria-colindex="1"
+                  class=""
+                  role="cell"
+                >
+                  SE
+                </td>
+                <td
+                  aria-colindex="2"
+                  class="d-none d-md-table-cell"
+                  role="cell"
+                >
+                  50m Competition
+                </td>
+                <td
+                  aria-colindex="3"
+                  class="d-md-none"
+                  role="cell"
+                >
+                  50MC
+                </td>
+                <td
+                  aria-colindex="4"
+                  class=""
+                  role="cell"
+                >
+                  N
+                </td>
+                <td
+                  aria-colindex="5"
+                  class=""
+                  role="cell"
+                >
+                  <div>
+                    
+        200,6
+      
+                  </div>
+                </td>
+                <td
+                  aria-colindex="6"
+                  class=""
+                  role="cell"
+                >
+                  2019-01-23
+                </td>
+              </tr>
+              <!---->
+              <!---->
+            </tbody>
+            <!---->
+          </table>
+        </div>
+      </div>
     </div>
   </div>
    
@@ -605,8 +785,8 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   role="cell"
                 >
                   
-      
-      
+      Test result
+      SE
       
                   <div>
                     (result.unconfirmed)

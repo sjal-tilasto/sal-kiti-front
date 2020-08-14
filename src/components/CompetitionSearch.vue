@@ -105,14 +105,13 @@
         </b-col>
         <b-col cols="12" md="6" xl="4">
           <b-form-checkbox
-            id="checkbox-approved"
+            id="checkbox-future"
             v-model="form.future"
-            name="checkbox-approved"
+            name="checkbox-future"
           >
             {{ $t("competition.include_future") }}
           </b-form-checkbox>
-      </b-col>
-      </b-row>
+        </b-col>
       <b-row>
         <b-col cols="12" md="6" xl="4">
           <b-button

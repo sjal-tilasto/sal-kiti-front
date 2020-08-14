@@ -65,7 +65,7 @@ exports[`ResultForm.vue renders result form 1`] = `
             debounce="0"
             id="first-name"
             type="text"
-            value=""
+            value="Master"
           />
         </b-form-group-stub>
          
@@ -80,7 +80,7 @@ exports[`ResultForm.vue renders result form 1`] = `
             id="last-name"
             required="true"
             type="text"
-            value=""
+            value="Archery"
           />
         </b-form-group-stub>
          
@@ -227,7 +227,7 @@ exports[`ResultForm.vue renders result form 1`] = `
             debounce="0"
             id="input-info"
             type="text"
-            value=""
+            value="Testing"
           />
         </b-form-group-stub>
          
@@ -365,7 +365,7 @@ exports[`ResultForm.vue renders result form 1`] = `
             id="input-value"
             required="true"
             type="text"
-            value="49.20"
+            value="49.200"
           />
         </b-form-group-stub>
       </b-col-stub>
