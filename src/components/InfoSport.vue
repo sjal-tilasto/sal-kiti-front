@@ -19,7 +19,12 @@
         <h2 class="bg-sal-orange">{{ $t("info.sport") }}</h2>
       </b-col>
     </b-row>
-    <b-row>
+    <b-row v-if="loadingSports">
+      <b-col>
+        <b-spinner label="Loading..."></b-spinner>
+      </b-col>
+    </b-row>
+    <b-row v-else>
       <b-col>
         <b-button
           v-for="sport in sports"
@@ -49,7 +54,13 @@
       </b-col>
       <b-col v-if="competitionTypes.length > 0">
         <h2 class="bg-sal-orange">{{ $tc("sport.competition_type", 2) }}</h2>
-        <b-table :fields="competitionTypeFields" :items="competitionTypes">
+        <b-table
+          :fields="competitionTypeFields"
+          :items="competitionTypes"
+          @row-clicked="linkTo"
+          @row-middle-clicked="linkToNewTab"
+          hover
+        >
           <template v-slot:cell(personal)="data">
             <div v-if="data.item.personal" class="text-success">
               &#10004;
@@ -80,14 +91,17 @@
  */
 import { HTTP } from "../api/BaseApi.js";
 import errorParser from "../utils/ErrorParser";
+import apiGet from "../mixins/ApiGet";
 
 export default {
   name: "InfoSport",
+  mixins: [apiGet],
   data() {
     return {
       categories: [],
       competitionTypes: [],
       errors: {},
+      loadingSports: false,
       sport: null,
       sports: []
     };
@@ -129,41 +143,12 @@ export default {
   },
   methods: {
     /**
-     * Fetch current categories for a sport from API
-     *
-     * @param {number} id
-     * @returns {Promise<void>}
-     */
-    async getCategories(id) {
-      HTTP.get("categories/?sport=" + id + "&historical=false")
-        .then(response => {
-          this.categories = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
-     * Fetch current competition types for a sport from API
-     *
-     * @param {number} id
-     * @returns {Promise<void>}
-     */
-    async getCompetitiontypes(id) {
-      HTTP.get("competitiontypes/?sport=" + id + "&historical=false")
-        .then(response => {
-          this.competitionTypes = response.data.results;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
-    /**
      * Fetch sports list from API
      *
      * @returns {Promise<void>}
      */
     async getSports() {
+      this.loadingSports = true;
       HTTP.get("sports/")
         .then(response => {
           this.sports = response.data.results;
@@ -173,7 +158,31 @@ export default {
         })
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
+        })
+        .finally(() => (this.loadingSports = false));
+    },
+    /**
+     * Routes to competition type information when row is clicked
+     *
+     * @param {object} item - event object
+     */
+    linkTo(item) {
+      this.$router.push({
+        name: "info-competitiontype",
+        params: { competition_type_id: item.id }
+      });
+    },
+    /**
+     * Opens competition type information in new window when row is clicked
+     *
+     * @param {object} item - event object
+     */
+    linkToNewTab(item) {
+      let routeData = this.$router.resolve({
+        name: "info-competitiontype",
+        params: { competition_type_id: item.id }
+      });
+      window.open(routeData.href, "_blank");
     },
     /**
      * Parse sport from query parameters
@@ -200,7 +209,7 @@ export default {
       });
       this.$router.push({ name: "info-sport", query: { sport: this.sport } });
       this.getCategories(id);
-      this.getCompetitiontypes(id);
+      this.getCompetitionTypes(id);
     }
   }
 };
