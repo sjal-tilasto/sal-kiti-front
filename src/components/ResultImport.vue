@@ -307,19 +307,24 @@ export default {
      * @returns {Promise<void>}
      */
     async onSubmitFile(event) {
+      this.$set(this.errors, "main", null);
       event.stopPropagation();
       event.preventDefault();
       try {
         let file = this.form.file;
         let resultData = [];
         if (
-          (file &&
-            file.type &&
-            this.form.fileType === "excel" &&
-            (file.type === "application/vnd.oasis.opendocument.spreadsheet" ||
-              file.type ===
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) ||
-          file.type === "text/csv"
+          file &&
+          file.type &&
+          this.form.fileType === "excel" &&
+          (file.type === "application/vnd.oasis.opendocument.spreadsheet" ||
+            file.type ===
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+            file.type === "text/csv" ||
+            file.name.toLowerCase().endsWith(".csv") ||
+            file.name.toLowerCase().endsWith(".xls") ||
+            file.name.toLowerCase().endsWith(".xlsx") ||
+            file.name.toLowerCase().endsWith(".ods"))
         ) {
           resultData = await this.parseExcel(file);
           this.results = resultData;
@@ -328,7 +333,7 @@ export default {
           file &&
           file.type &&
           this.form.fileType === "sius" &&
-          file.type === "text/csv"
+          (file.type === "text/csv" || file.name.toLowerCase().endsWith(".csv"))
         ) {
           resultData = await this.parseCSV(file);
           if (resultData && resultData.data && resultData.data.length > 1) {
