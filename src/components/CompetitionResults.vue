@@ -139,6 +139,9 @@
                 <div>{{ $t("result.prone") }}</div>
                 <div>{{ $t("result.standing") }}</div>
               </template>
+              <template v-slot:cell(position)="data">
+                {{ data.item.position % 100000 }}
+              </template>
               <template v-slot:cell(empty)="data"> </template>
               <template v-slot:cell(wtype)="data">
                 {{
@@ -460,7 +463,7 @@ export default {
             first = false;
           }
           if (r.position) {
-            content += r.position + ") ";
+            content += (r.position % 100000) + ") ";
           }
           if (r.team) {
             content += r.last_name;
@@ -526,6 +529,26 @@ export default {
               }
             } else {
               item["ordercat"] = item["category"];
+            }
+            // Change ordering (position) for silhouette (sport id 6)
+            if (
+              this.competition.type_info &&
+              this.competition.type_info.sport === 6
+            ) {
+              switch (partialValue(item["partial"], "luokitus-1")) {
+                case "Int":
+                  item["position"] = item["position"] + 100000;
+                  break;
+                case "Master":
+                  item["position"] = item["position"] + 200000;
+                  break;
+                case "A":
+                  item["position"] = item["position"] + 300000;
+                  break;
+                case "B":
+                  item["position"] = item["position"] + 400000;
+                  break;
+              }
             }
           });
           this.results = groupArrayByKey(results, "ordercat", "fin");
