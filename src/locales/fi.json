@@ -109,6 +109,7 @@
     "order": "Järjestys",
     "decimals": "Desimaalit",
     "timestamp": "Aikaleima",
+    "text": "Teksti",
     "edit": "Muokkaa tulosta",
     "result_code": "Tuloskoodi",
     "position_pre": "Peruskilpailun sijoitus",

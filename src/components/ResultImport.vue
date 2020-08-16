@@ -748,9 +748,12 @@ export default {
             );
             partialResult.type = this.competitionResultTypes[r].id;
             if (typeof result[keys[key]] == "string") {
-              partialResult.value = parseFloat(
-                result[keys[key]].replace(",", ".")
-              );
+              let value = parseFloat(result[keys[key]].replace(",", "."));
+              if (isNaN(value)) {
+                partialResult.text = result[keys[key]];
+              } else {
+                partialResult.value = value;
+              }
             } else {
               partialResult.value = parseFloat(result[keys[key]]);
             }

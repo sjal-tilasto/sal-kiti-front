@@ -110,6 +110,7 @@
     "order": "Order",
     "decimals": "Decimals",
     "timestamp": "Timestamp",
+    "text": "Text",
     "edit": "Edit result",
     "result_code": "Result code",
     "position_pre": "Preliminary position",
