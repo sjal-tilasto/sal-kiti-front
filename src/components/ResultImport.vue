@@ -307,19 +307,24 @@ export default {
      * @returns {Promise<void>}
      */
     async onSubmitFile(event) {
+      this.$set(this.errors, "main", null);
       event.stopPropagation();
       event.preventDefault();
       try {
         let file = this.form.file;
         let resultData = [];
         if (
-          (file &&
-            file.type &&
-            this.form.fileType === "excel" &&
-            (file.type === "application/vnd.oasis.opendocument.spreadsheet" ||
-              file.type ===
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) ||
-          file.type === "text/csv"
+          file &&
+          file.type &&
+          this.form.fileType === "excel" &&
+          (file.type === "application/vnd.oasis.opendocument.spreadsheet" ||
+            file.type ===
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+            file.type === "text/csv" ||
+            file.name.toLowerCase().endsWith(".csv") ||
+            file.name.toLowerCase().endsWith(".xls") ||
+            file.name.toLowerCase().endsWith(".xlsx") ||
+            file.name.toLowerCase().endsWith(".ods"))
         ) {
           resultData = await this.parseExcel(file);
           this.results = resultData;
@@ -328,7 +333,7 @@ export default {
           file &&
           file.type &&
           this.form.fileType === "sius" &&
-          file.type === "text/csv"
+          (file.type === "text/csv" || file.name.toLowerCase().endsWith(".csv"))
         ) {
           resultData = await this.parseCSV(file);
           if (resultData && resultData.data && resultData.data.length > 1) {
@@ -339,11 +344,15 @@ export default {
           file &&
           file.type &&
           this.form.fileType === "ianseo" &&
-          file.type === "text/plain"
+          (file.type === "text/plain" ||
+            file.name.toLowerCase().endsWith(".asc"))
         ) {
           resultData = await this.parseCSV(file);
           if (resultData && resultData.data && resultData.data.length > 1) {
-            this.results = parseIanseoData(resultData.data, this.resultTypes);
+            this.results = parseIanseoData(
+              resultData.data,
+              this.competitionResultTypes
+            );
             this.parseResults();
           }
         } else {
@@ -532,9 +541,18 @@ export default {
         if (typeof this.results[i].category === "number") {
           this.results[i].category = this.results[i].category.toString();
         }
-        let category = this.categories.filter(
-          cat => cat.abbreviation === this.results[i].category
-        );
+        let category = [];
+        if (keys.includes("wtype")) {
+          category = this.categories.filter(
+            cat =>
+              cat.abbreviation ===
+              this.results[i].category + " (" + this.results[i].wtype + ")"
+          );
+        } else {
+          category = this.categories.filter(
+            cat => cat.abbreviation === this.results[i].category
+          );
+        }
         if (category.length === 1) {
           if (
             (this.result.team && !category[0].team) ||
@@ -764,16 +782,15 @@ export default {
               )
             );
             partialResult.type = this.competitionResultTypes[r].id;
-            let partialValue = null;
             if (typeof result[keys[key]] == "string") {
-              partialValue = result[keys[key]].replace(",", ".");
+              let value = parseFloat(result[keys[key]].replace(",", "."));
+              if (isNaN(value)) {
+                partialResult.text = result[keys[key]];
+              } else {
+                partialResult.value = value;
+              }
             } else {
-              partialValue = result[keys[key]];
-            }
-            if (isNaN(partialValue)) {
-              partialResult.code = partialValue;
-            } else {
-              partialResult.value = parseFloat(partialValue);
+              partialResult.value = parseFloat(result[keys[key]]);
             }
             if (String(result[keys[key]]).includes(".")) {
               partialResult.decimals =

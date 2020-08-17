@@ -242,7 +242,6 @@
             <b-form-input
               id="input-value"
               v-model="partial.value"
-              required
             ></b-form-input>
           </b-form-group>
         </b-col>
@@ -271,6 +270,15 @@
         <b-col>
           <b-form-group
             :id="'partial-' + partial.id + '-6'"
+            :label="$t('result.text')"
+            label-for="input-text"
+          >
+            <b-form-input id="input-text" v-model="partial.text"></b-form-input>
+          </b-form-group>
+        </b-col>
+        <b-col>
+          <b-form-group
+            :id="'partial-' + partial.id + '-7'"
             :label="$t('update')"
             label-for="save-result"
           >
@@ -286,7 +294,7 @@
         </b-col>
         <b-col>
           <b-form-group
-            :id="'partial-' + partial.id + '-7'"
+            :id="'partial-' + partial.id + '-8'"
             :label="$t('remove')"
             label-for="save-result"
           >
@@ -619,6 +627,7 @@ export default {
      */
     async putPartial(partial) {
       this.$set(this.errors, partial.id, null);
+      partial.result = this.$route.params.result_id;
       HTTP.put("partialresults/" + partial.id + "/", partial, this.config)
         .then(response => {
           partial = response.data;

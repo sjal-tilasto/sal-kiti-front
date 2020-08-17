@@ -144,6 +144,9 @@
                 <div>{{ $t("result.prone") }}</div>
                 <div>{{ $t("result.standing") }}</div>
               </template>
+              <template v-slot:cell(position)="data">
+                {{ data.item.position }}
+              </template>
               <template v-slot:cell(empty)="data"> </template>
               <template v-slot:cell(wtype)="data">
                 {{

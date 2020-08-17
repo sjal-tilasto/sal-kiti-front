@@ -363,7 +363,6 @@ exports[`ResultForm.vue renders result form 1`] = `
           <b-form-input-stub
             debounce="0"
             id="input-value"
-            required="true"
             type="text"
             value="49.200"
           />
@@ -412,6 +411,24 @@ exports[`ResultForm.vue renders result form 1`] = `
         <b-form-group-stub
           feedbackarialive="assertive"
           id="partial-undefined-6"
+          label="result.text"
+          labelfor="input-text"
+        >
+          <b-form-input-stub
+            debounce="0"
+            id="input-text"
+            type="text"
+            value=""
+          />
+        </b-form-group-stub>
+      </b-col-stub>
+       
+      <b-col-stub
+        tag="div"
+      >
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="partial-undefined-7"
           label="update"
           labelfor="save-result"
         >
@@ -436,7 +453,7 @@ exports[`ResultForm.vue renders result form 1`] = `
       >
         <b-form-group-stub
           feedbackarialive="assertive"
-          id="partial-undefined-7"
+          id="partial-undefined-8"
           label="remove"
           labelfor="save-result"
         >

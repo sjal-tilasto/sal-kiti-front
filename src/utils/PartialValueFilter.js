@@ -19,14 +19,17 @@ export default function(value, type, order = null) {
     v => v.type && v.type.abbreviation === type && v.order === order
   )[0];
   if (result) {
-    if (result.code) {
+    if (result.text) {
+      return result.text;
+    } else if (result.code) {
       return result.code;
+    } else {
+      return numberFormatter(
+        Number(result.value).toFixed(result.decimals),
+        "",
+        ","
+      );
     }
-    return numberFormatter(
-      Number(result.value).toFixed(result.decimals),
-      "",
-      ","
-    );
   }
   return "";
 }
