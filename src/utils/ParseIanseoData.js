@@ -145,14 +145,13 @@ export default function(data, resultTypes) {
     part4 = "36n-4";
   } else if (resultTypeKeys.includes("90m")) {
     part1 = "90m-1";
-    part2 = "70m-2";
-    part3 = "50m-3";
-    part4 = "30m-4";
+    part2 = "70m-1";
+    part3 = "50m-1";
+    part4 = "30m-1";
   } else if (resultTypeKeys.includes("60m")) {
     part1 = "60m-1";
-    part2 = "50m-2";
-    part3 = "40m-3";
-    part4 = null;
+    part2 = "50m-1";
+    part3 = "40m-1";
   } else if (resultTypeKeys.includes("25m")) {
     part1 = "18m-1";
     part2 = "25m-1";
