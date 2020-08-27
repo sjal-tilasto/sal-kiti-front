@@ -58,9 +58,11 @@
 import { HTTP } from "../api/BaseApi.js";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
+import apiGet from "../mixins/ApiGet";
 
 export default {
   name: "DivariCompetitionForm",
+  mixins: [apiGet],
   data() {
     return {
       competition: null,
@@ -79,22 +81,9 @@ export default {
     };
   },
   mounted() {
-    this.getOrganizations();
+    this.getOrganizations(true, false, true);
   },
   methods: {
-    /**
-     * Fetch organizations from API
-     * @returns {Promise<void>}
-     */
-    async getOrganizations() {
-      HTTP.get("organizations/?limit=own")
-        .then(response => {
-          this.organizations = response.data;
-        })
-        .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
-        });
-    },
     /**
      * Create a competition
      *
