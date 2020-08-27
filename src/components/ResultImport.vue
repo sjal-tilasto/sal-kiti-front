@@ -315,13 +315,9 @@ export default {
         let resultData = [];
         if (
           file &&
-          file.type &&
+          file.name &&
           this.form.fileType === "excel" &&
-          (file.type === "application/vnd.oasis.opendocument.spreadsheet" ||
-            file.type ===
-              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
-            file.type === "text/csv" ||
-            file.name.toLowerCase().endsWith(".csv") ||
+          (file.name.toLowerCase().endsWith(".csv") ||
             file.name.toLowerCase().endsWith(".xls") ||
             file.name.toLowerCase().endsWith(".xlsx") ||
             file.name.toLowerCase().endsWith(".ods"))
