@@ -2,7 +2,10 @@
   <div>
     <b-row>
       <b-col>
-        <h3 class="bg-sal-orange">{{ $tc("result.result", 2) }}</h3>
+        <h3 v-if="header" class="bg-sal-orange">
+          {{ $tc("result.result", 2) }}: {{ header }}
+        </h3>
+        <h3 v-else class="bg-sal-orange">{{ $tc("result.result", 2) }}</h3>
       </b-col>
     </b-row>
     <b-row>
@@ -34,7 +37,32 @@
           :items="results.results"
         >
           <template v-slot:cell(number)="data">
-            {{ data.index + 1 + results.limit * currentPage - results.limit }}
+            <div
+              v-if="
+                !results.results[data.index - 1] ||
+                  data.item.result !== results.results[data.index - 1].result
+              "
+            >
+              <div
+                v-if="
+                  highlight &&
+                    data.index +
+                      1 +
+                      results.limit * currentPage -
+                      results.limit <=
+                      highlight
+                "
+              >
+                <span class="text-success">{{
+                  data.index + 1 + results.limit * currentPage - results.limit
+                }}</span>
+              </div>
+              <div v-else>
+                {{
+                  data.index + 1 + results.limit * currentPage - results.limit
+                }}
+              </div>
+            </div>
           </template>
           <template v-slot:cell(athlete)="data">
             <div v-if="data.item.athlete">
@@ -114,6 +142,14 @@ export default {
     roundValue
   },
   props: {
+    header: {
+      type: String,
+      default: null
+    },
+    highlight: {
+      type: Number,
+      default: null
+    },
     searchParameters: String
   },
   data() {

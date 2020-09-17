@@ -14,33 +14,6 @@
         <b-spinner label="Loading..."></b-spinner>
       </b-col>
     </b-row>
-    <b-row v-else>
-      <b-col>
-        <b-button
-          v-for="sport in sports"
-          v-bind:key="sport.id"
-          variant="light"
-          class="btn-orange space-right space-down"
-          v-on:click="selectSport(sport.id)"
-        >
-          {{ sport.name }}
-        </b-button>
-        <b-button
-          variant="light"
-          class="btn-orange space-right space-down"
-          :to="{ name: 'statistics-ranking' }"
-        >
-          {{ $t("sjal.ranking") }}
-        </b-button>
-        <b-button
-          variant="light"
-          class="btn-orange space-right space-down"
-          :to="{ name: 'divari' }"
-        >
-          {{ $t("sjal.divari.divari") }}
-        </b-button>
-      </b-col>
-    </b-row>
     <b-form @submit="onSubmit" @reset="onReset" v-if="sport">
       <b-row>
         <b-col cols="12" md="6" xl="4">
@@ -198,7 +171,7 @@
             >
               <option
                 v-for="i in [
-                  '---',
+                  '',
                   '1',
                   '2',
                   '3',
@@ -218,27 +191,51 @@
             </b-form-select>
           </b-form-group>
         </b-col>
+        <b-col cols="12" md="6" xl="4" v-if="showExtraFields">
+          <b-form-group
+            id="input-group-gender"
+            :label="$t('statistics.gender')"
+            label-for="input-gender"
+          >
+            <b-form-select
+              id="input-gender"
+              v-model="form.gender"
+            >
+              <b-form-select-option value=""></b-form-select-option>
+              <b-form-select-option value="M">{{ $tc('statistics.man', 1) }}</b-form-select-option>
+              <b-form-select-option value="W">{{ $tc('statistics.woman', 1) }}</b-form-select-option>
+            </b-form-select>
+          </b-form-group>
+        </b-col>
         <b-col cols="12" md="6" xl="4">
-          <b-button
-            type="submit"
-            variant="light"
-            class="btn-orange space-right"
-          >
-            {{ $t("search.search") }}</b-button
-          >
-          <b-button type="reset" variant="danger">{{ $t("reset") }}</b-button
-          ><br />
-          <b-button
-            variant="light"
-            class="btn-orange space-right space-top"
-            v-on:click="toggleExtraFields"
-            :pressed="showExtraFields"
-          >
-            {{ $t("statistics.show_extras") }}
-          </b-button>
+          <b-form-group id="input-group-buttons" label-for="input-buttons">
+            <b-button
+              type="submit"
+              variant="light"
+              class="btn-orange space-right"
+            >
+              {{ $t("search.search") }}</b-button
+            >
+            <b-button type="reset" variant="danger">{{ $t("reset") }}</b-button
+            ><br />
+            <b-button
+              variant="light"
+              class="btn-orange space-right space-top"
+              v-on:click="toggleExtraFields"
+              :pressed="showExtraFields"
+            >
+              {{ $t("statistics.show_extras") }}
+            </b-button>
+          </b-form-group>
         </b-col>
       </b-row>
     </b-form>
+    <StatisticsLinksSave
+      v-if="
+        searchParameters && $store.state.user.is_staff && $store.state.editMode
+      "
+      :searchParameters="searchParameters"
+    />
     <StatisticsResults
       v-if="searchParameters"
       :searchParameters="searchParameters"
@@ -250,6 +247,7 @@
 /**
  * Display statistic search form
  */
+import StatisticsLinksSave from "@/components/StatisticsLinksSave.vue";
 import StatisticsResults from "@/components/StatisticsResults.vue";
 import apiGet from "../mixins/ApiGet";
 
@@ -257,6 +255,7 @@ export default {
   name: "StatisticsForm",
   mixins: [apiGet],
   components: {
+    StatisticsLinksSave,
     StatisticsResults
   },
   data() {
@@ -272,11 +271,12 @@ export default {
         competitionType: [],
         date_end: null,
         date_start: null,
-        group_results: "---",
+        group_results: "",
         max_results: 25,
         organization: [],
         trial: false,
-        external: false
+        external: false,
+        gender: ""
       },
       loadingSports: false,
       organizations: [],
@@ -318,9 +318,10 @@ export default {
       this.form.approved = false;
       this.form.trial = false;
       this.form.external = false;
+      this.form.gender = "";
       this.form.max_results = 25;
-      this.form.group_results = "---";
-      this.$router.push({ path: "statistics" });
+      this.form.group_results = "";
+      this.$router.push({ path: "search" });
     },
     /**
      * Trigger form reset when pressing reset button
@@ -371,7 +372,7 @@ export default {
       if (this.form.max_results != null) {
         parameters += "&limit=" + this.form.max_results;
       }
-      if (this.form.group_results !== "---") {
+      if (this.form.group_results !== "") {
         parameters += "&group_results=" + this.form.group_results;
         query.group_results = this.form.group_results;
       }
@@ -387,8 +388,12 @@ export default {
         parameters += "&external=1";
         query.external = 1;
       }
+      if (this.form.gender !== "") {
+        parameters += "&gender=" + this.form.gender;
+        query.gender = this.form.gender;
+      }
       this.searchParameters = parameters;
-      this.$router.push({ path: "statistics", query: query });
+      this.$router.push({ path: "search", query: query });
     },
     /**
      * Parse query parameters and set form values based on them
@@ -450,6 +455,10 @@ export default {
           this.$route.query.end.substring(5, 7) +
           "-" +
           this.$route.query.end.substring(8, 10);
+      }
+      if (this.$route.query.gender) {
+        this.form.gender = this.$route.query.gender;
+        this.showExtraFields = true;
       }
       if (this.$route.query.load) {
         this.onSubmit();

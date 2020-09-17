@@ -7,8 +7,34 @@
     </b-row>
     <b-row>
       <b-col>
-        <h2 class="bg-sal-orange">{{ $t("statistics.search") }}</h2>
-        <StatisticsForm />
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          :to="{ name: 'statistics-search' }"
+        >
+          {{ $t("statistics.search") }}
+        </b-button>
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          :to="{ name: 'statistics-links' }"
+        >
+          {{ $tc("statistics.qualification", 2) }}
+        </b-button>
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          :to="{ name: 'statistics-ranking' }"
+        >
+          {{ $t("sjal.ranking") }}
+        </b-button>
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          :to="{ name: 'divari' }"
+        >
+          {{ $t("sjal.divari.divari") }}
+        </b-button>
       </b-col>
     </b-row>
   </div>
@@ -18,13 +44,9 @@
 /**
  * Statistics search view
  */
-import StatisticsForm from "@/components/StatisticsForm.vue";
 
 export default {
   name: "StatisticsView",
-  components: {
-    StatisticsForm
-  },
   created() {
     document.title =
       this.$t("title.statistics") + " | " + this.$t("title.prefix");

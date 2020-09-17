@@ -20,13 +20,65 @@ exports[`Statistics.vue renders content 1`] = `
     <b-col-stub
       tag="div"
     >
-      <h2
-        class="bg-sal-orange"
+      <b-button-stub
+        class="btn-orange space-right space-down"
+        event="click"
+        routertag="a"
+        tag="button"
+        target="_self"
+        to="[object Object]"
+        type="button"
+        variant="light"
       >
+        
         statistics.search
-      </h2>
+      
+      </b-button-stub>
        
-      <statisticsform-stub />
+      <b-button-stub
+        class="btn-orange space-right space-down"
+        event="click"
+        routertag="a"
+        tag="button"
+        target="_self"
+        to="[object Object]"
+        type="button"
+        variant="light"
+      >
+        
+        statistics.qualification
+      
+      </b-button-stub>
+       
+      <b-button-stub
+        class="btn-orange space-right space-down"
+        event="click"
+        routertag="a"
+        tag="button"
+        target="_self"
+        to="[object Object]"
+        type="button"
+        variant="light"
+      >
+        
+        sjal.ranking
+      
+      </b-button-stub>
+       
+      <b-button-stub
+        class="btn-orange space-right space-down"
+        event="click"
+        routertag="a"
+        tag="button"
+        target="_self"
+        to="[object Object]"
+        type="button"
+        variant="light"
+      >
+        
+        sjal.divari.divari
+      
+      </b-button-stub>
     </b-col-stub>
   </b-row-stub>
 </div>

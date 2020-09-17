@@ -212,6 +212,22 @@ export default {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingSports = false));
+    },
+    /**
+     * Fetch statistic links from API
+     *
+     * @returns {Promise<void>}
+     */
+    async getStatisticsLinks() {
+      this.loadingStatisticsLinks = true;
+      HTTP.get("statisticslinks/")
+        .then(response => {
+          this.statisticsLinks = response.data.results;
+        })
+        .catch(error => {
+          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+        })
+        .finally(() => (this.loadingStatisticsLinks = false));
     }
   }
 };
