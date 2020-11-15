@@ -53,6 +53,12 @@ exports[`EventForm.vue renders event form with even information 1`] = `
             textfield="name"
             valuefield="id"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -67,6 +73,12 @@ exports[`EventForm.vue renders event form with even information 1`] = `
             required="true"
             type="text"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -84,6 +96,12 @@ exports[`EventForm.vue renders event form with even information 1`] = `
             value=""
             wrap="soft"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -98,6 +116,12 @@ exports[`EventForm.vue renders event form with even information 1`] = `
             required="true"
             type="text"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -112,6 +136,12 @@ exports[`EventForm.vue renders event form with even information 1`] = `
             required="true"
             type="date"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -126,6 +156,12 @@ exports[`EventForm.vue renders event form with even information 1`] = `
             required="true"
             type="date"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -141,6 +177,12 @@ exports[`EventForm.vue renders event form with even information 1`] = `
             type="text"
             value=""
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -156,6 +198,12 @@ exports[`EventForm.vue renders event form with even information 1`] = `
             type="text"
             value=""
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <div>

@@ -37,6 +37,11 @@
               required
             >
             </b-form-select>
+            <b-form-invalid-feedback :state="!'organization' in errors">
+              <ul>
+                <li v-for="e in errors.organization" v-bind:key="e">{{ e }}</li>
+              </ul>
+            </b-form-invalid-feedback>
           </b-form-group>
           <b-form-group
             id="input-group-name"
@@ -48,6 +53,11 @@
               v-model="event.name"
               required
             ></b-form-input>
+            <b-form-invalid-feedback :state="!'name' in errors">
+              <ul>
+                <li v-for="e in errors.name" v-bind:key="e">{{ e }}</li>
+              </ul>
+            </b-form-invalid-feedback>
           </b-form-group>
           <b-form-group
             id="input-group-description"
@@ -61,6 +71,11 @@
               rows="3"
               max-rows="6"
             ></b-form-textarea>
+            <b-form-invalid-feedback :state="!'description' in errors">
+              <ul>
+                <li v-for="e in errors.description" v-bind:key="e">{{ e }}</li>
+              </ul>
+            </b-form-invalid-feedback>
           </b-form-group>
           <b-form-group
             id="input-group-location"
@@ -72,6 +87,11 @@
               v-model="event.location"
               required
             ></b-form-input>
+            <b-form-invalid-feedback :state="!'location' in errors">
+              <ul>
+                <li v-for="e in errors.location" v-bind:key="e">{{ e }}</li>
+              </ul>
+            </b-form-invalid-feedback>
           </b-form-group>
           <b-form-group
             id="input-group-date-start"
@@ -84,6 +104,11 @@
               type="date"
               required
             ></b-form-input>
+            <b-form-invalid-feedback :state="!'date_start' in errors">
+              <ul>
+                <li v-for="e in errors.date_start" v-bind:key="e">{{ e }}</li>
+              </ul>
+            </b-form-invalid-feedback>
           </b-form-group>
           <b-form-group
             id="input-group-date-end"
@@ -96,6 +121,11 @@
               type="date"
               required
             ></b-form-input>
+            <b-form-invalid-feedback :state="!'date_end' in errors">
+              <ul>
+                <li v-for="e in errors.date_end" v-bind:key="e">{{ e }}</li>
+              </ul>
+            </b-form-invalid-feedback>
           </b-form-group>
           <b-form-group
             id="input-group-web_page"
@@ -105,6 +135,11 @@
           >
             <b-form-input id="input-web_page" v-model="event.web_page">
             </b-form-input>
+            <b-form-invalid-feedback :state="!'web_page' in errors">
+              <ul>
+                <li v-for="e in errors.web_page" v-bind:key="e">{{ e }}</li>
+              </ul>
+            </b-form-invalid-feedback>
           </b-form-group>
           <b-form-group
             id="input-group-invitation"
@@ -114,6 +149,11 @@
           >
             <b-form-input id="input-invitation" v-model="event.invitation">
             </b-form-input>
+            <b-form-invalid-feedback :state="!'invitation' in errors">
+              <ul>
+                <li v-for="e in errors.invitation" v-bind:key="e">{{ e }}</li>
+              </ul>
+            </b-form-invalid-feedback>
           </b-form-group>
           <div>
             <b-button
@@ -198,7 +238,8 @@ export default {
      * @returns {Promise<void>}
      */
     async postEvent() {
-      this.$set(this.errors, "main", null);
+      this.erros = {};
+      this.event.toc_agreement = true;
       HTTP.post("events/", this.event, this.config)
         .then(response => {
           this.$router.push({
@@ -207,7 +248,7 @@ export default {
           });
         })
         .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+          this.errors = errorParser.form.bind(this)(error);
         });
     },
     /**
@@ -217,7 +258,8 @@ export default {
      * @returns {Promise<void>}
      */
     async putEvent(id) {
-      this.$set(this.errors, "main", null);
+      this.erros = {};
+      this.event.toc_agreement = true;
       HTTP.put("events/" + id + "/", this.event, this.config)
         .then(response => {
           this.$router.push({
@@ -226,7 +268,7 @@ export default {
           });
         })
         .catch(error => {
-          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+          this.errors = errorParser.form.bind(this)(error);
         });
     }
   }

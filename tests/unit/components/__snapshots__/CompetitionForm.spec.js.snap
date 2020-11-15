@@ -46,6 +46,12 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
             type="text"
             value=""
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -62,6 +68,12 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
             value=""
             wrap="soft"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -77,6 +89,12 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
             type="text"
             value=""
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -92,6 +110,12 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
             type="date"
             value=""
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -107,6 +131,12 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
             type="date"
             value=""
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -127,6 +157,12 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
             textfield="name"
             valuefield="id"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -166,6 +202,12 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
             textfield="name"
             valuefield="id"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -186,6 +228,12 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
             textfield="name"
             valuefield="id"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-button-stub
