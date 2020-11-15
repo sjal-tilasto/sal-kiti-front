@@ -3,16 +3,16 @@
     "title": "Kiti",
     "event": "Tapahtuma | Tapahtumat",
     "competition": "Kilpailu | Kilpailut",
-    "statistic": "Tilasto | Tilastot",
+    "statistic": "Tilasto | Tilastot",
     "search": "Haku",
     "login": "Kirjaudu",
     "logout": "Kirjaudu ulos",
     "change_language": "Vaihda kieli",
     "edit_on": "Aktivoi muokkaustila",
     "edit_off": "Poistu muokkaustilasta",
-    "record": "Ennätys | Ennätykset",
-    "athlete": "Urheilija | Urheilijat",
-    "info": "Info | Info"
+    "record": "Ennätys | Ennätykset",
+    "athlete": "Urheilija | Urheilijat",
+    "info": "Info | Info"
   },
   "front": {
     "header": "Kilpailu- ja tilastopalvelu Kiti",
@@ -47,9 +47,9 @@
     "limit": "Rajaa",
     "description_help": "Julkinen kuvaus tapahtumalle.",
     "web_page": "Nettisivut",
-    "web_page_help": "Julkisten nettisivujen osoite tapahtumalle.",
+    "web_page_help": "Julkisten nettisivujen osoite tapahtumalle. Esim. https://example.org/kilpailu",
     "invitation": "Kilpailukutsu",
-    "invitation_help": "Julkisen kilpailukutsun osoite.",
+    "invitation_help": "Julkisen kilpailukutsun osoite. Esim. https://example.org/kutsu",
     "past": "Menneet",
     "future": "Tulevat"
   },
@@ -152,7 +152,7 @@
   "sport": {
     "sport": "Laji | Lajit",
     "category": "Sarja | Sarjat",
-    "competition_type": "Kilpailutyyppi | Kilpailutyypit"
+    "competition_type": "Kilpailutyyppi | Kilpailutyypit"
   },
   "statistics": {
     "statistics": "Tilastot",
@@ -247,13 +247,15 @@
       "team_min_size": "Joukkueessa täytyy olla vähintään kaksi jäsentä",
       "team_member": "Joukkueen jäsentä ei voitu tunnistaa",
       "unknown_file_type": "Tunnistamaton tiedostotyyppi",
+      "unknown_file_type_excel": "Vain .xlsx, .xls, .ods ja .csv tiedostotyypit ovat tuettuina.",
       "incorrect_gender": "Virheellinen \"gender\"",
       "missing_gender": "Puuttuva \"gender\"",
       "incorrect_date_of_birth": "Virheellinen \"date_of_birth\"",
       "missing_date_of_birth": "Puuttuva \"date_of_birth\"",
       "missing_sport_id": "Puuttuva \"sport_id\"",
       "missing_first_name": "Puuttuva \"first_name\"",
-      "missing_last_name": "Puuttuva \"last_name\""
+      "missing_last_name": "Puuttuva \"last_name\"",
+      "missing_header": "Tiedoston sarakkeesta puuttuu otsikko."
     },
     "warning": {
       "label": "Huomio",

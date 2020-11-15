@@ -307,7 +307,7 @@ export default {
      * @returns {Promise<void>}
      */
     async onSubmitFile(event) {
-      this.$set(this.errors, "main", null);
+      this.errors = [];
       event.stopPropagation();
       event.preventDefault();
       try {
@@ -324,7 +324,9 @@ export default {
         ) {
           resultData = await this.parseExcel(file);
           this.results = resultData;
-          this.parseResults();
+          if (!this.errors.main) {
+            await this.parseResults();
+          }
         } else if (
           file &&
           file.type &&
@@ -334,12 +336,18 @@ export default {
           resultData = await this.parseCSV(file);
           if (resultData && resultData.data && resultData.data.length > 1) {
             this.results = parseSiusData(resultData.data);
-            this.parseResults();
+            await this.parseResults();
           }
         } else {
-          this.$set(this.errors, "main", [
-            this.$t("import.error.unknown_file_type")
-          ]);
+          if (this.form.fileType === "excel") {
+            this.$set(this.errors, "main", [
+              this.$t("import.error.unknown_file_type_excel")
+            ]);
+          } else {
+            this.$set(this.errors, "main", [
+              this.$t("import.error.unknown_file_type")
+            ]);
+          }
         }
       } catch (error) {
         this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
@@ -591,7 +599,7 @@ export default {
      * Modify Excel headers to technical versions
      *
      * @param worksheet
-     * @returns headers
+     * @returns []
      */
     parseExcelGetHeaders(worksheet) {
       let range = XLSX.utils.decode_range(worksheet["!ref"]);
@@ -599,7 +607,12 @@ export default {
       for (let C = range.s.c; C <= range.e.c; ++C) {
         let addr = XLSX.utils.encode_cell({ r: range.s.r, c: C });
         let cell = worksheet[addr];
-        if (!cell) continue;
+        if (!cell || !cell.v) {
+          this.$set(this.errors, "main", [
+            this.$t("import.error.missing_header")
+          ]);
+          return [];
+        }
         formattedNames.push(cell.v.replace(/\s/g, "_").toLowerCase());
       }
       let headers = [];

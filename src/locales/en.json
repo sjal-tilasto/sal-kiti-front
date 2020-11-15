@@ -1,17 +1,17 @@
 {
   "nav": {
     "title": "Kiti",
-    "event": "Event | Events",
+    "event": "Event | Events",
     "competition": "Competition | Competitions",
-    "statistic": "Statistic | Statistics",
+    "statistic": "Statistic | Statistics",
     "search": "Search",
     "login": "Log in",
     "logout": "Log out",
     "change_language": "Change language",
     "edit_on": "Activate edit mode",
     "edit_off": "Deactivate edit mode",
-    "record": "Record | Records",
-    "athlete": "Athlete | Athletes",
+    "record": "Record | Records",
+    "athlete": "Athlete | Athletes",
     "info": "Info | Info"
   },
   "front": {
@@ -48,9 +48,9 @@
     "limit": "Limit",
     "description_help": "Public description for the event.",
     "web_page": "Web page",
-    "web_page_help": "Public web page URL for the event.",
+    "web_page_help": "Public web page URL for the event. E.g. https://example.org/competition",
     "invitation": "Invitation",
-    "invitation_help": "Public invitation URL for the event.",
+    "invitation_help": "Public invitation URL for the event. E.g. https://example.org/invitation",
     "past": "Past",
     "future": "Future"
   },
@@ -247,13 +247,15 @@
       "team_min_size": "Team must have at least two members",
       "team_member": "Team member could not be identified",
       "unknown_file_type": "Unknown file type",
+      "unknown_file_type_excel": "Only .xlsx, .xls, .ods and .csv file types are supported.",
       "incorrect_gender": "Incorrect \"gender\"",
       "missing_gender": "Missing \"gender\"",
       "incorrect_date_of_birth": "Incorrect \"date_of_birth\"",
       "missing_date_of_birth": "Missing \"date_of_birth\"",
       "missing_sport_id": "Missing \"sport_id\"",
       "missing_first_name": "Missing \"first_name\"",
-      "missing_last_name": "Missing \"last_name\""
+      "missing_last_name": "Missing \"last_name\"",
+      "missing_header": "Missing header in file column."
     },
     "warning": {
       "label": "Warning",
