@@ -197,13 +197,14 @@
             :label="$t('statistics.gender')"
             label-for="input-gender"
           >
-            <b-form-select
-              id="input-gender"
-              v-model="form.gender"
-            >
+            <b-form-select id="input-gender" v-model="form.gender">
               <b-form-select-option value=""></b-form-select-option>
-              <b-form-select-option value="M">{{ $tc('statistics.man', 1) }}</b-form-select-option>
-              <b-form-select-option value="W">{{ $tc('statistics.woman', 1) }}</b-form-select-option>
+              <b-form-select-option value="M">{{
+                $tc("statistics.man", 1)
+              }}</b-form-select-option>
+              <b-form-select-option value="W">{{
+                $tc("statistics.woman", 1)
+              }}</b-form-select-option>
             </b-form-select>
           </b-form-group>
         </b-col>
