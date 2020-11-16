@@ -67,7 +67,7 @@
           >
             <template
               v-for="field in resultColsExtra[index + 1][1]"
-              v-slot:[field.slot]="data"
+              v-slot:[field.slot]
             >
               <div
                 v-for="row in resultColsExtra[index + 1][0][field.col]"
@@ -76,7 +76,7 @@
                 {{ getPartialField(index + 1, row, field.col) }}
               </div>
             </template>
-            <template v-slot:cell(pos)="data">
+            <template v-slot:cell(pos)>
               <div>{{ $t("result.kneeling") }}</div>
               <div>{{ $t("result.prone") }}</div>
               <div>{{ $t("result.standing") }}</div>

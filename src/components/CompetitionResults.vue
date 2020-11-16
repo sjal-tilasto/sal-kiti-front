@@ -134,7 +134,7 @@
                   {{ data.item.result | roundValue(data.item.decimals) }}
                 </div>
               </template>
-              <template v-slot:cell(pos)="data">
+              <template v-slot:cell(pos)>
                 <div>{{ $t("result.kneeling") }}</div>
                 <div>{{ $t("result.prone") }}</div>
                 <div>{{ $t("result.standing") }}</div>
@@ -142,7 +142,7 @@
               <template v-slot:cell(position)="data">
                 {{ data.item.position % 100000 }}
               </template>
-              <template v-slot:cell(empty)="data"> </template>
+              <template v-slot:cell(empty)> </template>
               <template v-slot:cell(wtype)="data">
                 {{
                   data.item.category | splitFilter("(", 1) | splitFilter(")")
