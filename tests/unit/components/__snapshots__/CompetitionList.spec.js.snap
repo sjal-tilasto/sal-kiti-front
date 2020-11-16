@@ -58,7 +58,9 @@ exports[`CompetitionList.vue renders competition list 1`] = `
               role="columnheader"
               scope="col"
             >
-              date
+              <div>
+                date
+              </div>
             </th>
             <th
               aria-colindex="2"
@@ -66,7 +68,9 @@ exports[`CompetitionList.vue renders competition list 1`] = `
               role="columnheader"
               scope="col"
             >
-              competition.type
+              <div>
+                competition.type
+              </div>
             </th>
             <th
               aria-colindex="3"
@@ -74,7 +78,9 @@ exports[`CompetitionList.vue renders competition list 1`] = `
               role="columnheader"
               scope="col"
             >
-              competition.type
+              <div>
+                competition.type
+              </div>
             </th>
             <th
               aria-colindex="4"
@@ -82,7 +88,9 @@ exports[`CompetitionList.vue renders competition list 1`] = `
               role="columnheader"
               scope="col"
             >
-              competition.level
+              <div>
+                competition.level
+              </div>
             </th>
             <th
               aria-colindex="5"
@@ -90,7 +98,9 @@ exports[`CompetitionList.vue renders competition list 1`] = `
               role="columnheader"
               scope="col"
             >
-              competition.level
+              <div>
+                competition.level
+              </div>
             </th>
           </tr>
         </thead>

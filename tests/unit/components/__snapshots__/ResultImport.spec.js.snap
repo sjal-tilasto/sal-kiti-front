@@ -45,6 +45,7 @@ exports[`ResultImport.vue parses results 1`] = `
                 class="custom-file-input is-invalid"
                 id="__BVID__14"
                 required="required"
+                style="z-index: -5;"
                 type="file"
               />
               <label
@@ -52,7 +53,12 @@ exports[`ResultImport.vue parses results 1`] = `
                 data-browse="Browse"
                 for="__BVID__14"
               >
-                import.file.select
+                <span
+                  class="d-block form-file-text"
+                  style="pointer-events: none;"
+                >
+                  import.file.select
+                </span>
               </label>
             </div>
             <!---->
@@ -80,7 +86,6 @@ exports[`ResultImport.vue parses results 1`] = `
               class="custom-control custom-radio"
             >
               <input
-                autocomplete="off"
                 class="custom-control-input"
                 id="__BVID__16"
                 name="filetype"
@@ -99,7 +104,6 @@ exports[`ResultImport.vue parses results 1`] = `
               class="custom-control custom-radio"
             >
               <input
-                autocomplete="off"
                 class="custom-control-input"
                 id="__BVID__17"
                 name="filetype"
@@ -131,7 +135,6 @@ exports[`ResultImport.vue parses results 1`] = `
           class="custom-control custom-checkbox"
         >
           <input
-            autocomplete="off"
             class="custom-control-input"
             id="checkbox-dry-run"
             name="checkbox-dry-run"
@@ -192,7 +195,9 @@ exports[`ResultImport.vue parses results 1`] = `
               role="columnheader"
               scope="col"
             >
-              import.status.label
+              <div>
+                import.status.label
+              </div>
             </th>
             <th
               aria-colindex="2"
@@ -200,7 +205,9 @@ exports[`ResultImport.vue parses results 1`] = `
               role="columnheader"
               scope="col"
             >
-              athlete.sport_id
+              <div>
+                athlete.sport_id
+              </div>
             </th>
             <th
               aria-colindex="3"
@@ -208,7 +215,9 @@ exports[`ResultImport.vue parses results 1`] = `
               role="columnheader"
               scope="col"
             >
-              first_name
+              <div>
+                first_name
+              </div>
             </th>
             <th
               aria-colindex="4"
@@ -216,7 +225,9 @@ exports[`ResultImport.vue parses results 1`] = `
               role="columnheader"
               scope="col"
             >
-              last_name
+              <div>
+                last_name
+              </div>
             </th>
             <th
               aria-colindex="5"
@@ -224,7 +235,9 @@ exports[`ResultImport.vue parses results 1`] = `
               role="columnheader"
               scope="col"
             >
-              result.category
+              <div>
+                result.category
+              </div>
             </th>
             <th
               aria-colindex="6"
@@ -232,7 +245,9 @@ exports[`ResultImport.vue parses results 1`] = `
               role="columnheader"
               scope="col"
             >
-              result.result
+              <div>
+                result.result
+              </div>
             </th>
             <th
               aria-colindex="7"
@@ -240,7 +255,9 @@ exports[`ResultImport.vue parses results 1`] = `
               role="columnheader"
               scope="col"
             >
-              import.warning.label
+              <div>
+                import.warning.label
+              </div>
             </th>
             <th
               aria-colindex="8"
@@ -248,7 +265,9 @@ exports[`ResultImport.vue parses results 1`] = `
               role="columnheader"
               scope="col"
             >
-              import.error.label
+              <div>
+                import.error.label
+              </div>
             </th>
           </tr>
         </thead>
@@ -1552,6 +1571,10 @@ exports[`ResultImport.vue renders result import form 1`] = `
             accept=""
             browsetext="Browse"
             dropplaceholder="import.file.drop"
+            filenameformatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
+            nodropplaceholder="Not allowed"
             placeholder="import.file.select"
             required="true"
           />
@@ -1564,6 +1587,7 @@ exports[`ResultImport.vue renders result import form 1`] = `
           labelfor="input-type"
         >
           <b-form-radio-stub
+            checked="excel"
             name="filetype"
             value="excel"
           >
@@ -1571,8 +1595,9 @@ exports[`ResultImport.vue renders result import form 1`] = `
           </b-form-radio-stub>
            
           <b-form-radio-stub
+            checked="excel"
             name="filetype"
-            value="excel"
+            value="sius"
           >
             SIUS CSV
           </b-form-radio-stub>
@@ -1583,6 +1608,7 @@ exports[`ResultImport.vue renders result import form 1`] = `
         <b-form-checkbox-stub
           id="checkbox-dry-run"
           name="checkbox-dry-run"
+          value="true"
         >
           
           import.dry_run
@@ -1591,8 +1617,6 @@ exports[`ResultImport.vue renders result import form 1`] = `
          
         <b-button-stub
           class="btn-orange space-right"
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="submit"

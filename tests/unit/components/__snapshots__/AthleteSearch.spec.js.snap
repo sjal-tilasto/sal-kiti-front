@@ -43,6 +43,9 @@ exports[`AthleteSearch.vue renders search form 1`] = `
           aria-label="search.placeholder_athlete"
           class="search-field space-right"
           debounce="0"
+          formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
           placeholder="search.placeholder_athlete"
           type="text"
           value=""
@@ -93,8 +96,6 @@ exports[`AthleteSearch.vue renders search form 1`] = `
          
         <b-button-stub
           class="btn-orange space-right"
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="submit"
@@ -131,6 +132,9 @@ exports[`AthleteSearch.vue renders search form 1`] = `
         emptytext="There are no records to show"
         fields="[object Object],[object Object],[object Object],[object Object]"
         filterdebounce="0"
+        filterfunction="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
         hover="true"
         id="my-table"
         items=""
@@ -141,6 +145,9 @@ exports[`AthleteSearch.vue renders search form 1`] = `
         selectedvariant="active"
         selectmode="multi"
         sortby=""
+        sortcompare="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
         sortcompareoptions="[object Object]"
         sortdirection="asc"
         value=""

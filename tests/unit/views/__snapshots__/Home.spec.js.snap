@@ -35,8 +35,6 @@ exports[`Home.vue renders content 1`] = `
      
     <b-button-stub
       class="btn-orange space-right space-down"
-      event="click"
-      routertag="a"
       tag="button"
       target="_self"
       to="[object Object]"
@@ -63,8 +61,6 @@ exports[`Home.vue renders content 1`] = `
      
     <b-button-stub
       class="btn-orange space-right space-down"
-      event="click"
-      routertag="a"
       tag="button"
       target="_self"
       to="[object Object]"
@@ -91,8 +87,6 @@ exports[`Home.vue renders content 1`] = `
      
     <b-button-stub
       class="btn-orange space-right space-down"
-      event="click"
-      routertag="a"
       tag="button"
       target="_self"
       to="[object Object]"
@@ -119,8 +113,6 @@ exports[`Home.vue renders content 1`] = `
      
     <b-button-stub
       class="btn-orange space-right space-down"
-      event="click"
-      routertag="a"
       tag="button"
       target="_self"
       to="[object Object]"
@@ -147,8 +139,6 @@ exports[`Home.vue renders content 1`] = `
      
     <b-button-stub
       class="btn-orange space-right space-down"
-      event="click"
-      routertag="a"
       tag="button"
       target="_self"
       to="[object Object]"

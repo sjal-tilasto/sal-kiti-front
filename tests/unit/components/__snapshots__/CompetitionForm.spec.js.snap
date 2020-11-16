@@ -41,6 +41,9 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-name"
             required="true"
             type="text"
@@ -62,6 +65,9 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-description"
             maxrows="6"
             rows="3"
@@ -84,6 +90,9 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-location"
             required="true"
             type="text"
@@ -105,6 +114,9 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-date-start"
             required="true"
             type="date"
@@ -126,6 +138,9 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="date-end"
             required="true"
             type="date"
@@ -238,8 +253,6 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
          
         <b-button-stub
           class="btn-orange space-right"
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="submit"

@@ -63,6 +63,7 @@ describe("AthleteSearch.vue", () => {
     const input = wrapper.find("input");
     input.element.value = "athlete";
     wrapper.vm.onSubmit(event);
+    await flushPromises();
     expect(mockAxios.get).toHaveBeenCalledWith(
       "athletes/?search=athlete&limit=10&page=1"
     );

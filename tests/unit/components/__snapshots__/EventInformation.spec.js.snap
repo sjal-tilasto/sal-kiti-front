@@ -250,8 +250,6 @@ exports[`EventInformation.vue show management options for organization user 1`] 
           competition.hidden
           
           <b-button-stub
-            event="click"
-            routertag="a"
             size="sm"
             tag="button"
             target="_self"
@@ -398,8 +396,6 @@ exports[`EventInformation.vue show management options for staff 1`] = `
           competition.unlocked
           
           <b-button-stub
-            event="click"
-            routertag="a"
             size="sm"
             tag="button"
             target="_self"
@@ -431,8 +427,6 @@ exports[`EventInformation.vue show management options for staff 1`] = `
           competition.hidden
           
           <b-button-stub
-            event="click"
-            routertag="a"
             size="sm"
             tag="button"
             target="_self"

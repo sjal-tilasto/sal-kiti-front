@@ -20,8 +20,6 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
     >
       <b-button-stub
         class="btn-orange space-right space-down"
-        event="click"
-        routertag="a"
         tag="button"
         target="_self"
         type="button"
@@ -141,6 +139,9 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-date-start"
             type="date"
           />
@@ -154,14 +155,15 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-date-end"
             type="date"
           />
            
           <b-button-stub
             class="btn-orange space-right space-top"
-            event="click"
-            routertag="a"
             size="sm"
             tag="button"
             target="_self"
@@ -261,6 +263,7 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
           <b-form-checkbox-stub
             id="checkbox-approved"
             name="checkbox-approved"
+            value="true"
           >
             
             statistics.approved_only
@@ -270,6 +273,7 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
           <b-form-checkbox-stub
             id="checkbox-trial"
             name="checkbox-trial"
+            value="true"
           >
             
             statistics.trial_only
@@ -279,6 +283,7 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
           <b-form-checkbox-stub
             id="checkbox-external"
             name="checkbox-external"
+            value="true"
           >
             
             statistics.external
@@ -401,8 +406,6 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
       >
         <b-button-stub
           class="btn-orange space-right"
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="submit"
@@ -413,8 +416,6 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
         </b-button-stub>
          
         <b-button-stub
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="reset"
@@ -426,9 +427,7 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
          
         <b-button-stub
           class="btn-orange space-right space-top"
-          event="click"
           pressed="true"
-          routertag="a"
           tag="button"
           target="_self"
           type="button"

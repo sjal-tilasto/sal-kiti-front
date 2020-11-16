@@ -46,8 +46,6 @@ exports[`RecordsForm.vue renders records search form 1`] = `
     >
       <b-button-stub
         class="btn-orange space-right space-down"
-        event="click"
-        routertag="a"
         tag="button"
         target="_self"
         type="button"
@@ -163,6 +161,7 @@ exports[`RecordsForm.vue renders records search form 1`] = `
           id="input-group-checkboxes"
         >
           <b-form-checkbox-stub
+            checked="true"
             id="checkbox-approved"
             name="checkbox-approved"
             value="true"
@@ -173,6 +172,7 @@ exports[`RecordsForm.vue renders records search form 1`] = `
           </b-form-checkbox-stub>
            
           <b-form-checkbox-stub
+            checked="true"
             id="checkbox-preliminary"
             name="checkbox-preliminary"
             value="true"
@@ -185,6 +185,7 @@ exports[`RecordsForm.vue renders records search form 1`] = `
           <b-form-checkbox-stub
             id="checkbox-historical"
             name="checkbox-historical"
+            value="true"
           >
             
             record.include_historical
@@ -201,8 +202,6 @@ exports[`RecordsForm.vue renders records search form 1`] = `
       >
         <b-button-stub
           class="btn-orange space-right"
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="submit"
@@ -213,8 +212,6 @@ exports[`RecordsForm.vue renders records search form 1`] = `
         </b-button-stub>
          
         <b-button-stub
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="reset"
@@ -278,8 +275,6 @@ exports[`RecordsForm.vue search records 1`] = `
     >
       <b-button-stub
         class="btn-orange space-right space-down"
-        event="click"
-        routertag="a"
         tag="button"
         target="_self"
         type="button"
@@ -395,6 +390,7 @@ exports[`RecordsForm.vue search records 1`] = `
           id="input-group-checkboxes"
         >
           <b-form-checkbox-stub
+            checked="true"
             id="checkbox-approved"
             name="checkbox-approved"
             value="true"
@@ -407,6 +403,7 @@ exports[`RecordsForm.vue search records 1`] = `
           <b-form-checkbox-stub
             id="checkbox-preliminary"
             name="checkbox-preliminary"
+            value="true"
           >
             
             record.include_preliminary
@@ -416,6 +413,7 @@ exports[`RecordsForm.vue search records 1`] = `
           <b-form-checkbox-stub
             id="checkbox-historical"
             name="checkbox-historical"
+            value="true"
           >
             
             record.include_historical
@@ -432,8 +430,6 @@ exports[`RecordsForm.vue search records 1`] = `
       >
         <b-button-stub
           class="btn-orange space-right"
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="submit"
@@ -444,8 +440,6 @@ exports[`RecordsForm.vue search records 1`] = `
         </b-button-stub>
          
         <b-button-stub
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="reset"
