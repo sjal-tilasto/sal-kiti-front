@@ -1,8 +1,20 @@
 # Changelog
+## 1.0.0 - 2020-11-16
+Required backend version: 1.0+
+
+### Changes
+- Added support for text based partial results
+- Added custom ordering for silhouette sport
+- Fixed default value for group results
+- Changed file import to check only extensions
+- Check for missing headers in file import
+- Improved errors messages
+- Updated versions of required packages
 
 ## 0.3.0 - 2020-08-14
 Required backend version: 0.4+
 
+### Changes
 - Refactored API shared API calls to use mixin
 - Added missing translations
 - Added competition type information page
@@ -11,6 +23,7 @@ Required backend version: 0.4+
 ## 0.2.0 - 2020-08-11
 Required backend version: 0.3+
 
+### Changes
 - Added missing result info to result details
 - Fixed use of name from result object instead of name from athlete object
 - Updated dependencies
