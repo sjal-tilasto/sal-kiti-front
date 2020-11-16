@@ -1,17 +1,17 @@
 {
   "nav": {
     "title": "Tilasto",
-    "event": "Event | Events",
+    "event": "Event | Events",
     "competition": "Competition | Competitions",
-    "statistic": "Statistic | Statistics",
+    "statistic": "Statistic | Statistics",
     "search": "Search",
     "login": "Log in",
     "logout": "Log out",
     "change_language": "Change language",
     "edit_on": "Activate edit mode",
     "edit_off": "Deactivate edit mode",
-    "record": "Record | Records",
-    "athlete": "Athlete | Athletes",
+    "record": "Record | Records",
+    "athlete": "Athlete | Athletes",
     "info": "Info | Info"
   },
   "front": {
@@ -282,7 +282,8 @@
       "connection": "No connection to the server, please check your internet connection and try reloading the page. Contact the service if the problem persists over 15 minutes.",
       "team_min_size": "Team must have at least two members",
       "team_member": "Team member could not be identified",
-      "unknown_file_type": "Unknown file type",
+      "unknown_file_type": "Incorrect file type",
+      "unknown_file_type_excel": "Only .xlsx, .xls, .ods and .csv file types are supported.",
       "incorrect_gender": "Incorrect \"gender\"",
       "missing_gender": "Missing \"gender\"",
       "incorrect_date_of_birth": "Incorrect \"date_of_birth\"",
@@ -319,7 +320,13 @@
       "bow_type": "Bow type",
       "target_type": "Target size",
       "competition_add": "Add a competition",
-      "competition_exists": "This month already has a competition."
+      "competition_exists": "This month already has a competition.",
+      "move": "Move",
+      "up": "Up",
+      "down": "Down",
+      "calculate_results": "Recalculate season results",
+      "calculating": "Calculating...",
+      "calculated": "Calculated"
     }
   },
   "date": "Date",

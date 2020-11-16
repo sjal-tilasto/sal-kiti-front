@@ -267,19 +267,19 @@ export default {
         let file = this.form.file;
         let resultData = [];
         if (
-          (file &&
-            file.type &&
-            (file.type === "application/vnd.oasis.opendocument.spreadsheet" ||
-              file.type ===
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) ||
-          file.type === "text/csv"
+          file &&
+          file.name &&
+          (file.name.toLowerCase().endsWith(".csv") ||
+            file.name.toLowerCase().endsWith(".xls") ||
+            file.name.toLowerCase().endsWith(".xlsx") ||
+            file.name.toLowerCase().endsWith(".ods"))
         ) {
           resultData = await this.parseExcel(file);
           this.results = resultData;
           await this.parseResults();
         } else {
           this.$set(this.errors, "main", [
-            this.$t("import.error.unknown_file_type")
+            this.$t("import.error.unknown_file_type_excel")
           ]);
         }
       } catch (error) {
@@ -347,6 +347,12 @@ export default {
             ["barebow", "vaisto"].includes(this.results[i]["bow"].toLowerCase())
           ) {
             this.result.bow_type = "barebow";
+          } else if (
+            ["longbow", "pitkäjousi"].includes(
+              this.results[i]["bow"].toLowerCase()
+            )
+          ) {
+            this.result.bow_type = "longbow";
           } else {
             this.results[i].error.push(
               this.$t("sjal.divari.import.error.incorrect_bow")

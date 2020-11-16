@@ -69,6 +69,22 @@
         </b-col>
         <b-col cols="12" md="6" xl="4">
           <b-form-group
+            id="input-group-competition-types"
+            :label="$t('competition.type')"
+            label-for="input-competition-types"
+          >
+            <b-form-select
+              id="input-competition-types"
+              v-model="form.competitionType"
+              :options="competitionTypes"
+              textField="name"
+              valueField="id"
+            >
+            </b-form-select>
+          </b-form-group>
+        </b-col>
+        <b-col cols="12" md="6" xl="4">
+          <b-form-group
             id="input-group-categories"
             :label="$t('result.category')"
             label-for="input-categories"
@@ -78,24 +94,6 @@
               id="input-categories"
               v-model="form.category"
               :options="categories"
-              textField="name"
-              valueField="id"
-              multiple
-            >
-            </b-form-select>
-          </b-form-group>
-        </b-col>
-        <b-col cols="12" md="6" xl="4">
-          <b-form-group
-            id="input-group-competition-types"
-            :label="$t('competition.type')"
-            label-for="input-competition-types"
-            :description="$t('statistics.choose_multiple')"
-          >
-            <b-form-select
-              id="input-competition-types"
-              v-model="form.competitionType"
-              :options="competitionTypes"
               textField="name"
               valueField="id"
               multiple
@@ -171,7 +169,7 @@ export default {
       form: {
         approved: true,
         category: [],
-        competitionType: [],
+        competitionType: 1,
         historical: false,
         preliminary: true,
         record_level: null
@@ -211,7 +209,7 @@ export default {
       this.form = {
         approved: true,
         category: [],
-        competitionType: [],
+        competitionType: 1,
         historical: false,
         preliminary: true,
         record_level: null
@@ -264,7 +262,7 @@ export default {
         parameters += "&category=" + this.form.category;
         query.category = this.form.category;
       }
-      if (this.form.competitionType.length) {
+      if (this.form.competitionType) {
         parameters += "&type=" + this.form.competitionType;
         query.type = this.form.competitionType;
       }
@@ -299,9 +297,7 @@ export default {
         this.form.category = JSON.parse("[" + this.$route.query.category + "]");
       }
       if (this.$route.query.type) {
-        this.form.competitionType = JSON.parse(
-          "[" + this.$route.query.type + "]"
-        );
+        this.form.competitionType = this.$route.query.type;
       }
       if (this.$route.query.level) {
         this.form.record_level = this.$route.query.level;

@@ -19,6 +19,20 @@
         >
           {{ s.name }}
         </b-button>
+        <b-button
+          v-if="season && $store.state.editMode && $store.state.user.is_staff"
+          variant="success"
+          class="space-down"
+          v-on:click="calculateSeasonResults(season)"
+        >
+          <span v-if="seasonCalculation === 0">{{
+            $t("sjal.divari.calculate_results")
+          }}</span>
+          <span v-else-if="seasonCalculation === 1">{{
+            $t("sjal.divari.calculating")
+          }}</span>
+          <span v-else>{{ $t("sjal.divari.calculated") }}</span>
+        </b-button>
       </b-col>
     </b-row>
     <b-row>
@@ -81,6 +95,7 @@ import DivariCompetitionList from "@/components/DivariCompetitionList.vue";
 import DivariSeasonResults from "@/components/DivariSeasonResults.vue";
 
 import { HTTP } from "../api/BaseApi";
+import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
 
 export default {
@@ -101,13 +116,19 @@ export default {
   },
   data() {
     return {
+      config: {
+        headers: {
+          "X-CSRFToken": getCookie("csrftoken")
+        }
+      },
       errors: {},
       loading: false,
       results: [],
       seasons: [],
       season: null,
       bowType: null,
-      competitions: false
+      competitions: false,
+      seasonCalculation: 0
     };
   },
   computed: {
@@ -124,6 +145,10 @@ export default {
         {
           key: "barebow",
           label: this.$t("sjal.barebow")
+        },
+        {
+          key: "longbow",
+          label: this.$t("sjal.longbow")
         }
       ];
     },
@@ -189,6 +214,30 @@ export default {
   },
   methods: {
     /**
+     * Calculates season results
+     *
+     * @param {number} season - season id
+     */
+    async calculateSeasonResults(season) {
+      if (this.seasonCalculation === 0) {
+        this.seasonCalculation = 1;
+        this.$set(this.errors, "main", null);
+        HTTP.post("divari/calculate", { season: season }, this.config)
+          .then(response => {
+            if ("calculated" in response.data && response.data.calculated) {
+              this.seasonCalculation = 2;
+            }
+          })
+          .catch(error => {
+            this.$set(
+              this.errors,
+              "main",
+              errorParser.generic.bind(this)(error)
+            );
+          });
+      }
+    },
+    /**
      * Fetch seasons from API
      *
      * @returns {Promise<void>}
@@ -233,6 +282,7 @@ export default {
      */
     selectSeason(id) {
       this.season = id;
+      this.seasonCalculation = 0;
       if (this.division) {
         this.$router.push({
           name: "divari",

@@ -19,8 +19,28 @@
             {{ data.item.team.organization }}
             {{ data.item.team.number }}
           </template>
-          <template v-slot:cell(organization)="data">
-            {{ data.item.athlete.organization }}
+          <template v-slot:cell(order)="data">
+            <b-button
+              variant="light"
+              class="btn-orange space-right"
+              v-on:click="moveTeamUp(data.item.team)"
+            >
+              {{ $t("sjal.divari.up") }}
+            </b-button>
+            <b-button
+              variant="light"
+              class="btn-orange space-right"
+              v-on:click="moveTeamDown(data.item.team)"
+            >
+              {{ $t("sjal.divari.down") }}
+            </b-button>
+            <b-button
+              variant="danger"
+              class="space-right"
+              v-on:click="deleteTeam(data.item.team)"
+            >
+              {{ $t("remove") }}
+            </b-button>
           </template>
           <template v-slot:cell(result)="data">
             {{ data.item.result | roundValue(0) }}
@@ -36,6 +56,7 @@
 
 <script>
 import { HTTP } from "../api/BaseApi.js";
+import getCookie from "../utils/GetCookie";
 import roundValue from "../utils/RoundValueFilter";
 import errorParser from "../utils/ErrorParser";
 
@@ -52,6 +73,11 @@ export default {
   },
   data() {
     return {
+      config: {
+        headers: {
+          "X-CSRFToken": getCookie("csrftoken")
+        }
+      },
       currentPage: 1,
       errors: {},
       loading: false,
@@ -69,6 +95,12 @@ export default {
         { key: "team.organization", label: this.$t("sjal.divari.team") },
         { key: "result", label: this.$tc("result.result", 1) }
       ];
+      if (this.$store.state.editMode && this.$store.state.user.is_staff) {
+        fields.splice(1, 0, {
+          key: "order",
+          label: this.$t("sjal.divari.move")
+        });
+      }
       return fields;
     }
   },
@@ -76,6 +108,22 @@ export default {
     this.getStatistics();
   },
   methods: {
+    /**
+     * Delete team
+     *
+     * @param {object} team - team object
+     */
+    deleteTeam: async function(team) {
+      await HTTP.delete("divari/teams/" + team.id + "/", this.config)
+        .then(response => {
+          if (response.status === 204) {
+            this.getStatistics();
+          }
+        })
+        .catch(error => {
+          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+        });
+    },
     /**
      * Fetch statistics from API
      *
@@ -133,6 +181,52 @@ export default {
         params: { athlete_id: item.athlete.id }
       });
       window.open(routeData.href, "_blank");
+    },
+    /**
+     * Move team up
+     *
+     * @param {object} team - team object
+     */
+    moveTeamUp: async function(team) {
+      if (team.division > 1) {
+        await HTTP.patch(
+          "divari/teams/" + team.id + "/",
+          { division: team.division - 1 },
+          this.config
+        )
+          .then(response => {
+            if (response.data.division !== team.division) {
+              this.getStatistics();
+            }
+          })
+          .catch(error => {
+            this.$set(
+              this.errors,
+              "main",
+              errorParser.generic.bind(this)(error)
+            );
+          });
+      }
+    },
+    /**
+     * Move team down
+     *
+     * @param {object} team - team object
+     */
+    moveTeamDown: async function(team) {
+      await HTTP.patch(
+        "divari/teams/" + team.id + "/",
+        { division: team.division + 1 },
+        this.config
+      )
+        .then(response => {
+          if (response.data.division !== team.division) {
+            this.getStatistics();
+          }
+        })
+        .catch(error => {
+          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+        });
     }
   }
 };
