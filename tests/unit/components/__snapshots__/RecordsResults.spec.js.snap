@@ -82,7 +82,9 @@ exports[`RecordsResults.vue renders result list 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                result.category
+                <div>
+                  result.category
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -97,7 +99,9 @@ exports[`RecordsResults.vue renders result list 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                result.result
+                <div>
+                  result.result
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -112,7 +116,9 @@ exports[`RecordsResults.vue renders result list 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                record.status
+                <div>
+                  record.status
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -126,7 +132,9 @@ exports[`RecordsResults.vue renders result list 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                athlete.athlete
+                <div>
+                  athlete.athlete
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -140,7 +148,9 @@ exports[`RecordsResults.vue renders result list 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                athlete.club
+                <div>
+                  athlete.club
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -154,7 +164,9 @@ exports[`RecordsResults.vue renders result list 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                competition.competition
+                <div>
+                  competition.competition
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -169,7 +181,9 @@ exports[`RecordsResults.vue renders result list 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                date
+                <div>
+                  date
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -353,7 +367,9 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                result.category
+                <div>
+                  result.category
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -368,7 +384,9 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                result.result
+                <div>
+                  result.result
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -383,7 +401,9 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                record.status
+                <div>
+                  record.status
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -397,7 +417,9 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                athlete.athlete
+                <div>
+                  athlete.athlete
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -411,7 +433,9 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                athlete.club
+                <div>
+                  athlete.club
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -425,7 +449,9 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                competition.competition
+                <div>
+                  competition.competition
+                </div>
                 <span
                   class="sr-only"
                 >
@@ -440,7 +466,9 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
                 scope="col"
                 tabindex="0"
               >
-                date
+                <div>
+                  date
+                </div>
                 <span
                   class="sr-only"
                 >

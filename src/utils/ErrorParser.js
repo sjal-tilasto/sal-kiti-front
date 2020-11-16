@@ -30,6 +30,42 @@ export default {
     return errors;
   },
   /**
+   * Parse form errors from API calls
+   *
+   * @param {object} error
+   * @returns {array} errors
+   */
+  form: function(error) {
+    let errors = [];
+    errors.main = [];
+    if (error.response) {
+      if (error.response.status === 403) {
+        errors.main.push(this.$t("import.error.permission"));
+      } else if (error.response.status === 404) {
+        errors.main.push(this.$t("import.error.notfound"));
+      } else if (error.response.status === 500) {
+        errors.main.push(this.$t("import.error.server"));
+      } else if (error.response.status === 400) {
+        errors.main.push(this.$t("import.error.invalid"));
+        const entries = Object.entries(error.response.data);
+        for (const entry of entries) {
+          if (entry[0] === "non_field_errors") {
+            for (const e of entry[1]) {
+              errors.main.push(e);
+            }
+          } else {
+            errors[entry[0]] = entry[1];
+          }
+        }
+      } else {
+        errors.main.push(this.$t("import.error.unknown"));
+      }
+    } else {
+      errors.main.push(this.$t("import.error.connection"));
+    }
+    return errors;
+  },
+  /**
    * Parse errors from partial result management API calls
    *
    * @param {object} error

@@ -46,8 +46,6 @@ exports[`RecordsForm.vue renders records search form 1`] = `
     >
       <b-button-stub
         class="btn-orange space-right space-down"
-        event="click"
-        routertag="a"
         tag="button"
         target="_self"
         type="button"
@@ -101,6 +99,33 @@ exports[`RecordsForm.vue renders records search form 1`] = `
         xl="4"
       >
         <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-competition-types"
+          label="competition.type"
+          labelfor="input-competition-types"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-competition-types"
+            labelfield="label"
+            options="[object Object]"
+            optionsfield="options"
+            selectsize="0"
+            textfield="name"
+            value="1"
+            valuefield="id"
+          />
+        </b-form-group-stub>
+      </b-col-stub>
+       
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-group-stub
           description="statistics.choose_multiple"
           feedbackarialive="assertive"
           id="input-group-categories"
@@ -130,39 +155,11 @@ exports[`RecordsForm.vue renders records search form 1`] = `
         xl="4"
       >
         <b-form-group-stub
-          description="statistics.choose_multiple"
-          feedbackarialive="assertive"
-          id="input-group-competition-types"
-          label="competition.type"
-          labelfor="input-competition-types"
-        >
-          <b-form-select-stub
-            disabledfield="disabled"
-            htmlfield="html"
-            id="input-competition-types"
-            labelfield="label"
-            multiple="true"
-            options="[object Object]"
-            optionsfield="options"
-            selectsize="0"
-            textfield="name"
-            value=""
-            valuefield="id"
-          />
-        </b-form-group-stub>
-      </b-col-stub>
-       
-      <b-col-stub
-        cols="12"
-        md="6"
-        tag="div"
-        xl="4"
-      >
-        <b-form-group-stub
           feedbackarialive="assertive"
           id="input-group-checkboxes"
         >
           <b-form-checkbox-stub
+            checked="true"
             id="checkbox-approved"
             name="checkbox-approved"
             value="true"
@@ -173,6 +170,7 @@ exports[`RecordsForm.vue renders records search form 1`] = `
           </b-form-checkbox-stub>
            
           <b-form-checkbox-stub
+            checked="true"
             id="checkbox-preliminary"
             name="checkbox-preliminary"
             value="true"
@@ -185,6 +183,7 @@ exports[`RecordsForm.vue renders records search form 1`] = `
           <b-form-checkbox-stub
             id="checkbox-historical"
             name="checkbox-historical"
+            value="true"
           >
             
             record.include_historical
@@ -201,8 +200,6 @@ exports[`RecordsForm.vue renders records search form 1`] = `
       >
         <b-button-stub
           class="btn-orange space-right"
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="submit"
@@ -213,8 +210,6 @@ exports[`RecordsForm.vue renders records search form 1`] = `
         </b-button-stub>
          
         <b-button-stub
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="reset"
@@ -278,8 +273,6 @@ exports[`RecordsForm.vue search records 1`] = `
     >
       <b-button-stub
         class="btn-orange space-right space-down"
-        event="click"
-        routertag="a"
         tag="button"
         target="_self"
         type="button"
@@ -333,6 +326,33 @@ exports[`RecordsForm.vue search records 1`] = `
         xl="4"
       >
         <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-competition-types"
+          label="competition.type"
+          labelfor="input-competition-types"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-competition-types"
+            labelfield="label"
+            options="[object Object]"
+            optionsfield="options"
+            selectsize="0"
+            textfield="name"
+            value="1,2"
+            valuefield="id"
+          />
+        </b-form-group-stub>
+      </b-col-stub>
+       
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-group-stub
           description="statistics.choose_multiple"
           feedbackarialive="assertive"
           id="input-group-categories"
@@ -362,39 +382,11 @@ exports[`RecordsForm.vue search records 1`] = `
         xl="4"
       >
         <b-form-group-stub
-          description="statistics.choose_multiple"
-          feedbackarialive="assertive"
-          id="input-group-competition-types"
-          label="competition.type"
-          labelfor="input-competition-types"
-        >
-          <b-form-select-stub
-            disabledfield="disabled"
-            htmlfield="html"
-            id="input-competition-types"
-            labelfield="label"
-            multiple="true"
-            options="[object Object]"
-            optionsfield="options"
-            selectsize="0"
-            textfield="name"
-            value="1,2"
-            valuefield="id"
-          />
-        </b-form-group-stub>
-      </b-col-stub>
-       
-      <b-col-stub
-        cols="12"
-        md="6"
-        tag="div"
-        xl="4"
-      >
-        <b-form-group-stub
           feedbackarialive="assertive"
           id="input-group-checkboxes"
         >
           <b-form-checkbox-stub
+            checked="true"
             id="checkbox-approved"
             name="checkbox-approved"
             value="true"
@@ -407,6 +399,7 @@ exports[`RecordsForm.vue search records 1`] = `
           <b-form-checkbox-stub
             id="checkbox-preliminary"
             name="checkbox-preliminary"
+            value="true"
           >
             
             record.include_preliminary
@@ -416,6 +409,7 @@ exports[`RecordsForm.vue search records 1`] = `
           <b-form-checkbox-stub
             id="checkbox-historical"
             name="checkbox-historical"
+            value="true"
           >
             
             record.include_historical
@@ -432,8 +426,6 @@ exports[`RecordsForm.vue search records 1`] = `
       >
         <b-button-stub
           class="btn-orange space-right"
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="submit"
@@ -444,8 +436,6 @@ exports[`RecordsForm.vue search records 1`] = `
         </b-button-stub>
          
         <b-button-stub
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="reset"

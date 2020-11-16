@@ -15,7 +15,7 @@
           variant="light"
           class="btn-orange space-right space-down"
           v-on:click="selectYear(y)"
-          :pressed="y === year"
+          :pressed="y === localYear"
         >
           {{ y }} - {{ y + 1 }}
         </b-button>
@@ -29,22 +29,22 @@
           variant="light"
           class="btn-orange space-right space-down"
           v-on:click="selectDivision(d.key)"
-          :pressed="d.key === division"
+          :pressed="d.key === localDivision"
         >
           {{ d.label }}
         </b-button>
       </b-col>
     </b-row>
-    <b-row v-if="division && dateEnd">
+    <b-row v-if="localDivision && dateEnd">
       <b-col>
         <h3 class="bg-sal-orange">
           {{ $tc("result.result", 2) }}
         </h3>
         <StatisticsRanking
-          :division="division"
+          :division="localDivision"
           :dateStart="dateStart"
           :dateEnd="dateEnd"
-          :key="division + dateEnd"
+          :key="localDivision + dateEnd"
         />
       </b-col>
     </b-row>
@@ -78,7 +78,9 @@ export default {
       loading: false,
       results: [],
       dateStart: null,
-      dateEnd: null
+      dateEnd: null,
+      localYear: null,
+      localDivision: null
     };
   },
   computed: {
@@ -136,33 +138,37 @@ export default {
   },
   mounted() {
     if (this.$route.query.year) {
-      this.year = parseInt(this.$route.query.year);
+      this.localYear = parseInt(this.$route.query.year);
+    } else if (this.year) {
+      this.localYear = this.year;
     }
     if (this.$route.query.division) {
-      this.division = this.$route.query.division;
+      this.localDivision = this.$route.query.division;
+    } else if (this.division) {
+      this.localDivision = this.division;
     }
-    if (this.year && this.division) {
-      this.dateStart = this.year.toString() + "-10-01";
-      this.dateEnd = (this.year + 1).toString() + "-09-01";
+    if (this.localYear && this.localDivision) {
+      this.dateStart = this.localYear.toString() + "-10-01";
+      this.dateEnd = (this.localYear + 1).toString() + "-09-01";
     }
   },
   methods: {
     selectDivision(division) {
-      this.division = division;
-      if (this.year) {
+      this.localDivision = division;
+      if (this.localYear) {
         this.$router.push({
           name: "statistics-ranking",
-          query: { division: this.division, year: this.year }
+          query: { division: this.localDivision, year: this.localYear }
         });
       }
     },
     selectYear(year) {
-      this.year = year;
-      this.dateStart = this.year.toString() + "-10-01";
-      this.dateEnd = (this.year + 1).toString() + "-09-01";
+      this.localYear = year;
+      this.dateStart = this.localYear.toString() + "-10-01";
+      this.dateEnd = (this.localYear + 1).toString() + "-09-01";
       this.$router.push({
         name: "statistics-ranking",
-        query: { division: this.division, year: this.year }
+        query: { division: this.localDivision, year: this.localYear }
       });
     }
   }

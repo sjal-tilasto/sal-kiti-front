@@ -77,7 +77,9 @@ exports[`StatisticsPohjolanMalja.vue renders result list 1`] = `
               role="columnheader"
               scope="col"
             >
-              athlete.club
+              <div>
+                athlete.club
+              </div>
             </th>
             <th
               aria-colindex="2"
@@ -85,7 +87,9 @@ exports[`StatisticsPohjolanMalja.vue renders result list 1`] = `
               role="columnheader"
               scope="col"
             >
-              abbreviation
+              <div>
+                abbreviation
+              </div>
             </th>
             <th
               aria-colindex="3"
@@ -93,7 +97,9 @@ exports[`StatisticsPohjolanMalja.vue renders result list 1`] = `
               role="columnheader"
               scope="col"
             >
-              result.result
+              <div>
+                result.result
+              </div>
             </th>
           </tr>
         </thead>

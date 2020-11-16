@@ -1,4 +1,4 @@
-import VueTestUtils from "@vue/test-utils";
+import { config } from "@vue/test-utils";
 
-VueTestUtils.config.mocks.$t = key => key;
-VueTestUtils.config.mocks.$tc = key => key;
+config.mocks.$t = key => key;
+config.mocks.$tc = key => key;

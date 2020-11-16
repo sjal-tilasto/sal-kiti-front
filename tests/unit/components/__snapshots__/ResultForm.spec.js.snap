@@ -18,8 +18,6 @@ exports[`ResultForm.vue renders result form 1`] = `
     >
       <b-button-stub
         class="btn-orange float-right"
-        event="click"
-        routertag="a"
         tag="button"
         target="_self"
         to="[object Object]"
@@ -63,6 +61,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="first-name"
             type="text"
             value="Master"
@@ -77,6 +78,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="last-name"
             required="true"
             type="text"
@@ -153,6 +157,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-result"
             required="true"
             type="text"
@@ -168,6 +175,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-decimals"
             required="true"
             type="text"
@@ -183,6 +193,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-result-code"
             type="text"
             value=""
@@ -197,6 +210,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-position"
             type="text"
             value="1"
@@ -211,6 +227,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-position-pre"
             type="text"
             value=""
@@ -225,6 +244,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-info"
             type="text"
             value="Testing"
@@ -241,6 +263,7 @@ exports[`ResultForm.vue renders result form 1`] = `
             id="input-approved"
             name="checkbox-approved"
             uncheckedvalue="false"
+            value="true"
           >
             
             result.approved
@@ -250,8 +273,6 @@ exports[`ResultForm.vue renders result form 1`] = `
          
         <b-button-stub
           class="btn-orange space-right space-down"
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="submit"
@@ -264,8 +285,6 @@ exports[`ResultForm.vue renders result form 1`] = `
          
         <b-button-stub
           class="btn-danger space-right space-down"
-          event="click"
-          routertag="a"
           tag="button"
           target="_self"
           type="button"
@@ -343,6 +362,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-order"
             required="true"
             type="text"
@@ -362,6 +384,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-value"
             type="text"
             value="49.200"
@@ -380,6 +405,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-decimals"
             required="true"
             type="text"
@@ -399,6 +427,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-time"
             type="text"
           />
@@ -416,6 +447,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-text"
             type="text"
             value=""
@@ -434,8 +468,6 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-button-stub
             class="btn-orange space-right"
-            event="click"
-            routertag="a"
             tag="button"
             target="_self"
             type="submit"
@@ -459,8 +491,6 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-button-stub
             class="btn-danger space-right"
-            event="click"
-            routertag="a"
             tag="button"
             target="_self"
             type="button"
@@ -538,6 +568,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-order"
             required="true"
             type="text"
@@ -557,6 +590,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-value"
             required="true"
             type="text"
@@ -576,6 +612,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-decimals"
             required="true"
             type="text"
@@ -595,6 +634,9 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-time"
             type="text"
             value=""
@@ -613,8 +655,6 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-button-stub
             class="btn-orange space-right"
-            event="click"
-            routertag="a"
             tag="button"
             target="_self"
             type="submit"

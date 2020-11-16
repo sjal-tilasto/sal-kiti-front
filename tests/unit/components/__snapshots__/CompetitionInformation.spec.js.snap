@@ -477,8 +477,6 @@ exports[`CompetitionInformation.vue show management options for staff 1`] = `
           competition.unlocked
           
           <b-button-stub
-            event="click"
-            routertag="a"
             size="sm"
             tag="button"
             target="_self"
@@ -510,8 +508,6 @@ exports[`CompetitionInformation.vue show management options for staff 1`] = `
           competition.hidden
           
           <b-button-stub
-            event="click"
-            routertag="a"
             size="sm"
             tag="button"
             target="_self"
@@ -543,8 +539,6 @@ exports[`CompetitionInformation.vue show management options for staff 1`] = `
           no
           
           <b-button-stub
-            event="click"
-            routertag="a"
             size="sm"
             tag="button"
             target="_self"
@@ -572,8 +566,6 @@ exports[`CompetitionInformation.vue show management options for staff 1`] = `
         <dd>
           <b-button-stub
             class="btn-orange"
-            event="click"
-            routertag="a"
             tag="button"
             target="_self"
             to="[object Object]"

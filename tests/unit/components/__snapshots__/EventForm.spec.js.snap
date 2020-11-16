@@ -53,6 +53,12 @@ exports[`EventForm.vue renders event form with even information 1`] = `
             textfield="name"
             valuefield="id"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -63,10 +69,19 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-name"
             required="true"
             type="text"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -78,12 +93,21 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-description"
             maxrows="6"
             rows="3"
             value=""
             wrap="soft"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -94,10 +118,19 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-location"
             required="true"
             type="text"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -108,10 +141,19 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-date-start"
             required="true"
             type="date"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -122,10 +164,19 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-date-end"
             required="true"
             type="date"
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -137,6 +188,9 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-optional_dates"
             maxrows="6"
             rows="3"
@@ -154,6 +208,9 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-categories"
             maxrows="6"
             rows="3"
@@ -171,10 +228,19 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-web_page"
             type="text"
             value=""
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -186,10 +252,19 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-invitation"
             type="text"
             value=""
           />
+           
+          <b-form-invalid-feedback-stub
+            tag="div"
+          >
+            <ul />
+          </b-form-invalid-feedback-stub>
         </b-form-group-stub>
          
         <b-form-group-stub
@@ -201,6 +276,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-checkbox-stub
             id="input-safety_plan"
+            value="true"
           />
         </b-form-group-stub>
          
@@ -213,6 +289,9 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
+            formatter="function _default() {
+        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
+      }"
             id="input-notes"
             maxrows="6"
             rows="3"
@@ -232,6 +311,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
             id="input-toc_agreement"
             name="toc-checkbox"
             required="true"
+            value="true"
           />
         </b-form-group-stub>
          
@@ -249,8 +329,6 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         <div>
           <b-button-stub
             class="btn-orange space-right"
-            event="click"
-            routertag="a"
             tag="button"
             target="_self"
             type="submit"

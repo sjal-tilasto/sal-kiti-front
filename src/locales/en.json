@@ -52,9 +52,9 @@
     "categories": "Categories",
     "categories_help": "Specify categories unless all official categories are allowed.",
     "web_page": "Web page",
-    "web_page_help": "Public web page URL for the event.",
+    "web_page_help": "Public web page URL for the event. E.g. https://example.org/competition",
     "invitation": "Invitation",
-    "invitation_help": "Public invitation URL for the event.",
+    "invitation_help": "Public invitation URL for the event. E.g. https://example.org/invitation",
     "safety_plan": "Safety plan",
     "safety_plan_help": "Is there a safety plan for the event?",
     "notes": "Other notes",
@@ -290,7 +290,8 @@
       "missing_date_of_birth": "Missing \"date_of_birth\"",
       "missing_sport_id": "Missing \"sport_id\"",
       "missing_first_name": "Missing \"first_name\"",
-      "missing_last_name": "Missing \"last_name\""
+      "missing_last_name": "Missing \"last_name\"",
+      "missing_header": "Missing header in file column."
     },
     "warning": {
       "label": "Warning",

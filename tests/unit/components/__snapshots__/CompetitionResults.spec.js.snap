@@ -72,7 +72,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
               aria-busy="false"
               aria-colcount="5"
               class="table b-table table-hover table-sm"
-              id="__BVID__13"
+              id="__BVID__7"
               role="table"
             >
               <!---->
@@ -94,7 +94,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    #
+                    <div>
+                      #
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -109,7 +111,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    athlete.athlete
+                    <div>
+                      athlete.athlete
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -124,7 +128,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    athlete.club
+                    <div>
+                      athlete.club
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -139,7 +145,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    F1
+                    <div>
+                      F1
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -154,7 +162,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    Result
+                    <div>
+                      Result
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -302,7 +312,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
               aria-busy="false"
               aria-colcount="9"
               class="table b-table table-hover table-sm"
-              id="__BVID__24"
+              id="__BVID__18"
               role="table"
             >
               <!---->
@@ -324,7 +334,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    #
+                    <div>
+                      #
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -339,7 +351,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    athlete.athlete
+                    <div>
+                      athlete.athlete
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -354,7 +368,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    athlete.club
+                    <div>
+                      athlete.club
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -369,7 +385,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    result.position
+                    <div>
+                      result.position
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -384,7 +402,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    S1
+                    <div>
+                      S1
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -399,7 +419,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    Sum
+                    <div>
+                      Sum
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -414,7 +436,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    result.result
+                    <div>
+                      result.result
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -429,7 +453,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    result.info
+                    <div>
+                      result.info
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -444,7 +470,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    result.details
+                    <div>
+                      result.details
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -756,7 +784,7 @@ exports[`CompetitionResults.vue renders result list 1`] = `
               aria-busy="false"
               aria-colcount="8"
               class="table b-table table-hover table-sm"
-              id="__BVID__39"
+              id="__BVID__37"
               role="table"
             >
               <!---->
@@ -778,7 +806,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    #
+                    <div>
+                      #
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -793,7 +823,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    athlete.athlete
+                    <div>
+                      athlete.athlete
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -808,7 +840,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    athlete.club
+                    <div>
+                      athlete.club
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -823,7 +857,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    result.position
+                    <div>
+                      result.position
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -838,7 +874,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    Sum
+                    <div>
+                      Sum
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -853,7 +891,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    result.result
+                    <div>
+                      result.result
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -868,7 +908,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    result.info
+                    <div>
+                      result.info
+                    </div>
                     <span
                       class="sr-only"
                     >
@@ -883,7 +925,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     scope="col"
                     tabindex="0"
                   >
-                    result.details
+                    <div>
+                      result.details
+                    </div>
                     <span
                       class="sr-only"
                     >

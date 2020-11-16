@@ -324,7 +324,9 @@ export default {
         ) {
           resultData = await this.parseExcel(file);
           this.results = resultData;
-          this.parseResults();
+          if (!this.errors.main) {
+            await this.parseResults();
+          }
         } else if (
           file &&
           file.type &&
@@ -334,7 +336,7 @@ export default {
           resultData = await this.parseCSV(file);
           if (resultData && resultData.data && resultData.data.length > 1) {
             this.results = parseSiusData(resultData.data);
-            this.parseResults();
+            await this.parseResults();
           }
         } else if (
           file &&
@@ -349,7 +351,7 @@ export default {
               resultData.data,
               this.competitionResultTypes
             );
-            this.parseResults();
+            await this.parseResults();
           }
         } else {
           if (this.form.fileType === "excel") {
@@ -612,7 +614,7 @@ export default {
      * Modify Excel headers to technical versions
      *
      * @param worksheet
-     * @returns array headers
+     * @returns []
      */
     parseExcelGetHeaders(worksheet) {
       let range = XLSX.utils.decode_range(worksheet["!ref"]);
@@ -620,7 +622,12 @@ export default {
       for (let C = range.s.c; C <= range.e.c; ++C) {
         let addr = XLSX.utils.encode_cell({ r: range.s.r, c: C });
         let cell = worksheet[addr];
-        if (!cell) continue;
+        if (!cell || !cell.v) {
+          this.$set(this.errors, "main", [
+            this.$t("import.error.missing_header")
+          ]);
+          return [];
+        }
         let header = cell.v;
         if (typeof header !== "string") {
           header = header.toString();

@@ -82,7 +82,9 @@ exports[`EventList.vue renders event list 1`] = `
               role="columnheader"
               scope="col"
             >
-              date
+              <div>
+                date
+              </div>
             </th>
             <th
               aria-colindex="2"
@@ -90,7 +92,9 @@ exports[`EventList.vue renders event list 1`] = `
               role="columnheader"
               scope="col"
             >
-              name
+              <div>
+                name
+              </div>
             </th>
             <th
               aria-colindex="3"
@@ -98,7 +102,9 @@ exports[`EventList.vue renders event list 1`] = `
               role="columnheader"
               scope="col"
             >
-              organizer
+              <div>
+                organizer
+              </div>
             </th>
             <th
               aria-colindex="4"
@@ -106,7 +112,9 @@ exports[`EventList.vue renders event list 1`] = `
               role="columnheader"
               scope="col"
             >
-              location
+              <div>
+                location
+              </div>
             </th>
           </tr>
         </thead>

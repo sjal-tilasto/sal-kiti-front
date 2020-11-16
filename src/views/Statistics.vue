@@ -14,6 +14,13 @@
         >
           {{ $t("statistics.search") }}
         </b-button>
+        <!-- <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          :to="{ name: 'records' }"
+        >
+          {{ $tc("nav.record", 2) }}
+        </b-button> -->
         <b-button
           variant="light"
           class="btn-orange space-right space-down"

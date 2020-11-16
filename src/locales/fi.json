@@ -51,9 +51,9 @@
     "categories": "Sarjat",
     "categories_help": "Anna kilpailusarjat elleivät kaikki viralliset sarjat ole hyväksyttyjä.",
     "web_page": "Nettisivut",
-    "web_page_help": "Julkisten nettisivujen osoite tapahtumalle.",
+    "web_page_help": "Julkisten nettisivujen osoite tapahtumalle. Esim. https://example.org/kilpailu",
     "invitation": "Kilpailukutsu",
-    "invitation_help": "Julkisen kilpailukutsun osoite.",
+    "invitation_help": "Julkisen kilpailukutsun osoite. Esim. https://example.org/kutsu",
     "safety_plan": "Turvallisuussuunnitelma",
     "safety_plan_help": "Onko tapahtumalle tehty turvallisuussuunnitelma?",
     "notes": "Muut huomiot",
@@ -290,7 +290,8 @@
       "missing_date_of_birth": "Puuttuva \"date_of_birth\"",
       "missing_sport_id": "Puuttuva \"sport_id\"",
       "missing_first_name": "Puuttuva \"first_name\"",
-      "missing_last_name": "Puuttuva \"last_name\""
+      "missing_last_name": "Puuttuva \"last_name\"",
+      "missing_header": "Tiedoston sarakkeesta puuttuu otsikko."
     },
     "warning": {
       "label": "Huomio",
