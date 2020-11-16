@@ -352,9 +352,15 @@ export default {
             this.parseResults();
           }
         } else {
-          this.$set(this.errors, "main", [
-            this.$t("import.error.unknown_file_type")
-          ]);
+          if (this.form.fileType === "excel") {
+            this.$set(this.errors, "main", [
+              this.$t("import.error.unknown_file_type_excel")
+            ]);
+          } else {
+            this.$set(this.errors, "main", [
+              this.$t("import.error.unknown_file_type")
+            ]);
+          }
         }
       } catch (error) {
         this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
