@@ -558,7 +558,7 @@ export default {
         }
       } else if (this.form.category) {
         let category = this.categories.filter(
-          cat => cat.id === this.form.category[0]
+          cat => cat.id === this.form.category
         );
         if (category.length === 1) {
           this.result.category = category[0].id;
