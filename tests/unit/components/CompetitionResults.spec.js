@@ -46,6 +46,7 @@ describe("CompetitionResults.vue", () => {
     };
     const wrapper = shallowMount(CompetitionResults, {
       localVue,
+      store,
       propsData: {
         competition: {
           type: 1,

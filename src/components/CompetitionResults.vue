@@ -4,9 +4,9 @@
       <b-col>
         <h3>{{ $tc("result.result", 2) }}</h3>
       </b-col>
-      <b-col v-if="editPermission">
+      <b-col v-if="$store.state.user.is_authenticated">
         <b-button
-          v-if="$store.state.editMode"
+          v-if="editPermission && $store.state.editMode"
           :to="{
             name: 'result-import',
             params: { competition_id: $route.params.competition_id }
@@ -16,7 +16,11 @@
           >{{ $tc("result.import", 2) }}
         </b-button>
         <b-button
-          v-if="$store.state.editMode && $store.state.user.is_staff"
+          v-if="
+            editPermission &&
+              $store.state.editMode &&
+              $store.state.user.is_staff
+          "
           variant="outline-success"
           v-on:click="approveAll()"
           class="space-right float-right"
