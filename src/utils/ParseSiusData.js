@@ -9,7 +9,7 @@ export default function(data) {
   let headerRow = null;
   let headers = {};
   let partial = {};
-  /* Header row is usally around 7th line */
+  /* Header row is usually around 7th line */
   for (const row in data) {
     if (data[row].length > 1 && data[row][1] === "Rank") {
       headerRow = parseInt(row);
@@ -103,7 +103,16 @@ export default function(data) {
         if (headers.remarks && data[i][headers.remarks]) {
           result.info = data[i][headers.remarks];
         }
-        /* For postition competition there are multiple result lines */
+        if (headers.subtotal) {
+          /* For subtotal there may be multiple result lines */
+          for (let n = 0; n < resultLines; n++) {
+            if (data[i + n][headers.subtotal]) {
+              result["psum-" + (n + 1).toString()] =
+                data[i + n][headers.subtotal];
+            }
+          }
+        }
+        /* For position competition there are multiple result lines */
         if (headers.position && data[i][headers.position]) {
           for (let n = 0; n < resultLines; n++) {
             let position = null;
@@ -140,8 +149,18 @@ export default function(data) {
           }
         } else {
           Object.keys(partial).forEach(elem => {
-            if (data[i][partial[elem]]) {
-              result["part-" + elem] = data[i][partial[elem]];
+            /* If there are multiline partial results, order goes first by columns and then by rows */
+            for (let n = 0; n < resultLines; n++) {
+              if (data[i + n][partial[elem]]) {
+                let part = elem;
+                if (n > 0) {
+                  part = (
+                    Number(elem) +
+                    n * Object.keys(partial).length
+                  ).toString();
+                }
+                result["part-" + part] = data[i + n][partial[elem]];
+              }
             }
           });
         }
