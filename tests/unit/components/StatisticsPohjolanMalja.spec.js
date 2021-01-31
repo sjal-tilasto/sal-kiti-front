@@ -13,6 +13,10 @@ describe("StatisticsPohjolanMalja.vue", () => {
     const wrapper = mount(StatisticsPohjolanMalja, {
       localVue
     });
+    wrapper.setData({
+      currentYear: 2021,
+      year: 2021
+    });
     await flushPromises();
     expect(wrapper.element).toMatchSnapshot();
   });

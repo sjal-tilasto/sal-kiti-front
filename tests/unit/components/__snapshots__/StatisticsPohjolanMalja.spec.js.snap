@@ -35,13 +35,23 @@ exports[`StatisticsPohjolanMalja.vue renders result list 1`] = `
       class="col"
     >
       <button
+        aria-pressed="false"
+        autocomplete="off"
+        class="btn btn-orange space-right space-down btn-light"
+        type="button"
+      >
+        
+        2020
+      
+      </button>
+      <button
         aria-pressed="true"
         autocomplete="off"
         class="btn btn-orange space-right space-down btn-light active"
         type="button"
       >
         
-        2020
+        2021
       
       </button>
     </div>
