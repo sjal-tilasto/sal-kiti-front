@@ -110,6 +110,9 @@ export default {
       } else {
         year = date.getFullYear();
       }
+      if (year === 2020) {
+        return (year + 1).toString() + "-05-01";
+      }
       return year.toString() + "-10-01";
     },
     dateEnd: function() {
