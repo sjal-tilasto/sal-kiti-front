@@ -371,6 +371,10 @@ export default {
             this.result.target_type = 40;
           } else if (this.results[i]["target"].includes("60")) {
             this.result.target_type = 60;
+          } else if (this.results[i]["target"].includes("80")) {
+            this.result.target_type = 80;
+          } else if (this.results[i]["target"].includes("122")) {
+            this.result.target_type = 122;
           } else {
             this.results[i].error.push(
               this.$t("sjal.divari.import.error.incorrect_target")
@@ -386,7 +390,7 @@ export default {
           if (
             Number.isInteger(result) &&
             parseInt(result) >= 0 &&
-            parseInt(result) <= 600
+            parseInt(result) <= 720
           ) {
             this.result.result = parseInt(result);
           } else {
@@ -394,7 +398,7 @@ export default {
               this.$t("sjal.divari.import.error.incorrect_result")
             );
           }
-        } else {
+        } else {cd
           this.results[i].error.push(
             this.$t("sjal.divari.import.error.missing_result")
           );
