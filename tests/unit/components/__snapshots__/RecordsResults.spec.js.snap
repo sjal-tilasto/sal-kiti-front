@@ -60,7 +60,7 @@ exports[`RecordsResults.vue renders result list 1`] = `
           aria-busy="false"
           aria-colcount="7"
           class="table b-table table-hover table-sm"
-          id="__BVID__7"
+          id="__BVID__9"
           role="table"
         >
           <!---->
@@ -130,7 +130,6 @@ exports[`RecordsResults.vue renders result list 1`] = `
                 class=""
                 role="columnheader"
                 scope="col"
-                tabindex="0"
               >
                 <div>
                   athlete.athlete
@@ -146,7 +145,6 @@ exports[`RecordsResults.vue renders result list 1`] = `
                 class="d-none d-md-table-cell"
                 role="columnheader"
                 scope="col"
-                tabindex="0"
               >
                 <div>
                   athlete.club
@@ -162,7 +160,6 @@ exports[`RecordsResults.vue renders result list 1`] = `
                 class="d-none d-lg-table-cell"
                 role="columnheader"
                 scope="col"
-                tabindex="0"
               >
                 <div>
                   competition.competition
@@ -345,7 +342,7 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
           aria-busy="false"
           aria-colcount="7"
           class="table b-table table-hover table-sm"
-          id="__BVID__24"
+          id="__BVID__26"
           role="table"
         >
           <!---->
@@ -415,7 +412,6 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
                 class=""
                 role="columnheader"
                 scope="col"
-                tabindex="0"
               >
                 <div>
                   athlete.athlete
@@ -431,7 +427,6 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
                 class="d-none d-md-table-cell"
                 role="columnheader"
                 scope="col"
-                tabindex="0"
               >
                 <div>
                   athlete.club
@@ -447,7 +442,6 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
                 class="d-none d-lg-table-cell"
                 role="columnheader"
                 scope="col"
-                tabindex="0"
               >
                 <div>
                   competition.competition

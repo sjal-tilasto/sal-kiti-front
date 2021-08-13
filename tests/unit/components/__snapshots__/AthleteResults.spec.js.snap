@@ -30,7 +30,7 @@ exports[`AthleteResults.vue renders result list 1`] = `
             aria-busy="false"
             aria-colcount="4"
             class="table b-table table-hover table-sm"
-            id="__BVID__24"
+            id="__BVID__26"
             role="table"
           >
             <!---->
@@ -219,7 +219,7 @@ exports[`AthleteResults.vue renders result list 1`] = `
             aria-busy="false"
             aria-colcount="6"
             class="table b-table table-hover table-sm"
-            id="__BVID__34"
+            id="__BVID__36"
             role="table"
           >
             <!---->
@@ -421,7 +421,7 @@ exports[`AthleteResults.vue renders result list 1`] = `
             aria-busy="false"
             aria-colcount="9"
             class="table b-table table-hover table-sm"
-            id="__BVID__6"
+            id="__BVID__8"
             role="table"
           >
             <!---->
@@ -576,7 +576,6 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   class="d-none d-md-table-cell"
                   role="columnheader"
                   scope="col"
-                  tabindex="0"
                 >
                   <div>
                     result.info

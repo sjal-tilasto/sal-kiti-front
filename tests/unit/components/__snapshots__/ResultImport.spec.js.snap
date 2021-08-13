@@ -33,17 +33,15 @@ exports[`ResultImport.vue parses results 1`] = `
           role="group"
         >
           <!---->
-          <div
-            class="bv-no-focus-ring"
-          >
+          <div>
             <div
               class="custom-file b-form-file is-invalid"
-              id="__BVID__14__BV_file_outer_"
+              id="__BVID__16__BV_file_outer_"
             >
               <input
                 aria-required="true"
                 class="custom-file-input is-invalid"
-                id="__BVID__14"
+                id="__BVID__16"
                 required="required"
                 style="z-index: -5;"
                 type="file"
@@ -51,7 +49,7 @@ exports[`ResultImport.vue parses results 1`] = `
               <label
                 class="custom-file-label"
                 data-browse="Browse"
-                for="__BVID__14"
+                for="__BVID__16"
               >
                 <span
                   class="d-block form-file-text"
@@ -79,22 +77,20 @@ exports[`ResultImport.vue parses results 1`] = `
           role="group"
         >
           <!---->
-          <div
-            class="bv-no-focus-ring"
-          >
+          <div>
             <div
               class="custom-control custom-radio"
             >
               <input
                 class="custom-control-input"
-                id="__BVID__16"
+                id="__BVID__18"
                 name="filetype"
                 type="radio"
                 value="excel"
               />
               <label
                 class="custom-control-label"
-                for="__BVID__16"
+                for="__BVID__18"
               >
                 Excel / CSV
               </label>
@@ -105,14 +101,14 @@ exports[`ResultImport.vue parses results 1`] = `
             >
               <input
                 class="custom-control-input"
-                id="__BVID__17"
+                id="__BVID__19"
                 name="filetype"
                 type="radio"
                 value="sius"
               />
               <label
                 class="custom-control-label"
-                for="__BVID__17"
+                for="__BVID__19"
               >
                 SIUS CSV
               </label>
@@ -175,7 +171,7 @@ exports[`ResultImport.vue parses results 1`] = `
         aria-busy="false"
         aria-colcount="8"
         class="table b-table table-sm"
-        id="__BVID__19"
+        id="__BVID__21"
         role="table"
       >
         <!---->
@@ -1571,9 +1567,10 @@ exports[`ResultImport.vue renders result import form 1`] = `
             accept=""
             browsetext="Browse"
             dropplaceholder="import.file.drop"
-            filenameformatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            filenameformatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             nodropplaceholder="Not allowed"
             placeholder="import.file.select"
             required="true"

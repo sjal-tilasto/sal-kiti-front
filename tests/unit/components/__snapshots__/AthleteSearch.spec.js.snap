@@ -43,9 +43,10 @@ exports[`AthleteSearch.vue renders search form 1`] = `
           aria-label="search.placeholder_athlete"
           class="search-field space-right"
           debounce="0"
-          formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+          formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
           placeholder="search.placeholder_athlete"
           type="text"
           value=""
@@ -126,15 +127,17 @@ exports[`AthleteSearch.vue renders search form 1`] = `
       <!---->
        
       <b-table-stub
-        apiurl=""
         currentpage="1"
         emptyfilteredtext="There are no records matching your request"
         emptytext="There are no records to show"
         fields="[object Object],[object Object],[object Object],[object Object]"
         filterdebounce="0"
-        filterfunction="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+        filterfunction="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
+        filterignoredfields=""
+        filterincludedfields=""
         hover="true"
         id="my-table"
         items=""
@@ -144,10 +147,10 @@ exports[`AthleteSearch.vue renders search form 1`] = `
         perpage="0"
         selectedvariant="active"
         selectmode="multi"
-        sortby=""
-        sortcompare="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+        sortcompare="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
         sortcompareoptions="[object Object]"
         sortdirection="asc"
         value=""
