@@ -608,12 +608,10 @@ export default {
         let addr = XLSX.utils.encode_cell({ r: range.s.r, c: C });
         let cell = worksheet[addr];
         if (!cell || !cell.v) {
-          this.$set(this.errors, "main", [
-            this.$t("import.error.missing_header")
-          ]);
-          return [];
+          formattedNames.push("missing_header");
+        } else {
+          formattedNames.push(cell.v.replace(/\s/g, "_").toLowerCase());
         }
-        formattedNames.push(cell.v.replace(/\s/g, "_").toLowerCase());
       }
       let headers = [];
       let competitionResultTypes = [];

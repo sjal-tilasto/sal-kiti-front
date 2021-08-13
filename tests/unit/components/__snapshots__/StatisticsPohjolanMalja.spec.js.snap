@@ -67,7 +67,7 @@ exports[`StatisticsPohjolanMalja.vue renders result list 1`] = `
         aria-busy="false"
         aria-colcount="3"
         class="table b-table table-sm"
-        id="__BVID__5"
+        id="__BVID__7"
         role="table"
       >
         <!---->

@@ -87,9 +87,10 @@ exports[`CompetitionSearch.vue renders competition search form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="input-date-start"
             type="date"
           />
@@ -103,9 +104,10 @@ exports[`CompetitionSearch.vue renders competition search form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="input-date-end"
             type="date"
           />
@@ -169,9 +171,10 @@ exports[`CompetitionSearch.vue renders competition search form 1`] = `
           <b-form-input-stub
             aria-label="search.placeholder_competition"
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="input-search"
             placeholder="search.placeholder_competition"
             type="text"
@@ -257,15 +260,17 @@ exports[`CompetitionSearch.vue renders competition search form 1`] = `
       <!---->
        
       <b-table-stub
-        apiurl=""
         currentpage="1"
         emptyfilteredtext="There are no records matching your request"
         emptytext="There are no records to show"
         fields="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
         filterdebounce="0"
-        filterfunction="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+        filterfunction="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
+        filterignoredfields=""
+        filterincludedfields=""
         hover="true"
         items=""
         labelsortasc="Click to sort Ascending"
@@ -274,10 +279,10 @@ exports[`CompetitionSearch.vue renders competition search form 1`] = `
         perpage="0"
         selectedvariant="active"
         selectmode="multi"
-        sortby=""
-        sortcompare="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+        sortcompare="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
         sortcompareoptions="[object Object]"
         sortdirection="asc"
         value=""

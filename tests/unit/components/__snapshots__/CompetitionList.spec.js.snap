@@ -38,7 +38,7 @@ exports[`CompetitionList.vue renders competition list 1`] = `
         aria-busy="false"
         aria-colcount="5"
         class="table b-table table-hover"
-        id="__BVID__7"
+        id="__BVID__9"
         role="table"
       >
         <!---->

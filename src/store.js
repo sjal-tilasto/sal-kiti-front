@@ -8,6 +8,7 @@ import { HTTP } from "./api/BaseApi.js";
 export default new Vuex.Store({
   state: {
     csrfToken: "",
+    spaVersion: null,
     user: {
       is_authenticated: false,
       is_staff: false
@@ -17,6 +18,9 @@ export default new Vuex.Store({
   mutations: {
     setCSRFToken(state, token) {
       state.csrfToken = token;
+    },
+    setSPAVersion(state, version) {
+      state.spaVersion = version;
     },
     setUserInfo(state, info) {
       state.user = info;
