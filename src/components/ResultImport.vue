@@ -307,7 +307,7 @@ export default {
      * @returns {Promise<void>}
      */
     async onSubmitFile(event) {
-      this.$set(this.errors, "main", null);
+      this.errors = [];
       event.stopPropagation();
       event.preventDefault();
       try {
@@ -573,7 +573,7 @@ export default {
         }
       } else if (this.form.category) {
         let category = this.categories.filter(
-          cat => cat.id === this.form.category[0]
+          cat => cat.id === this.form.category
         );
         if (category.length === 1) {
           this.result.category = category[0].id;
@@ -623,22 +623,20 @@ export default {
         let addr = XLSX.utils.encode_cell({ r: range.s.r, c: C });
         let cell = worksheet[addr];
         if (!cell || !cell.v) {
-          this.$set(this.errors, "main", [
-            this.$t("import.error.missing_header")
-          ]);
-          return [];
+          formattedNames.push("missing_header");
+        } else {
+          let header = cell.v;
+          if (typeof header !== "string") {
+            header = header.toString();
+          }
+          formattedNames.push(
+            header
+              .split("|")[0]
+              .trim()
+              .replace(/\s/g, "_")
+              .toLowerCase()
+          );
         }
-        let header = cell.v;
-        if (typeof header !== "string") {
-          header = header.toString();
-        }
-        formattedNames.push(
-          header
-            .split("|")[0]
-            .trim()
-            .replace(/\s/g, "_")
-            .toLowerCase()
-        );
       }
       let headers = [];
       let competitionResultTypes = [];

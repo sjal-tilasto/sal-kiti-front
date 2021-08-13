@@ -62,7 +62,7 @@ exports[`EventList.vue renders event list 1`] = `
         aria-busy="false"
         aria-colcount="4"
         class="table b-table table-hover"
-        id="__BVID__7"
+        id="__BVID__9"
         role="table"
       >
         <!---->

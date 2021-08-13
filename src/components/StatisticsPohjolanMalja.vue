@@ -56,6 +56,7 @@ export default {
   name: "Statistics",
   data() {
     return {
+      currentYear: new Date().getFullYear(),
       errors: {},
       loading: false,
       results: [],
@@ -87,10 +88,9 @@ export default {
      * @returns {array} year list
      */
     year_range: function() {
-      const currentYear = new Date().getFullYear();
       let years = [];
       let startYear = 2020;
-      while (startYear <= currentYear) {
+      while (startYear <= this.currentYear) {
         years.push(startYear++);
       }
       return years;

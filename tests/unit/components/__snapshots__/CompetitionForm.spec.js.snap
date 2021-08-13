@@ -41,9 +41,10 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="input-name"
             required="true"
             type="text"
@@ -65,9 +66,10 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="input-description"
             maxrows="6"
             rows="3"
@@ -90,9 +92,10 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="input-location"
             required="true"
             type="text"
@@ -114,9 +117,10 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="input-date-start"
             required="true"
             type="date"
@@ -138,9 +142,10 @@ exports[`CompetitionForm.vue renders competition form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="date-end"
             required="true"
             type="date"

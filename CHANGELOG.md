@@ -1,4 +1,12 @@
 # Changelog
+## 1.1.0 - 2020-01-31
+
+### Changes
+- Added support for multiline partial results in SIUS data
+- Fixed category value in SIUS import form
+- Changed media results to require logged on user, not edit permissions
+- Fixed year depending tests
+
 ## 1.0.0 - 2020-11-16
 Required backend version: 1.0+
 
