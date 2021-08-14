@@ -60,7 +60,7 @@ exports[`Home.vue renders content 1`] = `
            
           <statisticsranking-stub
             dateend="2021-09-01"
-            datestart="2020-10-01"
+            datestart="2021-05-01"
             division="recurve"
             limit="5"
             limited="true"
@@ -93,7 +93,7 @@ exports[`Home.vue renders content 1`] = `
            
           <statisticsranking-stub
             dateend="2021-09-01"
-            datestart="2020-10-01"
+            datestart="2021-05-01"
             division="compound"
             limit="5"
             limited="true"
@@ -126,7 +126,7 @@ exports[`Home.vue renders content 1`] = `
            
           <statisticsranking-stub
             dateend="2021-09-01"
-            datestart="2020-10-01"
+            datestart="2021-05-01"
             division="barebow"
             limit="5"
             limited="true"

@@ -193,9 +193,10 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="input-optional_dates"
             maxrows="6"
             rows="3"
@@ -213,9 +214,10 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="input-categories"
             maxrows="6"
             rows="3"
@@ -296,9 +298,10 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
-            formatter="function _default() {
-        return getComponentConfig(componentKey, prop, isFunction(defaultValue) ? defaultValue() : defaultValue);
-      }"
+            formatter="function bvConfigurablePropDefault() {
+      var value = getComponentConfig(componentKey, key, prop.default);
+      return isFunction(value) ? value() : value;
+    }"
             id="input-notes"
             maxrows="6"
             rows="3"
