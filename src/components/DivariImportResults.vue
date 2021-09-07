@@ -398,7 +398,7 @@ export default {
               this.$t("sjal.divari.import.error.incorrect_result")
             );
           }
-        } else {cd
+        } else {
           this.results[i].error.push(
             this.$t("sjal.divari.import.error.missing_result")
           );
