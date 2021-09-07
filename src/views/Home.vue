@@ -123,6 +123,9 @@ export default {
       } else {
         year = date.getFullYear() + 1;
       }
+      if (year === 2020) {
+        return year.toString() + "-12-31";
+      }
       return year.toString() + "-09-01";
     }
   },

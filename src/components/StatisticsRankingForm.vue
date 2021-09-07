@@ -153,7 +153,11 @@ export default {
       } else {
         this.dateStart = this.localYear.toString() + "-10-01";
       }
-      this.dateEnd = (this.localYear + 1).toString() + "-09-01";
+      if (this.localYear === 2020) {
+        this.dateEnd = (this.localYear + 1).toString() + "-12-31";
+      } else {
+        this.dateEnd = (this.localYear + 1).toString() + "-09-01";
+      }
     }
   },
   methods: {
