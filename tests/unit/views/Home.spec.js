@@ -15,7 +15,12 @@ describe("Home.vue", () => {
   it("renders content", () => {
     const wrapper = shallowMount(Home, {
       localVue,
-      store
+      store,
+      computed: {
+        year() {
+          return 2021;
+        }
+      }
     });
     expect(wrapper.element).toMatchSnapshot();
   });

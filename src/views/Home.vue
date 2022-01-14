@@ -96,6 +96,10 @@ export default {
   computed: {
     year: function() {
       let date = new Date();
+      let year = date.getFullYear();
+      if (year <= 2022 && date.getMonth() < 5) {
+        return 2020;
+      }
       if (date.getMonth() < 10) {
         return date.getFullYear() - 1;
       } else {
@@ -103,30 +107,13 @@ export default {
       }
     },
     dateStart: function() {
-      let date = new Date();
-      let year = 0;
-      if (date.getMonth() < 10) {
-        year = date.getFullYear() - 1;
-      } else {
-        year = date.getFullYear();
-      }
-      if (year === 2020) {
-        return (year + 1).toString() + "-05-01";
-      }
-      return year.toString() + "-10-01";
+      return this.year.toString() + "-10-01";
     },
     dateEnd: function() {
-      let date = new Date();
-      let year = 0;
-      if (date.getMonth() < 10) {
-        year = date.getFullYear();
-      } else {
-        year = date.getFullYear() + 1;
+      if (this.year === 2020) {
+        return (this.year + 2).toString() + "-04-30";
       }
-      if (year === 2020) {
-        return year.toString() + "-12-31";
-      }
-      return year.toString() + "-09-01";
+      return (this.year + 1).toString() + "-09-01";
     }
   },
   created() {

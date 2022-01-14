@@ -148,13 +148,9 @@ export default {
       this.localDivision = this.division;
     }
     if (this.localYear && this.localDivision) {
+      this.dateStart = this.localYear.toString() + "-10-01";
       if (this.localYear === 2020) {
-        this.dateStart = (this.localYear + 1).toString() + "-05-01";
-      } else {
-        this.dateStart = this.localYear.toString() + "-10-01";
-      }
-      if (this.localYear === 2020) {
-        this.dateEnd = (this.localYear + 1).toString() + "-12-31";
+        this.dateEnd = (this.localYear + 2).toString() + "-04-30";
       } else {
         this.dateEnd = (this.localYear + 1).toString() + "-09-01";
       }
@@ -172,12 +168,12 @@ export default {
     },
     selectYear(year) {
       this.localYear = year;
+      this.dateStart = this.localYear.toString() + "-10-01";
       if (this.localYear === 2020) {
-        this.dateStart = (this.localYear + 1).toString() + "-05-01";
+        this.dateEnd = (this.localYear + 2).toString() + "-04-30";
       } else {
-        this.dateStart = this.localYear.toString() + "-10-01";
+        this.dateEnd = (this.localYear + 1).toString() + "-09-01";
       }
-      this.dateEnd = (this.localYear + 1).toString() + "-09-01";
       this.$router.push({
         name: "statistics-ranking",
         query: { division: this.localDivision, year: this.localYear }
