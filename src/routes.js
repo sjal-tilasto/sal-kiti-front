@@ -47,6 +47,14 @@ export default [
       import(/* webpackChunkName: "result-import" */ "./views/ResultImport.vue")
   },
   {
+    path: "/pelias/import",
+    name: "result-import-pelias",
+    component: () =>
+      import(
+        /* webpackChunkName: "result-import-pelias" */ "./views/ResultImportPelias.vue"
+      )
+  },
+  {
     path: "/event/create/",
     name: "event-create",
     component: () =>

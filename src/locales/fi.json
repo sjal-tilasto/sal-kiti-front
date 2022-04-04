@@ -255,7 +255,11 @@
       "missing_sport_id": "Puuttuva \"sport_id\"",
       "missing_first_name": "Puuttuva \"first_name\"",
       "missing_last_name": "Puuttuva \"last_name\"",
-      "missing_header": "Tiedoston sarakkeesta puuttuu otsikko."
+      "missing_header": "Tiedoston sarakkeesta puuttuu otsikko.",
+      "pelias_multiple_competitions_found": "Useita kilpailuita samalla kilpailutyypillä.",
+      "pelias_multiple_events_found": "Useita tapahtumia samalla nimellä ja päivillä.",
+      "pelias_no_competition_type_found": "Kilpailutyyppiä ei löydetty.",
+      "pelias_multiple_competition_types_found": "Useita kilpailutyyppejä löydetty."
     },
     "warning": {
       "label": "Huomio",
@@ -299,5 +303,6 @@
   "organization": "Seura",
   "link": "linkki",
   "keyword": "Hakusana | Hakusanat",
-  "required": "Vaadittu"
+  "required": "Vaadittu",
+  "year": "vuosi"
 }
