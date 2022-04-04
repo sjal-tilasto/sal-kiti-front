@@ -65,12 +65,9 @@
               <div v-else>{{ block["label"] }}</div>
             </h5>
             <b-table
-              :items="limitResults(category, block['col'])"
+              :items="limitResults(category, block)"
               :fields="
-                filterResultFields(
-                  index + 1,
-                  limitResults(category, block['col'])
-                )
+                filterResultFields(index + 1, limitResults(category, block))
               "
               :sort-by="sortKey(block['label'])"
               sort-null-last
@@ -226,16 +223,17 @@
  * Displays results list for a single competition
  */
 import { HTTP } from "../api/BaseApi.js";
+import CompetitionResultsDetail from "../components/CompetitionResultsDetail.vue";
+import errorParser from "../utils/ErrorParser";
+import getCookie from "../utils/GetCookie";
 import groupArrayByKey from "../utils/GroupArrayByKey";
 import parseRecords from "../utils/ParseRecordsFilter";
 import partialValue from "../utils/PartialValueFilter";
+import raisePartialResults from "../utils/RaisePartialResults";
+import resultLayout from "../mixins/ResultLayout";
 import roundValue from "../utils/RoundValueFilter";
-import getCookie from "../utils/GetCookie";
 import splitFilter from "../utils/SplitFilter";
 import sortByPosition from "../utils/SortByPosition";
-import errorParser from "../utils/ErrorParser";
-import CompetitionResultsDetail from "../components/CompetitionResultsDetail.vue";
-import resultLayout from "../mixins/ResultLayout";
 
 export default {
   name: "CompetitionResults",
@@ -555,7 +553,11 @@ export default {
               }
             }
           });
-          this.results = groupArrayByKey(results, "ordercat", "fin");
+          this.results = groupArrayByKey(
+            raisePartialResults(results, "pospre"),
+            "ordercat",
+            "fin"
+          );
         })
         .catch(error => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
@@ -564,16 +566,21 @@ export default {
     },
     /**
      * Get x first results from a list. 0 means no limits.
-     * If limits, filter out rDNS, DNF and DSQ result codes.
+     * If limits, filter out DNS, DNF and DSQ result codes and results without a position.
      *
      * @param {array} results
-     * @param {number} limit
+     * @param {object} block
      * @returns {array} sliced results list
      */
-    limitResults(results, limit) {
+    limitResults(results, block) {
+      let limit = block["col"];
+      let sortKey = this.sortKey(block["label"]);
       if (limit > 0) {
         results = results.filter(
-          result => !["DNS", "DNF", "DSQ"].includes(result.result_code)
+          result =>
+            !["DNS", "DNF", "DSQ"].includes(result.result_code) &&
+            result.hasOwnProperty(sortKey) &&
+            result[sortKey] > 0
         );
       }
       if (limit > 0) {
@@ -617,8 +624,10 @@ export default {
     sortKey(block) {
       if (block === "preliminary" && this.resultBlocks.length > 1) {
         return "position_pre";
-      } else {
+      } else if (block === "preliminary" || block === "final") {
         return "position";
+      } else {
+        return block;
       }
     },
     /**
