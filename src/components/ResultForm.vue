@@ -135,6 +135,8 @@
             <b-form-input
               id="input-position"
               v-model="form.position"
+              type="number"
+              number
             ></b-form-input>
           </b-form-group>
           <b-form-group
@@ -145,6 +147,8 @@
             <b-form-input
               id="input-position-pre"
               v-model="form.position_pre"
+              type="number"
+              number
             ></b-form-input>
           </b-form-group>
           <b-form-group
@@ -454,6 +458,17 @@ export default {
   },
   methods: {
     /**
+     * Set empty integer fields to null
+     */
+    cleanForm() {
+      if ("position" in this.form && this.form.position === "") {
+        this.form.position = null;
+      }
+      if ("position_pre" in this.form && this.form.position_pre === "") {
+        this.form.position_pre = null;
+      }
+    },
+    /**
      * Confirmation message for result deletion
      *
      * @param {object} result
@@ -608,6 +623,7 @@ export default {
      */
     async postResult() {
       this.$set(this.errors, "main", null);
+      this.cleanForm();
       HTTP.post("results/", this.form, this.config)
         .then(response => {
           this.$router.push({
@@ -648,6 +664,7 @@ export default {
      */
     async putResult(id) {
       this.$set(this.errors, "main", null);
+      this.cleanForm();
       HTTP.put("results/" + id + "/", this.form, this.config)
         .then(response => {
           this.$router.push({

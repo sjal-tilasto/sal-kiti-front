@@ -141,7 +141,9 @@
                 <div>{{ $t("result.standing") }}</div>
               </template>
               <template v-slot:cell(position)="data">
-                {{ data.item.position % 100000 }}
+                <div v-if="data.item.position">
+                  {{ data.item.position % 100000 }}
+                </div>
               </template>
               <template v-slot:cell(empty)> </template>
               <template v-slot:cell(wtype)="data">
