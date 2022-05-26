@@ -129,7 +129,7 @@
 /**
  * Import results from various sources
  */
-import XLSX from "xlsx";
+import * as XLSX from "xlsx";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
 import Papa from "papaparse";
@@ -144,6 +144,7 @@ export default {
     return {
       categories: [],
       competition: {},
+      competitionLevel: {},
       competitionType: {},
       competitionResults: [],
       config: {
@@ -227,6 +228,7 @@ export default {
     async getData() {
       await this.getCompetition(this.$route.params.competition_id);
       await this.getCategories(this.competition.type_info.sport);
+      await this.getCompetitionLevel(this.competition.level);
       await this.getCompetitionType(this.competition.type);
       await this.getCompetitionResultTypes(this.competitionType.id);
       await this.getOrganizations(true, false, false);

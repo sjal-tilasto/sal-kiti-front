@@ -79,6 +79,24 @@ export default {
         .finally(() => (this.loadingCompetition = false));
     },
     /**
+     * Fetch competition level information from API
+     *
+     * @param {number} competitionLevelId
+     * @returns {Promise<void>}
+     */
+    async getCompetitionLevel(competitionLevelId) {
+      this.loadingCompetitionLevel = true;
+      this.competitionLevel = {};
+      await HTTP.get("competitionlevels/" + competitionLevelId + "/")
+        .then((response) => {
+          this.competitionLevel = response.data || {};
+        })
+        .catch((error) => {
+          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+        })
+        .finally(() => (this.loadingCompetitionLevel = false));
+    },
+    /**
      * Fetch competition levels from API
      *
      * @returns {Promise<void>}

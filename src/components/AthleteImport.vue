@@ -82,7 +82,7 @@
  * Import athletes
  */
 import { HTTP } from "../api/BaseApi.js";
-import XLSX from "xlsx";
+import * as XLSX from "xlsx";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
 import apiGet from "../mixins/ApiGet";

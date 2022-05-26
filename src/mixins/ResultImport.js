@@ -1,5 +1,5 @@
 import { HTTP } from "@/api/BaseApi";
-import XLSX from "xlsx";
+import * as XLSX from "xlsx";
 import errorParser from "@/utils/ErrorParser";
 
 export default {
@@ -18,6 +18,46 @@ export default {
         result: null,
         team: 0
       };
+    },
+    /**
+     * Check requirements from competition type and level
+     *
+     * @param {number} i - current result number
+     * * @param {object} athlete
+     */
+    async checkRequirements(i, athlete) {
+      let levelRequirements = [];
+      if ("requirements" in this.competitionLevel) {
+        levelRequirements = this.competitionLevel["requirements"].split(",");
+      }
+      let typeRequirements = [];
+      if ("requirements" in this.competitionType) {
+        typeRequirements = this.competitionType["requirements"].split(",");
+      }
+      let athleteInfo = [];
+      if ("info" in athlete) {
+        athleteInfo = athlete["info"]
+          .filter(
+            (info) =>
+              info.date_start <= this.competition.date_start &&
+              info.date_end >= this.competition.date_start
+          )
+          .map((filtered) => filtered.type);
+      }
+      levelRequirements.forEach((requirement) => {
+        if (requirement && !athleteInfo.includes(requirement)) {
+          this.results[i].warning.push(
+            this.$t("import.warning.requirement_level") + ": " + requirement
+          );
+        }
+      });
+      typeRequirements.forEach((requirement) => {
+        if (requirement && !athleteInfo.includes(requirement)) {
+          this.results[i].warning.push(
+            this.$t("import.warning.requirement_type") + ": " + requirement
+          );
+        }
+      });
     },
     /**
      * Fetch athlete information from API
@@ -173,6 +213,7 @@ export default {
         if (athlete) {
           this.result.athlete = athlete.id;
           this.updateMissingAthleteInfo(i, athlete);
+          this.checkRequirements(i, athlete);
           return athlete;
         } else {
           this.results[i].error.push(this.$t("import.error.athlete"));
@@ -192,6 +233,7 @@ export default {
           for (let c = 0; c < members.length; c++) {
             const athlete = await this.getAthlete("?sport_id=" + members[c]);
             if (athlete) {
+              this.checkRequirements(i, athlete);
               memberIDs.push(athlete.id);
             } else {
               this.results[i].error.push(
@@ -229,6 +271,7 @@ export default {
               athlete_organization
             );
             if (athlete) {
+              this.checkRequirements(i, athlete);
               memberIDs.push(athlete.id);
             }
           }
