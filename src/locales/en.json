@@ -148,6 +148,10 @@
     "athlete_import": "Athlete import",
     "athlete_import_description": "Import or update athletes with Excel-sheet",
     "to_athlete_import": "Import athletes",
+    "tools": "Tools",
+    "athlete_check": "Athlete information check",
+    "athlete_check_description": "Check licences, names etc. from athletes",
+    "to_athlete_check": "Check licences",
     "layout": "Layout"
   },
   "sport": {
@@ -194,8 +198,20 @@
     "sports": "Sports",
     "result_manage": "Result management",
     "athlete_import": "Athlete import",
+    "athlete_check": "Athlete information check",
     "info": "Info",
     "organizations": "Organizations"
+  },
+  "tools": {
+    "athlete_check": "Athlete information check",
+    "download_excel": "Download Excel",
+    "licence_date": "Date for licence check",
+    "sport_id_list": "List of sport id's, one per line",
+    "warning": {
+      "licence_missing": "Licence missing",
+      "multiple_athletes_found": "Multiple athletes found",
+      "no_athletes_found": "No athlete found"
+    }
   },
   "import": {
     "file": {
@@ -265,7 +281,9 @@
       "label": "Warning",
       "first_name": "First name was updated",
       "last_name": "Last name was updated",
-      "organization": "Check athlete's organization"
+      "organization": "Check athlete's organization",
+      "requirement_level": "Missing requirement for competition level",
+      "requirement_type": "Missing requirement for competition type"
     }
   },
   "confirm": {
@@ -281,6 +299,7 @@
   "first_name": "First Name",
   "last_name": "Last Name",
   "organizer": "Organizer",
+  "licence": "Licence",
   "location": "Location",
   "submit": "Submit",
   "update": "Update",

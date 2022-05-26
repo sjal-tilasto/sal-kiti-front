@@ -13,6 +13,12 @@ export default [
     component: HomeView
   },
   {
+    path: "/athlete/check/",
+    name: "athlete-check",
+    component: () =>
+      import(/* webpackChunkName: "athlete-check" */ "./views/AthleteCheck.vue")
+  },
+  {
     path: "/athlete/import/",
     name: "athlete-import",
     component: () =>

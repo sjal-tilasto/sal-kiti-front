@@ -18,6 +18,22 @@
         {{ item.button }}
       </b-button>
     </div>
+    <div v-if="$store.state.user.is_authenticated">
+      <h1>{{ $t("info.tools") }}</h1>
+      <div v-for="item in cardListAuthenticated" v-bind:key="item.title">
+        <h2 class="bg-sal-orange">
+          {{ item.title }}
+        </h2>
+        <p>{{ item.text }}</p>
+        <b-button
+          variant="light"
+          class="btn-orange space-right space-down"
+          :to="{ name: item.link }"
+        >
+          {{ item.button }}
+        </b-button>
+      </div>
+    </div>
     <div v-if="$store.state.user.is_staff">
       <h1>{{ $t("info.management") }}</h1>
       <div v-for="item in cardListStaff" v-bind:key="item.title">
@@ -63,6 +79,21 @@ export default {
           text: this.$t("info.organization_description"),
           button: this.$t("info.to_organization"),
           link: "info-organization"
+        }
+      ];
+    },
+    /**
+     * Sets card information for authenticated users
+     *
+     * @returns {array} authenticated card information
+     */
+    cardListAuthenticated: function () {
+      return [
+        {
+          title: this.$tc("info.athlete_check", 2),
+          text: this.$t("info.athlete_check_description"),
+          button: this.$t("info.to_athlete_check"),
+          link: "athlete-check"
         }
       ];
     },
