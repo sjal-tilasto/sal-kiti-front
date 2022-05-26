@@ -4,7 +4,7 @@
  * @param {string} name
  * @returns {null/string} cookie value or null if not found
  */
-export default function(name) {
+export default function (name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
     let cookies = document.cookie.split(";");

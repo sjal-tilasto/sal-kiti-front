@@ -7,7 +7,7 @@
  * @param {boolean} levels_only - does not include category info
  * @returns {string}
  */
-export default function(
+export default function (
   records,
   include_preliminary = false,
   levels_only = false

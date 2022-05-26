@@ -61,10 +61,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="first-name"
             type="text"
             value="Master"
@@ -79,10 +76,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="last-name"
             required="true"
             type="text"
@@ -159,10 +153,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-result"
             required="true"
             type="text"
@@ -178,10 +169,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-decimals"
             required="true"
             type="text"
@@ -197,10 +185,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-result-code"
             type="text"
             value=""
@@ -215,12 +200,10 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-position"
-            type="text"
+            number="true"
+            type="number"
             value="1"
           />
         </b-form-group-stub>
@@ -233,12 +216,10 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-position-pre"
-            type="text"
+            number="true"
+            type="number"
             value=""
           />
         </b-form-group-stub>
@@ -251,10 +232,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-info"
             type="text"
             value="Testing"
@@ -370,10 +348,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-order"
             required="true"
             type="text"
@@ -393,10 +368,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-value"
             type="text"
             value="49.200"
@@ -415,10 +387,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-decimals"
             required="true"
             type="text"
@@ -438,10 +407,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-time"
             type="text"
           />
@@ -459,10 +425,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-text"
             type="text"
             value=""
@@ -581,10 +544,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-order"
             required="true"
             type="text"
@@ -604,10 +564,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-value"
             required="true"
             type="text"
@@ -627,10 +584,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-decimals"
             required="true"
             type="text"
@@ -650,10 +604,7 @@ exports[`ResultForm.vue renders result form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-time"
             type="text"
             value=""

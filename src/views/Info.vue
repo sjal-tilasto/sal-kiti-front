@@ -50,7 +50,7 @@ export default {
      *
      * @returns {array} card information
      */
-    cardList: function() {
+    cardList: function () {
       return [
         {
           title: this.$tc("info.sport", 2),
@@ -71,7 +71,7 @@ export default {
      *
      * @returns {array} admin card information
      */
-    cardListStaff: function() {
+    cardListStaff: function () {
       return [
         {
           title: this.$tc("info.athlete_import", 2),

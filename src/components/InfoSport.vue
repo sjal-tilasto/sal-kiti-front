@@ -43,12 +43,8 @@
         <h2 class="bg-sal-orange">{{ $tc("sport.category", 2) }}</h2>
         <b-table :fields="categoryFields" :items="categories">
           <template v-slot:cell(team)="data">
-            <div v-if="data.item.team" class="text-success">
-              &#10004;
-            </div>
-            <div v-else class="text-danger">
-              &#10005;
-            </div>
+            <div v-if="data.item.team" class="text-success">&#10004;</div>
+            <div v-else class="text-danger">&#10005;</div>
           </template>
         </b-table>
       </b-col>
@@ -62,20 +58,12 @@
           hover
         >
           <template v-slot:cell(personal)="data">
-            <div v-if="data.item.personal" class="text-success">
-              &#10004;
-            </div>
-            <div v-else class="text-danger">
-              &#10005;
-            </div>
+            <div v-if="data.item.personal" class="text-success">&#10004;</div>
+            <div v-else class="text-danger">&#10005;</div>
           </template>
           <template v-slot:cell(team)="data">
-            <div v-if="data.item.team" class="text-success">
-              &#10004;
-            </div>
-            <div v-else class="text-danger">
-              &#10005;
-            </div>
+            <div v-if="data.item.team" class="text-success">&#10004;</div>
+            <div v-else class="text-danger">&#10005;</div>
           </template>
         </b-table>
       </b-col>
@@ -112,7 +100,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    categoryFields: function() {
+    categoryFields: function () {
       return [
         { key: "abbreviation", label: this.$t("abbreviation") },
         { key: "name", label: this.$t("name") },
@@ -125,7 +113,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    competitionTypeFields: function() {
+    competitionTypeFields: function () {
       return [
         { key: "abbreviation", label: this.$t("abbreviation") },
         { key: "name", label: this.$t("name") },
@@ -150,13 +138,13 @@ export default {
     async getSports() {
       this.loadingSports = true;
       HTTP.get("sports/")
-        .then(response => {
+        .then((response) => {
           this.sports = response.data.results;
-          this.sports.forEach(obj => {
+          this.sports.forEach((obj) => {
             obj.state = false;
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingSports = false));
@@ -202,7 +190,7 @@ export default {
     selectSport(id) {
       this.$set(this.errors, "main", null);
       this.sport = id;
-      this.sports.forEach(obj => {
+      this.sports.forEach((obj) => {
         if (obj.id !== id) {
           obj.state = false;
         }

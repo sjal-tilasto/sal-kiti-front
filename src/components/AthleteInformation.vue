@@ -62,7 +62,7 @@
 import apiGet from "../mixins/ApiGet";
 
 export default {
-  name: "athlete",
+  name: "AthleteInformation",
   mixins: [apiGet],
   data() {
     return {

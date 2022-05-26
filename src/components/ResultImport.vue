@@ -202,7 +202,7 @@ export default {
      *
      * @returns {array} fields
      */
-    importFields: function() {
+    importFields: function () {
       return [
         { key: "status", label: this.$t("import.status.label") },
         { key: "sport_id", label: this.$t("athlete.sport_id") },
@@ -316,10 +316,10 @@ export default {
       }
       let headers = [];
       let competitionResultTypes = [];
-      this.competitionResultTypes.forEach(resultType => {
+      this.competitionResultTypes.forEach((resultType) => {
         competitionResultTypes.push(resultType.abbreviation);
       });
-      formattedNames.forEach(name => {
+      formattedNames.forEach((name) => {
         if (this.staticFields.includes(name)) {
           headers.push(name);
         } else if (name === "final_category") {
@@ -346,7 +346,7 @@ export default {
     parseExcel(file) {
       return new Promise((resolve, reject) => {
         let reader = new FileReader();
-        reader.onload = e => {
+        reader.onload = (e) => {
           let data = new Uint8Array(e.target.result);
           let workbook = XLSX.read(data, { type: "array" });
           let firstSheetName = workbook.SheetNames[0];

@@ -117,7 +117,7 @@ export default {
      *
      * @returns [{}]
      */
-    results: function() {
+    results: function () {
       let fields = {};
       for (let block = 1; block <= this.maxBlock; block++) {
         if (
@@ -125,9 +125,8 @@ export default {
           this.resultCols[block].length > 0
         ) {
           for (const order in this.resultCols[block]) {
-            fields[this.resultCols[block][order].name] = this.resultCols[block][
-              order
-            ].name;
+            fields[this.resultCols[block][order].name] =
+              this.resultCols[block][order].name;
           }
         }
       }
@@ -148,11 +147,11 @@ export default {
     async getCompetitionType(id) {
       this.loadingCompetitionType = true;
       HTTP.get("competitiontypes/" + id + "/")
-        .then(response => {
+        .then((response) => {
           this.competitionType = response.data;
           this.getCompetitionTypeLayout(this.competitionType.layout);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCompetitionType = false));
@@ -168,7 +167,7 @@ export default {
     async getCompetitionTypeLayout(layoutType) {
       this.loadingCompetitionTypeLayouts = true;
       HTTP.get("competitionlayouts/?type=" + layoutType)
-        .then(response => {
+        .then((response) => {
           if (response.data.results.length > 0) {
             this.customFields = response.data.results;
           } else {
@@ -222,7 +221,7 @@ export default {
           }
           this.maxBlock = this.customFields[this.customFields.length - 1].block;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCompetitionTypeLayouts = false));
@@ -237,7 +236,7 @@ export default {
      */
     getPartialField(block, row, col) {
       const partialField = this.resultColsExtra[block][row].find(
-        f => f.col === col
+        (f) => f.col === col
       );
       if (partialField) {
         return partialField.name;

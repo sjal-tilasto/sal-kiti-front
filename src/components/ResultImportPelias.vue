@@ -1,4 +1,5 @@
-F<template>
+F
+<template>
   <div>
     <b-row>
       <b-col>
@@ -39,7 +40,7 @@ F<template>
     <b-row
       v-if="
         pelias.competitions.length > 0 &&
-          this.pelias.competitionDivisions.length === 0
+        this.pelias.competitionDivisions.length === 0
       "
     >
       <b-col>
@@ -208,7 +209,7 @@ export default {
      *
      * @returns {array} fields
      */
-    importFields: function() {
+    importFields: function () {
       return [
         { key: "status", label: this.$t("import.status.label") },
         { key: "sport_id", label: this.$t("athlete.sport_id") },
@@ -239,10 +240,10 @@ export default {
     async getPeliasCompetitions(year) {
       axios
         .get(process.env.VUE_APP_PELIAS_API_URL + "competitions/" + year)
-        .then(response => {
+        .then((response) => {
           this.pelias.competitions = response.data.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -256,10 +257,10 @@ export default {
     async getPeliasNationals(year) {
       axios
         .get(process.env.VUE_APP_PELIAS_API_URL + "competitions/" + year)
-        .then(response => {
+        .then((response) => {
           this.pelias.nationals = response.data.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -277,10 +278,10 @@ export default {
             "competition_divisions/" +
             competition
         )
-        .then(response => {
+        .then((response) => {
           this.pelias.competitionDivisions = response.data.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -294,10 +295,10 @@ export default {
     async getPeliasDiscipline(id) {
       await axios
         .get(process.env.VUE_APP_PELIAS_API_URL + "discipline/" + id)
-        .then(response => {
+        .then((response) => {
           this.pelias.competitionDiscipline = response.data.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -318,10 +319,10 @@ export default {
             "/" +
             division
         )
-        .then(response => {
+        .then((response) => {
           this.pelias.divisionResults = response.data.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -357,10 +358,10 @@ export default {
         "&name=" +
         item.name;
       await HTTP.get(searchUrl)
-        .then(response => {
+        .then((response) => {
           this.events = response.data.results || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -372,10 +373,10 @@ export default {
     async getCompetitions(event) {
       let searchUrl = "competitions/?event=" + event;
       await HTTP.get(searchUrl)
-        .then(response => {
+        .then((response) => {
           this.competitions = response.data.results || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -387,10 +388,10 @@ export default {
     async getCompetitionTypes(sport) {
       let searchUrl = "competitiontypes/?sport=" + sport;
       await HTTP.get(searchUrl)
-        .then(response => {
+        .then((response) => {
           this.competitionTypes = response.data.results || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -402,7 +403,7 @@ export default {
      */
     async getOrganization(abbreviation) {
       await HTTP.get("organizations/?abbreviation=" + abbreviation)
-        .then(response => {
+        .then((response) => {
           if (response.data.results.length === 1) {
             this.competitionOrganization = response.data.results[0].id;
           } else {
@@ -411,7 +412,7 @@ export default {
             ]);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -424,7 +425,7 @@ export default {
       let level = 12;
       if (
         this.pelias.nationals.filter(
-          item => (item.competition_id = this.pelias.competition.id)
+          (item) => (item.competition_id = this.pelias.competition.id)
         )
       ) {
         level = 8;
@@ -446,13 +447,13 @@ export default {
         type: type
       };
       competition.layout = this.competitionTypes.find(
-        obj => obj.id === type
+        (obj) => obj.id === type
       ).layout;
       await HTTP.post("competitions/", competition, this.config)
-        .then(response => {
+        .then((response) => {
           this.competition = response.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.errors = errorParser.form.bind(this)(error);
         });
     },
@@ -475,10 +476,10 @@ export default {
         toc_agreement: true
       };
       await HTTP.post("events/", event, this.config)
-        .then(response => {
+        .then((response) => {
           this.event = response.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.errors = errorParser.form.bind(this)(error);
         });
     },
@@ -515,13 +516,13 @@ export default {
       this.results = [];
       this.errors = [];
       let competitionType = this.competitionTypes.filter(
-        item =>
+        (item) =>
           item.name ===
           this.pelias.competitionDiscipline.name + " " + division.name
       );
       if (competitionType.length === 1) {
         let competition = this.competitions.filter(
-          item => item.type === competitionType[0].id
+          (item) => item.type === competitionType[0].id
         );
         if (competition.length === 1) {
           this.competition = competition[0];

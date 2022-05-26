@@ -49,7 +49,7 @@ export default {
      *
      * @returns {array} card information
      */
-    cardList: function() {
+    cardList: function () {
       return [
         {
           title: this.$tc("nav.event", 2),
@@ -88,7 +88,7 @@ export default {
      *
      * @returns {array} card information
      */
-    cardListAuthenticated: function() {
+    cardListAuthenticated: function () {
       return [
         {
           title: this.$tc("nav.info", 2),

@@ -28,12 +28,12 @@ export default {
     async getAthlete(query) {
       let athlete = null;
       await HTTP.get("athletes/" + query)
-        .then(response => {
+        .then((response) => {
           if (response.data.results.length === 1) {
             athlete = response.data.results[0];
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
       return athlete;
@@ -43,7 +43,7 @@ export default {
      */
     getDebugExcel() {
       if (this.debugResults) {
-        this.debugResults.forEach(row => {
+        this.debugResults.forEach((row) => {
           if (row["error"].length > 0) {
             row["error"] = row["error"].toString();
           }
@@ -65,10 +65,10 @@ export default {
      */
     async getResults(id) {
       HTTP.get("results/?competition=" + id)
-        .then(response => {
+        .then((response) => {
           this.competitionResults = response.data.results || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -91,7 +91,7 @@ export default {
       } else {
         if (first_name && last_name && organization) {
           organizationObject = this.organizations.filter(
-            org => org.abbreviation === organization
+            (org) => org.abbreviation === organization
           );
           if (organizationObject.length === 1) {
             query =
@@ -123,10 +123,10 @@ export default {
           },
           this.config
         )
-          .then(response => {
+          .then((response) => {
             athlete = response.data;
           })
-          .catch(error => {
+          .catch((error) => {
             this.$set(
               this.errors,
               "main",
@@ -252,13 +252,13 @@ export default {
         let category = [];
         if (keys.includes("wtype")) {
           category = this.categories.filter(
-            cat =>
+            (cat) =>
               cat.abbreviation ===
               this.results[i].category + " (" + this.results[i].wtype + ")"
           );
         } else {
           category = this.categories.filter(
-            cat => cat.abbreviation === this.results[i].category
+            (cat) => cat.abbreviation === this.results[i].category
           );
         }
         if (category.length === 1) {
@@ -277,7 +277,7 @@ export default {
         }
       } else if (this.form.category) {
         let category = this.categories.filter(
-          cat => cat.id === this.form.category
+          (cat) => cat.id === this.form.category
         );
         if (category.length === 1) {
           this.result.category = category[0].id;
@@ -292,7 +292,7 @@ export default {
       }
       if (keys.includes("elimination_category")) {
         let eliminationCategory = this.categories.filter(
-          cat => cat.abbreviation === this.results[i].elimination_category
+          (cat) => cat.abbreviation === this.results[i].elimination_category
         );
         if (eliminationCategory.length === 1) {
           this.result.elimination_category = eliminationCategory[0].id;
@@ -329,11 +329,11 @@ export default {
     parseOrganization(i, keys, athlete) {
       if (keys.includes("organization")) {
         let organization = this.organizations.filter(
-          org => org.abbreviation === this.results[i].organization
+          (org) => org.abbreviation === this.results[i].organization
         );
         if (organization.length === 0) {
           organization = this.organizations.filter(
-            org => org.name === this.results[i].organization
+            (org) => org.name === this.results[i].organization
           );
         }
         if (organization.length === 1) {
@@ -515,7 +515,7 @@ export default {
       let keys = [];
       for (let i = 0; i < this.results.length; i++) {
         Object.keys(this.results[i]).map(
-          k =>
+          (k) =>
             (this.results[i][k] =
               typeof this.results[i][k] == "string"
                 ? this.results[i][k].trim()
@@ -593,14 +593,14 @@ export default {
       let duplicate = [];
       if (this.result.team) {
         duplicate = this.competitionResults.filter(
-          res =>
+          (res) =>
             res.team === this.result.team &&
             res.last_name === this.result.last_name &&
             res.category === this.result.category
         );
       } else {
         duplicate = this.competitionResults.filter(
-          res =>
+          (res) =>
             res.athlete === this.result.athlete &&
             res.category === this.result.category
         );
@@ -614,18 +614,18 @@ export default {
           this.result,
           this.config
         )
-          .then(response => {
+          .then((response) => {
             this.results[i].response = response.data;
           })
-          .catch(error => {
+          .catch((error) => {
             this.results[i].error.push(...errorParser.result.bind(this)(error));
           });
       } else if (this.results[i].error.length === 0) {
         await HTTP.post("results/", this.result, this.config)
-          .then(response => {
+          .then((response) => {
             this.results[i].response = response.data;
           })
-          .catch(error => {
+          .catch((error) => {
             this.results[i].error.push(...errorParser.result.bind(this)(error));
           });
       }

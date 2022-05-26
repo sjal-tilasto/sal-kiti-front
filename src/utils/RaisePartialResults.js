@@ -6,12 +6,12 @@
  * @param {boolean} isinteger, if value is integer
  * @returns {array}
  */
-export default function(array, raised, isinteger = true) {
+export default function (array, raised, isinteger = true) {
   let result = {};
-  array.forEach(item => {
+  array.forEach((item) => {
     if ("partial" in item) {
       let items = item["partial"].filter(
-        elem => elem["type"]["abbreviation"] === raised
+        (elem) => elem["type"]["abbreviation"] === raised
       );
       for (let i = 0; i < items.length; i++) {
         if (isinteger) {

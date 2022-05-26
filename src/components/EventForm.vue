@@ -241,13 +241,13 @@ export default {
       this.erros = {};
       this.event.toc_agreement = true;
       HTTP.post("events/", this.event, this.config)
-        .then(response => {
+        .then((response) => {
           this.$router.push({
             name: "event",
             params: { event_id: response.data.id }
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.errors = errorParser.form.bind(this)(error);
         });
     },
@@ -261,13 +261,13 @@ export default {
       this.erros = {};
       this.event.toc_agreement = true;
       HTTP.put("events/" + id + "/", this.event, this.config)
-        .then(response => {
+        .then((response) => {
           this.$router.push({
             name: "event",
             params: { event_id: response.data.id }
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.errors = errorParser.form.bind(this)(error);
         });
     }

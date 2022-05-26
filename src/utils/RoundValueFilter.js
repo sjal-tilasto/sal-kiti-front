@@ -7,7 +7,7 @@ import numberFormatter from "../utils/NumberFormatter";
  * @param {number} decimals
  * @returns {string}
  */
-export default function(value, decimals) {
+export default function (value, decimals) {
   const val = parseFloat(value);
   if (!val) return "";
   if (!Number.isInteger(decimals)) return numberFormatter(val, "", ",");

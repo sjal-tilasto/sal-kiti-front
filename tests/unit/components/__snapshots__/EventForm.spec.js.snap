@@ -69,10 +69,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-name"
             required="true"
             type="text"
@@ -94,10 +91,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-description"
             maxrows="6"
             rows="3"
@@ -120,10 +114,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-location"
             required="true"
             type="text"
@@ -144,10 +135,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-date-start"
             required="true"
             type="date"
@@ -168,10 +156,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-date-end"
             required="true"
             type="date"
@@ -193,10 +178,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-web_page"
             type="text"
             value=""
@@ -218,10 +200,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-invitation"
             type="text"
             value=""

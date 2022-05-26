@@ -236,7 +236,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    listFields: function() {
+    listFields: function () {
       return [
         { key: "date", label: this.$t("date") },
         {
@@ -277,7 +277,7 @@ export default {
      * Fetch new set of competitions on page change
      */
     currentPage: {
-      handler: function() {
+      handler: function () {
         this.getCompetitions(this.searchParams);
       }
     },
@@ -285,7 +285,7 @@ export default {
      * Fetch competitions when search parameters change
      */
     searchParams: {
-      handler: function() {
+      handler: function () {
         this.currentPage = 1;
         this.getCompetitions(this.searchParams);
       }
@@ -326,10 +326,10 @@ export default {
         }
       }
       HTTP.get("competitions/" + searchParams + "&page=" + this.currentPage)
-        .then(response => {
+        .then((response) => {
           this.competitions = response.data || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCompetitions = false));

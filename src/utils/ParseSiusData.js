@@ -4,7 +4,7 @@
  * @param {array} data
  * @returns {array} list of results objects
  */
-export default function(data) {
+export default function (data) {
   let results = [];
   let headerRow = null;
   let headers = {};
@@ -93,10 +93,7 @@ export default function(data) {
             let total = data[i + n][headers.total];
             if (total.includes("-")) {
               result.result = total.split("-")[0].trim();
-              result["x-1"] = total
-                .split("-")[1]
-                .split("x")[0]
-                .trim();
+              result["x-1"] = total.split("-")[1].split("x")[0].trim();
             }
           }
         }
@@ -136,7 +133,7 @@ export default function(data) {
               position = "stand";
             }
             if (position) {
-              Object.keys(partial).forEach(elem => {
+              Object.keys(partial).forEach((elem) => {
                 if (data[i + n][partial[elem]]) {
                   result[position + "-" + elem] = data[i + n][partial[elem]];
                 }
@@ -148,7 +145,7 @@ export default function(data) {
             }
           }
         } else {
-          Object.keys(partial).forEach(elem => {
+          Object.keys(partial).forEach((elem) => {
             /* If there are multiline partial results, order goes first by columns and then by rows */
             for (let n = 0; n < resultLines; n++) {
               if (data[i + n][partial[elem]]) {

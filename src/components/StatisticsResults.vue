@@ -84,7 +84,7 @@
             <div
               v-if="
                 data.item.competition.date_start ===
-                  data.item.competition.date_end
+                data.item.competition.date_end
               "
             >
               {{ data.item.competition.date_start }}
@@ -109,7 +109,7 @@ import roundValue from "../utils/RoundValueFilter";
 import errorParser from "../utils/ErrorParser";
 
 export default {
-  name: "Statistics",
+  name: "StatisticsResults",
   filters: {
     roundValue
   },
@@ -130,7 +130,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       let groupResult = this.searchParameters.includes("group_results");
       let fields = [
         { key: "number", label: "#" },
@@ -184,7 +184,7 @@ export default {
      * Update results on page change
      */
     currentPage: {
-      handler: function() {
+      handler: function () {
         this.getStatistics();
       }
     },
@@ -192,7 +192,7 @@ export default {
      * Trigger search on parameters change
      */
     searchParameters: {
-      handler: function() {
+      handler: function () {
         this.currentPage = 1;
         this.getStatistics();
       }
@@ -222,10 +222,10 @@ export default {
       HTTP.get(
         "resultlist/" + this.searchParameters + "&page=" + this.currentPage
       )
-        .then(response => {
+        .then((response) => {
           this.results = response.data || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingResults = false));

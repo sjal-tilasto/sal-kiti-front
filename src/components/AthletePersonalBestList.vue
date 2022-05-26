@@ -53,7 +53,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    personalBestFields: function() {
+    personalBestFields: function () {
       return [
         {
           key: "competition.type_info.name",
@@ -90,13 +90,13 @@ export default {
      */
     calculatePersonalBest(results) {
       let best = [];
-      const sorted = results.sort(function(a, b) {
+      const sorted = results.sort(function (a, b) {
         return b.result - a.result;
       });
-      sorted.forEach(item => {
+      sorted.forEach((item) => {
         if (
           !best.some(
-            el =>
+            (el) =>
               el.category === item.category &&
               el.competition.type === item.competition.type
           )

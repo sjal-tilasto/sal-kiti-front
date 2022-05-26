@@ -148,7 +148,7 @@ import errorParser from "../utils/ErrorParser";
 import apiGet from "../mixins/ApiGet";
 
 export default {
-  name: "Event",
+  name: "EventInformation",
   mixins: [apiGet],
   data() {
     return {
@@ -168,7 +168,7 @@ export default {
      *
      * @returns {boolean} editPermission
      */
-    editPermission: function() {
+    editPermission: function () {
       try {
         this.$emit("update:createPermission", this.event.permissions.update);
         return this.event.permissions.update;
@@ -186,17 +186,17 @@ export default {
      *
      * @returns {Promise<void>}
      */
-    toggleLockStatus: async function() {
+    toggleLockStatus: async function () {
       this.$set(this.errors, "main", null);
       await HTTP.patch(
         "events/" + this.event.id + "/",
         { locked: !this.event.locked },
         this.config
       )
-        .then(response => {
+        .then((response) => {
           this.event.locked = response.data.locked;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -205,17 +205,17 @@ export default {
      *
      * @returns {Promise<void>}
      */
-    togglePublicStatus: async function() {
+    togglePublicStatus: async function () {
       this.$set(this.errors, "main", null);
       await HTTP.patch(
         "events/" + this.event.id + "/",
         { public: !this.event.public },
         this.config
       )
-        .then(response => {
+        .then((response) => {
           this.event.public = response.data.public;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     }

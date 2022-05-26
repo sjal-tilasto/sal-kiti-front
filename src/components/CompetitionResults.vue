@@ -18,8 +18,8 @@
         <b-button
           v-if="
             editPermission &&
-              $store.state.editMode &&
-              $store.state.user.is_staff
+            $store.state.editMode &&
+            $store.state.user.is_staff
           "
           variant="outline-success"
           v-on:click="approveAll()"
@@ -78,7 +78,7 @@
               small
               v-if="
                 block['name'] === 'nolimit' ||
-                  getMaxRounds(category, block['name']) >= 1
+                getMaxRounds(category, block['name']) >= 1
               "
             >
               <template
@@ -182,8 +182,8 @@
                 <b-button
                   v-if="
                     $store.state.editMode &&
-                      $store.state.user.is_staff &&
-                      !data.item.approved
+                    $store.state.user.is_staff &&
+                    !data.item.approved
                   "
                   size="sm"
                   variant="outline-success"
@@ -194,8 +194,8 @@
                 <b-button
                   v-if="
                     $store.state.editMode &&
-                      $store.state.user.is_staff &&
-                      data.item.approved
+                    $store.state.user.is_staff &&
+                    data.item.approved
                   "
                   size="sm"
                   variant="outline-danger"
@@ -274,7 +274,7 @@ export default {
      * Fetch layout information when competition information exists
      */
     competition: {
-      handler: function() {
+      handler: function () {
         if (this.competition && this.competition.layout) {
           this.getCompetitionTypeLayout(this.competition.layout);
         }
@@ -291,7 +291,7 @@ export default {
     /**
      * Approves all unapproved results
      */
-    approveAll: function() {
+    approveAll: function () {
       this.$set(this.errors, "main", null);
       for (const category in this.results) {
         for (const result in this.results[category]) {
@@ -311,16 +311,16 @@ export default {
      * @param {number} result id
      * @returns {Promise<void>}
      */
-    approveResult: async function(category, result) {
+    approveResult: async function (category, result) {
       await HTTP.patch(
         "results/" + this.results[category][result].id + "/",
         { approved: true },
         this.config
       )
-        .then(response => {
+        .then((response) => {
           this.results[category][result].approved = response.data.approved;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -334,12 +334,12 @@ export default {
     filterResultFields(block, results) {
       let fields = this.resultFields[block];
       let keys = new Set();
-      results.forEach(result => {
-        result["partial"].forEach(partial => {
+      results.forEach((result) => {
+        result["partial"].forEach((partial) => {
           keys.add(partial.type.abbreviation + "-" + partial.order.toString());
         });
       });
-      fields = fields.filter(field => {
+      fields = fields.filter((field) => {
         if (field.key === "pos") {
           for (let k of keys) {
             if (k.startsWith("kneel") || k.startsWith("ksum")) {
@@ -350,7 +350,10 @@ export default {
         }
         return !field.key.includes("-") || keys.has(field.key);
       });
-      if (this.showCategory && results.filter(r => "showcat" in r).length > 0) {
+      if (
+        this.showCategory &&
+        results.filter((r) => "showcat" in r).length > 0
+      ) {
         fields.splice(1, 0, { key: "showcat", label: "" });
       }
       return fields;
@@ -365,7 +368,7 @@ export default {
      */
     async getCompetitionTypeLayout(layoutType) {
       HTTP.get("competitionlayouts/?type=" + layoutType)
-        .then(response => {
+        .then((response) => {
           if (response.data.results.length > 0) {
             this.customFields = response.data.results;
           } else {
@@ -419,7 +422,7 @@ export default {
           }
           this.maxBlock = this.customFields[this.customFields.length - 1].block;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -432,11 +435,12 @@ export default {
      */
     getMaxRounds(results, partial_type) {
       let order = 0;
-      results.forEach(item => {
+      results.forEach((item) => {
         if (item.partial) {
           if (
-            item.partial.filter(f => f.type.abbreviation.includes(partial_type))
-              .length > 0
+            item.partial.filter((f) =>
+              f.type.abbreviation.includes(partial_type)
+            ).length > 0
           ) {
             order += 1;
           }
@@ -498,7 +502,7 @@ export default {
      */
     getPartialField(block, row, col) {
       const partialField = this.resultColsExtra[block][row].find(
-        f => f.col === col
+        (f) => f.col === col
       );
       if (partialField) {
         return partialField.name;
@@ -519,9 +523,9 @@ export default {
         "resultlist/?fields!=competition&ordering=team,category,position&external=1&competition=" +
           id
       )
-        .then(response => {
+        .then((response) => {
           let results = response.data;
-          results.forEach(item => {
+          results.forEach((item) => {
             if (
               "elimination_category" in item &&
               item["elimination_category"]
@@ -561,7 +565,7 @@ export default {
             "fin"
           );
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingResults = false));
@@ -579,7 +583,7 @@ export default {
       let sortKey = this.sortKey(block["label"]);
       if (limit > 0) {
         results = results.filter(
-          result =>
+          (result) =>
             !["DNS", "DNF", "DSQ"].includes(result.result_code) &&
             result.hasOwnProperty(sortKey) &&
             result[sortKey] > 0
@@ -638,17 +642,17 @@ export default {
      * @param {object} data - result object
      * @returns {Promise<void>}
      */
-    toggleApproval: async function(data) {
+    toggleApproval: async function (data) {
       this.$set(this.errors, "main", null);
       await HTTP.patch(
         "results/" + data.item.id + "/",
         { approved: !data.item.approved },
         this.config
       )
-        .then(response => {
+        .then((response) => {
           data.item.approved = response.data.approved;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     }

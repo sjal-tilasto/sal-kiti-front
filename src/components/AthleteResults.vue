@@ -74,10 +74,10 @@ export default {
       await HTTP.get(
         "resultlist/?athlete&ordering=competition__start_date&athlete=" + id
       )
-        .then(response => {
+        .then((response) => {
           this.results = response.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingResults = false));

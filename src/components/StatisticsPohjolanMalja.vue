@@ -53,7 +53,7 @@ import { HTTP } from "../api/BaseApi.js";
 import errorParser from "../utils/ErrorParser";
 
 export default {
-  name: "Statistics",
+  name: "StatisticsPM",
   data() {
     return {
       currentYear: new Date().getFullYear(),
@@ -69,7 +69,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       return [
         {
           key: "organization.name",
@@ -87,7 +87,7 @@ export default {
      *
      * @returns {array} year list
      */
-    year_range: function() {
+    year_range: function () {
       let years = [];
       let startYear = 2020;
       while (startYear <= this.currentYear) {
@@ -112,10 +112,10 @@ export default {
       this.results = [];
       this.$set(this.errors, "main", null);
       HTTP.get("sal/pohjolanmalja/" + year + "/")
-        .then(response => {
+        .then((response) => {
           this.results = response.data || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));

@@ -89,7 +89,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    listFields: function() {
+    listFields: function () {
       return [
         { key: "date", label: this.$t("date") },
         {
@@ -124,7 +124,7 @@ export default {
      * Fetch new set of competitions on page change
      */
     currentPage: {
-      handler: function() {
+      handler: function () {
         this.getCompetitions(this.$route.params.event_id);
       }
     }
@@ -154,10 +154,10 @@ export default {
         searchUrl = searchUrl + "&page=" + this.currentPage;
       }
       HTTP.get(searchUrl)
-        .then(response => {
+        .then((response) => {
           this.competitions = response.data || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCompetitions = false));

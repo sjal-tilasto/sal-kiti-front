@@ -10,7 +10,7 @@ export default {
    * @param {object} error
    * @returns {array} errors
    */
-  generic: function(error) {
+  generic: function (error) {
     let errors = [];
     if (error.response) {
       if (error.response.status === 403) {
@@ -35,7 +35,7 @@ export default {
    * @param {object} error
    * @returns {array} errors
    */
-  form: function(error) {
+  form: function (error) {
     let errors = [];
     errors.main = [];
     if (error.response) {
@@ -71,7 +71,7 @@ export default {
    * @param {object} error
    * @returns {array} errors
    */
-  partialResult: function(error) {
+  partialResult: function (error) {
     let errors = [];
     if (error.response && valid_error_codes.includes(error.response.status)) {
       const entries = Object.entries(error.response.data);
@@ -101,7 +101,7 @@ export default {
    * @param {object} error
    * @returns {array} errors
    */
-  result: function(error) {
+  result: function (error) {
     let errors = [];
     if (error.response && valid_error_codes.includes(error.response.status)) {
       const entries = Object.entries(error.response.data);
@@ -111,7 +111,7 @@ export default {
             errors.push(e);
           }
         } else if (entry[0] === "partial") {
-          entry[1].forEach(part => {
+          entry[1].forEach((part) => {
             if ("value" in part) {
               errors.push(
                 this.$t("import.error.partial") + ", " + part["value"]

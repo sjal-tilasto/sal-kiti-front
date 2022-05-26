@@ -480,7 +480,7 @@ export default {
           okTitle: this.$t("confirm.yes"),
           cancelTitle: this.$t("confirm.cancel")
         })
-        .then(value => {
+        .then((value) => {
           if (value === true) {
             if (type === "result") {
               this.deleteResult(result);
@@ -498,12 +498,12 @@ export default {
     async deletePartial(partial) {
       this.$set(this.errors, partial.id, null);
       HTTP.delete("partialresults/" + partial.id + "/", this.config)
-        .then(response => {
+        .then((response) => {
           if (response.status === 204) {
             this.getResult(this.$route.params.result_id);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(
             this.errors,
             partial.id,
@@ -519,7 +519,7 @@ export default {
     async deleteResult(result) {
       this.$set(this.errors, "main", null);
       HTTP.delete("results/" + result.id + "/", this.config)
-        .then(response => {
+        .then((response) => {
           if (response.status === 204) {
             this.$router.push({
               name: "competition",
@@ -527,7 +527,7 @@ export default {
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.result.bind(this)(error));
         });
     },
@@ -540,12 +540,12 @@ export default {
      */
     async getCompetition(id) {
       HTTP.get("competitions/" + id + "/")
-        .then(response => {
+        .then((response) => {
           this.competition = response.data || {};
           this.getCompetitionResultTypes(response.data.type);
           this.getCompetitionType(response.data.type);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -557,10 +557,10 @@ export default {
      */
     async getCompetitionType(id) {
       HTTP.get("competitiontypes/" + id + "/")
-        .then(response => {
+        .then((response) => {
           this.getCategories(response.data.sport);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -574,11 +574,11 @@ export default {
       this.$set(this.errors, "main", null);
       this.loading = true;
       HTTP.get("results/" + id + "/")
-        .then(response => {
+        .then((response) => {
           this.form = response.data || {};
           this.getCompetition(response.data.competition);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));
@@ -605,10 +605,10 @@ export default {
     async postPartial(partial) {
       this.$set(this.errors, partial.id, null);
       HTTP.post("partialresults/", partial, this.config)
-        .then(response => {
+        .then((response) => {
           this.getResult(response.data.result);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(
             this.errors,
             "addPartialResult",
@@ -625,13 +625,13 @@ export default {
       this.$set(this.errors, "main", null);
       this.cleanForm();
       HTTP.post("results/", this.form, this.config)
-        .then(response => {
+        .then((response) => {
           this.$router.push({
             name: "result",
             params: { result_id: response.data.id }
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.result.bind(this)(error));
         });
     },
@@ -645,10 +645,10 @@ export default {
       this.$set(this.errors, partial.id, null);
       partial.result = this.$route.params.result_id;
       HTTP.put("partialresults/" + partial.id + "/", partial, this.config)
-        .then(response => {
+        .then((response) => {
           partial = response.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(
             this.errors,
             partial.id,
@@ -666,13 +666,13 @@ export default {
       this.$set(this.errors, "main", null);
       this.cleanForm();
       HTTP.put("results/" + id + "/", this.form, this.config)
-        .then(response => {
+        .then((response) => {
           this.$router.push({
             name: "competition",
             params: { competition_id: response.data.competition }
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.result.bind(this)(error));
         });
     }

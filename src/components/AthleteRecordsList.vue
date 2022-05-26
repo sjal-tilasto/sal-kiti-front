@@ -53,7 +53,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    recordFields: function() {
+    recordFields: function () {
       return [
         {
           key: "level",
@@ -105,13 +105,13 @@ export default {
     calculateRecordList(results) {
       let records = [];
       const filtered = results.filter(
-        el => "record" in el && el.record.length > 0
+        (el) => "record" in el && el.record.length > 0
       );
-      filtered.forEach(item => {
-        item.record.forEach(el => {
+      filtered.forEach((item) => {
+        item.record.forEach((el) => {
           if (el.date_end === null && el.partial_result) {
             let partial = item.partial.filter(
-              part => part.id === el.partial_result
+              (part) => part.id === el.partial_result
             )[0];
             records.push({
               level: el.level,

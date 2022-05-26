@@ -6,15 +6,15 @@ export default {
      *
      * @returns {array} blocks
      */
-    resultBlocks: function() {
-      return this.customFields.filter(f => f.block === 0);
+    resultBlocks: function () {
+      return this.customFields.filter((f) => f.block === 0);
     },
     /**
      * Sets table fields for each result block, based on result columns
      *
      * @returns {[]|*[]} - array of table field arrays for each block
      */
-    resultFields: function() {
+    resultFields: function () {
       let fields = [];
       for (let block = 1; block <= this.maxBlock; block++) {
         fields[block] = [];
@@ -67,7 +67,7 @@ export default {
       }
       return fields;
     },
-    resultCols: function() {
+    resultCols: function () {
       /**
        * Filters result columns from layout
        *
@@ -79,7 +79,7 @@ export default {
       let filtered = [];
       for (let i = 1; i <= this.maxBlock; i++) {
         filtered[i] = this.customFields.filter(
-          f => f.block === i && f.row === 1
+          (f) => f.block === i && f.row === 1
         );
       }
       return filtered;
@@ -90,7 +90,7 @@ export default {
      *
      * @returns {[]|*[]} - array of extra column arrays for each block
      */
-    resultColsExtra: function() {
+    resultColsExtra: function () {
       if (!this.customFields || this.customFields.length === 0) {
         return [];
       }
@@ -100,12 +100,13 @@ export default {
         filtered[i][0] = {};
         for (let r = 1; r <= 4; r++) {
           filtered[i][r] = this.customFields.filter(
-            f => f.block === i && f.row === r && f.name && f.name.includes("-")
+            (f) =>
+              f.block === i && f.row === r && f.name && f.name.includes("-")
           );
           filtered[i][r].forEach(
-            item => (item.slot = "cell(" + item.name.toString() + ")")
+            (item) => (item.slot = "cell(" + item.name.toString() + ")")
           );
-          filtered[i][r].forEach(item => (filtered[i][0][item.col] = r));
+          filtered[i][r].forEach((item) => (filtered[i][0][item.col] = r));
         }
       }
       return filtered;

@@ -252,7 +252,7 @@ export default {
     async getCompetition(id) {
       this.event = {};
       HTTP.get("competitions/" + id + "/")
-        .then(response => {
+        .then((response) => {
           this.form = response.data || {};
           if (
             "data" in response &&
@@ -262,7 +262,7 @@ export default {
             this.selectSport(response.data.type_info.sport);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -275,7 +275,7 @@ export default {
     async getEvent(id) {
       this.event = {};
       HTTP.get("events/" + id + "/")
-        .then(response => {
+        .then((response) => {
           this.event = response.data || {};
           if (!this.form.name) {
             this.form.name = response.data.name;
@@ -296,7 +296,7 @@ export default {
             this.form.organization = response.data.organization;
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -321,16 +321,16 @@ export default {
     async postCompetition() {
       this.erros = {};
       this.form.layout = this.competitionTypes.find(
-        obj => obj.id === this.form.type
+        (obj) => obj.id === this.form.type
       ).layout;
       HTTP.post("competitions/", this.form, this.config)
-        .then(response => {
+        .then((response) => {
           this.$router.push({
             name: "competition",
             params: { competition_id: response.data.id }
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.errors = errorParser.form.bind(this)(error);
         });
     },
@@ -343,13 +343,13 @@ export default {
     async putCompetition(id) {
       this.erros = {};
       HTTP.put("competitions/" + id + "/", this.form, this.config)
-        .then(response => {
+        .then((response) => {
           this.$router.push({
             name: "competition",
             params: { competition_id: response.data.id }
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.errors = errorParser.form.bind(this)(error);
         });
     },

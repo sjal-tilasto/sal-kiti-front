@@ -139,10 +139,7 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-date-start"
             type="date"
           />
@@ -156,10 +153,7 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
         >
           <b-form-input-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-date-end"
             type="date"
           />

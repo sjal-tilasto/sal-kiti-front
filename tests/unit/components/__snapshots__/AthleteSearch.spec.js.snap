@@ -43,10 +43,7 @@ exports[`AthleteSearch.vue renders search form 1`] = `
           aria-label="search.placeholder_athlete"
           class="search-field space-right"
           debounce="0"
-          formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+          formatter="[Function]"
           placeholder="search.placeholder_athlete"
           type="text"
           value=""
@@ -132,25 +129,19 @@ exports[`AthleteSearch.vue renders search form 1`] = `
         emptytext="There are no records to show"
         fields="[object Object],[object Object],[object Object],[object Object]"
         filterdebounce="0"
-        filterfunction="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+        filterfunction="[Function]"
         filterignoredfields=""
         filterincludedfields=""
         hover="true"
         id="my-table"
         items=""
-        labelsortasc="Click to sort Ascending"
+        labelsortasc="Click to sort ascending"
         labelsortclear="Click to clear sorting"
-        labelsortdesc="Click to sort Descending"
+        labelsortdesc="Click to sort descending"
         perpage="0"
         selectedvariant="active"
         selectmode="multi"
-        sortcompare="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+        sortcompare="[Function]"
         sortcompareoptions="[object Object]"
         sortdirection="asc"
         value=""

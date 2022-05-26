@@ -88,7 +88,7 @@ import errorParser from "../utils/ErrorParser";
 
 export default {
   name: "AthleteSearch",
-  data: function() {
+  data: function () {
     return {
       currentPage: 1,
       errors: {},
@@ -107,7 +107,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       return [
         { key: "sport_id", label: this.$t("athlete.sport_id") },
         { key: "first_name", label: this.$t("first_name") },
@@ -121,7 +121,7 @@ export default {
      * Recalculate search parameters if page changes
      */
     currentPage: {
-      handler: function() {
+      handler: function () {
         this.getAthletes(this.searchParams);
       }
     },
@@ -129,13 +129,13 @@ export default {
      * Fetch athletes when search parameters change
      */
     searchParams: {
-      handler: function() {
+      handler: function () {
         this.currentPage = 1;
         this.getAthletes(this.searchParams);
       }
     }
   },
-  mounted: function() {
+  mounted: function () {
     if (this.$route.query) {
       this.parseQueryParams();
     }
@@ -159,10 +159,10 @@ export default {
         }
       }
       HTTP.get("athletes/" + searchParams + "&page=" + this.currentPage)
-        .then(response => {
+        .then((response) => {
           this.results = response.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingAthletes = false));

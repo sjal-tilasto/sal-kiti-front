@@ -113,7 +113,7 @@ export default {
      *
      * @returns {array} fields
      */
-    importFields: function() {
+    importFields: function () {
       return [
         { key: "status", label: this.$t("import.status.label") },
         { key: "sport_id", label: this.$t("athlete.sport_id") },
@@ -149,7 +149,7 @@ export default {
      */
     getDebugExcel() {
       if (this.debugResults) {
-        this.debugResults.forEach(row => {
+        this.debugResults.forEach((row) => {
           if (row["error"].length > 0) {
             row["error"] = row["error"].toString();
           }
@@ -255,11 +255,11 @@ export default {
         }
         if ("organization" in this.athletes[i]) {
           let organization = this.organizations.filter(
-            org => org.abbreviation === this.athletes[i].organization
+            (org) => org.abbreviation === this.athletes[i].organization
           );
           if (organization.length === 0) {
             organization = this.organizations.filter(
-              org => org.name === this.athletes[i].organization
+              (org) => org.name === this.athletes[i].organization
             );
           }
           if (organization.length === 1) {
@@ -299,7 +299,7 @@ export default {
       return new Promise((resolve, reject) => {
         let reader = new FileReader();
 
-        reader.onload = e => {
+        reader.onload = (e) => {
           let data = new Uint8Array(e.target.result);
           let workbook = XLSX.read(data, { type: "array" });
           let firstSheetName = workbook.SheetNames[0];
@@ -321,12 +321,12 @@ export default {
         id: 0
       };
       await HTTP.get("athletes/?sport_id=" + this.athlete.sport_id)
-        .then(response => {
+        .then((response) => {
           if (response.data.results.length === 1) {
             temp_athlete = response.data.results[0];
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
       if (temp_athlete.id) {
@@ -335,7 +335,7 @@ export default {
           this.athlete,
           this.config
         )
-          .then(response => {
+          .then((response) => {
             this.athletes[i].response = response.data;
             this.athletes[i].status = this.$t("import.status.updated");
             if (response.data.first_name !== temp_athlete.first_name) {
@@ -349,18 +349,18 @@ export default {
               );
             }
           })
-          .catch(error => {
+          .catch((error) => {
             this.athletes[i].error.push(
               ...errorParser.result.bind(this)(error)
             );
           });
       } else {
         await HTTP.post("athletes/", this.athlete, this.config)
-          .then(response => {
+          .then((response) => {
             this.athletes[i].response = response.data;
             this.athletes[i].status = this.$t("import.status.created");
           })
-          .catch(error => {
+          .catch((error) => {
             this.athletes[i].error.push(
               ...errorParser.result.bind(this)(error)
             );

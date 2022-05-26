@@ -47,7 +47,7 @@ exports[`AthleteResults.vue renders result list 1`] = `
                 <th
                   aria-colindex="1"
                   aria-sort="ascending"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -58,13 +58,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Descending)
+                     (Click to sort descending)
                   </span>
                 </th>
                 <th
                   aria-colindex="2"
                   aria-sort="none"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -75,13 +75,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="3"
                   aria-sort="none"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -92,13 +92,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="4"
                   aria-sort="none"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -109,7 +109,7 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
               </tr>
@@ -236,7 +236,7 @@ exports[`AthleteResults.vue renders result list 1`] = `
                 <th
                   aria-colindex="1"
                   aria-sort="none"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -247,13 +247,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="2"
                   aria-sort="none"
-                  class="d-none d-md-table-cell"
+                  class="position-relative d-none d-md-table-cell"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -264,13 +264,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="3"
                   aria-sort="ascending"
-                  class="d-md-none"
+                  class="position-relative d-md-none"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -281,13 +281,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Descending)
+                     (Click to sort descending)
                   </span>
                 </th>
                 <th
                   aria-colindex="4"
                   aria-sort="none"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -298,13 +298,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="5"
                   aria-sort="none"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -315,13 +315,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="6"
                   aria-sort="none"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -332,7 +332,7 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
               </tr>
@@ -438,7 +438,7 @@ exports[`AthleteResults.vue renders result list 1`] = `
                 <th
                   aria-colindex="1"
                   aria-sort="descending"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -449,13 +449,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="2"
                   aria-sort="none"
-                  class="d-none d-lg-table-cell"
+                  class="position-relative d-none d-lg-table-cell"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -466,13 +466,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="3"
                   aria-sort="none"
-                  class="d-none d-md-table-cell"
+                  class="position-relative d-none d-md-table-cell"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -483,13 +483,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="4"
                   aria-sort="none"
-                  class="d-md-none"
+                  class="position-relative d-md-none"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -500,13 +500,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="5"
                   aria-sort="none"
-                  class="d-none d-md-table-cell"
+                  class="position-relative d-none d-md-table-cell"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -517,13 +517,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="6"
                   aria-sort="none"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -534,13 +534,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="7"
                   aria-sort="none"
-                  class="d-none d-sm-table-cell"
+                  class="position-relative d-none d-sm-table-cell"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -551,13 +551,13 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="8"
                   aria-sort="none"
-                  class=""
+                  class="position-relative"
                   role="columnheader"
                   scope="col"
                   tabindex="0"
@@ -568,12 +568,12 @@ exports[`AthleteResults.vue renders result list 1`] = `
                   <span
                     class="sr-only"
                   >
-                     (Click to sort Ascending)
+                     (Click to sort ascending)
                   </span>
                 </th>
                 <th
                   aria-colindex="9"
-                  class="d-none d-md-table-cell"
+                  class="position-relative d-none d-md-table-cell"
                   role="columnheader"
                   scope="col"
                 >
