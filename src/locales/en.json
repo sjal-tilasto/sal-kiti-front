@@ -175,9 +175,20 @@
     "trial_only": "Only trial competitions",
     "group_results": "Combine results",
     "group_results_description": "Combines x best result from the archer to one result",
+    "gender": "Gender",
+    "man": "Man | Men",
+    "woman": "Woman | Women",
     "current_year": "Current year",
     "show_extras": "Show extra options",
     "external": "Include external athletes",
+    "save_link": "Save as link",
+    "link_name": "Name",
+    "links": "Links",
+    "group_name": "Group",
+    "qualification": "Qualification | Qualifications",
+    "highlight": "Highlight",
+    "highlight_description": "Highlight first results up to given number",
+    "save": "Save",
     "sal": {
       "pohjolan_malja": "Pohjolan malja"
     }

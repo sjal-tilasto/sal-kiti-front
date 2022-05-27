@@ -27,9 +27,17 @@
         </b-button>
       </b-col>
     </b-row>
-    <b-row v-if="$store.state.user.is_staff">
+    <b-row>
       <b-col>
-        <router-link :to="{ name: 'statistics-malja' }">
+        <router-link :to="{ name: 'statistics-links' }">
+          <b-button variant="light" class="btn-orange space-right space-down">
+            {{ $t("statistics.links") }}
+          </b-button>
+        </router-link>
+        <router-link
+          :to="{ name: 'statistics-malja' }"
+          v-if="$store.state.user.is_staff"
+        >
           <b-button variant="light" class="btn-orange space-right space-down">
             {{ $t("statistics.sal.pohjolan_malja") }}
           </b-button>
@@ -193,7 +201,7 @@
             >
               <option
                 v-for="i in [
-                  '---',
+                  '',
                   '1',
                   '2',
                   '3',
@@ -214,26 +222,34 @@
           </b-form-group>
         </b-col>
         <b-col cols="12" md="6" xl="4">
-          <b-button
-            type="submit"
-            variant="light"
-            class="btn-orange space-right"
-          >
-            {{ $t("search.search") }}</b-button
-          >
-          <b-button type="reset" variant="danger">{{ $t("reset") }}</b-button
-          ><br />
-          <b-button
-            variant="light"
-            class="btn-orange space-right space-top"
-            v-on:click="toggleExtraFields"
-            :pressed="showExtraFields"
-          >
-            {{ $t("statistics.show_extras") }}
-          </b-button>
+          <b-form-group id="input-group-buttons" label-for="input-buttons">
+            <b-button
+              type="submit"
+              variant="light"
+              class="btn-orange space-right"
+            >
+              {{ $t("search.search") }}</b-button
+            >
+            <b-button type="reset" variant="danger">{{ $t("reset") }}</b-button
+            ><br />
+            <b-button
+              variant="light"
+              class="btn-orange space-right space-top"
+              v-on:click="toggleExtraFields"
+              :pressed="showExtraFields"
+            >
+              {{ $t("statistics.show_extras") }}
+            </b-button>
+          </b-form-group>
         </b-col>
       </b-row>
     </b-form>
+    <StatisticsLinksSave
+      v-if="
+        searchParameters && $store.state.user.is_staff && $store.state.editMode
+      "
+      :searchParameters="searchParameters"
+    />
     <StatisticsResults
       v-if="searchParameters"
       :searchParameters="searchParameters"
@@ -245,6 +261,7 @@
 /**
  * Display statistic search form
  */
+import StatisticsLinksSave from "@/components/StatisticsLinksSave.vue";
 import StatisticsResults from "@/components/StatisticsResults.vue";
 import apiGet from "../mixins/ApiGet";
 
@@ -252,6 +269,7 @@ export default {
   name: "StatisticsForm",
   mixins: [apiGet],
   components: {
+    StatisticsLinksSave,
     StatisticsResults
   },
   data() {
@@ -267,7 +285,7 @@ export default {
         competitionType: [],
         date_end: null,
         date_start: null,
-        group_results: "---",
+        group_results: "",
         max_results: 25,
         organization: [],
         trial: false,
@@ -302,8 +320,8 @@ export default {
       this.form.trial = false;
       this.form.external = false;
       this.form.max_results = 25;
-      this.form.group_results = "---";
-      this.$router.push({ path: "statistics" });
+      this.form.group_results = "";
+      this.$router.push({ path: "statistics" }).catch((err) => {});
     },
     /**
      * Trigger form reset when pressing reset button
@@ -354,7 +372,7 @@ export default {
       if (this.form.max_results != null) {
         parameters += "&limit=" + this.form.max_results;
       }
-      if (this.form.group_results !== "---") {
+      if (this.form.group_results !== "") {
         parameters += "&group_results=" + this.form.group_results;
         query.group_results = this.form.group_results;
       }

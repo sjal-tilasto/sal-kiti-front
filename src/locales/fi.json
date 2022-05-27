@@ -174,9 +174,20 @@
     "trial_only": "Vain näyttökilpailut",
     "group_results": "Yhdistä tuloksia",
     "group_results_description": "Yhdistää ampujan x parasta tulosta yhdeksi tulokseksi",
+    "gender": "Sukupuoli",
+    "man": "Mies | Miehet",
+    "woman": "Nainen | Naiset",
     "current_year": "Kuluva vuosi",
     "show_extras": "Näytä lisävalinnat",
     "external": "Sisällytä ulkopuoliset urheilijat",
+    "save_link": "Tallenna linkiksi",
+    "link_name": "Nimi",
+    "links": "Linkit",
+    "group_name": "Ryhmä",
+    "highlight": "Korosta",
+    "highlight_description": "Korosta annetun numeron verran tuloksia",
+    "save": "Tallenna",
+    "qualification": "Karsinta | Karsinnat",
     "sal": {
       "pohjolan_malja": "Pohjolan malja"
     }

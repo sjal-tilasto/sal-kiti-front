@@ -140,6 +140,26 @@ export default [
       import(/* webpackChunkName: "statistics" */ "./views/Statistics.vue")
   },
   {
+    path: "/statistics/links/",
+    name: "statistics-links",
+    component: () =>
+      import(/* webpackChunkName: "statistics" */ "./views/StatisticsLinks.vue")
+  },
+  {
+    path: "/statistics/links/:link_id/",
+    name: "statistics-link",
+    component: () =>
+      import(/* webpackChunkName: "statistics" */ "./views/StatisticsLinks.vue")
+  },
+  {
+    path: "/statistics/search/",
+    name: "statistics-search",
+    component: () =>
+      import(
+        /* webpackChunkName: "statistics" */ "./views/StatisticsSearch.vue"
+      )
+  },
+  {
     path: "/statistics/malja/",
     name: "statistics-malja",
     component: () =>

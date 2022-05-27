@@ -165,9 +165,13 @@ exports[`StatisticsResults.vue renders result list 1`] = `
               class=""
               role="cell"
             >
-              
-          1
-        
+              <div>
+                <div>
+                  
+              1
+            
+                </div>
+              </div>
             </td>
             <td
               aria-colindex="2"
@@ -204,7 +208,8 @@ exports[`StatisticsResults.vue renders result list 1`] = `
             >
               
           200,6
-        
+          
+              <!---->
             </td>
             <td
               aria-colindex="6"
@@ -252,9 +257,13 @@ exports[`StatisticsResults.vue renders result list 1`] = `
               class=""
               role="cell"
             >
-              
-          2
-        
+              <div>
+                <div>
+                  
+              2
+            
+                </div>
+              </div>
             </td>
             <td
               aria-colindex="2"
@@ -291,7 +300,8 @@ exports[`StatisticsResults.vue renders result list 1`] = `
             >
               
           206,4
-        
+          
+              <!---->
             </td>
             <td
               aria-colindex="6"
@@ -339,9 +349,13 @@ exports[`StatisticsResults.vue renders result list 1`] = `
               class=""
               role="cell"
             >
-              
-          3
-        
+              <div>
+                <div>
+                  
+              3
+            
+                </div>
+              </div>
             </td>
             <td
               aria-colindex="2"
@@ -378,7 +392,8 @@ exports[`StatisticsResults.vue renders result list 1`] = `
             >
               
           222
-        
+          
+              <!---->
             </td>
             <td
               aria-colindex="6"
