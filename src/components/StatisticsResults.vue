@@ -8,6 +8,11 @@
         <h3 v-else class="bg-sal-orange">{{ $tc("result.result", 2) }}</h3>
       </b-col>
     </b-row>
+    <b-row v-if="description">
+      <b-col>
+        <p>{{ description }}</p>
+      </b-col>
+    </b-row>
     <b-row>
       <b-col>
         <b-alert v-if="errors.main" variant="danger" show>
@@ -150,6 +155,10 @@ export default {
     }
   },
   props: {
+    description: {
+      type: String,
+      default: null
+    },
     header: {
       type: String,
       default: null

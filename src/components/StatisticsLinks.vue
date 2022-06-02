@@ -49,6 +49,7 @@
     <StatisticsResults
       v-if="searchParameters"
       :searchParameters="searchParameters"
+      :description="description"
       :header="header"
       :highlight="highlight"
       :key="searchParameters"
@@ -80,6 +81,7 @@ export default {
           "X-CSRFToken": getCookie("csrftoken")
         }
       },
+      description: "",
       errors: {},
       header: null,
       highlight: null,
@@ -105,6 +107,7 @@ export default {
   },
   methods: {
     activateLink(link) {
+      this.description = link.description;
       this.header = link.name;
       this.highlight = link.highlight;
       this.searchParameters = link.link;

@@ -16,6 +16,8 @@ exports[`StatisticsResults.vue renders result list 1`] = `
     </div>
   </div>
    
+  <!---->
+   
   <div
     class="row"
   >

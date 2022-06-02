@@ -131,6 +131,8 @@
     "placeholder_competition": "Name or organizer",
     "athlete": "Search Athlete",
     "max_results": "Number of results",
+    "result_greater": "Result greater or equal than",
+    "result_less": "Result less or equal than",
     "competition": "Search Competitions"
   },
   "info": {

@@ -130,6 +130,8 @@
     "placeholder_competition": "Nimi tai järjestäjä",
     "athlete": "Hae urheilijaa",
     "max_results": "Tulosten määrä",
+    "result_greater": "Tulos suurempi tai yhtä suuri kuin",
+    "result_less": "Tulos pienempi tai yhtä suuri kuin",
     "competition": "Hae kilpailuita"
   },
   "info": {

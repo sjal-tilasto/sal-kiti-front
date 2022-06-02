@@ -32,6 +32,13 @@
             <b-form-input id="input-group-name" v-model="form.group" required />
           </b-form-group>
           <b-form-group
+            id="input-group-description"
+            :label="$t('description')"
+            label-for="input-description"
+          >
+            <b-form-input id="input-description" v-model="form.description" />
+          </b-form-group>
+          <b-form-group
             id="input-group-highlight"
             :label="$t('statistics.highlight')"
             label-for="input-highlight"
@@ -79,6 +86,7 @@ export default {
       form: {
         name: "",
         group: "",
+        description: "",
         highlight: null
       }
     };

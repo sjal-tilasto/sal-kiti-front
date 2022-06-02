@@ -319,6 +319,41 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
         xl="4"
       >
         <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-result-greater"
+          label="search.result_greater"
+          labelfor="input-result-greater"
+        >
+          <b-form-input-stub
+            debounce="0"
+            formatter="[Function]"
+            id="input-result-range"
+            type="text"
+          />
+        </b-form-group-stub>
+         
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-result-less"
+          label="search.result_less"
+          labelfor="input-result-less"
+        >
+          <b-form-input-stub
+            debounce="0"
+            formatter="[Function]"
+            id="input-result-less"
+            type="text"
+          />
+        </b-form-group-stub>
+      </b-col-stub>
+       
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-group-stub
           description="statistics.group_results_description"
           feedbackarialive="assertive"
           id="input-group-group-results"

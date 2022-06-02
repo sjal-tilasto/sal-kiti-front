@@ -190,6 +190,28 @@
         </b-col>
         <b-col cols="12" md="6" xl="4" v-if="showExtraFields">
           <b-form-group
+            id="input-group-result-greater"
+            :label="$t('search.result_greater')"
+            label-for="input-result-greater"
+          >
+            <b-form-input
+              id="input-result-range"
+              v-model="form.result_gte"
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group
+            id="input-group-result-less"
+            :label="$t('search.result_less')"
+            label-for="input-result-less"
+          >
+            <b-form-input
+              id="input-result-less"
+              v-model="form.result_lte"
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+        <b-col cols="12" md="6" xl="4" v-if="showExtraFields">
+          <b-form-group
             id="input-group-group-results"
             :label="$t('statistics.group_results')"
             label-for="input-group-results"
@@ -289,7 +311,9 @@ export default {
         max_results: 25,
         organization: [],
         trial: false,
-        external: false
+        external: false,
+        result_gte: null,
+        result_lte: null
       },
       loadingSports: false,
       organizations: [],
@@ -321,6 +345,8 @@ export default {
       this.form.external = false;
       this.form.max_results = 25;
       this.form.group_results = "";
+      this.form.result_gte = null;
+      this.form.result_lte = null;
       this.$router.push({ path: "statistics" }).catch((err) => {});
     },
     /**
@@ -388,6 +414,14 @@ export default {
         parameters += "&external=1";
         query.external = 1;
       }
+      if (this.form.result_gte) {
+        parameters += "&result_gte=" + this.form.result_gte.replace(",", ".");
+        query.result_gte = this.form.result_gte.replace(",", ".");
+      }
+      if (this.form.result_lte) {
+        parameters += "&result_lte=" + this.form.result_lte.replace(",", ".");
+        query.result_gte = this.form.result_lte.replace(",", ".");
+      }
       this.searchParameters = parameters;
       this.$router.push({ path: "statistics", query: query });
     },
@@ -435,6 +469,12 @@ export default {
       }
       if (this.$route.query.max_results) {
         this.form.max_results = this.$route.query.max_results;
+      }
+      if (this.$route.query.result_gte) {
+        this.form.result_gte = this.$route.query.result_gte;
+      }
+      if (this.$route.query.result_lte) {
+        this.form.result_lte = this.$route.query.result_lte;
       }
       if (this.$route.query.start) {
         this.form.date_start =

@@ -106,6 +106,8 @@ describe("StatisticsForm.vue", () => {
       date_start: null,
       external: false,
       group_results: "",
+      result_gte: null,
+      result_lte: null,
       trial: false
     });
   });
