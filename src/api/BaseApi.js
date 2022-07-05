@@ -13,13 +13,13 @@ export const HTTP = axios.create({
   withCredentials: true
 });
 
-HTTP.interceptors.request.use(function(config) {
+HTTP.interceptors.request.use(function (config) {
   config.headers["Accept-Language"] = i18n.locale;
   return config;
 });
 
 HTTP.interceptors.response.use(
-  function(response) {
+  function (response) {
     const versionHeader = "spa-version";
     if (
       versionHeader in response.headers &&
@@ -38,7 +38,7 @@ HTTP.interceptors.response.use(
     }
     return response;
   },
-  function(error) {
+  function (error) {
     return Promise.reject(error);
   }
 );

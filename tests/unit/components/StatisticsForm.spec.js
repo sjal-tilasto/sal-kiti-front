@@ -92,7 +92,9 @@ describe("StatisticsForm.vue", () => {
     wrapper.setData({
       form: formData
     });
-    wrapper.vm.onReset(event);
+    try {
+      wrapper.vm.onReset(event);
+    } catch (e) {}
     expect(wrapper.vm.form).toEqual({
       approved: false,
       category: [],
@@ -103,8 +105,9 @@ describe("StatisticsForm.vue", () => {
       max_results: 25,
       date_start: null,
       external: false,
-      gender: "",
       group_results: "",
+      result_gte: null,
+      result_lte: null,
       trial: false
     });
   });

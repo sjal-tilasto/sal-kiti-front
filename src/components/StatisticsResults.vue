@@ -8,6 +8,11 @@
         <h3 v-else class="bg-sal-orange">{{ $tc("result.result", 2) }}</h3>
       </b-col>
     </b-row>
+    <b-row v-if="description">
+      <b-col>
+        <p>{{ description }}</p>
+      </b-col>
+    </b-row>
     <b-row>
       <b-col>
         <b-alert v-if="errors.main" variant="danger" show>
@@ -40,17 +45,17 @@
             <div
               v-if="
                 !results.results[data.index - 1] ||
-                  data.item.result !== results.results[data.index - 1].result
+                data.item.result !== results.results[data.index - 1].result
               "
             >
               <div
                 v-if="
                   highlight &&
-                    data.index +
-                      1 +
-                      results.limit * currentPage -
-                      results.limit <=
-                      highlight
+                  data.index +
+                    1 +
+                    results.limit * currentPage -
+                    results.limit <=
+                    highlight
                 "
               >
                 <span class="text-success">{{
@@ -96,6 +101,9 @@
           </template>
           <template v-slot:cell(result)="data">
             {{ data.item.result | roundValue(data.item.decimals) }}
+            <span v-if="groupResults && groupResults > 1"
+              >({{ data.item.result | divideValue(groupResults, 3) }})</span
+            >
           </template>
           <template v-slot:cell(competition)="data">
             <router-link
@@ -112,7 +120,7 @@
             <div
               v-if="
                 data.item.competition.date_start ===
-                  data.item.competition.date_end
+                data.item.competition.date_end
               "
             >
               {{ data.item.competition.date_start }}
@@ -137,11 +145,20 @@ import roundValue from "../utils/RoundValueFilter";
 import errorParser from "../utils/ErrorParser";
 
 export default {
-  name: "Statistics",
+  name: "StatisticsResults",
   filters: {
-    roundValue
+    roundValue,
+    divideValue: function (value, divide, decimals) {
+      const val = parseFloat(value);
+      if (!val || isNaN(val)) return "";
+      return (val / divide).toFixed(decimals);
+    }
   },
   props: {
+    description: {
+      type: String,
+      default: null
+    },
     header: {
       type: String,
       default: null
@@ -162,11 +179,20 @@ export default {
   },
   computed: {
     /**
+     * Parse group_results from search URL parameters
+     *
+     * @returns {string} group_result
+     */
+    groupResults: function () {
+      let urlParams = new URLSearchParams(this.searchParameters);
+      return urlParams.get("group_results");
+    },
+    /**
      * Sets fields list for the statistics list
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       let groupResult = this.searchParameters.includes("group_results");
       let fields = [
         { key: "number", label: "#" },
@@ -220,7 +246,7 @@ export default {
      * Update results on page change
      */
     currentPage: {
-      handler: function() {
+      handler: function () {
         this.getStatistics();
       }
     },
@@ -228,7 +254,7 @@ export default {
      * Trigger search on parameters change
      */
     searchParameters: {
-      handler: function() {
+      handler: function () {
         this.currentPage = 1;
         this.getStatistics();
       }
@@ -258,10 +284,10 @@ export default {
       HTTP.get(
         "resultlist/" + this.searchParameters + "&page=" + this.currentPage
       )
-        .then(response => {
+        .then((response) => {
           this.results = response.data || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingResults = false));

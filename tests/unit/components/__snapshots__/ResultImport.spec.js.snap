@@ -1567,10 +1567,7 @@ exports[`ResultImport.vue renders result import form 1`] = `
             accept=""
             browsetext="Browse"
             dropplaceholder="import.file.drop"
-            filenameformatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            filenameformatter="[Function]"
             nodropplaceholder="Not allowed"
             placeholder="import.file.select"
             required="true"

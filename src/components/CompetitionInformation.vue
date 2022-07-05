@@ -178,7 +178,10 @@
             <b-button
               :to="{
                 name: 'changelog',
-                params: { model_name: 'competition', object_id: competition.id }
+                params: {
+                  model_name: 'competition',
+                  object_id: competition.id
+                }
               }"
               variant="light"
               class="btn-orange"
@@ -203,7 +206,7 @@ import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
 
 export default {
-  name: "Competition",
+  name: "CompetitionInformation",
   data() {
     return {
       competition: {},
@@ -222,7 +225,7 @@ export default {
      *
      * @returns {boolean} editPermission
      */
-    editPermission: function() {
+    editPermission: function () {
       try {
         this.$emit(
           "update:editPermission",
@@ -249,11 +252,11 @@ export default {
       this.competition = {};
       this.loadingCompetition = true;
       HTTP.get("competitions/" + id + "/")
-        .then(response => {
+        .then((response) => {
           this.competition = response.data || {};
           this.$emit("update:competition", this.competition);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCompetition = false));
@@ -263,17 +266,17 @@ export default {
      *
      * @returns {Promise<void>}
      */
-    toggleLockStatus: async function() {
+    toggleLockStatus: async function () {
       this.$set(this.errors, "main", null);
       await HTTP.patch(
         "competitions/" + this.competition.id + "/",
         { locked: !this.competition.locked },
         this.config
       )
-        .then(response => {
+        .then((response) => {
           this.competition.locked = response.data.locked;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -282,17 +285,17 @@ export default {
      *
      * @returns {Promise<void>}
      */
-    togglePublicStatus: async function() {
+    togglePublicStatus: async function () {
       this.$set(this.errors, "main", null);
       await HTTP.patch(
         "competitions/" + this.competition.id + "/",
         { public: !this.competition.public },
         this.config
       )
-        .then(response => {
+        .then((response) => {
           this.competition.public = response.data.public;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -301,17 +304,17 @@ export default {
      *
      * @returns {Promise<void>}
      */
-    toggleTrialStatus: async function() {
+    toggleTrialStatus: async function () {
       this.$set(this.errors, "main", null);
       await HTTP.patch(
         "competitions/" + this.competition.id + "/",
         { trial: !this.competition.trial },
         this.config
       )
-        .then(response => {
+        .then((response) => {
           this.competition.trial = response.data.trial;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     }

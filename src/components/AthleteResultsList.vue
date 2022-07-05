@@ -60,7 +60,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       return [
         {
           key: "competition.date_start",

@@ -8,7 +8,7 @@ import numberFormatter from "../utils/NumberFormatter";
  * @param {number} order
  * @returns {string}
  */
-export default function(value, type, order = null) {
+export default function (value, type, order = null) {
   if (!value) return "";
   if (!order) {
     let values = type.split("-");
@@ -16,7 +16,7 @@ export default function(value, type, order = null) {
     order = parseInt(values[1]);
   }
   const result = value.filter(
-    v => v.type && v.type.abbreviation === type && v.order === order
+    (v) => v.type && v.type.abbreviation === type && v.order === order
   )[0];
   if (result) {
     if (result.text) {

@@ -80,8 +80,8 @@
                 <b-button
                   v-if="
                     $store.state.editMode &&
-                      $store.state.user.is_staff &&
-                      !data.item.approved
+                    $store.state.user.is_staff &&
+                    !data.item.approved
                   "
                   class="btn-danger"
                   v-on:click="deleteConfirm(data.item.id)"
@@ -155,7 +155,7 @@ import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
 
 export default {
-  name: "Records",
+  name: "RecordsResults",
   filters: {
     roundValue
   },
@@ -182,7 +182,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       const fields = [
         { key: "category", label: this.$t("result.category"), sortable: true },
         { key: "result", label: this.$tc("result.result", 1), sortable: true },
@@ -228,7 +228,7 @@ export default {
      * Fetch records when parameters change
      */
     searchParameters: {
-      handler: function() {
+      handler: function () {
         this.getRecords();
       }
     }
@@ -248,7 +248,7 @@ export default {
           okTitle: this.$t("confirm.yes"),
           cancelTitle: this.$t("confirm.cancel")
         })
-        .then(value => {
+        .then((value) => {
           if (value === true) {
             this.deleteRecord(record);
           }
@@ -263,12 +263,12 @@ export default {
     async deleteRecord(record) {
       this.$set(this.errors, "main", null);
       HTTP.delete("records/" + record + "/", this.config)
-        .then(response => {
+        .then((response) => {
           if (response.status === 204) {
             this.getRecords();
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(
             this.errors,
             "main",
@@ -288,10 +288,10 @@ export default {
       let url = "recordlist/" + this.searchParameters;
       this.results = [];
       HTTP.get(url)
-        .then(response => {
+        .then((response) => {
           this.results = groupArrayByKey(response.data.results, "type");
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingRecords = false));
@@ -302,17 +302,17 @@ export default {
      * @param {object} data - result object
      * @returns {Promise<void>}
      */
-    toggleApproval: async function(data) {
+    toggleApproval: async function (data) {
       this.$set(this.errors, "main", null);
       await HTTP.patch(
         "records/" + data.item.id + "/",
         { approved: !data.item.approved },
         this.config
       )
-        .then(response => {
+        .then((response) => {
           data.item.approved = response.data.approved;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     }

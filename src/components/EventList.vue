@@ -153,7 +153,7 @@ export default {
      *
      * @returns {boolean} createPermission
      */
-    createPermission: function() {
+    createPermission: function () {
       try {
         return this.$store.state.user.is_authenticated;
       } catch (err) {
@@ -165,7 +165,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    listFields: function() {
+    listFields: function () {
       let fields = [
         { key: "date", label: this.$t("date") },
         { key: "name", label: this.$t("name") },
@@ -195,7 +195,7 @@ export default {
      * Fetch new set of events on page change
      */
     currentPage: {
-      handler: function() {
+      handler: function () {
         this.getEvents();
       }
     }
@@ -233,7 +233,7 @@ export default {
         searchUrl = searchUrl + "&page=" + this.currentPage;
       }
       HTTP.get(searchUrl)
-        .then(response => {
+        .then((response) => {
           this.events = response.data || [];
           this.events.results.forEach(event => {
             if (!event.approved) {
@@ -241,7 +241,7 @@ export default {
             }
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingEvents = false));
@@ -253,7 +253,7 @@ export default {
      */
     limitToPublic(array) {
       if (Array.isArray(array)) {
-        return array.filter(item => item.public);
+        return array.filter((item) => item.public);
       }
       return [];
     },

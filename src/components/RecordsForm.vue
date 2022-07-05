@@ -225,11 +225,11 @@ export default {
      */
     async getRecordLevels() {
       HTTP.get("recordlevels/")
-        .then(response => {
+        .then((response) => {
           this.recordLevels = response.data.results;
           this.setRecordLevel();
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -337,7 +337,7 @@ export default {
     setRecordLevel() {
       if (this.recordLevels.length > 0 && !this.form.record_level) {
         const selectedOption = this.recordLevels.filter(
-          level => level.abbreviation === "SE"
+          (level) => level.abbreviation === "SE"
         )[0];
         if (selectedOption) {
           this.$set(this.form, "record_level", selectedOption.id);

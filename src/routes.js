@@ -13,6 +13,12 @@ export default [
     component: HomeView
   },
   {
+    path: "/athlete/check/",
+    name: "athlete-check",
+    component: () =>
+      import(/* webpackChunkName: "athlete-check" */ "./views/AthleteCheck.vue")
+  },
+  {
     path: "/athlete/import/",
     name: "athlete-import",
     component: () =>
@@ -45,6 +51,14 @@ export default [
     name: "result-import",
     component: () =>
       import(/* webpackChunkName: "result-import" */ "./views/ResultImport.vue")
+  },
+  {
+    path: "/pelias/import",
+    name: "result-import-pelias",
+    component: () =>
+      import(
+        /* webpackChunkName: "result-import-pelias" */ "./views/ResultImportPelias.vue"
+      )
   },
   {
     path: "/event/create/",

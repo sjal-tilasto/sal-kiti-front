@@ -160,6 +160,28 @@
         </b-col>
         <b-col cols="12" md="6" xl="4" v-if="showExtraFields">
           <b-form-group
+            id="input-group-result-greater"
+            :label="$t('search.result_greater')"
+            label-for="input-result-greater"
+          >
+            <b-form-input
+              id="input-result-range"
+              v-model="form.result_gte"
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group
+            id="input-group-result-less"
+            :label="$t('search.result_less')"
+            label-for="input-result-less"
+          >
+            <b-form-input
+              id="input-result-less"
+              v-model="form.result_lte"
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+        <b-col cols="12" md="6" xl="4" v-if="showExtraFields">
+          <b-form-group
             id="input-group-group-results"
             :label="$t('statistics.group_results')"
             label-for="input-group-results"
@@ -277,6 +299,8 @@ export default {
         organization: [],
         trial: false,
         external: false,
+        result_gte: null,
+        result_lte: null,
         gender: ""
       },
       loadingSports: false,
@@ -322,7 +346,9 @@ export default {
       this.form.gender = "";
       this.form.max_results = 25;
       this.form.group_results = "";
-      this.$router.push({ path: "search" });
+      this.form.result_gte = null;
+      this.form.result_lte = null;
+      this.$router.push({ path: "search" }).catch((err) => {});
     },
     /**
      * Trigger form reset when pressing reset button
@@ -389,6 +415,14 @@ export default {
         parameters += "&external=1";
         query.external = 1;
       }
+      if (this.form.result_gte) {
+        parameters += "&result_gte=" + this.form.result_gte.replace(",", ".");
+        query.result_gte = this.form.result_gte.replace(",", ".");
+      }
+      if (this.form.result_lte) {
+        parameters += "&result_lte=" + this.form.result_lte.replace(",", ".");
+        query.result_gte = this.form.result_lte.replace(",", ".");
+      }
       if (this.form.gender !== "") {
         parameters += "&gender=" + this.form.gender;
         query.gender = this.form.gender;
@@ -440,6 +474,12 @@ export default {
       }
       if (this.$route.query.max_results) {
         this.form.max_results = this.$route.query.max_results;
+      }
+      if (this.$route.query.result_gte) {
+        this.form.result_gte = this.$route.query.result_gte;
+      }
+      if (this.$route.query.result_lte) {
+        this.form.result_lte = this.$route.query.result_lte;
       }
       if (this.$route.query.start) {
         this.form.date_start =

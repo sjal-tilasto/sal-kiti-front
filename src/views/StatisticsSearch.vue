@@ -21,7 +21,7 @@
 import StatisticsForm from "@/components/StatisticsForm.vue";
 
 export default {
-  name: "StatisticsView",
+  name: "StatisticsSearchView",
   components: {
     StatisticsForm
   },

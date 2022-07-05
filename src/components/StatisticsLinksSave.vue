@@ -32,6 +32,13 @@
             <b-form-input id="input-group-name" v-model="form.group" required />
           </b-form-group>
           <b-form-group
+            id="input-group-description"
+            :label="$t('description')"
+            label-for="input-description"
+          >
+            <b-form-input id="input-description" v-model="form.description" />
+          </b-form-group>
+          <b-form-group
             id="input-group-highlight"
             :label="$t('statistics.highlight')"
             label-for="input-highlight"
@@ -79,6 +86,7 @@ export default {
       form: {
         name: "",
         group: "",
+        description: "",
         highlight: null
       }
     };
@@ -104,13 +112,13 @@ export default {
     async postStatisticsLink() {
       this.$set(this.errors, "main", null);
       HTTP.post("statisticslinks/", this.form, this.config)
-        .then(response => {
+        .then((response) => {
           this.$router.push({
             name: "statistics-links",
             params: { link_id: response.data.id }
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     }

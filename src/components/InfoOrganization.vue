@@ -79,15 +79,15 @@ export default {
      *
      * @returns {array} organization list
      */
-    organizationsExternal: function() {
-      return this.organizations.filter(org => org.external === true);
+    organizationsExternal: function () {
+      return this.organizations.filter((org) => org.external === true);
     },
     /**
      * Sets fields list for the organization list
      *
      * @returns {array} fields list
      */
-    organizationExternalFields: function() {
+    organizationExternalFields: function () {
       return [
         { key: "abbreviation", label: this.$t("abbreviation"), sortable: true },
         { key: "name", label: this.$t("name"), sortable: true }
@@ -98,15 +98,15 @@ export default {
      *
      * @returns {array} organization list
      */
-    organizationsInternal: function() {
-      return this.organizations.filter(org => org.external === false);
+    organizationsInternal: function () {
+      return this.organizations.filter((org) => org.external === false);
     },
     /**
      * Sets fields list for the organization list
      *
      * @returns {array} fields list
      */
-    organizationInternalFields: function() {
+    organizationInternalFields: function () {
       return [
         { key: "abbreviation", label: this.$t("abbreviation"), sortable: true },
         { key: "name", label: this.$t("name"), sortable: true },

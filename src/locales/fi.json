@@ -156,6 +156,8 @@
     "placeholder_competition": "Nimi tai järjestäjä",
     "athlete": "Hae urheilijaa",
     "max_results": "Tulosten määrä",
+    "result_greater": "Tulos suurempi tai yhtä suuri kuin",
+    "result_less": "Tulos pienempi tai yhtä suuri kuin",
     "competition": "Hae kilpailuita"
   },
   "info": {
@@ -173,6 +175,10 @@
     "athlete_import": "Urheilijoiden tuonti",
     "athlete_import_description": "Tuo tai päivitä urheilijatietoja Excel-lomakkeella",
     "to_athlete_import": "Tuo urheilijoita",
+    "tools": "Työkaluja",
+    "athlete_check": "Urheilijoiden tietojen tarkistus",
+    "athlete_check_description": "Tarkista urheilijoiden lisenssitiedot, nimet ym.",
+    "to_athlete_check": "Tarkista lisenssejä",
     "layout": "Asettelu"
   },
   "sport": {
@@ -204,6 +210,7 @@
     "external": "Sisällytä ulkopuoliset urheilijat",
     "save_link": "Tallenna linkiksi",
     "link_name": "Nimi",
+    "links": "Linkit",
     "group_name": "Ryhmä",
     "highlight": "Korosta",
     "highlight_description": "Korosta annetun numeron verran tuloksia",
@@ -228,9 +235,21 @@
     "statistics": "Tilastot",
     "sports": "Lajit",
     "result_manage": "Tuloksen muokkaaminen",
+    "athlete_check": "Urheilijatietojen tarkistus",
     "athlete_import": "Urheilijoiden tuonti",
     "info": "Info",
     "organizations": "Organisaatiot"
+  },
+  "tools": {
+    "athlete_check": "Urheilijatietojen tarkistus",
+    "download_excel": "Lataa Excel",
+    "licence_date": "Lisenssitarkistuksen päivämäärä",
+    "sport_id_list": "Lista Sportti-ID:stä, yksi per rivi",
+    "warning": {
+      "licence_missing": "Lisenssi puuttuu",
+      "multiple_athletes_found": "Useita urheilijoita löydetty",
+      "no_athletes_found": "Urheilijaa ei löydetty"
+    }
   },
   "import": {
     "file": {
@@ -291,13 +310,19 @@
       "missing_sport_id": "Puuttuva \"sport_id\"",
       "missing_first_name": "Puuttuva \"first_name\"",
       "missing_last_name": "Puuttuva \"last_name\"",
-      "missing_header": "Tiedoston sarakkeesta puuttuu otsikko."
+      "missing_header": "Tiedoston sarakkeesta puuttuu otsikko.",
+      "pelias_multiple_competitions_found": "Useita kilpailuita samalla kilpailutyypillä.",
+      "pelias_multiple_events_found": "Useita tapahtumia samalla nimellä ja päivillä.",
+      "pelias_no_competition_type_found": "Kilpailutyyppiä ei löydetty.",
+      "pelias_multiple_competition_types_found": "Useita kilpailutyyppejä löydetty."
     },
     "warning": {
       "label": "Huomio",
       "first_name": "Etunimi päivitetty",
       "last_name": "Sukunimi päivitetty",
-      "organization": "Tarkista urheilijan seura."
+      "organization": "Tarkista urheilijan seura.",
+      "requirement_level": "Puuttuva kilpailutason vaatimus",
+      "requirement_type": "Puuttuva kilpailutyypin vaatimus"
     }
   },
   "confirm": {
@@ -359,5 +384,6 @@
   "organization": "Seura",
   "link": "linkki",
   "keyword": "Hakusana | Hakusanat",
-  "required": "Vaadittu"
+  "required": "Vaadittu",
+  "year": "vuosi"
 }

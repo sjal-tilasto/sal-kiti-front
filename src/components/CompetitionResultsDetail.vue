@@ -139,13 +139,13 @@ export default {
      *
      * @returns {[]|*[]} - array of sorted extra field arrays for each block
      */
-    resultRowsExtra: function() {
+    resultRowsExtra: function () {
       if (!this.customFields || this.customFields.length === 0) {
         return [];
       }
       let filtered = [];
       for (let i = 1; i <= this.maxBlock; i++) {
-        filtered[i] = this.customFields.filter(f => f.block === i && f.order);
+        filtered[i] = this.customFields.filter((f) => f.block === i && f.order);
         filtered[i].sort((a, b) => parseInt(a.order) > parseInt(b.order));
       }
       return filtered;

@@ -7,9 +7,9 @@
  * @param {string} partial_type
  * @returns {array}
  */
-export default function(array, key, partial_type = null) {
+export default function (array, key, partial_type = null) {
   let result = {};
-  array.forEach(item => {
+  array.forEach((item) => {
     let value = item[key];
     if (typeof item[key] !== "number") {
       value = item[key].split("(")[0].trim();
@@ -35,11 +35,11 @@ export default function(array, key, partial_type = null) {
  * @returns {array}
  */
 function maxRounds(result, partial_type) {
-  Object.keys(result).forEach(category => {
+  Object.keys(result).forEach((category) => {
     let order = 0;
-    result[category].forEach(item => {
+    result[category].forEach((item) => {
       if (item.partial) {
-        item.partial.forEach(partial => {
+        item.partial.forEach((partial) => {
           if (
             partial.order > order &&
             partial.type.abbreviation.includes(partial_type)

@@ -30,15 +30,15 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    csrfToken: state => state.csrfToken
+    csrfToken: (state) => state.csrfToken
   },
   actions: {
     userInfo({ commit }) {
       HTTP.get("users/current/")
-        .then(response => {
+        .then((response) => {
           commit("setUserInfo", response.data);
         })
-        .catch(error => {
+        .catch((error) => {
           commit("setUserInfo", {
             is_authenticated: false,
             is_staff: false,

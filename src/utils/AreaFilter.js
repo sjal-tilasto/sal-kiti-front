@@ -5,10 +5,10 @@
  * @param {array} areaList
  * @returns {string}
  */
-export default function(areas, areaList) {
+export default function (areas, areaList) {
   let return_list = "";
-  areas.forEach(function(area) {
-    let filtered = areaList.filter(obj => obj.id === area);
+  areas.forEach(function (area) {
+    let filtered = areaList.filter((obj) => obj.id === area);
     if (filtered.length === 1) {
       if (return_list !== "") {
         return_list += ", " + filtered[0].name;

@@ -16,6 +16,8 @@ exports[`StatisticsResults.vue renders result list 1`] = `
     </div>
   </div>
    
+  <!---->
+   
   <div
     class="row"
   >
@@ -208,7 +210,8 @@ exports[`StatisticsResults.vue renders result list 1`] = `
             >
               
           200,6
-        
+          
+              <!---->
             </td>
             <td
               aria-colindex="6"
@@ -299,7 +302,8 @@ exports[`StatisticsResults.vue renders result list 1`] = `
             >
               
           206,4
-        
+          
+              <!---->
             </td>
             <td
               aria-colindex="6"
@@ -390,7 +394,8 @@ exports[`StatisticsResults.vue renders result list 1`] = `
             >
               
           222
-        
+          
+              <!---->
             </td>
             <td
               aria-colindex="6"

@@ -15,7 +15,13 @@
       </b-col>
     </b-row>
     <b-row v-else>
-      <b-col cols="12" md="6" xl="4" v-for="group in groups" v-bind:key="group">
+      <b-col
+        cols="12"
+        md="6"
+        xl="4"
+        v-for="group in groups"
+        v-bind:key="group.id"
+      >
         <h3 class="bg-sal-orange">{{ group[0].group }}</h3>
         <ul>
           <li v-for="link in group" v-bind:key="link.id">
@@ -30,6 +36,7 @@
             ><b-button
               size="sm"
               variant="outline-danger"
+              class="btn-orange space-left"
               v-on:click="deleteLink(link.id)"
               v-if="$store.state.user.is_staff && $store.state.editMode"
             >
@@ -42,6 +49,7 @@
     <StatisticsResults
       v-if="searchParameters"
       :searchParameters="searchParameters"
+      :description="description"
       :header="header"
       :highlight="highlight"
       :key="searchParameters"
@@ -73,6 +81,7 @@ export default {
           "X-CSRFToken": getCookie("csrftoken")
         }
       },
+      description: "",
       errors: {},
       header: null,
       highlight: null,
@@ -82,12 +91,12 @@ export default {
     };
   },
   computed: {
-    groups: function() {
+    groups: function () {
       return groupArrayByKey(this.statisticsLinks, "group");
     }
   },
   watch: {
-    loadingStatisticsLinks: function() {
+    loadingStatisticsLinks: function () {
       if (this.$route.params && this.$route.params.link_id) {
         this.selectLink(this.$route.params.link_id);
       }
@@ -98,13 +107,16 @@ export default {
   },
   methods: {
     activateLink(link) {
+      this.description = link.description;
       this.header = link.name;
       this.highlight = link.highlight;
       this.searchParameters = link.link;
-      this.$router.push({
-        name: "statistics-link",
-        params: { link_id: link.id }
-      });
+      this.$router
+        .push({
+          name: "statistics-link",
+          params: { link_id: link.id }
+        })
+        .catch((err) => {});
     },
     /**
      * Deletes a statistics link
@@ -114,17 +126,17 @@ export default {
     async deleteLink(id) {
       this.$set(this.errors, "main", null);
       HTTP.delete("statisticslinks/" + id + "/", this.config)
-        .then(response => {
+        .then((response) => {
           if (response.status === 204) {
             this.getStatisticsLinks();
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.result.bind(this)(error));
         });
     },
     selectLink(id) {
-      let link = this.statisticsLinks.find(obj => {
+      let link = this.statisticsLinks.find((obj) => {
         return obj.id == id;
       });
       if (link) {

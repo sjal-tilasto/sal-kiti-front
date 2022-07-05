@@ -11,10 +11,10 @@ export default {
     async getAreas() {
       this.loadingAreas = true;
       HTTP.get("areas/")
-        .then(response => {
+        .then((response) => {
           this.areas = response.data.results || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingAreas = false));
@@ -30,10 +30,10 @@ export default {
       this.$set(this.errors, "main", null);
       this.athlete = {};
       HTTP.get("athletes/" + athleteId + "/")
-        .then(response => {
+        .then((response) => {
           this.athlete = response.data || {};
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingAthlete = false));
@@ -52,10 +52,10 @@ export default {
         url = url + "&historical=false";
       }
       HTTP.get(url)
-        .then(response => {
+        .then((response) => {
           this.categories = response.data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCategories = false));
@@ -70,13 +70,31 @@ export default {
       this.loadingCompetition = true;
       this.competition = {};
       await HTTP.get("competitions/" + competitionId + "/")
-        .then(response => {
+        .then((response) => {
           this.competition = response.data || {};
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCompetition = false));
+    },
+    /**
+     * Fetch competition level information from API
+     *
+     * @param {number} competitionLevelId
+     * @returns {Promise<void>}
+     */
+    async getCompetitionLevel(competitionLevelId) {
+      this.loadingCompetitionLevel = true;
+      this.competitionLevel = {};
+      await HTTP.get("competitionlevels/" + competitionLevelId + "/")
+        .then((response) => {
+          this.competitionLevel = response.data || {};
+        })
+        .catch((error) => {
+          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+        })
+        .finally(() => (this.loadingCompetitionLevel = false));
     },
     /**
      * Fetch competition levels from API
@@ -86,10 +104,10 @@ export default {
     async getCompetitionLevels() {
       this.loadingCompetitionLevels = true;
       HTTP.get("competitionlevels/")
-        .then(response => {
+        .then((response) => {
           this.competitionLevels = response.data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCompetitionLevels = false));
@@ -103,10 +121,10 @@ export default {
     async getCompetitionResultTypes(competitionType) {
       this.loadingCompetitionResultTypes = true;
       HTTP.get("competitionresulttypes/?competition_type=" + competitionType)
-        .then(response => {
+        .then((response) => {
           this.competitionResultTypes = response.data.results || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCompetitionResultTypes = false));
@@ -121,10 +139,10 @@ export default {
       this.loadingCompetitionType = true;
       this.competitionType = {};
       await HTTP.get("competitiontypes/" + competitionTypeId + "/")
-        .then(response => {
+        .then((response) => {
           this.competitionType = response.data || {};
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCompetitionType = false));
@@ -143,10 +161,10 @@ export default {
         url = url + "&historical=false";
       }
       HTTP.get(url)
-        .then(response => {
+        .then((response) => {
           this.competitionTypes = response.data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingCompetitionTypes = false));
@@ -160,10 +178,10 @@ export default {
     async getEvent(eventId) {
       this.loadingEvent = true;
       HTTP.get("events/" + eventId + "/")
-        .then(response => {
+        .then((response) => {
           this.event = response.data || {};
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingEvent = false));
@@ -189,10 +207,10 @@ export default {
         url = url + "&own=true";
       }
       HTTP.get(url)
-        .then(response => {
+        .then((response) => {
           this.organizations = response.data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingOrganizations = false));
@@ -205,10 +223,10 @@ export default {
     async getSports() {
       this.loadingSports = true;
       HTTP.get("sports/")
-        .then(response => {
+        .then((response) => {
           this.sports = response.data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingSports = false));
@@ -221,10 +239,10 @@ export default {
     async getStatisticsLinks() {
       this.loadingStatisticsLinks = true;
       HTTP.get("statisticslinks/")
-        .then(response => {
+        .then((response) => {
           this.statisticsLinks = response.data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loadingStatisticsLinks = false));
