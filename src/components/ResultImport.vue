@@ -274,9 +274,8 @@ export default {
           }
         } else if (
           file &&
-          file.type &&
           this.form.fileType === "ianseo" &&
-          (file.type === "text/plain" ||
+          ((file.type && file.type === "text/plain") ||
             file.name.toLowerCase().endsWith(".asc"))
         ) {
           resultData = await this.parseCSV(file);
