@@ -333,11 +333,7 @@ export default {
             header = header.toString();
           }
           formattedNames.push(
-            header
-              .split("|")[0]
-              .trim()
-              .replace(/\s/g, "_")
-              .toLowerCase()
+            header.split("|")[0].trim().replace(/\s/g, "_").toLowerCase()
           );
         }
       }

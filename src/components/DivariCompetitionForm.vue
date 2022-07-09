@@ -103,20 +103,20 @@ export default {
     async postCompetition() {
       this.$set(this.errors, "main", null);
       let organization = this.organizations.find(
-        item => item.id === this.form.organization
+        (item) => item.id === this.form.organization
       );
       let data = {
         organization: organization.name,
         date: this.form.date
       };
       HTTP.post("divari/competitions/", data, this.config)
-        .then(response => {
+        .then((response) => {
           this.$router.push({
             name: "divari-import",
             params: { competition_id: response.data.id }
           });
         })
-        .catch(error => {
+        .catch((error) => {
           if (error.response.status === 400) {
             this.$set(this.errors, "main", [
               this.$t("sjal.divari.competition_exists")

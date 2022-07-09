@@ -235,7 +235,7 @@ export default {
       HTTP.get(searchUrl)
         .then((response) => {
           this.events = response.data || [];
-          this.events.results.forEach(event => {
+          this.events.results.forEach((event) => {
             if (!event.approved) {
               event._rowVariant = "warning";
             }

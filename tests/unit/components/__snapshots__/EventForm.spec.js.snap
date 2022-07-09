@@ -178,10 +178,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-optional_dates"
             maxrows="6"
             rows="3"
@@ -199,10 +196,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-categories"
             maxrows="6"
             rows="3"
@@ -277,10 +271,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
         >
           <b-form-textarea-stub
             debounce="0"
-            formatter="function bvConfigurablePropDefault() {
-      var value = getComponentConfig(componentKey, key, prop.default);
-      return isFunction(value) ? value() : value;
-    }"
+            formatter="[Function]"
             id="input-notes"
             maxrows="6"
             rows="3"
@@ -306,9 +297,7 @@ exports[`EventForm.vue renders event form with even information 1`] = `
          
         <p>
           <b-link-stub
-            event="click"
             href="event.toc_agreement_url"
-            routertag="a"
             target="_blank"
           >
             (link)

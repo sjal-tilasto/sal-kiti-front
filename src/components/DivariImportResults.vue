@@ -105,7 +105,7 @@
  * Import results from various sources
  */
 import { HTTP } from "../api/BaseApi.js";
-import XLSX from "xlsx";
+import * as XLSX from "xlsx";
 import getCookie from "../utils/GetCookie";
 import errorParser from "../utils/ErrorParser";
 
@@ -138,7 +138,7 @@ export default {
      *
      * @returns {array} fields
      */
-    importFields: function() {
+    importFields: function () {
       return [
         { key: "status", label: this.$t("import.status.label") },
         { key: "athlete", label: this.$tc("athlete.athlete", 1) },
@@ -166,10 +166,10 @@ export default {
         season: season_id
       };
       HTTP.post("divari/calculate", data, this.config)
-        .then(response => {
+        .then((response) => {
           return response.data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -194,10 +194,10 @@ export default {
       this.competition = null;
       this.$set(this.errors, "main", null);
       HTTP.get("divari/competitions/" + competition_id + "/")
-        .then(response => {
+        .then((response) => {
           this.competition = response.data || {};
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));
@@ -207,7 +207,7 @@ export default {
      */
     getDebugExcel() {
       if (this.debugResults) {
-        this.debugResults.forEach(row => {
+        this.debugResults.forEach((row) => {
           if (row["error"].length > 0) {
             row["error"] = row["error"].toString();
           }
@@ -232,10 +232,10 @@ export default {
       this.$set(this.errors, "main", null);
       let parameters = "?competition=" + competition_id;
       HTTP.get("divari/results/" + parameters)
-        .then(response => {
+        .then((response) => {
           this.competitionResults = response.data.results || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));
@@ -247,10 +247,10 @@ export default {
      */
     async getSeasons() {
       HTTP.get("divari/seasons/?ordering=-date_start")
-        .then(response => {
+        .then((response) => {
           this.seasons = response.data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -295,7 +295,7 @@ export default {
     parseExcel(file) {
       return new Promise((resolve, reject) => {
         let reader = new FileReader();
-        reader.onload = e => {
+        reader.onload = (e) => {
           let data = new Uint8Array(e.target.result);
           let workbook = XLSX.read(data, { type: "array" });
           let firstSheetName = workbook.SheetNames[0];
@@ -312,7 +312,7 @@ export default {
     async parseResults() {
       for (let i = 0; i < this.results.length; i++) {
         Object.keys(this.results[i]).map(
-          k =>
+          (k) =>
             (this.results[i][k] =
               typeof this.results[i][k] == "string"
                 ? this.results[i][k].trim()
@@ -416,7 +416,7 @@ export default {
       this.debugResults = this.results;
       await this.getResults(this.$route.params.competition_id);
       let competitionDate = Date.parse(this.competition.date);
-      this.seasons.forEach(season => {
+      this.seasons.forEach((season) => {
         let seasonStart = Date.parse(season.date_start);
         let seasonEnd = Date.parse(season.date_end);
         if (competitionDate >= seasonStart && competitionDate <= seasonEnd) {
@@ -432,7 +432,7 @@ export default {
      */
     async postResult(i) {
       let duplicate = this.competitionResults.filter(
-        res =>
+        (res) =>
           res.athlete === this.result.athlete &&
           res.target_type === this.result.target_type.toString() &&
           res.bow_type === this.result.bow_type
@@ -446,18 +446,18 @@ export default {
           this.result,
           this.config
         )
-          .then(response => {
+          .then((response) => {
             this.results[i].response = response.data;
           })
-          .catch(error => {
+          .catch((error) => {
             this.results[i].error.push(...errorParser.result.bind(this)(error));
           });
       } else if (this.results[i].error.length === 0) {
         await HTTP.post("divari/results/", this.result, this.config)
-          .then(response => {
+          .then((response) => {
             this.results[i].response = response.data;
           })
-          .catch(error => {
+          .catch((error) => {
             this.results[i].error.push(...errorParser.result.bind(this)(error));
           });
       }

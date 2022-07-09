@@ -94,7 +94,7 @@ export default {
     StatisticsRanking
   },
   computed: {
-    year: function() {
+    year: function () {
       let date = new Date();
       let year = date.getFullYear();
       if (year <= 2022 && date.getMonth() < 5) {
@@ -106,10 +106,10 @@ export default {
         return date.getFullYear();
       }
     },
-    dateStart: function() {
+    dateStart: function () {
       return this.year.toString() + "-10-01";
     },
-    dateEnd: function() {
+    dateEnd: function () {
       if (this.year === 2020) {
         return (this.year + 2).toString() + "-04-30";
       }

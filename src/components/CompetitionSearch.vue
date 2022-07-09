@@ -294,7 +294,7 @@ export default {
      * Select sport if only one is available
      */
     sports: {
-      handler: function() {
+      handler: function () {
         if (this.sports.length === 1) {
           this.selectSport(this.sports[0].id, false);
         }

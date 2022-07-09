@@ -219,17 +219,17 @@ export default {
      *
      * @returns {Promise<void>}
      */
-    toggleApprovedStatus: async function() {
+    toggleApprovedStatus: async function () {
       this.$set(this.errors, "main", null);
       await HTTP.patch(
         "events/" + this.event.id + "/",
         { approved: !this.event.approved },
         this.config
       )
-        .then(response => {
+        .then((response) => {
           this.event.approved = response.data.approved;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },

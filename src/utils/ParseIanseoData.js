@@ -5,7 +5,7 @@
  * @returns {array} list of results objects
  */
 
-export default function(data, resultTypes) {
+export default function (data, resultTypes) {
   let results = [];
   let headers = {
     sport_id: 1,
@@ -106,7 +106,7 @@ export default function(data, resultTypes) {
   categories.set("N7V", "N70V");
   categories.set("N7L", "N70LB");
   let resultTypeKeys = [];
-  resultTypes.forEach(resultType => {
+  resultTypes.forEach((resultType) => {
     resultTypeKeys.push(resultType.abbreviation);
   });
   let higherCount = null;
@@ -234,7 +234,7 @@ export default function(data, resultTypes) {
       }
       category = category.concat(division);
       let index = results.findIndex(
-        res => res.sport_id === sport_id && res.category === category
+        (res) => res.sport_id === sport_id && res.category === category
       );
       if (index >= 0) {
         let elimination_category = data[row][elimHeaders.elimination_category];
@@ -333,7 +333,7 @@ export default function(data, resultTypes) {
       }
       result["category"] = category;
       let teamCount = results.filter(
-        res =>
+        (res) =>
           "team_name" in res &&
           res["team_name"].startsWith(result.organization.concat(" "))
       ).length;

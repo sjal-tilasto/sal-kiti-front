@@ -180,7 +180,7 @@ export default {
       let order = parseInt(field.split("-")[1]);
       return (
         result.filter(
-          v => v.type && v.type.abbreviation === type && v.order === order
+          (v) => v.type && v.type.abbreviation === type && v.order === order
         ).length === 1
       );
     }

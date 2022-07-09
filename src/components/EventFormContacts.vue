@@ -148,7 +148,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    contactFields: function() {
+    contactFields: function () {
       return [
         { key: "type", label: this.$t("contact.type"), sortable: true },
         {
@@ -166,7 +166,7 @@ export default {
         "remove"
       ];
     },
-    contactTypes: function() {
+    contactTypes: function () {
       return [
         { key: "contact", name: this.$t("contact.generic_contact") },
         { key: "manager", name: this.$t("contact.competition_manager") },
@@ -185,10 +185,10 @@ export default {
      */
     async getContacts(eventId) {
       HTTP.get("eventcontacts/?event=" + eventId)
-        .then(response => {
+        .then((response) => {
           this.contacts = response.data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -200,12 +200,12 @@ export default {
      */
     async postContact(contact) {
       HTTP.post("eventcontacts/", contact, this.config)
-        .then(response => {
+        .then((response) => {
           if (response.status === 201) {
             this.getContacts(this.eventId);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(
             this.errors,
             "main",
@@ -224,7 +224,7 @@ export default {
           okTitle: this.$t("confirm.yes"),
           cancelTitle: this.$t("confirm.cancel")
         })
-        .then(value => {
+        .then((value) => {
           if (value === true) {
             this.deleteContact(contact);
           }
@@ -237,12 +237,12 @@ export default {
      */
     async deleteContact(contact) {
       HTTP.delete("eventcontacts/" + contact.id + "/", this.config)
-        .then(response => {
+        .then((response) => {
           if (response.status === 204) {
             this.getContacts(this.eventId);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(
             this.errors,
             contact.id,

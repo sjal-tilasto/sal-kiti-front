@@ -12,51 +12,7 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
     </b-col-stub>
   </b-row-stub>
    
-  <b-row-stub
-    tag="div"
-  >
-    <b-col-stub
-      tag="div"
-    >
-      <b-button-stub
-        class="btn-orange space-right space-down"
-        tag="button"
-        target="_self"
-        type="button"
-        variant="light"
-      >
-        
-        Paintball
-      
-      </b-button-stub>
-    </b-col-stub>
-  </b-row-stub>
-   
-  <b-row-stub
-    tag="div"
-  >
-    <b-col-stub
-      tag="div"
-    >
-      <router-link
-        to="[object Object]"
-      >
-        <b-button-stub
-          class="btn-orange space-right space-down"
-          tag="button"
-          target="_self"
-          type="button"
-          variant="light"
-        >
-          
-          statistics.links
-        
-        </b-button-stub>
-      </router-link>
-       
-      <!---->
-    </b-col-stub>
-  </b-row-stub>
+  <!---->
    
   <b-form-stub>
     <b-row-stub
@@ -449,6 +405,49 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
               10
             
             </option>
+          </b-form-select-stub>
+        </b-form-group-stub>
+      </b-col-stub>
+       
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-group-stub
+          feedbackarialive="assertive"
+          id="input-group-gender"
+          label="statistics.gender"
+          labelfor="input-gender"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-gender"
+            labelfield="label"
+            options=""
+            optionsfield="options"
+            selectsize="0"
+            textfield="text"
+            value=""
+            valuefield="value"
+          >
+            <b-form-select-option-stub
+              value=""
+            />
+             
+            <b-form-select-option-stub
+              value="M"
+            >
+              statistics.man
+            </b-form-select-option-stub>
+             
+            <b-form-select-option-stub
+              value="W"
+            >
+              statistics.woman
+            </b-form-select-option-stub>
           </b-form-select-stub>
         </b-form-group-stub>
       </b-col-stub>

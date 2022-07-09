@@ -132,7 +132,7 @@ export default {
     };
   },
   computed: {
-    bowTypes: function() {
+    bowTypes: function () {
       return [
         {
           key: "recurve",
@@ -152,15 +152,15 @@ export default {
         }
       ];
     },
-    dateEnd: function() {
+    dateEnd: function () {
       if (this.season && this.seasons.length > 0) {
-        return this.seasons.find(s => s.id === this.season).date_end;
+        return this.seasons.find((s) => s.id === this.season).date_end;
       }
       return null;
     },
-    dateStart: function() {
+    dateStart: function () {
       if (this.season && this.seasons.length > 0) {
-        return this.seasons.find(s => s.id === this.season).date_start;
+        return this.seasons.find((s) => s.id === this.season).date_start;
       }
       return null;
     },
@@ -169,7 +169,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       return [
         {
           key: "organization.name",
@@ -187,7 +187,7 @@ export default {
      *
      * @returns {array} year list
      */
-    year_range: function() {
+    year_range: function () {
       let endYear = new Date().getFullYear();
       let years = [];
       let startYear = 2017;
@@ -223,12 +223,12 @@ export default {
         this.seasonCalculation = 1;
         this.$set(this.errors, "main", null);
         HTTP.post("divari/calculate", { season: season }, this.config)
-          .then(response => {
+          .then((response) => {
             if ("calculated" in response.data && response.data.calculated) {
               this.seasonCalculation = 2;
             }
           })
-          .catch(error => {
+          .catch((error) => {
             this.$set(
               this.errors,
               "main",
@@ -244,10 +244,10 @@ export default {
      */
     async getSeasons() {
       HTTP.get("divari/seasons/?ordering=-date_start")
-        .then(response => {
+        .then((response) => {
           this.seasons = response.data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },

@@ -44,7 +44,7 @@ import roundValue from "../utils/RoundValueFilter";
 import errorParser from "../utils/ErrorParser";
 
 export default {
-  name: "Statistics",
+  name: "StatisticsRanking",
   filters: {
     roundValue
   },
@@ -69,7 +69,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       let fields = [
         { key: "rank", label: "#" },
         { key: "athlete", label: this.$tc("athlete.athlete", 1) },
@@ -105,10 +105,10 @@ export default {
       }
 
       HTTP.get("sjal/ranking/" + this.division.toLowerCase() + "/" + parameters)
-        .then(response => {
+        .then((response) => {
           this.results = response.data || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));

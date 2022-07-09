@@ -83,7 +83,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       let fields = [
         { key: "athlete", label: this.$tc("athlete.athlete", 1) },
         { key: "bow_type", label: this.$t("sjal.divari.bow_type") },
@@ -108,10 +108,10 @@ export default {
       this.competition = null;
       this.$set(this.errors, "main", null);
       HTTP.get("divari/competitions/" + competition_id + "/")
-        .then(response => {
+        .then((response) => {
           this.competition = response.data || {};
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));
@@ -127,10 +127,10 @@ export default {
       this.$set(this.errors, "main", null);
       let parameters = "?competition=" + competition_id;
       HTTP.get("divari/results/" + parameters)
-        .then(response => {
+        .then((response) => {
           this.results = response.data.results || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));

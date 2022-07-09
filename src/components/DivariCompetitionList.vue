@@ -76,7 +76,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       let fields = [
         { key: "organization", label: this.$t("organization") },
         { key: "date", label: this.$t("date") }
@@ -104,10 +104,10 @@ export default {
       }
 
       HTTP.get("divari/competitions/" + parameters)
-        .then(response => {
+        .then((response) => {
           this.competitions = response.data.results || [];
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));

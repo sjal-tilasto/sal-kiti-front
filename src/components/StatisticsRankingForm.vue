@@ -58,7 +58,7 @@
 import StatisticsRanking from "@/components/StatisticsRanking.vue";
 
 export default {
-  name: "Statistics",
+  name: "StatisticsRankingForm",
   components: {
     StatisticsRanking
   },
@@ -84,7 +84,7 @@ export default {
     };
   },
   computed: {
-    divisions: function() {
+    divisions: function () {
       return [
         {
           key: "recurve",
@@ -105,7 +105,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       return [
         {
           key: "organization.name",
@@ -123,7 +123,7 @@ export default {
      *
      * @returns {array} year list
      */
-    year_range: function() {
+    year_range: function () {
       let endYear = new Date().getFullYear();
       let years = [];
       let startYear = 2017;

@@ -90,7 +90,7 @@ export default {
      *
      * @returns {array} fields list
      */
-    resultFields: function() {
+    resultFields: function () {
       let fields = [
         { key: "team.organization", label: this.$t("sjal.divari.team") },
         { key: "result", label: this.$tc("result.result", 1) }
@@ -113,14 +113,14 @@ export default {
      *
      * @param {object} team - team object
      */
-    deleteTeam: async function(team) {
+    deleteTeam: async function (team) {
       await HTTP.delete("divari/teams/" + team.id + "/", this.config)
-        .then(response => {
+        .then((response) => {
           if (response.status === 204) {
             this.getStatistics();
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     },
@@ -143,10 +143,10 @@ export default {
       }
 
       HTTP.get("divari/seasonresults/" + parameters)
-        .then(response => {
+        .then((response) => {
           let data = response.data.results || [];
           this.results = [];
-          data.forEach(item => {
+          data.forEach((item) => {
             let value = item.team.division;
             if (!this.results[value]) {
               this.results[value] = [];
@@ -154,7 +154,7 @@ export default {
             this.results[value].push(item);
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         })
         .finally(() => (this.loading = false));
@@ -187,19 +187,19 @@ export default {
      *
      * @param {object} team - team object
      */
-    moveTeamUp: async function(team) {
+    moveTeamUp: async function (team) {
       if (team.division > 1) {
         await HTTP.patch(
           "divari/teams/" + team.id + "/",
           { division: team.division - 1 },
           this.config
         )
-          .then(response => {
+          .then((response) => {
             if (response.data.division !== team.division) {
               this.getStatistics();
             }
           })
-          .catch(error => {
+          .catch((error) => {
             this.$set(
               this.errors,
               "main",
@@ -213,18 +213,18 @@ export default {
      *
      * @param {object} team - team object
      */
-    moveTeamDown: async function(team) {
+    moveTeamDown: async function (team) {
       await HTTP.patch(
         "divari/teams/" + team.id + "/",
         { division: team.division + 1 },
         this.config
       )
-        .then(response => {
+        .then((response) => {
           if (response.data.division !== team.division) {
             this.getStatistics();
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
         });
     }

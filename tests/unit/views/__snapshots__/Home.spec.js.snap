@@ -67,8 +67,6 @@ exports[`Home.vue renders content 1`] = `
           />
            
           <b-link-stub
-            event="click"
-            routertag="a"
             target="_self"
             to="[object Object]"
           >
@@ -100,8 +98,6 @@ exports[`Home.vue renders content 1`] = `
           />
            
           <b-link-stub
-            event="click"
-            routertag="a"
             target="_self"
             to="[object Object]"
           >
@@ -133,8 +129,6 @@ exports[`Home.vue renders content 1`] = `
           />
            
           <b-link-stub
-            event="click"
-            routertag="a"
             target="_self"
             to="[object Object]"
           >
