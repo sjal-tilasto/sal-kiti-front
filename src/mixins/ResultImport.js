@@ -379,6 +379,16 @@ export default {
             (org) => org.name === this.results[i].organization
           );
         }
+        if (organization.length === 0) {
+          organization = this.organizations.filter(
+            (org) =>
+              org.abbreviation.toLowerCase() ===
+              this.results[i].organization.toLowerCase()
+          );
+          if (organization.length > 1) {
+            organization = [];
+          }
+        }
         if (organization.length === 1) {
           this.result.organization = organization[0].id;
           if (athlete && this.result.organization !== athlete.organization) {
