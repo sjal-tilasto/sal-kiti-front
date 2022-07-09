@@ -1,5 +1,18 @@
 # Changelog
-## 1.1.0 - 2020-01-31
+## 1.2.0 - 2022-07-09
+Required backend version: 1.2+
+
+### Changes
+- Add support for statistic links
+- Add athlete information check
+- Add Pelias import
+- Add new result sort keys
+- Check case-insensitive organization abbreviations in import
+- Warn about missing licence when importing results
+- Update package versions
+- Style changes to support new prettier defaults
+
+## 1.1.0 - 2021-01-31
 
 ### Changes
 - Added support for multiline partial results in SIUS data
