@@ -263,9 +263,9 @@ export default {
           }
         } else if (
           file &&
-          file.type &&
           this.form.fileType === "sius" &&
-          (file.type === "text/csv" || file.name.toLowerCase().endsWith(".csv"))
+          ((file.type && file.type === "text/csv") ||
+            file.name.toLowerCase().endsWith(".csv"))
         ) {
           resultData = await this.parseCSV(file);
           if (resultData && resultData.data && resultData.data.length > 1) {
