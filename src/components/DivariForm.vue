@@ -149,6 +149,18 @@ export default {
         {
           key: "longbow",
           label: this.$t("sjal.longbow")
+        },
+        {
+          key: "junrecurve",
+          label: this.$t("sjal.junrecurve")
+        },
+        {
+          key: "juncompound",
+          label: this.$t("sjal.juncompound")
+        },
+        {
+          key: "junbarebow",
+          label: this.$t("sjal.junbarebow")
         }
       ];
     },

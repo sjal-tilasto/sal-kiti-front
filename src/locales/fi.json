@@ -337,6 +337,9 @@
     "compound": "Taljajousi",
     "recurve": "Tähtäinjousi",
     "barebow": "Vaistojousi",
+    "juncompound": "Juniorit talja",
+    "junrecurve": "Juniorit tähtäin",
+    "junbarebow": "Juniorit tähtäimetön",
     "longbow": "Pitkäjousi",
     "ranking_competitions": "Kilpailuita",
     "divari": {

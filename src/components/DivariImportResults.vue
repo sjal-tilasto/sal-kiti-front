@@ -353,6 +353,24 @@ export default {
             )
           ) {
             this.result.bow_type = "longbow";
+          } else if (
+            ["junrecurve", "juntähtäin"].includes(
+              this.results[i]["bow"].toLowerCase()
+            )
+          ) {
+            this.result.bow_type = "junrecurve";
+          } else if (
+            ["juncompound", "juntalja"].includes(
+              this.results[i]["bow"].toLowerCase()
+            )
+          ) {
+            this.result.bow_type = "juncompound";
+          } else if (
+            ["junbarebow", "juntähtäimetön"].includes(
+              this.results[i]["bow"].toLowerCase()
+            )
+          ) {
+            this.result.bow_type = "junbarebow";
           } else {
             this.results[i].error.push(
               this.$t("sjal.divari.import.error.incorrect_bow")

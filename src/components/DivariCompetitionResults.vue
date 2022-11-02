@@ -46,6 +46,15 @@
             <template v-else-if="data.item.bow_type === 'longbow'">
               {{ $t("sjal.longbow") }}
             </template>
+            <template v-else-if="data.item.bow_type === 'junrecurve'">
+              {{ $t("sjal.junrecurve") }}
+            </template>
+            <template v-else-if="data.item.bow_type === 'juncompound'">
+              {{ $t("sjal.juncompound") }}
+            </template>
+            <template v-else-if="data.item.bow_type === 'junbarebow'">
+              {{ $t("sjal.junbarebow") }}
+            </template>
           </template>
         </b-table>
         <div v-show="loading">

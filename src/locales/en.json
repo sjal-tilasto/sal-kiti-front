@@ -338,6 +338,9 @@
     "recurve": "Recurve",
     "barebow": "Barebow",
     "longbow": "Longbow",
+    "juncompound": "Junior Compound",
+    "junrecurve": "Junior Recurve",
+    "junbarebow": "Junior Barebow",
     "ranking_competitions": "Competitions",
     "divari": {
       "divari": "Divari",
