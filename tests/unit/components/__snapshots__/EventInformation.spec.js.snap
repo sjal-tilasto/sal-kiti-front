@@ -271,6 +271,8 @@ exports[`EventInformation.vue show management options for organization user 1`] 
         </dd>
       </dl>
     </b-col-stub>
+     
+    <!---->
   </b-row-stub>
 </div>
 `;
@@ -476,6 +478,32 @@ exports[`EventInformation.vue show management options for staff 1`] = `
           >
             
             competition.publish
+          
+          </b-button-stub>
+        </dd>
+      </dl>
+    </b-col-stub>
+     
+    <b-col-stub
+      cols="6"
+      md="3"
+      tag="div"
+    >
+      <dl>
+        <dt>
+          admin
+        </dt>
+         
+        <dd>
+          <b-button-stub
+            class="btn-orange btn-sm"
+            tag="button"
+            target="_self"
+            to="[object Object]"
+            type="button"
+            variant="light"
+          >
+            admin
           
           </b-button-stub>
         </dd>

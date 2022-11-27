@@ -619,6 +619,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
                     <!---->
                      
                     <!---->
+                     
+              
+                    <!---->
                   </td>
                 </tr>
                 <tr
@@ -750,6 +753,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
               
                     <!---->
                      
+                    <!---->
+                     
+              
                     <!---->
                   </td>
                 </tr>
@@ -1062,6 +1068,9 @@ exports[`CompetitionResults.vue renders result list 1`] = `
               
                     <!---->
                      
+                    <!---->
+                     
+              
                     <!---->
                   </td>
                 </tr>

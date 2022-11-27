@@ -229,6 +229,8 @@ exports[`RecordsResults.vue renders result list 1`] = `
               record.approved
               
                   <!---->
+                   
+                  <!---->
                 </div>
               </td>
               <td
@@ -268,7 +270,8 @@ exports[`RecordsResults.vue renders result list 1`] = `
               >
                 
             2019-01-01
-          
+            
+                <!---->
               </td>
             </tr>
             <!---->
@@ -511,12 +514,21 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
               record.approved
               
                   <button
-                    class="btn btn-outline-danger btn-sm"
+                    class="btn space-right btn-outline-danger btn-sm"
                     name="approverecord-1"
                     type="button"
                   >
                     
                 record.cancel_approval
+              
+                  </button>
+                   
+                  <button
+                    class="btn btn-outline-danger btn-sm"
+                    type="button"
+                  >
+                    
+                record.set_historical
               
                   </button>
                 </div>
@@ -558,7 +570,15 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
               >
                 
             2019-01-01
-          
+            
+                <a
+                  class="btn btn-orange btn-sm btn-light"
+                  href="#"
+                  target="_self"
+                >
+                  admin
+            
+                </a>
               </td>
             </tr>
             <!---->

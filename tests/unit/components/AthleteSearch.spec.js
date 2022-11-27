@@ -3,6 +3,7 @@ import { createLocalVue, shallowMount, mount } from "@vue/test-utils";
 import SearchPage from "@/components/AthleteSearch.vue";
 import BootstrapVue from "bootstrap-vue";
 import flushPromises from "flush-promises";
+import Vuex from "vuex";
 
 const localVue = createLocalVue();
 localVue.use(BootstrapVue);
@@ -10,6 +11,9 @@ localVue.use(BootstrapVue);
 const $router = {
   push: jest.fn()
 };
+
+const state = { user: { is_authenticated: false } };
+const store = new Vuex.Store({ state });
 
 describe("AthleteSearch.vue", () => {
   afterEach(() => {
@@ -23,6 +27,7 @@ describe("AthleteSearch.vue", () => {
 
     const wrapper = shallowMount(SearchPage, {
       localVue,
+      store,
       mocks: {
         $route
       }
@@ -38,6 +43,7 @@ describe("AthleteSearch.vue", () => {
     };
     const wrapper = shallowMount(SearchPage, {
       localVue,
+      store,
       mocks: {
         $route
       }
@@ -55,6 +61,7 @@ describe("AthleteSearch.vue", () => {
 
     const wrapper = mount(SearchPage, {
       localVue,
+      store,
       mocks: {
         $route,
         $router
@@ -88,6 +95,7 @@ describe("AthleteSearch.vue", () => {
     };
     const wrapper = shallowMount(SearchPage, {
       localVue,
+      store,
       mocks: {
         $route,
         $router

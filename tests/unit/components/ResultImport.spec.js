@@ -30,6 +30,15 @@ const resultTests = [
   {
     category: "SC",
     organization: "LC",
+    "kneel-1": "50",
+    position: "1",
+    position_pre: "2",
+    result: "200",
+    sport_id: "3456789"
+  },
+  {
+    category: "SC",
+    organization: "LC",
     result: 200,
     result_code: "DNF",
     sport_id: 3456789

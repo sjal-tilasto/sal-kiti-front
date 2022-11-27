@@ -114,7 +114,10 @@
     "approve": "Vahvista",
     "cancel_approval": "Peru vahvistus",
     "search": "Ennätysten haku",
-    "unapproved": "Vahvistamattomat"
+    "unapproved": "Vahvistamattomat",
+    "historical": "Historiallinen",
+    "set_historical": "Merkitse historialliseksi",
+    "cancel_historical": "Palauta"
   },
   "result": {
     "result": "Tulos | Tulokset",
@@ -388,5 +391,6 @@
   "link": "linkki",
   "keyword": "Hakusana | Hakusanat",
   "required": "Vaadittu",
-  "year": "vuosi"
+  "year": "vuosi",
+  "admin": "Hallinta"
 }

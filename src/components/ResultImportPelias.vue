@@ -520,6 +520,11 @@ export default {
           item.name ===
           this.pelias.competitionDiscipline.name + " " + division.name
       );
+      if (competitionType.length === 0) {
+        competitionType = this.competitionTypes.filter(
+          (item) => item.name === division.name
+        );
+      }
       if (competitionType.length === 1) {
         let competition = this.competitions.filter(
           (item) => item.type === competitionType[0].id

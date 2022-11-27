@@ -167,11 +167,7 @@
           </dd>
         </dl>
       </b-col>
-      <b-col
-        cols="6"
-        md="3"
-        v-if="$store.state.user.is_superuser && competition.id"
-      >
+      <b-col cols="6" md="3" v-if="$store.state.user.is_staff && competition">
         <dl>
           <dt>{{ $t("change_log") }}</dt>
           <dd>
@@ -184,9 +180,33 @@
                 }
               }"
               variant="light"
-              class="btn-orange"
-              v-if="competition"
+              class="btn-orange btn-sm"
               >{{ $t("change_log") }}
+            </b-button>
+          </dd>
+        </dl>
+      </b-col>
+      <b-col
+        cols="6"
+        md="3"
+        v-if="
+          $store.state.editMode && $store.state.user.is_staff && competition
+        "
+      >
+        <dl>
+          <dt>{{ $t("admin") }}</dt>
+          <dd>
+            <b-button
+              :to="{
+                name: 'admin',
+                params: {
+                  model_name: 'competition',
+                  object_id: competition.id
+                }
+              }"
+              variant="light"
+              class="btn-orange btn-sm"
+              >{{ $t("admin") }}
             </b-button>
           </dd>
         </dl>

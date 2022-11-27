@@ -54,16 +54,36 @@
               </div>
             </template>
             <template v-slot:cell(approved)="data">
-              <div v-if="data.item.approved">
+              <div v-if="data.item.historical">
+                {{ $t("record.historical") }}
+                <b-button
+                  v-if="$store.state.editMode && $store.state.user.is_staff"
+                  size="sm"
+                  variant="outline-danger"
+                  v-on:click="toggleHistorical(data)"
+                >
+                  {{ $t("record.cancel_historical") }}
+                </b-button>
+              </div>
+              <div v-else-if="data.item.approved">
                 {{ $t("record.approved") }}
                 <b-button
                   v-if="$store.state.editMode && $store.state.user.is_staff"
                   size="sm"
                   variant="outline-danger"
+                  class="space-right"
                   v-on:click="toggleApproval(data)"
                   :name="'approverecord-' + data.item.id"
                 >
                   {{ $t("record.cancel_approval") }}
+                </b-button>
+                <b-button
+                  v-if="$store.state.editMode && $store.state.user.is_staff"
+                  size="sm"
+                  variant="outline-danger"
+                  v-on:click="toggleHistorical(data)"
+                >
+                  {{ $t("record.set_historical") }}
                 </b-button>
               </div>
               <div v-else>
@@ -136,6 +156,19 @@
             </template>
             <template v-slot:cell(date)="data">
               {{ data.item.date_start }}
+              <b-button
+                v-if="$store.state.editMode && $store.state.user.is_staff"
+                :to="{
+                  name: 'admin',
+                  params: {
+                    model_name: 'record',
+                    object_id: data.item.id
+                  }
+                }"
+                variant="light"
+                class="btn-orange btn-sm"
+                >{{ $t("admin") }}
+              </b-button>
             </template>
           </b-table>
         </div>
@@ -311,6 +344,26 @@ export default {
       )
         .then((response) => {
           data.item.approved = response.data.approved;
+        })
+        .catch((error) => {
+          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+        });
+    },
+    /**
+     * Set historical status for the result (API patch)
+     *
+     * @param {object} data - result object
+     * @returns {Promise<void>}
+     */
+    toggleHistorical: async function (data) {
+      this.$set(this.errors, "main", null);
+      await HTTP.patch(
+        "records/" + data.item.id + "/",
+        { historical: !data.item.historical },
+        this.config
+      )
+        .then((response) => {
+          data.item.historical = response.data.historical;
         })
         .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));

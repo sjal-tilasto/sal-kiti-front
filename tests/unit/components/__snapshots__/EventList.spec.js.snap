@@ -137,6 +137,8 @@ exports[`EventList.vue renders event list 1`] = `
             2019-01-22 - 2019-01-24
           
               </div>
+               
+              <!---->
             </td>
             <td
               aria-colindex="2"
@@ -186,6 +188,8 @@ exports[`EventList.vue renders event list 1`] = `
             2019-01-25
           
               </div>
+               
+              <!---->
             </td>
             <td
               aria-colindex="2"
