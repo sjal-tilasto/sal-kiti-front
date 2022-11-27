@@ -119,6 +119,8 @@ exports[`EventInformation.vue renders event information 1`] = `
     <!---->
      
     <!---->
+     
+    <!---->
   </b-row-stub>
 </div>
 `;
