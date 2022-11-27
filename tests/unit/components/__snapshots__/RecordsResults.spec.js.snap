@@ -229,6 +229,8 @@ exports[`RecordsResults.vue renders result list 1`] = `
               record.approved
               
                   <!---->
+                   
+                  <!---->
                 </div>
               </td>
               <td
@@ -511,12 +513,21 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
               record.approved
               
                   <button
-                    class="btn btn-outline-danger btn-sm"
+                    class="btn space-right btn-outline-danger btn-sm"
                     name="approverecord-1"
                     type="button"
                   >
                     
                 record.cancel_approval
+              
+                  </button>
+                   
+                  <button
+                    class="btn btn-outline-danger btn-sm"
+                    type="button"
+                  >
+                    
+                record.set_historical
               
                   </button>
                 </div>

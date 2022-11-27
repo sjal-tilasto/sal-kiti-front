@@ -89,7 +89,10 @@
     "approve": "Approve",
     "cancel_approval": "Cancel approval",
     "search": "Record search",
-    "unapproved": "Unapproved"
+    "unapproved": "Unapproved",
+    "historical": "Historical",
+    "set_historical": "Set as historical",
+    "cancel_historical": "Restore"
   },
   "result": {
     "result": "Result | Results",
