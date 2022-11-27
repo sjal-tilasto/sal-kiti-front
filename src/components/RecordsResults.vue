@@ -156,6 +156,19 @@
             </template>
             <template v-slot:cell(date)="data">
               {{ data.item.date_start }}
+              <b-button
+                v-if="$store.state.editMode && $store.state.user.is_staff"
+                :to="{
+                  name: 'admin',
+                  params: {
+                    model_name: 'record',
+                    object_id: data.item.id
+                  }
+                }"
+                variant="light"
+                class="btn-orange btn-sm"
+                >{{ $t("admin") }}
+              </b-button>
             </template>
           </b-table>
         </div>

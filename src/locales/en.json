@@ -339,5 +339,6 @@
   "link": "link",
   "keyword": "Keyword | Keywords",
   "required": "Required",
-  "year": "year"
+  "year": "year",
+  "admin": "Admin"
 }

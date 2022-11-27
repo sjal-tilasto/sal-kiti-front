@@ -68,6 +68,22 @@
           @row-middle-clicked="linkToNewTab"
           hover
         >
+          <template v-slot:cell(sport_id)="data">
+            {{ data.item.sport_id }}
+            <b-button
+              v-if="$store.state.editMode && $store.state.user.is_staff"
+              :to="{
+                name: 'admin',
+                params: {
+                  model_name: 'athlete',
+                  object_id: data.item.id
+                }
+              }"
+              variant="light"
+              class="btn-orange btn-sm"
+              >{{ $t("admin") }}
+            </b-button>
+          </template>
         </b-table>
         <div v-show="loadingAthletes">
           <b-spinner label="Loading..."></b-spinner>

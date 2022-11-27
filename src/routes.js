@@ -181,6 +181,13 @@ export default [
     }
   },
   {
+    path: "/results/:model_name/:object_id/",
+    name: "admin",
+    beforeEnter(to) {
+      location.href = process.env.VUE_APP_ADMIN_URL + to.path;
+    }
+  },
+  {
     path: "/results/:model_name/:object_id/history/",
     name: "changelog",
     beforeEnter(to) {

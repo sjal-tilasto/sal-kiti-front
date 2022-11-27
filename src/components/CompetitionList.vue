@@ -49,6 +49,19 @@
             <div v-else>
               {{ data.item.date_start }} - {{ data.item.date_end }}
             </div>
+            <b-button
+              v-if="$store.state.editMode && $store.state.user.is_staff"
+              :to="{
+                name: 'admin',
+                params: {
+                  model_name: 'competition',
+                  object_id: data.item.id
+                }
+              }"
+              variant="light"
+              class="btn-orange btn-sm"
+              >{{ $t("admin") }}
+            </b-button>
           </template>
         </b-table>
         <div v-show="loadingCompetitions">

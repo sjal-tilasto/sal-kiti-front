@@ -201,7 +201,20 @@
                   variant="outline-danger"
                   v-on:click="toggleApproval(data)"
                 >
-                  {{ $t("result.cancel_approval") }}
+                  {{ $t("result.cancel_approval") }} </b-button
+                >&nbsp;
+                <b-button
+                  v-if="$store.state.editMode && $store.state.user.is_staff"
+                  :to="{
+                    name: 'admin',
+                    params: {
+                      model_name: 'result',
+                      object_id: data.item.id
+                    }
+                  }"
+                  variant="light"
+                  class="btn-orange btn-sm"
+                  >{{ $t("admin") }}
                 </b-button>
               </template>
             </b-table>

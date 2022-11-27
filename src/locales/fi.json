@@ -338,5 +338,6 @@
   "link": "linkki",
   "keyword": "Hakusana | Hakusanat",
   "required": "Vaadittu",
-  "year": "vuosi"
+  "year": "vuosi",
+  "admin": "Hallinta"
 }

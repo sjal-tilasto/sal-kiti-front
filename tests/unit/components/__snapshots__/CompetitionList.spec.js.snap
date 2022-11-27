@@ -123,6 +123,8 @@ exports[`CompetitionList.vue renders competition list 1`] = `
             2019-02-23
           
               </div>
+               
+              <!---->
             </td>
             <td
               aria-colindex="2"
@@ -168,6 +170,8 @@ exports[`CompetitionList.vue renders competition list 1`] = `
             2019-02-24
           
               </div>
+               
+              <!---->
             </td>
             <td
               aria-colindex="2"

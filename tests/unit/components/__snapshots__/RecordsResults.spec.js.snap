@@ -270,7 +270,8 @@ exports[`RecordsResults.vue renders result list 1`] = `
               >
                 
             2019-01-01
-          
+            
+                <!---->
               </td>
             </tr>
             <!---->
@@ -569,7 +570,15 @@ exports[`RecordsResults.vue renders result list with management options 1`] = `
               >
                 
             2019-01-01
-          
+            
+                <a
+                  class="btn btn-orange btn-sm btn-light"
+                  href="#"
+                  target="_self"
+                >
+                  admin
+            
+                </a>
               </td>
             </tr>
             <!---->

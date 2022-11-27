@@ -132,6 +132,29 @@
           </dd>
         </dl>
       </b-col>
+      <b-col
+        cols="6"
+        md="3"
+        v-if="$store.state.editMode && $store.state.user.is_staff && event"
+      >
+        <dl>
+          <dt>{{ $t("admin") }}</dt>
+          <dd>
+            <b-button
+              :to="{
+                name: 'admin',
+                params: {
+                  model_name: 'event',
+                  object_id: event.id
+                }
+              }"
+              variant="light"
+              class="btn-orange btn-sm"
+              >{{ $t("admin") }}
+            </b-button>
+          </dd>
+        </dl>
+      </b-col>
     </b-row>
   </div>
 </template>
