@@ -498,15 +498,15 @@ export default {
      */
     parsePosition(i, keys) {
       if (keys.includes("position")) {
-        if (Number.isInteger(this.results[i].position)) {
-          this.result.position = this.results[i].position;
+        if (Number.isInteger(Number(this.results[i].position))) {
+          this.result.position = Number(this.results[i].position);
         } else {
           this.results[i].error.push(this.$t("import.error.position"));
         }
       }
       if (keys.includes("position_pre")) {
-        if (Number.isInteger(this.results[i].position_pre)) {
-          this.result.position_pre = this.results[i].position_pre;
+        if (Number.isInteger(Number(this.results[i].position_pre))) {
+          this.result.position_pre = Number(this.results[i].position_pre);
         } else {
           this.results[i].error.push(this.$t("import.error.position_pre"));
         }
