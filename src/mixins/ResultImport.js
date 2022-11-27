@@ -225,7 +225,7 @@ export default {
           keys.includes("team_members") &&
           this.results[i].team_members.length > 0
         ) {
-          members = this.results[i].team_members.split(",");
+          members = this.results[i].team_members.split(/[&;,]+/);
           if (members.length < 2) {
             this.results[i].error.push(this.$t("import.error.team_min_size"));
             return null;
