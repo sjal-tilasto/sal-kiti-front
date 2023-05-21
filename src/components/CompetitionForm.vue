@@ -331,7 +331,7 @@ export default {
      * @returns {Promise<void>}
      */
     async postCompetition() {
-      this.erros = {};
+      this.errors = {};
       this.form.layout = this.competitionTypes.find(
         (obj) => obj.id === this.form.type
       ).layout;
@@ -353,7 +353,7 @@ export default {
      * @returns {Promise<void>}
      */
     async putCompetition(id) {
-      this.erros = {};
+      this.errors = {};
       HTTP.put("competitions/" + id + "/", this.form, this.config)
         .then((response) => {
           this.$router.push({
