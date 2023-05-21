@@ -2,9 +2,11 @@
   <div>
     <b-row>
       <b-col>
-        <h3>{{ $tc("competition.competition", 2) }}</h3>
+        <h2 class="bg-sal-orange">{{ $tc("competition.competition", 2) }}</h2>
       </b-col>
-      <b-col v-if="$store.state.editMode && createPermission">
+    </b-row>
+    <b-row v-if="$store.state.editMode && createPermission">
+      <b-col>
         <b-button
           :to="{
             name: 'competition-create',
