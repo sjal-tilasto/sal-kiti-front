@@ -112,6 +112,8 @@ export default {
     dateEnd: function () {
       if (this.year === 2020) {
         return (this.year + 2).toString() + "-04-30";
+      } else if (this.year === 2022) {
+        return (this.year + 1).toString() + "-10-01";
       }
       return (this.year + 1).toString() + "-09-01";
     }

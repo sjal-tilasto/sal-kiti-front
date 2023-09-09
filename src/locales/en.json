@@ -336,6 +336,8 @@
   },
   "sjal": {
     "ranking": "Ranking",
+    "ranking_rolling": "Two year rolling ranking",
+    "ranking_old": "Yearly ranking",
     "full_ranking": "Full ranking",
     "compound": "Compound",
     "recurve": "Recurve",

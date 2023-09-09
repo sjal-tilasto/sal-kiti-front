@@ -53,7 +53,8 @@ export default {
     dateStart: String,
     dateEnd: String,
     limit: Number,
-    limited: Boolean
+    limited: Boolean,
+    rolling: Boolean
   },
   data() {
     return {
@@ -98,13 +99,21 @@ export default {
       this.loading = true;
       this.results = [];
       this.$set(this.errors, "main", null);
-      let parameters =
-        "?date_start=" + this.dateStart + "&date_end=" + this.dateEnd;
-      if (this.limit) {
-        parameters = parameters + "&limit=" + this.limit;
+      let url = "sjal/ranking/";
+      let parameters = "";
+      if (this.rolling) {
+        url = url + "v2/";
+        if (this.limit) {
+          parameters = "?limit=" + this.limit;
+        }
+      } else {
+        parameters =
+          "?date_start=" + this.dateStart + "&date_end=" + this.dateEnd;
+        if (this.limit) {
+          parameters = parameters + "&limit=" + this.limit;
+        }
       }
-
-      HTTP.get("sjal/ranking/" + this.division.toLowerCase() + "/" + parameters)
+      HTTP.get(url + this.division.toLowerCase() + "/" + parameters)
         .then((response) => {
           this.results = response.data || [];
         })

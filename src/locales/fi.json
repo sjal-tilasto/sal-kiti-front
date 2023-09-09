@@ -336,6 +336,8 @@
   },
   "sjal": {
     "ranking": "Ranking",
+    "ranking_rolling": "Kahden vuoden liukuva ranking",
+    "ranking_old": "Vuosittainen ranking",
     "full_ranking": "Koko ranking",
     "compound": "Taljajousi",
     "recurve": "Tähtäinjousi",
