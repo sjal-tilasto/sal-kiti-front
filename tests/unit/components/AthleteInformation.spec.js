@@ -2,9 +2,12 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import AthleteInformation from "@/components/AthleteInformation.vue";
 import BootstrapVue from "bootstrap-vue";
+import Vuex from "vuex";
 
 const localVue = createLocalVue();
 localVue.use(BootstrapVue);
+const state = { editMode: false, user: { is_staff: false } };
+const store = new Vuex.Store({ state });
 
 describe("AthleteInformation.vue", () => {
   it("renders athlete information", async () => {
@@ -13,6 +16,7 @@ describe("AthleteInformation.vue", () => {
     };
     const wrapper = shallowMount(AthleteInformation, {
       localVue,
+      store,
       mocks: {
         $route
       }
@@ -27,6 +31,7 @@ describe("AthleteInformation.vue", () => {
     };
     const wrapper = shallowMount(AthleteInformation, {
       localVue,
+      store,
       mocks: {
         $route
       }
