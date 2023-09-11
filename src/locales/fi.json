@@ -336,8 +336,8 @@
   },
   "sjal": {
     "ranking": "Ranking",
-    "ranking_rolling": "Kahden vuoden liukuva ranking",
-    "ranking_old": "Vuosittainen ranking",
+    "ranking_rolling": "SJAL ranking",
+    "ranking_old": "Ranking-sarjat 2017-2023",
     "full_ranking": "Koko ranking",
     "compound": "Taljajousi",
     "recurve": "Tähtäinjousi",
