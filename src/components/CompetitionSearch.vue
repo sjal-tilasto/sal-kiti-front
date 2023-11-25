@@ -241,33 +241,25 @@ export default {
         { key: "date", label: this.$t("date") },
         {
           key: "type_info.name",
-          label: this.$t("competition.type"),
-          thClass: "d-none d-md-table-cell",
-          tdClass: "d-none d-md-table-cell"
-        },
-        {
-          key: "type_info.abbreviation",
-          label: this.$t("competition.type"),
-          thClass: "d-md-none",
-          tdClass: "d-md-none"
+          label: this.$t("competition.type")
         },
         {
           key: "level_info.name",
           label: this.$t("competition.level"),
-          thClass: "d-none d-md-table-cell",
-          tdClass: "d-none d-md-table-cell"
+          thClass: "d-none d-lg-table-cell",
+          tdClass: "d-none d-lg-table-cell"
         },
         {
           key: "level_info.abbreviation",
           label: this.$t("competition.level"),
-          thClass: "d-md-none",
-          tdClass: "d-md-none"
+          thClass: "d-none d-md-table-cell d-lg-none",
+          tdClass: "d-none d-md-table-cell d-lg-none"
         },
         {
           key: "organization_info.name",
           label: this.$t("organizer"),
-          thClass: "d-none d-md-table-cell",
-          tdClass: "d-none d-md-table-cell"
+          thClass: "d-none d-lg-table-cell",
+          tdClass: "d-none d-lg-table-cell"
         }
       ];
     }
