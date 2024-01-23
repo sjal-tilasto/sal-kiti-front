@@ -7,72 +7,173 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col col md="12" lg="8">
+      <b-col col md="12" lg="12">
         <h2 class="bg-sal-orange">{{ $tc("event.event", 2) }}</h2>
         <EventList :limit="8" :limited="true" />
       </b-col>
+    </b-row>
+    <b-row>
+      <b-col col md="12" lg="12">
+        <h2 class="bg-sal-orange">{{ $t("sjal.ranking") }}</h2>
+      </b-col>
+    </b-row>
+    <b-row>
       <b-col>
         <b-row>
-          <b-col>
-            <h2 class="bg-sal-orange">
-              {{ $t("sjal.recurve") }} {{ $t("sjal.ranking") }}
-            </h2>
+          <b-col sm="12" md="6" lg="4">
+            <h3 class="bg-sal-orange">
+              {{ $t("sjal.recurve") }}
+            </h3>
+            <b-link
+              :to="{
+                name: 'statistics-ranking',
+                query: { division: 'y', rolling: true }
+              }"
+              >{{ $t("sjal.full_ranking") }} Y</b-link
+            >
             <StatisticsRanking
-              division="recurve"
-              :dateStart="dateStart"
-              :dateEnd="dateEnd"
+              division="y"
+              :rolling="true"
               :limit="5"
               :limited="true"
             />
             <b-link
               :to="{
                 name: 'statistics-ranking',
-                query: { division: 'recurve', year: year }
+                query: { division: 'n', rolling: true }
               }"
-              >{{ $t("sjal.full_ranking") }}</b-link
+              >{{ $t("sjal.full_ranking") }} N</b-link
             >
+            <StatisticsRanking
+              division="n"
+              :rolling="true"
+              :limit="5"
+              :limited="true"
+            />
           </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <h2 class="bg-sal-orange">
-              {{ $t("sjal.compound") }} {{ $t("sjal.ranking") }}
-            </h2>
+          <b-col sm="12" md="6" lg="4">
+            <h3 class="bg-sal-orange">
+              {{ $t("sjal.compound") }}
+            </h3>
+            <b-link
+              :to="{
+                name: 'statistics-ranking',
+                query: { division: 'yt', rolling: true }
+              }"
+              >{{ $t("sjal.full_ranking") }} YT</b-link
+            >
             <StatisticsRanking
-              division="compound"
-              :dateStart="dateStart"
-              :dateEnd="dateEnd"
+              division="yt"
+              :rolling="true"
               :limit="5"
               :limited="true"
             />
             <b-link
               :to="{
                 name: 'statistics-ranking',
-                query: { division: 'compound', year: year }
+                query: { division: 'nt', rolling: true }
               }"
-              >{{ $t("sjal.full_ranking") }}</b-link
+              >{{ $t("sjal.full_ranking") }} NT</b-link
             >
+            <StatisticsRanking
+              division="nt"
+              :rolling="true"
+              :limit="5"
+              :limited="true"
+            />
           </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <h2 class="bg-sal-orange">
-              {{ $t("sjal.barebow") }} {{ $t("sjal.ranking") }}
-            </h2>
+          <b-col sm="12" md="6" lg="4">
+            <h3 class="bg-sal-orange">
+              {{ $t("sjal.barebow") }}
+            </h3>
+            <b-link
+              :to="{
+                name: 'statistics-ranking',
+                query: { division: 'yv', rolling: true }
+              }"
+              >{{ $t("sjal.full_ranking") }} YV</b-link
+            >
             <StatisticsRanking
-              division="barebow"
-              :dateStart="dateStart"
-              :dateEnd="dateEnd"
+              division="yv"
+              :rolling="true"
               :limit="5"
               :limited="true"
             />
             <b-link
               :to="{
                 name: 'statistics-ranking',
-                query: { division: 'barebow', year: year }
+                query: { division: 'nv', rolling: true }
               }"
-              >{{ $t("sjal.full_ranking") }}</b-link
+              >{{ $t("sjal.full_ranking") }} NV</b-link
             >
+            <StatisticsRanking
+              division="nv"
+              :rolling="true"
+              :limit="5"
+              :limited="true"
+            />
+          </b-col>
+          <b-col sm="12" md="6" lg="4">
+            <h3 class="bg-sal-orange">
+              {{ $t("sjal.longbow") }}
+            </h3>
+            <b-link
+              :to="{
+                name: 'statistics-ranking',
+                query: { division: 'ylb', rolling: true }
+              }"
+              >{{ $t("sjal.full_ranking") }} YLB</b-link
+            >
+            <StatisticsRanking
+              division="ylb"
+              :rolling="true"
+              :limit="5"
+              :limited="true"
+            />
+            <b-link
+              :to="{
+                name: 'statistics-ranking',
+                query: { division: 'nlb', rolling: true }
+              }"
+              >{{ $t("sjal.full_ranking") }} NLB</b-link
+            >
+            <StatisticsRanking
+              division="nlb"
+              :rolling="true"
+              :limit="5"
+              :limited="true"
+            />
+          </b-col>
+          <b-col sm="12" md="6" lg="4">
+            <h3 class="bg-sal-orange">
+              {{ $t("sjal.traditional") }}
+            </h3>
+            <b-link
+              :to="{
+                name: 'statistics-ranking',
+                query: { division: 'ytr', rolling: true }
+              }"
+              >{{ $t("sjal.full_ranking") }} YTR</b-link
+            >
+            <StatisticsRanking
+              division="ytr"
+              :rolling="true"
+              :limit="5"
+              :limited="true"
+            />
+            <b-link
+              :to="{
+                name: 'statistics-ranking',
+                query: { division: 'ntr', rolling: true }
+              }"
+              >{{ $t("sjal.full_ranking") }} NTR</b-link
+            >
+            <StatisticsRanking
+              division="ntr"
+              :rolling="true"
+              :limit="5"
+              :limited="true"
+            />
           </b-col>
         </b-row>
       </b-col>
