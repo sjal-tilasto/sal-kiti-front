@@ -275,6 +275,10 @@ export default {
         .then((response) => {
           this.competition = response.data || {};
           this.$emit("update:competition", this.competition);
+          this.$emit(
+            "update:editPermission",
+            this.competition.permissions.update
+          );
         })
         .catch((error) => {
           this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
