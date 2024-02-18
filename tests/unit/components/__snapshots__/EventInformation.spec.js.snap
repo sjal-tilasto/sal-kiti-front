@@ -138,7 +138,21 @@ exports[`EventInformation.vue show management options for organization user 1`] 
       </h1>
     </b-col-stub>
      
-    <!---->
+    <b-col-stub
+      tag="div"
+    >
+      <b-button-stub
+        class="btn-orange float-right"
+        tag="button"
+        target="_self"
+        to="[object Object]"
+        type="button"
+        variant="light"
+      >
+        event.edit
+      
+      </b-button-stub>
+    </b-col-stub>
   </b-row-stub>
    
   <b-row-stub
@@ -292,7 +306,21 @@ exports[`EventInformation.vue show management options for staff 1`] = `
       </h1>
     </b-col-stub>
      
-    <!---->
+    <b-col-stub
+      tag="div"
+    >
+      <b-button-stub
+        class="btn-orange float-right"
+        tag="button"
+        target="_self"
+        to="[object Object]"
+        type="button"
+        variant="light"
+      >
+        event.edit
+      
+      </b-button-stub>
+    </b-col-stub>
   </b-row-stub>
    
   <b-row-stub
