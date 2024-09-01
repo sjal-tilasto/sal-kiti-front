@@ -52,23 +52,6 @@
       <b-row>
         <b-col cols="12" md="6" xl="4">
           <b-form-group
-            id="input-group-record-level"
-            label-for="input-record-level"
-            :label="$t('record.choose_level')"
-          >
-            <b-form-select
-              id="input-record-level"
-              v-model="form.record_level"
-              :options="recordLevels"
-              textField="name"
-              valueField="id"
-              required
-            >
-            </b-form-select>
-          </b-form-group>
-        </b-col>
-        <b-col cols="12" md="6" xl="4">
-          <b-form-group
             id="input-group-competition-types"
             :label="$t('competition.type')"
             label-for="input-competition-types"
@@ -79,6 +62,26 @@
               :options="competitionTypes"
               textField="name"
               valueField="id"
+              :select-size="10"
+            >
+            </b-form-select>
+          </b-form-group>
+        </b-col>
+        <b-col cols="12" md="6" xl="4">
+          <b-form-group
+            id="input-group-division"
+            :label="$t('result.division')"
+            label-for="input-division"
+            :description="$t('statistics.choose_multiple')"
+          >
+            <b-form-select
+              id="input-category"
+              v-model="form.division"
+              :options="divisions"
+              textField="name"
+              valueField="id"
+              multiple
+              :select-size="10"
             >
             </b-form-select>
           </b-form-group>
@@ -93,10 +96,11 @@
             <b-form-select
               id="input-categories"
               v-model="form.category"
-              :options="categories"
+              :options="filteredCategories"
               textField="name"
               valueField="id"
               multiple
+              :select-size="10"
             >
             </b-form-select>
           </b-form-group>
@@ -165,11 +169,13 @@ export default {
     return {
       categories: [],
       competitionTypes: [],
+      divisions: [],
       errors: {},
       form: {
         approved: true,
         category: [],
         competitionType: 1,
+        division: [],
         historical: false,
         preliminary: true,
         record_level: null
@@ -181,6 +187,23 @@ export default {
       searchParameters: null,
       showForm: false
     };
+  },
+  computed: {
+    /**
+     * Filter categories based on selected divisions
+     *
+     * @returns [{}]
+     */
+    filteredCategories: function () {
+      if (this.form.division.length === 0) {
+        return this.categories;
+      }
+      return this.categories.filter((category) => {
+        return this.form.division.some(
+          (division) => division === category.division
+        );
+      });
+    }
   },
   watch: {
     /**
@@ -262,6 +285,10 @@ export default {
         parameters += "&category=" + this.form.category;
         query.category = this.form.category;
       }
+      if (this.form.division.length) {
+        parameters += "&division=" + this.form.division;
+        query.division = this.form.division;
+      }
       if (this.form.competitionType) {
         parameters += "&type=" + this.form.competitionType;
         query.type = this.form.competitionType;
@@ -296,6 +323,9 @@ export default {
       if (this.$route.query.category) {
         this.form.category = JSON.parse("[" + this.$route.query.category + "]");
       }
+      if (this.$route.query.division) {
+        this.form.division = JSON.parse("[" + this.$route.query.division + "]");
+      }
       if (this.$route.query.type) {
         this.form.competitionType = this.$route.query.type;
       }
@@ -325,6 +355,7 @@ export default {
       this.$set(this.errors, "main", null);
       this.sport = id;
       this.getCategories(id);
+      this.getDivisions(id);
       this.getCompetitionTypes(id);
       this.showForm = true;
       if (reset) {

@@ -25,7 +25,7 @@ exports[`Home.vue renders content 1`] = `
   >
     <b-col-stub
       col="true"
-      lg="8"
+      lg="12"
       md="12"
       tag="div"
     >
@@ -40,7 +40,28 @@ exports[`Home.vue renders content 1`] = `
         limited="true"
       />
     </b-col-stub>
-     
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
+    <b-col-stub
+      col="true"
+      lg="12"
+      md="12"
+      tag="div"
+    >
+      <h2
+        class="bg-sal-orange"
+      >
+        sjal.ranking
+      </h2>
+    </b-col-stub>
+  </b-row-stub>
+   
+  <b-row-stub
+    tag="div"
+  >
     <b-col-stub
       tag="div"
     >
@@ -48,92 +69,218 @@ exports[`Home.vue renders content 1`] = `
         tag="div"
       >
         <b-col-stub
+          lg="4"
+          md="6"
+          sm="12"
           tag="div"
         >
-          <h2
+          <h3
             class="bg-sal-orange"
           >
             
-            sjal.recurve sjal.ranking
+            sjal.recurve
           
-          </h2>
+          </h3>
+           
+          <b-link-stub
+            target="_self"
+            to="[object Object]"
+          >
+            sjal.full_ranking Y
+          </b-link-stub>
            
           <statisticsranking-stub
-            dateend="2022-09-01"
-            datestart="2021-10-01"
-            division="recurve"
+            division="y"
             limit="5"
             limited="true"
+            rolling="true"
           />
            
           <b-link-stub
             target="_self"
             to="[object Object]"
           >
-            sjal.full_ranking
+            sjal.full_ranking N
           </b-link-stub>
+           
+          <statisticsranking-stub
+            division="n"
+            limit="5"
+            limited="true"
+            rolling="true"
+          />
         </b-col-stub>
-      </b-row-stub>
-       
-      <b-row-stub
-        tag="div"
-      >
+         
         <b-col-stub
+          lg="4"
+          md="6"
+          sm="12"
           tag="div"
         >
-          <h2
+          <h3
             class="bg-sal-orange"
           >
             
-            sjal.compound sjal.ranking
+            sjal.compound
           
-          </h2>
+          </h3>
+           
+          <b-link-stub
+            target="_self"
+            to="[object Object]"
+          >
+            sjal.full_ranking YT
+          </b-link-stub>
            
           <statisticsranking-stub
-            dateend="2022-09-01"
-            datestart="2021-10-01"
-            division="compound"
+            division="yt"
             limit="5"
             limited="true"
+            rolling="true"
           />
            
           <b-link-stub
             target="_self"
             to="[object Object]"
           >
-            sjal.full_ranking
+            sjal.full_ranking NT
           </b-link-stub>
+           
+          <statisticsranking-stub
+            division="nt"
+            limit="5"
+            limited="true"
+            rolling="true"
+          />
         </b-col-stub>
-      </b-row-stub>
-       
-      <b-row-stub
-        tag="div"
-      >
+         
         <b-col-stub
+          lg="4"
+          md="6"
+          sm="12"
           tag="div"
         >
-          <h2
+          <h3
             class="bg-sal-orange"
           >
             
-            sjal.barebow sjal.ranking
+            sjal.barebow
           
-          </h2>
+          </h3>
+           
+          <b-link-stub
+            target="_self"
+            to="[object Object]"
+          >
+            sjal.full_ranking YV
+          </b-link-stub>
            
           <statisticsranking-stub
-            dateend="2022-09-01"
-            datestart="2021-10-01"
-            division="barebow"
+            division="yv"
             limit="5"
             limited="true"
+            rolling="true"
           />
            
           <b-link-stub
             target="_self"
             to="[object Object]"
           >
-            sjal.full_ranking
+            sjal.full_ranking NV
           </b-link-stub>
+           
+          <statisticsranking-stub
+            division="nv"
+            limit="5"
+            limited="true"
+            rolling="true"
+          />
+        </b-col-stub>
+         
+        <b-col-stub
+          lg="4"
+          md="6"
+          sm="12"
+          tag="div"
+        >
+          <h3
+            class="bg-sal-orange"
+          >
+            
+            sjal.longbow
+          
+          </h3>
+           
+          <b-link-stub
+            target="_self"
+            to="[object Object]"
+          >
+            sjal.full_ranking YLB
+          </b-link-stub>
+           
+          <statisticsranking-stub
+            division="ylb"
+            limit="5"
+            limited="true"
+            rolling="true"
+          />
+           
+          <b-link-stub
+            target="_self"
+            to="[object Object]"
+          >
+            sjal.full_ranking NLB
+          </b-link-stub>
+           
+          <statisticsranking-stub
+            division="nlb"
+            limit="5"
+            limited="true"
+            rolling="true"
+          />
+        </b-col-stub>
+         
+        <b-col-stub
+          lg="4"
+          md="6"
+          sm="12"
+          tag="div"
+        >
+          <h3
+            class="bg-sal-orange"
+          >
+            
+            sjal.traditional
+          
+          </h3>
+           
+          <b-link-stub
+            target="_self"
+            to="[object Object]"
+          >
+            sjal.full_ranking YTR
+          </b-link-stub>
+           
+          <statisticsranking-stub
+            division="ytr"
+            limit="5"
+            limited="true"
+            rolling="true"
+          />
+           
+          <b-link-stub
+            target="_self"
+            to="[object Object]"
+          >
+            sjal.full_ranking NTR
+          </b-link-stub>
+           
+          <statisticsranking-stub
+            division="ntr"
+            limit="5"
+            limited="true"
+            rolling="true"
+          />
         </b-col-stub>
       </b-row-stub>
     </b-col-stub>

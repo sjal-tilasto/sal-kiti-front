@@ -18,6 +18,25 @@
       <b-row>
         <b-col cols="12" md="6" xl="4">
           <b-form-group
+            id="input-group-division"
+            :label="$t('result.division')"
+            label-for="input-division"
+            :description="$t('statistics.choose_multiple')"
+          >
+            <b-form-select
+              id="input-category"
+              v-model="form.division"
+              :options="divisions"
+              textField="name"
+              valueField="id"
+              multiple
+              :select-size="10"
+            >
+            </b-form-select>
+          </b-form-group>
+        </b-col>
+        <b-col cols="12" md="6" xl="4">
+          <b-form-group
             id="input-group-category"
             :label="$t('result.category')"
             label-for="input-category"
@@ -26,28 +45,11 @@
             <b-form-select
               id="input-category"
               v-model="form.category"
-              :options="categories"
+              :options="filteredCategories"
               textField="name"
               valueField="id"
               multiple
-            >
-            </b-form-select>
-          </b-form-group>
-        </b-col>
-        <b-col cols="12" md="6" xl="4">
-          <b-form-group
-            id="input-group-competition-level"
-            :label="$t('competition.level')"
-            label-for="input-competition-level"
-            :description="$t('statistics.choose_multiple')"
-          >
-            <b-form-select
-              id="input-competition-level"
-              v-model="form.competitionLevel"
-              :options="competitionLevels"
-              textField="name"
-              valueField="id"
-              multiple
+              :select-size="10"
             >
             </b-form-select>
           </b-form-group>
@@ -63,6 +65,25 @@
               id="input-competition-type"
               v-model="form.competitionType"
               :options="competitionTypes"
+              textField="name"
+              valueField="id"
+              multiple
+              :select-size="10"
+            >
+            </b-form-select>
+          </b-form-group>
+        </b-col>
+        <b-col cols="12" md="6" xl="4">
+          <b-form-group
+            id="input-group-competition-level"
+            :label="$t('competition.level')"
+            label-for="input-competition-level"
+            :description="$t('statistics.choose_multiple')"
+          >
+            <b-form-select
+              id="input-competition-level"
+              v-model="form.competitionLevel"
+              :options="competitionLevels"
               textField="name"
               valueField="id"
               multiple
@@ -286,6 +307,7 @@ export default {
       categories: [],
       competitionLevels: [],
       competitionTypes: [],
+      divisions: [],
       errors: {},
       form: {
         approved: false,
@@ -294,6 +316,7 @@ export default {
         competitionType: [],
         date_end: null,
         date_start: null,
+        division: [],
         group_results: "",
         max_results: 25,
         organization: [],
@@ -310,6 +333,23 @@ export default {
       sport: null,
       sports: []
     };
+  },
+  computed: {
+    /**
+     * Filter categories based on selected divisions
+     *
+     * @returns [{}]
+     */
+    filteredCategories: function () {
+      if (this.form.division.length === 0) {
+        return this.categories;
+      }
+      return this.categories.filter((category) => {
+        return this.form.division.some(
+          (division) => division === category.division
+        );
+      });
+    }
   },
   watch: {
     /**
@@ -384,6 +424,10 @@ export default {
         parameters += "&type=" + this.form.competitionType;
         query.type = this.form.competitionType;
       }
+      if (this.form.division.length) {
+        parameters += "&division=" + this.form.division;
+        query.division = this.form.division;
+      }
       if (this.form.organization.length) {
         parameters += "&organization=" + this.form.organization;
         query.organization = this.form.organization;
@@ -439,6 +483,9 @@ export default {
       }
       if (this.$route.query.category) {
         this.form.category = JSON.parse("[" + this.$route.query.category + "]");
+      }
+      if (this.$route.query.division) {
+        this.form.division = JSON.parse("[" + this.$route.query.division + "]");
       }
       if (this.$route.query.level) {
         this.form.competitionLevel = JSON.parse(
@@ -515,6 +562,7 @@ export default {
       this.$set(this.errors, "main", null);
       this.sport = id;
       this.getCategories(this.sport);
+      this.getDivisions(this.sport);
       this.getCompetitionLevels();
       this.getCompetitionTypes(this.sport);
       this.getOrganizations(false, false);

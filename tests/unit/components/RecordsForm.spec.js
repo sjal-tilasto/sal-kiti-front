@@ -46,6 +46,7 @@ describe("RecordsForm.vue", () => {
     wrapper.vm.$data.form = {
       category: ["1", "2"],
       competitionType: ["1", "2"],
+      division: [],
       approved: true,
       preliminary: false,
       historical: false

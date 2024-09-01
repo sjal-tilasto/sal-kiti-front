@@ -8,7 +8,17 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
     <b-col-stub
       tag="div"
     >
-      <!---->
+      <b-alert-stub
+        dismisslabel="Close"
+        show="true"
+        variant="danger"
+      >
+        <ul>
+          <li>
+            import.error.unknown
+          </li>
+        </ul>
+      </b-alert-stub>
     </b-col-stub>
   </b-row-stub>
    
@@ -18,6 +28,35 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
     <b-row-stub
       tag="div"
     >
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-group-stub
+          description="statistics.choose_multiple"
+          feedbackarialive="assertive"
+          id="input-group-division"
+          label="result.division"
+          labelfor="input-division"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-category"
+            labelfield="label"
+            multiple="true"
+            options=""
+            optionsfield="options"
+            selectsize="10"
+            textfield="name"
+            value=""
+            valuefield="id"
+          />
+        </b-form-group-stub>
+      </b-col-stub>
+       
       <b-col-stub
         cols="12"
         md="6"
@@ -39,36 +78,7 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
             multiple="true"
             options="[object Object],[object Object]"
             optionsfield="options"
-            selectsize="0"
-            textfield="name"
-            value=""
-            valuefield="id"
-          />
-        </b-form-group-stub>
-      </b-col-stub>
-       
-      <b-col-stub
-        cols="12"
-        md="6"
-        tag="div"
-        xl="4"
-      >
-        <b-form-group-stub
-          description="statistics.choose_multiple"
-          feedbackarialive="assertive"
-          id="input-group-competition-level"
-          label="competition.level"
-          labelfor="input-competition-level"
-        >
-          <b-form-select-stub
-            disabledfield="disabled"
-            htmlfield="html"
-            id="input-competition-level"
-            labelfield="label"
-            multiple="true"
-            options="[object Object]"
-            optionsfield="options"
-            selectsize="0"
+            selectsize="10"
             textfield="name"
             value=""
             valuefield="id"
@@ -93,6 +103,35 @@ exports[`StatisticsForm.vue renders statistics search form 1`] = `
             disabledfield="disabled"
             htmlfield="html"
             id="input-competition-type"
+            labelfield="label"
+            multiple="true"
+            options="[object Object]"
+            optionsfield="options"
+            selectsize="10"
+            textfield="name"
+            value=""
+            valuefield="id"
+          />
+        </b-form-group-stub>
+      </b-col-stub>
+       
+      <b-col-stub
+        cols="12"
+        md="6"
+        tag="div"
+        xl="4"
+      >
+        <b-form-group-stub
+          description="statistics.choose_multiple"
+          feedbackarialive="assertive"
+          id="input-group-competition-level"
+          label="competition.level"
+          labelfor="input-competition-level"
+        >
+          <b-form-select-stub
+            disabledfield="disabled"
+            htmlfield="html"
+            id="input-competition-level"
             labelfield="label"
             multiple="true"
             options="[object Object]"

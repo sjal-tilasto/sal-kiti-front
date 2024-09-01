@@ -170,6 +170,28 @@ export default {
         .finally(() => (this.loadingCompetitionTypes = false));
     },
     /**
+     * Fetch current divisions for a sport from API
+     *
+     * @param {number} sportId
+     * @param {boolean} historical
+     * @returns {Promise<void>}
+     */
+    async getDivisions(sportId, historical = false) {
+      this.loadingDivisions = true;
+      let url = "divisions/?sport=" + sportId;
+      if (!historical) {
+        url = url + "&historical=false";
+      }
+      HTTP.get(url)
+        .then((response) => {
+          this.divisions = response.data.results;
+        })
+        .catch((error) => {
+          this.$set(this.errors, "main", errorParser.generic.bind(this)(error));
+        })
+        .finally(() => (this.loadingDivisions = false));
+    },
+    /**
      * Fetch event information from API
      *
      * @param {number} eventId

@@ -104,6 +104,7 @@ describe("StatisticsForm.vue", () => {
       organization: [],
       max_results: 25,
       date_start: null,
+      division: [],
       external: false,
       gender: "",
       group_results: "",
