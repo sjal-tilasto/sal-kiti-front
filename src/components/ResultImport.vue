@@ -378,7 +378,11 @@ export default {
           let worksheet = workbook.Sheets[firstSheetName];
           let headers = this.parseExcelGetHeaders(worksheet);
           resolve(
-            XLSX.utils.sheet_to_json(worksheet, { header: headers, range: 1 })
+            XLSX.utils.sheet_to_json(worksheet, {
+              header: headers,
+              range: 1,
+              raw: false
+            })
           );
         };
         reader.onerror = reject;
