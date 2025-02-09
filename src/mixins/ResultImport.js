@@ -131,7 +131,9 @@ export default {
       } else {
         if (first_name && last_name && organization) {
           organizationObject = this.organizations.filter(
-            (org) => org.abbreviation === organization
+            (org) =>
+              org.abbreviation === organization ||
+              org.name.toLowerCase() === organization.toLowerCase()
           );
           if (organizationObject.length === 1) {
             query =
@@ -376,7 +378,9 @@ export default {
         );
         if (organization.length === 0) {
           organization = this.organizations.filter(
-            (org) => org.name === this.results[i].organization
+            (org) =>
+              org.name.toLowerCase() ===
+              this.results[i].organization.toLowerCase()
           );
         }
         if (organization.length === 0) {
