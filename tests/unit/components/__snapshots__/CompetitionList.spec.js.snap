@@ -8,13 +8,15 @@ exports[`CompetitionList.vue renders competition list 1`] = `
     <div
       class="col"
     >
-      <h3>
+      <h2
+        class="bg-sal-orange"
+      >
         competition.competition
-      </h3>
+      </h2>
     </div>
-     
-    <!---->
   </div>
+   
+  <!---->
    
   <div
     class="row"

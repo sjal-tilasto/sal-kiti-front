@@ -61,7 +61,7 @@ describe("EventList.vue", () => {
     await event.trigger("click");
     expect($router.push).toHaveBeenCalledWith({
       name: "event",
-      params: { event_id: 1 }
+      params: { event_id: 2 }
     });
   });
 });

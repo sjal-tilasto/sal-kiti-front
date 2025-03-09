@@ -123,58 +123,7 @@ exports[`EventList.vue renders event list 1`] = `
         >
           <!---->
           <tr
-            class="table-warning"
-            role="row"
-            tabindex="0"
-          >
-            <td
-              aria-colindex="1"
-              class=""
-              role="cell"
-            >
-              <div>
-                
-            2019-01-22 - 2019-01-24
-          
-              </div>
-               
-              <!---->
-            </td>
-            <td
-              aria-colindex="2"
-              class=""
-              role="cell"
-            >
-              
-          Demo Champion
-          
-              <div>
-                <ul>
-                  <li>
-                    
-                10m Competition
-              
-                  </li>
-                </ul>
-              </div>
-            </td>
-            <td
-              aria-colindex="3"
-              class=""
-              role="cell"
-            >
-              LC
-            </td>
-            <td
-              aria-colindex="4"
-              class="d-none d-md-table-cell"
-              role="cell"
-            >
-              Village Field
-            </td>
-          </tr>
-          <tr
-            class="table-warning"
+            class=""
             role="row"
             tabindex="0"
           >

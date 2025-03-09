@@ -148,7 +148,26 @@ exports[`CompetitionInformation.vue renders Competition information 1`] = `
      
     <!---->
      
-    <!---->
+    <b-col-stub
+      cols="6"
+      md="3"
+      tag="div"
+    >
+      <dl>
+        <dt>
+          competition.visibility
+        </dt>
+         
+        <!---->
+         
+        <dd>
+          
+          competition.hidden
+          
+          <!---->
+        </dd>
+      </dl>
+    </b-col-stub>
      
     <!---->
      
@@ -307,7 +326,36 @@ exports[`CompetitionInformation.vue show management options for organization use
      
     <!---->
      
-    <!---->
+    <b-col-stub
+      cols="6"
+      md="3"
+      tag="div"
+    >
+      <dl>
+        <dt>
+          competition.visibility
+        </dt>
+         
+        <!---->
+         
+        <dd>
+          
+          competition.hidden
+          
+          <b-button-stub
+            size="sm"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="outline-success"
+          >
+            
+            competition.publish
+          
+          </b-button-stub>
+        </dd>
+      </dl>
+    </b-col-stub>
      
     <!---->
      
