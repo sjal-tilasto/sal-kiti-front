@@ -127,6 +127,7 @@
     "import": "Tuo tuloksia",
     "position": "Sijoitus",
     "category": "Sarja",
+    "division": "Sarjaryhmä",
     "elimination_category": "Otteluiden sarja",
     "partial": "Osatulos | Osatulokset",
     "final": "Finaali | Finaalit",

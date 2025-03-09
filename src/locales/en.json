@@ -128,6 +128,7 @@
     "import": "Import results",
     "position": "Position",
     "category": "Category",
+    "division": "Division",
     "elimination_category": "Elimination category",
     "partial": "Partial Result | Partial Results",
     "preliminary": "Preliminary round",
