@@ -28,7 +28,7 @@
               v-model="form.name"
               required
             ></b-form-input>
-            <b-form-invalid-feedback :state="!'name' in errors">
+            <b-form-invalid-feedback :state="(!'name') in errors">
               <ul>
                 <li v-for="e in errors.name" v-bind:key="e">{{ e }}</li>
               </ul>
@@ -45,7 +45,7 @@
               rows="3"
               max-rows="6"
             ></b-form-textarea>
-            <b-form-invalid-feedback :state="!'description' in errors">
+            <b-form-invalid-feedback :state="(!'description') in errors">
               <ul>
                 <li v-for="e in errors.description" v-bind:key="e">{{ e }}</li>
               </ul>
@@ -61,7 +61,7 @@
               v-model="form.location"
               required
             ></b-form-input>
-            <b-form-invalid-feedback :state="!'location' in errors">
+            <b-form-invalid-feedback :state="(!'location') in errors">
               <ul>
                 <li v-for="e in errors.location" v-bind:key="e">{{ e }}</li>
               </ul>
@@ -78,7 +78,7 @@
               type="date"
               required
             ></b-form-input>
-            <b-form-invalid-feedback :state="!'date_start' in errors">
+            <b-form-invalid-feedback :state="(!'date_start') in errors">
               <ul>
                 <li v-for="e in errors.date_start" v-bind:key="e">{{ e }}</li>
               </ul>
@@ -95,7 +95,7 @@
               type="date"
               required
             ></b-form-input>
-            <b-form-invalid-feedback :state="!'date_end' in errors">
+            <b-form-invalid-feedback :state="(!'date_end') in errors">
               <ul>
                 <li v-for="e in errors.date_end" v-bind:key="e">{{ e }}</li>
               </ul>
@@ -115,7 +115,7 @@
               required
             >
             </b-form-select>
-            <b-form-invalid-feedback :state="!'organization' in errors">
+            <b-form-invalid-feedback :state="(!'organization') in errors">
               <ul>
                 <li v-for="e in errors.organization" v-bind:key="e">{{ e }}</li>
               </ul>
@@ -150,7 +150,7 @@
               required
             >
             </b-form-select>
-            <b-form-invalid-feedback :state="!'type' in errors">
+            <b-form-invalid-feedback :state="(!'type') in errors">
               <ul>
                 <li v-for="e in errors.type" v-bind:key="e">{{ e }}</li>
               </ul>
@@ -170,7 +170,7 @@
               required
             >
             </b-form-select>
-            <b-form-invalid-feedback :state="!'level' in errors">
+            <b-form-invalid-feedback :state="(!'level') in errors">
               <ul>
                 <li v-for="e in errors.level" v-bind:key="e">{{ e }}</li>
               </ul>
