@@ -342,17 +342,7 @@ exports[`CompetitionInformation.vue show management options for organization use
           
           competition.hidden
           
-          <b-button-stub
-            size="sm"
-            tag="button"
-            target="_self"
-            type="button"
-            variant="outline-success"
-          >
-            
-            competition.publish
-          
-          </b-button-stub>
+          <!---->
         </dd>
       </dl>
     </b-col-stub>

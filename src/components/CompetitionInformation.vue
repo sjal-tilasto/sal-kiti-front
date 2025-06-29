@@ -122,7 +122,7 @@
               size="sm"
               variant="outline-danger"
               v-on:click="togglePublicStatus()"
-              v-if="$store.state.editMode"
+              v-if="$store.state.editMode && $store.state.user.is_staff"
             >
               {{ $t("competition.hide") }}
             </b-button>
@@ -133,7 +133,7 @@
               size="sm"
               variant="outline-success"
               v-on:click="togglePublicStatus()"
-              v-if="$store.state.editMode"
+              v-if="$store.state.editMode && $store.state.user.is_staff"
             >
               {{ $t("competition.publish") }}
             </b-button>
